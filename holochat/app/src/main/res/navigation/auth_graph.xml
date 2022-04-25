@@ -16,6 +16,12 @@
         <action
             android:id="@+id/action_signInFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
+        <argument
+            android:name="email"
+            app:argType="string" />
+        <argument
+            android:name="password"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -23,7 +29,7 @@
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
         <action
-            android:id="@+id/action_registerFragment_to_signInFragment"
+            android:id="@+id/action_registerFragment_to_loginFragment"
             app:destination="@id/signInFragment" />
     </fragment>
     <activity
