@@ -141,7 +141,7 @@
         android:layout_width="380dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:fontFamily="sans-serif-smallcaps"
+        android:fontFamily="sans-serif-condensed"
         android:text="@string/view_tell_me"
         android:textColor="@color/brown"
         android:textSize="43sp"
