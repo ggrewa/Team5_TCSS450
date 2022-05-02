@@ -9,4 +9,7 @@
     <string name="action_register_short">REGISTER</string>
     <string name="action_sign_in_short">SIGN IN</string>
     <string name="view_tell_me">Lets get started.</string>
+    <string name="weather_fragment_placeholder">Weather Fragment</string>
+    <string name="action_link">Full Forecast</string>
+    <color name="cloudy_color">#beeef7</color>
 </resources>
