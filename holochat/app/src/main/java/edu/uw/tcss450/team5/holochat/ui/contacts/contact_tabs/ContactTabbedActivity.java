@@ -13,12 +13,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.ActivityContactTabbedBinding;
 import edu.uw.tcss450.team5.holochat.ui.contacts.ui.main.SectionsPagerAdapter;
 
 public class ContactTabbedActivity extends AppCompatActivity {
 
+
     private ActivityContactTabbedBinding binding;
+    private TabLayout mTabs;
+    private int[] mTabIcons = { R.drawable.ic_mycontacts_black_24dp,
+            R.drawable.ic_friend_request_black_24dp,
+            R.drawable.ic_user_search_black_24dp};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,19 +33,29 @@ public class ContactTabbedActivity extends AppCompatActivity {
         binding = ActivityContactTabbedBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        //tabs
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
         ViewPager viewPager = binding.viewPager;
         viewPager.setAdapter(sectionsPagerAdapter);
-        TabLayout tabs = binding.tabs;
-        tabs.setupWithViewPager(viewPager);
+        mTabs = binding.tabs;
+        mTabs.setupWithViewPager(viewPager);
         FloatingActionButton fab = binding.fab;
+        setupTabIcons();
 
+        //on point action button
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Hello, this button does absolutely nothing rn ( ͡° ͜ʖ ͡°)", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
+
+    }
+
+    private void setupTabIcons() {
+        mTabs.getTabAt(0).setIcon(mTabIcons[0]);
+        mTabs.getTabAt(1).setIcon(mTabIcons[1]);
+        mTabs.getTabAt(2).setIcon(mTabIcons[2]);
     }
 }
