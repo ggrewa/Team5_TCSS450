@@ -1,3 +1,8 @@
+/*
+ * TCSS450
+ * Mobile Application Programming
+ * Spring 2022
+ */
 package edu.uw.tcss450.team5.holochat;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,6 +12,12 @@ import android.os.Bundle;
 
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
 
+/*
+ * Class for the Main Activity.
+ *
+ * @author Charles Bryan
+ * @version Spring 2022
+ */
 public class MainActivity extends AppCompatActivity {
 
     @Override

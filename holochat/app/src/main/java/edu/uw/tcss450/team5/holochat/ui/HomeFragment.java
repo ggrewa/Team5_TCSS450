@@ -1,3 +1,8 @@
+/*
+ * TCSS450
+ * Mobile Application Programming
+ * Spring 2022
+ */
 package edu.uw.tcss450.team5.holochat.ui;
 
 import android.os.Bundle;
@@ -15,9 +20,6 @@ import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentHomeBinding;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class HomeFragment extends Fragment {
 
     public HomeFragment() {

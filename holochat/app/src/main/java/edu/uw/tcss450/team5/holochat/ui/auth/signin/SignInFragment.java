@@ -1,3 +1,8 @@
+/*
+ * TCSS450
+ * Mobile Application Programming
+ * Spring 2022
+ */
 package edu.uw.tcss450.team5.holochat.ui.auth.signin;
 
 import static edu.uw.tcss450.team5.holochat.utils.PasswordValidator.*;
@@ -21,21 +26,32 @@ import org.json.JSONObject;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentSignInBinding;
 import edu.uw.tcss450.team5.holochat.utils.PasswordValidator;
 
-/**
- * A simple {@link Fragment} subclass.
+/*
+ * Class for the Sign In fragment.
+ *
+ * @author Charles Bryan
+ * @version Spring 2022
  */
 public class SignInFragment extends Fragment {
 
+    /** Binding view for the fragment. */
     private FragmentSignInBinding binding;
+
+    /** View model for the fragment. */
     private SignInViewModel mSignInModel;
 
+    /** Validator for the email. */
     private PasswordValidator mEmailValidator = checkPwdLength(2)
             .and(checkExcludeWhiteSpace())
             .and(checkPwdSpecialChar("@"));
 
+    /** Validator for the password. */
     private PasswordValidator mPassWordValidator = checkPwdLength(1)
             .and(checkExcludeWhiteSpace());
 
+    /**
+     * Empty constructor.
+     */
     public SignInFragment() {
     }
 
@@ -65,19 +81,24 @@ public class SignInFragment extends Fragment {
 
         binding.buttonSignIn.setOnClickListener(this::attemptSignIn);
 
-        mSignInModel.addResponseObserver(
-                getViewLifecycleOwner(),
-                this::observeResponse);
+        mSignInModel.addResponseObserver(getViewLifecycleOwner(), this::observeResponse);
 
         SignInFragmentArgs args = SignInFragmentArgs.fromBundle(getArguments());
         binding.editEmail.setText(args.getEmail().equals("default") ? "" : args.getEmail());
         binding.editPassword.setText(args.getPassword().equals("default") ? "" : args.getPassword());
     }
 
+    /**
+     * Attempt and start the sign in process by validating the email.
+     * @param button the button that is used to sign in
+     */
     private void attemptSignIn(final View button) {
         validateEmail();
     }
 
+    /**
+     * Validate the email and then validate that the password.
+     */
     private void validateEmail() {
         mEmailValidator.processResult(
                 mEmailValidator.apply(binding.editEmail.getText().toString().trim()),
@@ -85,6 +106,9 @@ public class SignInFragment extends Fragment {
                 result -> binding.editEmail.setError("Please enter a valid Email address."));
     }
 
+    /**
+     * Validate the password and then verify with the server.
+     */
     private void validatePassword() {
         mPassWordValidator.processResult(
                 mPassWordValidator.apply(binding.editPassword.getText().toString()),
@@ -92,6 +116,9 @@ public class SignInFragment extends Fragment {
                 result -> binding.editPassword.setError("Please enter a valid Password."));
     }
 
+    /**
+     * Use connect to verify entered credentials.
+     */
     private void verifyAuthWithServer() {
         mSignInModel.connect(
                 binding.editEmail.getText().toString(),
