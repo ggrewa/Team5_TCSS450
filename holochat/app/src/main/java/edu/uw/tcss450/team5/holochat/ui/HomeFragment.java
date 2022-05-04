@@ -54,10 +54,6 @@ public class HomeFragment extends Fragment {
 
         if(id == R.id.add_user)
         {
-            Navigation.findNavController(getView()).navigate(
-                    HomeFragmentDirections.actionHomeFragmentToAddUserFragment()
-            );
-            return true;
         }
 
             return false;
