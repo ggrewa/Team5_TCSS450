@@ -37,12 +37,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        MainActivityArgs args = MainActivityArgs.fromBundle(getIntent().getExtras());
-
+        //MainActivityArgs args = MainActivityArgs.fromBundle(getIntent().getExtras());
+        /*
         new ViewModelProvider(this,
                 new UserInfoViewModel.UserInfoViewModelFactory(args.getEmail(), args.getJwt())
         ).get(UserInfoViewModel.class);
-
+        */
         setContentView(R.layout.activity_main);
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
