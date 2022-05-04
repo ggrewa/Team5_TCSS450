@@ -6,7 +6,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,12 +16,17 @@ import android.view.ViewGroup;
 
 import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentHomeBinding;
+import edu.uw.tcss450.team5.holochat.databinding.FragmentSignInBinding;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
+import edu.uw.tcss450.team5.holochat.ui.auth.signin.SignInFragmentDirections;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class HomeFragment extends Fragment {
+
+    private FragmentHomeBinding binding;
+
 
     public HomeFragment() {
     }
@@ -36,6 +43,16 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         UserInfoViewModel model = new ViewModelProvider(getActivity())
                 .get(UserInfoViewModel.class);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+
+            return false;
     }
 
 }
+

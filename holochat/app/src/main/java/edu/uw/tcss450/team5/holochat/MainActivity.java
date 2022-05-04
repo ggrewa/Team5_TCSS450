@@ -1,8 +1,10 @@
 package edu.uw.tcss450.team5.holochat;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
+import androidx.navigation.NavGraph;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
@@ -17,7 +19,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
 import edu.uw.tcss450.team5.holochat.ui.HomeFragmentDirections;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
 
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -60,20 +62,12 @@ public class MainActivity extends AppCompatActivity {
             //TODO open a settings fragment
             Log.d("SETTINGS", "Clicked");
             return true;
-        } else
-
-        if(id == R.id.add_user)
+        } else if (id == R.id.add_user)
         {
-            HomeFragmentDirections.actionHomeFragment2ToAddUserFragment2();
-            Log.d("NAVIGATION","CLICKED ADD USER ICON");
-            return true;
+            NavGraph
         }
-        
-
-
         return super.onOptionsItemSelected(item);
     }
-
 
 
 }
