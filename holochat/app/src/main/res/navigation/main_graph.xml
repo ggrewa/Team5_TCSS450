@@ -20,4 +20,9 @@
         android:name="edu.uw.tcss450.team5.holochat.ui.WeatherFragment"
         android:label="@string/weather_fragment_placeholder"
         tools:layout="@layout/fragment_weather" />
+    <activity
+        android:id="@+id/navigation_contacts"
+        android:name="edu.uw.tcss450.team5.holochat.ui.contacts.contact_tabs.ContactTabbedActivity"
+        android:label="@string/contact_header"
+        tools:layout="@layout/activity_contact_tabbed" />
 </navigation>

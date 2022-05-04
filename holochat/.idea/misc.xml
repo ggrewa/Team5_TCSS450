@@ -4,8 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Aaron/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/drawable/ic_chat_black_24dp.xml" value="0.242" />
+        <entry key="..\:/Users/Aaron/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/activity_auth.xml" value="0.3875" />
+        <entry key="..\:/Users/Aaron/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/activity_contact_tabbed.xml" value="0.2791666666666667" />
         <entry key="..\:/Users/Aaron/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/activity_main.xml" value="0.25679347826086957" />
+        <entry key="..\:/Users/Aaron/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/contact_list_fragment.xml" value="0.19972826086956522" />
         <entry key="..\:/Users/Aaron/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_add_user.xml" value="0.17" />
+        <entry key="..\:/Users/Aaron/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_contact_tabbed.xml" value="0.2791666666666667" />
         <entry key="..\:/Users/Aaron/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_home.xml" value="0.33" />
         <entry key="..\:/Users/Aaron/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_register.xml" value="0.20208333333333334" />
         <entry key="..\:/Users/Aaron/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_sign_in.xml" value="0.2677083333333333" />
