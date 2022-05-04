@@ -16,12 +16,13 @@ import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.ui.contacts.ContactListViewModel;
 
 /*
-* View all friends user currently has added
+* Fragment that contains a list to view all friends user currently has added
  */
 public class ContactListFragment extends Fragment {
 
     private ContactListViewModel mViewModel;
 
+    /*Singleton contacts list*/
     public static ContactListFragment newInstance() {
         return new ContactListFragment();
     }

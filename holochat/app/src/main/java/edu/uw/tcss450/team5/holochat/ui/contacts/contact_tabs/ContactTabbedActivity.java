@@ -17,8 +17,10 @@ import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.ActivityContactTabbedBinding;
 import edu.uw.tcss450.team5.holochat.ui.contacts.ui.main.SectionsPagerAdapter;
 
+/**
+ * Controls the logic to navigate through the top navigation contact tabs
+ */
 public class ContactTabbedActivity extends AppCompatActivity {
-
 
     private ActivityContactTabbedBinding binding;
     private TabLayout mTabs;
@@ -26,6 +28,10 @@ public class ContactTabbedActivity extends AppCompatActivity {
             R.drawable.ic_friend_request_black_24dp,
             R.drawable.ic_user_search_black_24dp};
 
+    /**
+     * Initialize the layout and navigation of the contacts activity
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +59,13 @@ public class ContactTabbedActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Sets the icons of the top navigation tabs
+     * It is hard coded in:
+     * 0 = contacts
+     * 1 = requests
+     * 2 = search
+     */
     private void setupTabIcons() {
         mTabs.getTabAt(0).setIcon(mTabIcons[0]);
         mTabs.getTabAt(1).setIcon(mTabIcons[1]);

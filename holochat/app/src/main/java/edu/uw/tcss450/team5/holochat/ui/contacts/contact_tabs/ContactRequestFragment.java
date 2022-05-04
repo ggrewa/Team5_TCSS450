@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import edu.uw.tcss450.team5.holochat.R;
 
 /**
- * Check friend requests
+ * Fragment that holds all friend requests the user has recieved
  */
 public class ContactRequestFragment extends Fragment {
 

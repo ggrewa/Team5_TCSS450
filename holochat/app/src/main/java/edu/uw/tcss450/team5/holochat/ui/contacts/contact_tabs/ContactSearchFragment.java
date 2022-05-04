@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import edu.uw.tcss450.team5.holochat.R;
 
 /**
- * Search for a user of the app to send a friend request
+ * Fragment that hold tools to search for a user of the app and send a friend request
  */
 public class ContactSearchFragment extends Fragment {
 
