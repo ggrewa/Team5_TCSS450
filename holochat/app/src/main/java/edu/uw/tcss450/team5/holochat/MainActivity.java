@@ -64,7 +64,6 @@ public class MainActivity extends AppCompatActivity{
             return true;
         } else if (id == R.id.add_user)
         {
-            NavGraph
         }
         return super.onOptionsItemSelected(item);
     }
