@@ -3,18 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Aaron/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/drawable/ic_chat_black_24dp.xml" value="0.242" />
-        <entry key="..\:/Users/Aaron/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/activity_main.xml" value="0.25679347826086957" />
-        <entry key="..\:/Users/Aaron/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_add_user.xml" value="0.17" />
-        <entry key="..\:/Users/Aaron/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_home.xml" value="0.33" />
-        <entry key="..\:/Users/Aaron/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_register.xml" value="0.20208333333333334" />
-        <entry key="..\:/Users/Aaron/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_sign_in.xml" value="0.2677083333333333" />
-        <entry key="..\:/Users/Aaron/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/menu/bottom_nav_menu.xml" value="0.33" />
-        <entry key="..\:/Users/Aaron/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/menu/toolbar.xml" value="0.33" />
-        <entry key="..\:/Users/Aaron/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/menu/toolbar_adduser.xml" value="0.33" />
         <entry key="app/src/main/res/drawable/style_round_corners.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_auth.xml" value="0.30374908447265625" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_add_user.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.28192901611328125" />
         <entry key="app/src/main/res/layout/fragment_register.xml" value="0.4912506103515625" />
         <entry key="app/src/main/res/layout/fragment_sign_in.xml" value="0.3063003540039063" />
