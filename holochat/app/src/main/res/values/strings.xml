@@ -8,6 +8,8 @@
     <string name="hint_password_again">RETYPE PASSWORD</string>
     <string name="action_register_short">REGISTER</string>
     <string name="action_sign_in_short">SIGN IN</string>
+    <string name ="action_back_to_sigin"> BACK TO SIGN IN</string>
+    <string name ="hint_nickname">NICKNAME </string>
     <string name="view_tell_me">Lets get started.</string>
     <string name="view_verify_email">Registration was successful.\n A verification link has been sent to your email.</string>
 
