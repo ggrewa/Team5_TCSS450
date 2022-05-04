@@ -8,10 +8,14 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
+import edu.uw.tcss450.team5.holochat.ui.HomeFragmentDirections;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,5 +43,37 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
+
+        }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar, menu);
+        return true;
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_settings) {
+            //TODO open a settings fragment
+            Log.d("SETTINGS", "Clicked");
+            return true;
+        } else
+
+        if(id == R.id.add_user)
+        {
+            HomeFragmentDirections.actionHomeFragment2ToAddUserFragment2();
+            Log.d("NAVIGATION","CLICKED ADD USER ICON");
+            return true;
+        }
+        
+
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
+
 }
