@@ -5,7 +5,7 @@
     android:id="@+id/layout_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FDFDFB"
+    android:background="@color/creme"
     tools:context=".ui.auth.register.RegisterFragment">
 
     <androidx.constraintlayout.widget.Guideline
@@ -76,8 +76,8 @@
     <EditText
         android:id="@+id/edit_nickname"
         style="@android:style/Widget.EditText"
-        android:layout_height="wrap_content"
         android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:autofillHints=""
@@ -163,7 +163,7 @@
         android:backgroundTint="@color/brown"
         android:fontFamily="sans-serif-smallcaps"
         android:text="@string/action_register_short"
-        android:textColor="@color/white"
+        android:textColor="@color/creme"
         android:textColorHighlight="@color/brown"
         android:textColorHint="@color/brown"
         android:textColorLink="@color/brown"

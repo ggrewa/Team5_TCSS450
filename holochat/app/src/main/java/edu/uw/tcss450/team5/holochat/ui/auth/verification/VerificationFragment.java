@@ -45,6 +45,7 @@ public class VerificationFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //view model??
     }
 
     @Override
@@ -60,6 +61,11 @@ public class VerificationFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         VerificationFragmentDirections.ActionVerificationFragmentToSignInFragment directions =
                 VerificationFragmentDirections.actionVerificationFragmentToSignInFragment();
+
+        VerificationFragmentArgs args = VerificationFragmentArgs.fromBundle(getArguments());
+
+        directions.setEmail(args.getEmail().equals("default") ? "" : args.getEmail());
+        directions.setPassword(args.getPassword().equals("default") ? "" : args.getPassword());
 
         binding.buttonBackToSigin.setOnClickListener(button ->
                 Navigation.findNavController(getView()).navigate(directions));

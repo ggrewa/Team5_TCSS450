@@ -165,7 +165,7 @@ public class RegisterFragment extends Fragment {
     }
 
     /**
-     * Put a connect request for registartion.
+     * Put a connect request for registration.
      */
     private void verifyAuthWithServer() {
         mRegisterModel.connect(
@@ -206,9 +206,9 @@ public class RegisterFragment extends Fragment {
         if (response.length() > 0) {
             if (response.has("code")) {
                 try {
-                    binding.editEmail.setError(
-                            "Error Authenticating: " +
-                                    response.getJSONObject("data").getString("message"));
+
+                    binding.editEmail.setError("Error Authenticating: " + response.getJSONObject("data").getString("message"));
+
                 } catch (JSONException e) {
                     Log.e("JSON Parse Error", e.getMessage());
                 }
