@@ -50,6 +50,13 @@ public class HomeFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
+        if(id == R.id.add_user)
+        {
+            Navigation.findNavController(getView()).navigate(
+                    HomeFragmentDirections.actionHomeFragmentToAddUserFragment()
+            );
+            return true;
+        }
 
             return false;
     }

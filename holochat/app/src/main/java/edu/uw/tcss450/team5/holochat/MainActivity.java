@@ -17,7 +17,6 @@ import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
-import edu.uw.tcss450.team5.holochat.ui.HomeFragmentDirections;
 
 public class MainActivity extends AppCompatActivity{
 
@@ -62,9 +61,8 @@ public class MainActivity extends AppCompatActivity{
             //TODO open a settings fragment
             Log.d("SETTINGS", "Clicked");
             return true;
-        } else if (id == R.id.add_user)
-        {
         }
+
         return super.onOptionsItemSelected(item);
     }
 

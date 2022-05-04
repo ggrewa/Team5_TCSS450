@@ -45,14 +45,4 @@
             android:name="jwt"
             app:argType="string" />
     </activity>
-    <fragment
-        android:id="@+id/homeFragment2"
-        android:name="edu.uw.tcss450.team5.holochat.ui.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
-    <fragment
-        android:id="@+id/addUserFragment2"
-        android:name="edu.uw.tcss450.team5.holochat.ui.addUser.addUserFragment"
-        android:label="fragment_add_user"
-        tools:layout="@layout/fragment_add_user" /><action android:id="@+id/action_global_addUserFragment2" app:destination="@id/addUserFragment2"/>
 </navigation>
