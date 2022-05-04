@@ -1,3 +1,8 @@
+/*
+ * TCSS450
+ * Mobile Application Programming
+ * Spring 2022
+ */
 package edu.uw.tcss450.team5.holochat.ui.auth.signin;
 
 import android.app.Application;
@@ -25,20 +30,43 @@ import java.util.Objects;
 
 import edu.uw.tcss450.team5.holochat.io.RequestQueueSingleton;
 
+/*
+ * Class for the Sign In view model.
+ *
+ * @author Charles Bryan
+ * @version Spring 2022
+ */
 public class SignInViewModel extends AndroidViewModel {
+
+    /** JSON response from server when user tries signing in. */
     private MutableLiveData<JSONObject> mResponse;
 
+    /**
+     * Constructor the initializes the sign in view model.
+     *
+     * @param application application tied to the view model
+     */
     public SignInViewModel(@NonNull Application application) {
         super(application);
         mResponse = new MutableLiveData<>();
         mResponse.setValue(new JSONObject());
     }
 
+    /**
+     * Add observer to the JSON live data.
+     * @param owner the lifecycle owner
+     * @param observer the observer that is to be added
+     */
     public void addResponseObserver(@NonNull LifecycleOwner owner,
                                     @NonNull Observer<? super JSONObject> observer) {
         mResponse.observe(owner, observer);
     }
 
+    /**
+     * Error handling when a call to the server fails.
+     *
+     * @param error exception error that is returned when server call fails
+     */
     private void handleError(final VolleyError error) {
         if (Objects.isNull(error.networkResponse)) {
             try {
@@ -63,9 +91,15 @@ public class SignInViewModel extends AndroidViewModel {
         }
     }
 
+    /**
+     * Send a get request to the server to signin the user.
+     *
+     * @param email the email of the user
+     * @param password the password of the user
+     */
     public void connect(final String email, final String password) {
         //String url = "https://cfb3-tcss450-labs-2021sp.herokuapp.com/auth";
-        String url = "https://ggrewa-tcss450-labs-auth.herokuapp.com/auth";
+        String url = "https://team5-tcss450-holochat.herokuapp.com/auth";
         Request request = new JsonObjectRequest(
                 Request.Method.GET,
                 url,

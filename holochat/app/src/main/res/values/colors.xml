@@ -3,4 +3,12 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="brown">#CC18130F</color>
+    <color name="creme">#FDFDFB</color>
+    <color name="colorPrimary">#a5ace6</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="colorOffWhite">#E9E9E9</color>
+    <color name="cloudy_color">#beeef7</color>
+    <color name="colorPrimaryAlpha">#226200EE</color>
+
 </resources>

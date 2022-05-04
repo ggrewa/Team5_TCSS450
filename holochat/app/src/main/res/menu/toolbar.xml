@@ -4,12 +4,6 @@
     xmlns:anrdoid="http://schemas.android.com/tools">
 
     <item
-        android:id="@+id/add_user"
-        android:icon="@drawable/ic_person_add_24dp"
-        android:title="@string/add_user"
-        app:showAsAction="always" />
-
-    <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/action_settings"

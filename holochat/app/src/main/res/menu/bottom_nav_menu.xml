@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/navigation_profile"
-        android:icon="@drawable/ic_person_black_24dp"
-        android:title="@string/title_profile" />
+        android:id="@+id/navigation_contacts"
+        android:icon="@drawable/ic_multiple_people_24dp"
+        android:title="@string/title_contact" />
 
     <item
         android:id="@+id/navigation_recents"

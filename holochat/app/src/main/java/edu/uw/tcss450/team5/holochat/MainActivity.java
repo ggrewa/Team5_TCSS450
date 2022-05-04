@@ -1,3 +1,8 @@
+/*
+ * TCSS450
+ * Mobile Application Programming
+ * Spring 2022
+ */
 package edu.uw.tcss450.team5.holochat;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,9 +22,14 @@ import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
-import edu.uw.tcss450.team5.holochat.ui.HomeFragmentDirections;
 
-public class MainActivity extends AppCompatActivity{
+/*
+ * Class for the Main Activity.
+ *
+ * @author Charles Bryan
+ * @version Spring 2022
+ */
+public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -39,7 +49,7 @@ public class MainActivity extends AppCompatActivity{
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_profile, R.id.navigation_recents, R.id.navigation_weather)
+                R.id.navigation_contacts, R.id.navigation_recents, R.id.navigation_weather)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
@@ -62,9 +72,8 @@ public class MainActivity extends AppCompatActivity{
             //TODO open a settings fragment
             Log.d("SETTINGS", "Clicked");
             return true;
-        } else if (id == R.id.add_user)
-        {
         }
+
         return super.onOptionsItemSelected(item);
     }
 
