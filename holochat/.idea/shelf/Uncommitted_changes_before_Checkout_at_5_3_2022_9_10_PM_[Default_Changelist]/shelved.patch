@@ -1,0 +1,34 @@
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"DesignSurface\">\r\n    <option name=\"filePathToZoomLevelMap\">\r\n      <map>\r\n        <entry key=\"..\\:/TheTCSS450Project/Team5_TCSS450/holochat/app/src/main/res/drawable-v24/ic_more_grey_24dp.xml\" value=\"0.2215\" />\r\n        <entry key=\"..\\:/TheTCSS450Project/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_home.xml\" value=\"0.2796875\" />\r\n        <entry key=\"..\\:/TheTCSS450Project/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_waether_card.xml\" value=\"0.25043859649122807\" />\r\n        <entry key=\"..\\:/TheTCSS450Project/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_weather.xml\" value=\"0.2796875\" />\r\n        <entry key=\"..\\:/Users/Aaron/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/drawable/ic_chat_black_24dp.xml\" value=\"0.242\" />\r\n        <entry key=\"..\\:/Users/Aaron/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/activity_main.xml\" value=\"0.25679347826086957\" />\r\n        <entry key=\"..\\:/Users/Aaron/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_add_user.xml\" value=\"0.17\" />\r\n        <entry key=\"..\\:/Users/Aaron/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_home.xml\" value=\"0.33\" />\r\n        <entry key=\"..\\:/Users/Aaron/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_register.xml\" value=\"0.20208333333333334\" />\r\n        <entry key=\"..\\:/Users/Aaron/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_sign_in.xml\" value=\"0.2677083333333333\" />\r\n        <entry key=\"..\\:/Users/Aaron/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/menu/bottom_nav_menu.xml\" value=\"0.33\" />\r\n        <entry key=\"..\\:/Users/Aaron/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/menu/toolbar.xml\" value=\"0.33\" />\r\n        <entry key=\"..\\:/Users/Aaron/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/menu/toolbar_adduser.xml\" value=\"0.33\" />\r\n        <entry key=\"app/src/main/res/drawable/style_round_corners.xml\" value=\"0.1\" />\r\n        <entry key=\"app/src/main/res/layout/activity_auth.xml\" value=\"0.30374908447265625\" />\r\n        <entry key=\"app/src/main/res/layout/activity_main.xml\" value=\"0.1\" />\r\n        <entry key=\"app/src/main/res/layout/fragment_home.xml\" value=\"0.28192901611328125\" />\r\n        <entry key=\"app/src/main/res/layout/fragment_register.xml\" value=\"0.32729797363281254\" />\r\n        <entry key=\"app/src/main/res/layout/fragment_sign_in.xml\" value=\"0.3063003540039063\" />\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_11\" default=\"true\" project-jdk-name=\"Android Studio default JDK\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\r\n  </component>\r\n  <component name=\"ProjectType\">\r\n    <option name=\"id\" value=\"Android\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	
++++ b/.idea/misc.xml	
+@@ -7,21 +7,13 @@
+         <entry key="..\:/TheTCSS450Project/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_home.xml" value="0.2796875" />
+         <entry key="..\:/TheTCSS450Project/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_waether_card.xml" value="0.25043859649122807" />
+         <entry key="..\:/TheTCSS450Project/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_weather.xml" value="0.2796875" />
+-        <entry key="..\:/Users/Aaron/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/drawable/ic_chat_black_24dp.xml" value="0.242" />
+-        <entry key="..\:/Users/Aaron/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/activity_main.xml" value="0.25679347826086957" />
+-        <entry key="..\:/Users/Aaron/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_add_user.xml" value="0.17" />
+-        <entry key="..\:/Users/Aaron/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_home.xml" value="0.33" />
+-        <entry key="..\:/Users/Aaron/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_register.xml" value="0.20208333333333334" />
+-        <entry key="..\:/Users/Aaron/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_sign_in.xml" value="0.2677083333333333" />
+-        <entry key="..\:/Users/Aaron/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/menu/bottom_nav_menu.xml" value="0.33" />
+-        <entry key="..\:/Users/Aaron/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/menu/toolbar.xml" value="0.33" />
+-        <entry key="..\:/Users/Aaron/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/menu/toolbar_adduser.xml" value="0.33" />
++        <entry key="..\:/TheTCSS450Project/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_weather_card.xml" value="0.25526315789473686" />
+         <entry key="app/src/main/res/drawable/style_round_corners.xml" value="0.1" />
+         <entry key="app/src/main/res/layout/activity_auth.xml" value="0.30374908447265625" />
+         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.28192901611328125" />
+         <entry key="app/src/main/res/layout/fragment_register.xml" value="0.32729797363281254" />
+-        <entry key="app/src/main/res/layout/fragment_sign_in.xml" value="0.3063003540039063" />
++        <entry key="app/src/main/res/layout/fragment_sign_in.xml" value="0.24958496093750004" />
+       </map>
+     </option>
+   </component>
