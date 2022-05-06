@@ -11,11 +11,6 @@
         android:label="@string/title_recents"
         tools:layout="@layout/fragment_home" />
     <fragment
-        android:id="@+id/navigation_addUser"
-        android:name="edu.uw.tcss450.team5.holochat.ui.addUser.addUserFragment"
-        android:label="fragment_add_user"
-        tools:layout="@layout/fragment_add_user" />
-    <fragment
         android:id="@+id/navigation_weather"
         android:name="edu.uw.tcss450.team5.holochat.ui.WeatherFragment"
         android:label="@string/weather_fragment_placeholder"
