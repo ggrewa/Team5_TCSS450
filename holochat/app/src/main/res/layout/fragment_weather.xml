@@ -8,6 +8,9 @@
     android:background="@color/cloudy_color"
     tools:context=".ui.WeatherFragment">
 
+
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_root"
         android:name="edu.uw.tcss450.uiandnavigationlab.ui.blog.BlogFragment"
@@ -22,41 +25,38 @@
         tools:context="edu.uw.tcss450.team5.holochat.ui.WeatherFragment"
         tools:listitem="@layout/fragment_weather_card" />
 
-    <TextView
-        android:id="@+id/textViewWeather"
+    <Button
+        android:id="@+id/btnget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="46dp"
-        android:layout_marginTop="175dp"
-        android:layout_marginEnd="26dp"
-        android:text="Curernt Weather"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
-        app:layout_constraintHorizontal_chainStyle="packed"
+        android:layout_marginTop="100dp"
+
+        android:text="@string/Refresh_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.945"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView"
+    <EditText
+        android:id="@+id/etCity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="148dp"
-        android:layout_marginEnd="17dp"
-        android:src="@drawable/umbrella"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textViewWeather"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="16dp"
+        android:ems="10"
+        android:hint="Enter City Name"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnget"
+        app:layout_constraintEnd_toStartOf="@+id/btnget" />
 
     <TextView
-        android:id="@+id/textViewLocation"
+        android:id="@+id/tvResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="87dp"
-        android:layout_marginBottom="93dp"
-        android:text="Location"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewWeather"
-        app:layout_constraintEnd_toEndOf="@+id/textViewWeather"
+        android:layout_marginTop="200dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.277"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

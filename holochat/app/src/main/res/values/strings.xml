@@ -13,6 +13,7 @@
     <string name="view_verify_email">Registration was successful.\n A verification link has been sent to your email.</string>
     <string name="hint_nickname">NICKNAME</string>
     <string name="weather_fragment_placeholder">Weather</string>
+    <string name="Refresh_button">Refresh</string>
     <string name="action_link">Full Forecast</string>
     <string name="title_profile">Profile</string>
     <string name="title_recents">Recents</string>
