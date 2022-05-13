@@ -1,3 +1,8 @@
+/*
+ * TCSS450
+ * Mobile Application Programming
+ * Spring 2022
+ */
 package edu.uw.tcss450.team5.holochat.ui.auth.register;
 
 import android.app.Application;
@@ -21,21 +26,44 @@ import org.json.JSONObject;
 import java.nio.charset.Charset;
 import java.util.Objects;
 
+/*
+ * View model for the register view model.
+ *
+ * @author Charles Bryan
+ * @author Gurleen Grewal
+ * @version Spring 2022
+ */
 public class RegisterViewModel extends AndroidViewModel {
 
+    /** JSON response from server when user tries registering. */
     private MutableLiveData<JSONObject> mResponse;
 
+    /**
+     * Constructor the initializes the register view model.
+     *
+     * @param application application tied to the view model
+     */
     public RegisterViewModel(@NonNull Application application) {
         super(application);
         mResponse = new MutableLiveData<>();
         mResponse.setValue(new JSONObject());
     }
 
+    /**
+     * Add observer to the JSON live data.
+     * @param owner the lifecycle owner
+     * @param observer the observer that is to be added
+     */
     public void addResponseObserver(@NonNull LifecycleOwner owner,
                                     @NonNull Observer<? super JSONObject> observer) {
         mResponse.observe(owner, observer);
     }
 
+    /**
+     * Error handling when a call to the server fails.
+     *
+     * @param error exception error that is returned when server call fails
+     */
     private void handleError(final VolleyError error) {
         if (Objects.isNull(error.networkResponse)) {
             try {
@@ -60,16 +88,27 @@ public class RegisterViewModel extends AndroidViewModel {
         }
     }
 
+    /**
+     * Send a post request to the server to register the user.
+     *
+     * @param first the first name of the user
+     * @param last the last name of the user
+     * @param nickname the nickname of the user
+     * @param email the email of the user
+     * @param password the password of the user
+     */
     public void connect(final String first,
                         final String last,
+                        final String nickname,
                         final String email,
                         final String password) {
         //String url = "https://cfb3-tcss450-labs-2021sp.herokuapp.com/auth";
-        String url = "https://ggrewa-tcss450-labs-auth.herokuapp.com/auth";
+        String url = "https://team5-tcss450-holochat.herokuapp.com/auth";
         JSONObject body = new JSONObject();
         try {
             body.put("first", first);
             body.put("last", last);
+            body.put("nickname", nickname);
             body.put("email", email);
             body.put("password", password);
         } catch (JSONException e) {

@@ -5,7 +5,7 @@
     android:id="@+id/layout_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FDFDFB"
+    android:background="@color/creme"
     tools:context=".ui.auth.register.RegisterFragment">
 
     <androidx.constraintlayout.widget.Guideline
@@ -15,25 +15,21 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.5" />
 
-    <EditText
-        android:id="@+id/edit_email"
-        style="@android:style/Widget.EditText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:autofillHints=""
+    <TextView
+        android:id="@+id/view_tell_me"
+        android:layout_width="302dp"
+        android:layout_height="62dp"
         android:ems="10"
-        android:fontFamily="sans-serif-light"
-        android:hint="@string/hint_email"
-        android:inputType="textEmailAddress"
-        android:textColor="@color/black"
-        android:textColorHint="#3318130F"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline_fifty"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:gravity="center"
+        android:text="@string/view_tell_me"
+        android:textColor="@color/brown"
+        android:textSize="43sp"
+        app:layout_constraintBottom_toTopOf="@+id/edit_first"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_last" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.636" />
 
     <EditText
         android:id="@+id/edit_last"
@@ -43,33 +39,36 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:autofillHints=""
+        android:backgroundTint="@color/brown"
         android:ems="10"
         android:fontFamily="sans-serif-light"
         android:hint="@string/hint_last"
         android:inputType="textPersonName"
         android:textColor="@color/black"
-        android:textColorHint="#3318130F"
+        android:textColorHint="@color/hint_color"
         android:textSize="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/edit_email"
+        app:layout_constraintBottom_toTopOf="@id/edit_nickname"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_first" />
 
     <EditText
         android:id="@+id/edit_first"
-        style="@android:style/Widget.EditText"
+        style="@style/Widget.AppCompat.EditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="200dp"
         android:layout_marginEnd="32dp"
         android:autofillHints=""
+        android:backgroundTint="@color/brown"
         android:ems="10"
         android:fontFamily="sans-serif-light"
         android:hint="@string/hint_first"
         android:inputType="textPersonName"
         android:textColor="@color/black"
-        android:textColorHint="#3318130F"
+        android:textColorHint="@color/hint_color"
         android:textSize="16dp"
         app:layout_constraintBottom_toTopOf="@+id/edit_last"
         app:layout_constraintEnd_toEndOf="parent"
@@ -77,24 +76,67 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/edit_password_1"
+        android:id="@+id/edit_nickname"
         style="@android:style/Widget.EditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:autofillHints=""
+        android:backgroundTint="@color/brown"
+        android:ems="10"
+        android:fontFamily="sans-serif-light"
+        android:hint="@string/hint_nickname"
+        android:textColor="@color/black"
+        android:textColorHint="@color/hint_color"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_fifty"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_last" />
+
+    <EditText
+        android:id="@+id/edit_email"
+        style="@android:style/Widget.EditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:autofillHints=""
+        android:backgroundTint="@color/brown"
+        android:ems="10"
+        android:fontFamily="sans-serif-light"
+        android:hint="@string/hint_email"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/black"
+        android:textColorHint="@color/hint_color"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/edit_password_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline_fifty" />
+
+    <EditText
+        android:id="@+id/edit_password_1"
+        style="@android:style/Widget.EditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="32dp"
+        android:autofillHints=""
+        android:backgroundTint="@color/brown"
         android:ems="10"
         android:fontFamily="sans-serif-light"
         android:hint="@string/hint_password"
         android:inputType="textPassword"
         android:textColor="@color/black"
-        android:textColorHint="#3318130F"
+        android:textColorHint="@color/hint_color"
         android:textSize="16dp"
         app:layout_constraintBottom_toTopOf="@+id/edit_password_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guideline_fifty" />
+        app:layout_constraintTop_toBottomOf="@id/edit_email" />
 
     <EditText
         android:id="@+id/edit_password_2"
@@ -105,18 +147,19 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="32dp"
         android:autofillHints=""
+        android:backgroundTint="@color/brown"
         android:ems="10"
         android:fontFamily="sans-serif-light"
         android:hint="@string/hint_password_again"
         android:inputType="textPassword"
         android:textColor="@color/black"
-        android:textColorHint="#3318130F"
+        android:textColorHint="@color/hint_color"
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_password_1" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_register"
         style="@android:style/Widget.Material.Button"
         android:layout_width="wrap_content"
@@ -127,29 +170,9 @@
         android:fontFamily="sans-serif-smallcaps"
         android:text="@string/action_register_short"
         android:textColor="@color/white"
-        android:textColorHighlight="@color/brown"
-        android:textColorHint="@color/brown"
-        android:textColorLink="@color/brown"
         android:textSize="16dp"
         android:textStyle="bold"
-        app:iconTint="@color/brown"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_password_2" />
-
-    <TextView
-        android:id="@+id/view_tell_me"
-        android:layout_width="380dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:fontFamily="sans-serif-condensed"
-        android:text="@string/view_tell_me"
-        android:textColor="@color/brown"
-        android:textSize="43sp"
-        app:layout_constraintBottom_toTopOf="@+id/edit_first"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.636" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

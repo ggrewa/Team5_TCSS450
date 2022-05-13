@@ -1,3 +1,8 @@
+/*
+ * TCSS450
+ * Mobile Application Programming
+ * Spring 2022
+ */
 package edu.uw.tcss450.team5.holochat.ui;
 
 import android.os.Bundle;
@@ -20,9 +25,6 @@ import edu.uw.tcss450.team5.holochat.databinding.FragmentSignInBinding;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
 import edu.uw.tcss450.team5.holochat.ui.auth.signin.SignInFragmentDirections;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
@@ -50,13 +52,6 @@ public class HomeFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if(id == R.id.add_user)
-        {
-            Navigation.findNavController(getView()).navigate(
-                    HomeFragmentDirections.actionHomeFragmentToAddUserFragment()
-            );
-            return true;
-        }
 
             return false;
     }
