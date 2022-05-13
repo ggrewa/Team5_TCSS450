@@ -10,7 +10,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.ui.contacts.contact_tabs.ContactListFragment;
-import edu.uw.tcss450.team5.holochat.ui.contacts.contact_tabs.ContactRequestFragment;
+import edu.uw.tcss450.team5.holochat.ui.contacts.contact_tabs.ContactRequestListFragment;
 import edu.uw.tcss450.team5.holochat.ui.contacts.contact_tabs.ContactSearchFragment;
 
 /**
@@ -44,7 +44,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                 fragment = new ContactListFragment();
                 break;
             case 1:
-                fragment = new ContactRequestFragment();
+                fragment = new ContactRequestListFragment();
                 break;
             case 2:
                 fragment = new ContactSearchFragment();
