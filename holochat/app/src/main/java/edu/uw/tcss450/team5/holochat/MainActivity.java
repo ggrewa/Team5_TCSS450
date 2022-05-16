@@ -24,6 +24,7 @@ import com.auth0.android.jwt.JWT;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
+import edu.uw.tcss450.team5.holochat.utils.AppSharedPref;
 
 /*
  * Class for the Main Activity.
@@ -34,6 +35,7 @@ import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+    AppSharedPref mPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +73,12 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
-        }
+
+
+        // start of theme implementation
+        mPref = new AppSharedPref(this);
+        mPref.initializeTheme(); //set theme based on preference in AppSharedPref class
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
