@@ -5,6 +5,7 @@
  */
 package edu.uw.tcss450.team5.holochat;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
+        //BOTTOM NAVIGATION
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -54,8 +56,6 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
-
-
         }
 
     @Override
@@ -68,14 +68,37 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.action_settings) {
-            //TODO open a settings fragment
-            Log.d("SETTINGS", "Clicked");
-            return true;
+        switch(item.getItemId()) {
+            case R.id.action_settings:
+                Log.d("SETTINGS", "Clicked");
+                openSettings();
+                return true;
+            case R.id.action_signout:
+                Log.d("SIGNOUT", "Clicked");
+                signOut();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+
         }
 
-        return super.onOptionsItemSelected(item);
     }
+
+    /**
+     * Navigates the activity to the settings fragment
+     */
+    public void openSettings() {
+        NavController navController2 = Navigation.findNavController(this, R.id.nav_host_fragment);
+        navController2.navigate(R.id.navigation_settings);
+    }
+
+    /**
+     * Signs the user out
+     */
+    public void signOut() {
+
+    }
+
 
 
 }
