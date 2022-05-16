@@ -30,7 +30,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_name" />
+        app:layout_constraintTop_toBottomOf="@+id/text_nickname" />
 
     <Button
         android:id="@+id/change_password"
@@ -48,12 +48,12 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/text_name"
+        android:id="@+id/text_nickname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:drawablePadding="8dp"
-        android:text="Test User Example"
+        android:text="User's Nickname"
         android:textSize="18dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -75,10 +75,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_username" />
+        app:layout_constraintTop_toBottomOf="@+id/text_real_name" />
 
     <TextView
-        android:id="@+id/text_username"
+        android:id="@+id/text_real_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -86,7 +86,7 @@
         android:layout_marginEnd="16dp"
         android:drawableStart="@drawable/ic_profile_person_black_18dp"
         android:drawablePadding="8dp"
-        android:text="User's Name"
+        android:text="User's Real Name"
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.056"
@@ -101,7 +101,7 @@
         android:drawableStart="@drawable/ic_theme_grey_24dp"
         android:drawablePadding="8dp"
         android:minHeight="48dp"
-        android:text="Night Mode"
+        android:text="Dark Mode"
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.053"

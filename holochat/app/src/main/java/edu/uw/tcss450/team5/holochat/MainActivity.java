@@ -20,6 +20,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.auth0.android.jwt.JWT;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
@@ -40,8 +41,22 @@ public class MainActivity extends AppCompatActivity {
 
         MainActivityArgs args = MainActivityArgs.fromBundle(getIntent().getExtras());
 
-        new ViewModelProvider(this,
+/*        new ViewModelProvider(this,
                 new UserInfoViewModel.UserInfoViewModelFactory(args.getEmail(), args.getJwt())
+        ).get(UserInfoViewModel.class);*/
+
+        //JWT view model
+        JWT jwt = new JWT(args.getJwt());
+        int memberID = jwt.getClaim("memberid").asInt();
+        String username = jwt.getClaim("username").asString();
+        String firstName = jwt.getClaim("firstname").asString();
+        String lastName = jwt.getClaim("lastname").asString();
+        String email= jwt.getClaim("email").asString();
+
+        Log.i("MAIN", " hello " + email + memberID + username + firstName + lastName);
+        new ViewModelProvider(this,
+                new UserInfoViewModel.UserInfoViewModelFactory(args.getEmail(), firstName,
+                        lastName, username, memberID, args.getJwt())
         ).get(UserInfoViewModel.class);
 
         setContentView(R.layout.activity_main);
@@ -76,6 +91,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_signout:
                 Log.d("SIGNOUT", "Clicked");
                 signOut();
+                return true;
+            case android.R.id.home:
+                this.finish(); //back button hit pop off the stack
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
