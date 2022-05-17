@@ -24,6 +24,10 @@
             android:name="password"
             app:argType="string"
             android:defaultValue="default" />
+        <argument
+            android:name="Nickname"
+            app:argType="string"
+            android:defaultValue="default" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -31,8 +35,8 @@
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
         <action
-            android:id="@+id/action_registerFragment_to_loginFragment"
-            app:destination="@id/SignInFragment" />
+            android:id="@+id/action_registerFragment_to_verificationFragment"
+            app:destination="@id/verificationFragment" />
     </fragment>
     <activity
         android:id="@+id/mainActivity"
@@ -45,4 +49,25 @@
             android:name="jwt"
             app:argType="string" />
     </activity>
+    <fragment
+        android:id="@+id/verificationFragment"
+        android:name="edu.uw.tcss450.team5.holochat.ui.auth.verification.VerificationFragment"
+        android:label="fragment_verification"
+        tools:layout="@layout/fragment_verification" >
+        <action
+            android:id="@+id/action_verificationFragment_to_SignInFragment"
+            app:destination="@id/SignInFragment" />
+        <argument
+            android:name="email"
+            app:argType="string"
+            android:defaultValue="default" />
+        <argument
+            android:name="password"
+            app:argType="string"
+            android:defaultValue="default" />
+        <argument
+            android:name="Nickname"
+            app:argType="string"
+            android:defaultValue="default" />
+    </fragment>
 </navigation>
