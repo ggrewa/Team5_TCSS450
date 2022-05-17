@@ -1,4 +1,4 @@
-package edu.uw.tcss450.team5.holochat.ui.contacts.contact_tabs;
+package edu.uw.tcss450.team5.holochat.ui.contacts;
 
 import android.os.Bundle;
 
@@ -18,28 +18,27 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentContactSearchBinding;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
-import edu.uw.tcss450.team5.holochat.ui.contacts.ContactViewModel;
 
 /**
- * Fragment that hold tools to search for a user of the app and send a friend request
+ * A simple {@link Fragment} subclass.
+ * create an instance of this fragment.
+ * @author tarnveermangat
  */
-public class ContactSearchFragment extends Fragment {
+public class ContactlistCard extends Fragment {
+
     private UserInfoViewModel mUserModel;
     private ContactViewModel mContactViewModel;
     private ArrayList<String> mContacts;
     private FragmentContactSearchBinding binding;
-
-
-
-    public ContactSearchFragment() {
+    public  ContactlistCard() {
         // Required empty public constructor
     }
 
+
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContacts = new ArrayList<>();
         ViewModelProvider provider= new ViewModelProvider(getActivity());
@@ -47,14 +46,11 @@ public class ContactSearchFragment extends Fragment {
         mUserModel = provider.get(UserInfoViewModel.class);
 
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_contact_search, container, false);
+
         binding = FragmentContactSearchBinding.inflate(inflater);
-        ViewModelProvider provider = new ViewModelProvider(getActivity());
         return binding.getRoot();
     }
     @Override
@@ -80,6 +76,8 @@ public class ContactSearchFragment extends Fragment {
         if (response.length() > 0) {
             if (response.has("code")) {
                 try {
+//                    binding.contactNames.setText(
+//                            mUserModel.getEmail());
                     binding.contactNames.setError(
                             "Error Authenticating: " +
                                     response.getJSONObject("data").getString("message"));
@@ -117,7 +115,6 @@ public class ContactSearchFragment extends Fragment {
         }
         Log.i("contacts", builder.toString());
         binding.contactNames.setText(builder.toString());
+
     }
-
-
 }

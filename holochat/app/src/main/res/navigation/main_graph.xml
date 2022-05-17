@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
-    app:startDestination="@id/navigation_recents">
+    app:startDestination="@id/navigation_contacts">
 
     <fragment
         android:id="@+id/navigation_recents"
@@ -18,5 +18,5 @@
     <fragment
         android:id="@+id/navigation_contacts"
         android:name="edu.uw.tcss450.team5.holochat.ui.contacts.contact_tabs.ContactTabFragment"
-        android:label="@string/title_contacts" />
+        android:label="ContactTabFragment" />
 </navigation>

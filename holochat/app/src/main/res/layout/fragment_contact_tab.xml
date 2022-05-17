@@ -24,9 +24,9 @@
             android:layout_width="match_parent" />
 
         <com.google.android.material.tabs.TabItem
-            android:text="Search"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_width="match_parent" />
+            android:text="Add User" />
 
     </com.google.android.material.tabs.TabLayout>
 
