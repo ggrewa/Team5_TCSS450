@@ -7,6 +7,20 @@
     android:layout_height="match_parent"
     tools:context=".ui.SettingsFragment">
 
+    <Switch
+        android:id="@+id/settings_degrees_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_weather_thermostat_black24dp"
+        android:drawablePadding="8dp"
+        android:minHeight="48dp"
+        android:text="F°/C°"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.052"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settings_switch_themes"></Switch>
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"

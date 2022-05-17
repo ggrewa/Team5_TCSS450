@@ -47,15 +47,15 @@ public class MainActivity extends AppCompatActivity {
                 new UserInfoViewModel.UserInfoViewModelFactory(args.getEmail(), args.getJwt())
         ).get(UserInfoViewModel.class);*/
 
-        //JWT view model
+        //JWT view model (Note: these labels are token stored in the web service JWT sign!)
         JWT jwt = new JWT(args.getJwt());
         int memberID = jwt.getClaim("memberid").asInt();
         String username = jwt.getClaim("username").asString();
-        String firstName = jwt.getClaim("firstname").asString();
-        String lastName = jwt.getClaim("lastname").asString();
+        String firstName = jwt.getClaim("first").asString();
+        String lastName = jwt.getClaim("last").asString();
         String email= jwt.getClaim("email").asString();
-
-        Log.i("MAIN", " hello " + email + memberID + username + firstName + lastName);
+        Log.i("MAIN", " Logged In: " + email + "|" + memberID + "|" + username + "|" +
+                firstName + "|" + lastName);
         new ViewModelProvider(this,
                 new UserInfoViewModel.UserInfoViewModelFactory(args.getEmail(), firstName,
                         lastName, username, memberID, args.getJwt())
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navView, navController);
 
 
-        // start of theme implementation
+        // start of theme implementation. Sets theme at start of app run based on settings.
         mPref = new AppSharedPref(this);
         mPref.initializeTheme(); //set theme based on preference in AppSharedPref class
     }

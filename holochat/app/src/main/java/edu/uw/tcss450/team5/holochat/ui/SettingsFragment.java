@@ -36,7 +36,14 @@ public class SettingsFragment extends Fragment {
     private FragmentSettingsBinding binding;
     private UserInfoViewModel mUserModel;
 
+    /*
+     * Switch to toggle night mode
+     */
     private Switch mThemeSwitch;
+    /*
+     * Switch to toggle farenheit or celcius for weather
+     */
+    private Switch mDegreesSwitch;
 
     /**
      * shared preference storage mainly used for themes here
@@ -74,20 +81,19 @@ public class SettingsFragment extends Fragment {
 
         FragmentSettingsBinding binding = FragmentSettingsBinding.bind(getView());
 
+        //Set labels based on user's JWT (stored from web service)
         ViewModelProvider provider = new ViewModelProvider(getActivity());
         mUserModel = provider.get(UserInfoViewModel.class);
         JWT jwt = new JWT( mUserModel.getJwt());
+        //decode the JWT string
         binding.editEmail.setText(jwt.getClaim("email").asString());
-
-        //note from ken: the JWT for name and nickname currently not working
-/*        binding.textRealName.setText(jwt.getClaim("firstname").asString() + " " +
-                jwt.getClaim("lastname").asString());
-        binding.textNickname.setText(jwt.getClaim("nickname").asString());*/
+        binding.textRealName.setText(jwt.getClaim("first").asString() + " " +
+                jwt.getClaim("last").asString());
+        binding.textNickname.setText(jwt.getClaim("username").asString());
 
         //THEMES
         mThemeSwitch = view.findViewById(R.id.settings_switch_themes);
         mPref = new AppSharedPref(getActivity());
-        mPref.initializeTheme(); //set theme based on current preference
         //set initial state of switch based on preference
         if(mPref.isNightModeState()==true) {
             mThemeSwitch.setChecked(true);
@@ -99,15 +105,28 @@ public class SettingsFragment extends Fragment {
                 //only check if the switch is visible
                 if(mThemeSwitch.isShown()) {
                     if (isChecked && mPref.isNightModeState() == false) {
-                        mPref.setNightModeState(true);
-                        refreshActivity(); //refresh to dynamically see theme
+                        toggleNightMode(true);
                     } else if (!isChecked && mPref.isNightModeState() == true){
-                        mPref.setNightModeState(false);
-                        refreshActivity();
+                        toggleNightMode(false);
                     }
                 }
             }
+
+            /**
+             * Sets the preference of night mode
+             * Turns on the theme
+             * Then refreshes the activity so the theme change is dynamic
+             * @param state on/off for night mode
+             */
+            private void toggleNightMode(Boolean state) {
+                mPref.setNightModeState(state);
+                mPref.initializeTheme(); //set theme based on current preference
+                refreshActivity(); //refresh to dynamically see theme
+            }
         });
+
+        //Weather switch
+        mDegreesSwitch = view.findViewById(R.id.settings_degrees_switch);
     }
 
     /**
