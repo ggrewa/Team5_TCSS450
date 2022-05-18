@@ -13,9 +13,9 @@ import edu.uw.tcss450.team5.holochat.R;
 /**
  * Fragment that holds all friend requests the user has recieved
  */
-public class ContactRequestFragment extends Fragment {
+public class ContactRequestListFragment extends Fragment {
 
-    public ContactRequestFragment() {
+    public ContactRequestListFragment() {
         // Required empty public constructor
     }
 

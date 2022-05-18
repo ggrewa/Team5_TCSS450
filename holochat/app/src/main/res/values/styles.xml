@@ -1,0 +1,77 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <!-- Light Mode. -->
+    <!-- <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar"> -->
+    <!-- This is a MaterialDesignTheme. Required when using Material Components -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="actionMenuTextColor">#fff</item>
+        <item name="backgroundColor">@color/colorBackground</item>
+        <item name="cardBackgroundColor">#ffffff</item>
+        <item name="textColor">#404040</item>
+        <item name="tintColor">#404040</item>
+        <item name="iconTint">#888888</item>
+        <item name="buttonColor">@color/colorAccent</item>
+        <item name="rippleColor">#7FE1AB</item>
+<!--        <item name="primaryLightColor">#79F0FF</item>-->
+<!--        <item name="secondaryTextColorFade">#222222</item>-->
+<!--        <item name="secondaryLightColor">#7FE1AB</item>-->
+        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
+    </style>
+
+    <!-- Night Mode. -->
+    <style name="DarkTheme" parent="Theme.MaterialComponents">
+        <item name="colorPrimary">#1C1C1C</item>
+        <item name="colorPrimaryDark">#1C1C1C</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="backgroundColor">#191919</item>
+        <item name="cardBackgroundColor">#424242</item>
+        <item name="textColor">#ffffff</item>
+        <item name="tintColor">#ffffff</item>
+        <item name="iconTint">#BABABA</item>
+        <item name="rippleColor">#7FE1AB</item>
+        <item name="buttonColor">@color/colorAccent</item>
+<!--        <item name="primaryLightColor">#79F0FF</item>-->
+<!--        <item name="secondaryTextColorFade">#222222</item>-->
+<!--        <item name="secondaryLightColor">#7FE1AB</item>-->
+        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
+    </style>
+
+    <style name="NewAppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/uwPurple</item>
+        <item name="colorPrimaryDark">@color/uwGold</item>
+        <item name="colorAccent">@color/uwMetallicGold</item>
+    </style>
+
+    <!-- transition between themes -->
+    <style name="WindowAnimationTransition">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+    </style>
+
+    <style name="Widget.App.Button.OutlinedButton.IconOnly" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="iconPadding">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:paddingRight">12dp</item>
+        <item name="android:minWidth">48dp</item>
+        <item name="android:minHeight">48dp</item>
+    </style>
+
+    <style name="tempStyle" parent="@android:style/TextAppearance.Large">
+        <item name="android:textColor">#2E9AFE</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="valData" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">#74DF00</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+</resources>

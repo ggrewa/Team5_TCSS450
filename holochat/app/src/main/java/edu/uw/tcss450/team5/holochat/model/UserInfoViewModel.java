@@ -15,71 +15,95 @@ import androidx.lifecycle.ViewModelProvider;
  * @author Charles Bryan
  * @version Spring 2022
  */
-public class UserInfoViewModel extends ViewModel{
-
-    /** The email of the user. */
+public class UserInfoViewModel extends ViewModel {
     private final String mEmail;
-
-    /** The JWT of the user. */
     private final String mJwt;
+    private final String mFName;
+    private final String mLName;
+    private final String mUsername;
+    private final int mMemberID;
 
     /**
-     * Constructor that initializes the user's information.
-     * @param email the user's email
-     * @param jwt the user's JWT
+     * A constructor for the User Info View model which takes a email first name, last name,
+     * username, memebrId, and  a json web token
+     *
+     * @param email user email
+     * @param fName user first name
+     * @param lName user last name
+     * @param username users username
+     * @param memberID users memberID
+     * @param jwt users jwt
      */
-    private UserInfoViewModel(String email, String jwt) {
+    private UserInfoViewModel(String email, String fName, String lName,
+                              String username, int memberID, String jwt) {
+
+        //May want to store location information about users?
         mEmail = email;
         mJwt = jwt;
+        mFName = fName;
+        mLName = lName;
+        mUsername = username;
+        mMemberID = memberID;
     }
 
     /**
-     * Getter for the user's email.
+     * A method for getting a used email.
      *
-     * @return the email of the user.
+     * @return a String representing the user email.
      */
     public String getEmail() {
         return mEmail;
     }
 
     /**
-     * Getter for the user's JWT.
+     * A method for obtaining the json web token for the user.
      *
-     * @return the JWT of the user.
+     * @return A string representing a json web token.
      */
-    public String getmJwt() {
-        return mJwt;
-    }
+    public String getJwt() { return mJwt; }
+
+    public String getFName(){ return mFName; }
+
+    public String getLName(){ return mLName; }
+
+    public String getUsername() { return mUsername; }
+
+    public int getMemberID() { return mMemberID; }
+
 
     /**
-     * Factory class.
-     *
-     * @author Charles Bryan
-     * @version Spring 2022
+     * An inner class used to create user info View Models
      */
     public static class UserInfoViewModelFactory implements ViewModelProvider.Factory {
-
-        /** The email of the user. */
         private final String email;
-
-        /** The JWT of the user. */
         private final String jwt;
+        private final String fName;
+        private final String lName;
+        private final String username;
+        private final int memberID;
 
         /**
-         * Constructor that initializes the email andjwt
-         * @param email email of the user
-         * @param jwt JWT of the user
+         * A constructor for the User Info View model factory which takes a name and a
+         * json web token.
+         *
+         * @param email a string representing an email.
+         * @param jwt a string representing a json web token
          */
-        public UserInfoViewModelFactory(String email, String jwt) {
+        public UserInfoViewModelFactory(String email, String fName, String lName,
+                                        String username, int memberID, String jwt) {
             this.email = email;
             this.jwt = jwt;
+            this.fName = fName;
+            this.lName = lName;
+            this.username = username;
+            this.memberID = memberID;
         }
 
         @NonNull
         @Override
         public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
             if (modelClass == UserInfoViewModel.class) {
-                return (T) new UserInfoViewModel(email, jwt);
+                return (T) new UserInfoViewModel(email, fName, lName, username, memberID, jwt);
             }
             throw new IllegalArgumentException(
                     "Argument must be: " + UserInfoViewModel.class);
