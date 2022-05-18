@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+import edu.uw.tcss450.team5.holochat.ui.contacts.contact_tabs.ContactlistCard;
+
 
 /**
  * Fragment state adapter used for contacts
@@ -32,7 +34,7 @@ public class ContactTabsAdapter extends FragmentStateAdapter {
                 fragment = new ContactListFragment();
                 break;
             case 1:
-                fragment = new ContactRequestListFragment();
+                fragment = new ContactlistCard();
                 break;
             case 2:
                 fragment = new ContactSearchFragment();

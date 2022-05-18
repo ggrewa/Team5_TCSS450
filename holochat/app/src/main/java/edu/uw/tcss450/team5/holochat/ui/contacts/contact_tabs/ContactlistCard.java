@@ -1,4 +1,4 @@
-package edu.uw.tcss450.team5.holochat.ui.contacts;
+package edu.uw.tcss450.team5.holochat.ui.contacts.contact_tabs;
 
 import android.os.Bundle;
 

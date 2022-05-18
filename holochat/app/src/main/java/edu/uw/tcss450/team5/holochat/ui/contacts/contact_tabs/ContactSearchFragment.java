@@ -18,10 +18,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentContactSearchBinding;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
-import edu.uw.tcss450.team5.holochat.ui.contacts.ContactViewModel;
 
 /**
  * Fragment that hold tools to search for a user of the app and send a friend request

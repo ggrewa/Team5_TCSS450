@@ -14,15 +14,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.ContactListFragmentBinding;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
-import edu.uw.tcss450.team5.holochat.ui.contacts.Contact;
 import edu.uw.tcss450.team5.holochat.ui.contacts.ContactListRecyclerViewAdapter;
 import edu.uw.tcss450.team5.holochat.ui.contacts.ContactListViewModel;
-import edu.uw.tcss450.team5.holochat.ui.contacts.ContactlistCard;
 
 /* from
 * Fragment that contains a list to view all friends user currently has added
@@ -74,6 +70,8 @@ public class ContactListFragment extends Fragment {
         //binding.buttonAddContactlist.setOnClickListener();
 
     }
+
+
 
 
 
