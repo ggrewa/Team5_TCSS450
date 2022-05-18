@@ -12,6 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Holochat">
         <activity
+            android:name=".ChatActivity"
+            android:exported="false"
+            android:label="Details"
+            android:parentActivityName=".MainActivity"/>
+        <activity
             android:name=".MainActivity"
             android:exported="true" />
         <activity

@@ -1,6 +1,8 @@
 package edu.uw.tcss450.team5.holochat.ui.chats;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,14 +10,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import edu.uw.tcss450.team5.holochat.ChatActivity;
 import edu.uw.tcss450.team5.holochat.R;
+import edu.uw.tcss450.team5.holochat.databinding.FragmentHomeBinding;
+import edu.uw.tcss450.team5.holochat.ui.auth.signin.SignInFragmentDirections;
+
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     public String s1[],s2[];
     public int images[];
     public Context ctx;
+    private FragmentHomeBinding binding;
 
     public MyAdapter(Context ct, String s1[], String s2[], int[] images)
     {
@@ -36,10 +46,21 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.title.setText(s1[position]);
         holder.preview.setText(s2[position]);
         holder.title.setText(images[position]);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ctx, ChatActivity.class);
+                intent.putExtra("data1", s1[position]);
+                intent.putExtra("data2", s2[position]);
+                intent.putExtra("data3", images[position]);
+                ctx.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -51,12 +72,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
         TextView title,preview;
         ImageView image;
+        ConstraintLayout mainLayout;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.chat_title);
             preview = itemView.findViewById(R.id.chat_preview);
             image = itemView.findViewById(R.id.chat_icon);
+            mainLayout = itemView.findViewById(R.id.mainLayout);
         }
     }
 }
