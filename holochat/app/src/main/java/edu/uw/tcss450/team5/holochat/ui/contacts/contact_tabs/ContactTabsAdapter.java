@@ -34,7 +34,7 @@ public class ContactTabsAdapter extends FragmentStateAdapter {
                 fragment = new ContactListFragment();
                 break;
             case 1:
-                fragment = new ContactlistCard();
+                fragment = new ContactRequestListFragment();
                 break;
             case 2:
                 fragment = new ContactSearchFragment();

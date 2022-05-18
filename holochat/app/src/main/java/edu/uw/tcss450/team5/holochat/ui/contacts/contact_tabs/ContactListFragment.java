@@ -67,7 +67,7 @@ public class ContactListFragment extends Fragment {
                         binding.contactlistCard.setAdapter(new ContactListRecyclerViewAdapter(contactsList));
                     }
                 });
-        //binding.buttonAddContactlist.setOnClickListener();
+        binding.buttonAddContactlist.setOnClickListener(button -> Navigation.findNavController(getView().navigate(C));
 
     }
 
