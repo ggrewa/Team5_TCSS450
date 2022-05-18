@@ -46,22 +46,11 @@ public class HomeFragment extends Fragment {
         UserInfoViewModel model = new ViewModelProvider(getActivity())
                 .get(UserInfoViewModel.class);
 
+    FragmentHomeBinding.bind(getView()).textHello.setText(model.getFName()+ " " + model.getLName());
+
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
 
-        if(id == R.id.add_user)
-        {
-            Navigation.findNavController(getView()).navigate(
-                    HomeFragmentDirections.actionGlobalAddUserFragment()
-            );
-            return true;
-        }
-
-            return false;
-    }
 
 }
 
