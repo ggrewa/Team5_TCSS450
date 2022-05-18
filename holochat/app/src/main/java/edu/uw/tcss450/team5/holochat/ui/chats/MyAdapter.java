@@ -10,15 +10,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
-import edu.uw.tcss450.team5.holochat.ChatActivity;
 import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentHomeBinding;
-import edu.uw.tcss450.team5.holochat.ui.auth.signin.SignInFragmentDirections;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
@@ -54,11 +50,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ctx, ChatActivity.class);
-                intent.putExtra("data1", s1[position]);
-                intent.putExtra("data2", s2[position]);
-                intent.putExtra("data3", images[position]);
-                ctx.startActivity(intent);
+
             }
         });
     }

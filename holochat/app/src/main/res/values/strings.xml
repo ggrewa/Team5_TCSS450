@@ -32,6 +32,8 @@
     <string name="title_contact">Contact</string>
     <string name="title_home">Home</string>
 
+    <string name="base_url_service">https://team5-tcss450-holochat.herokuapp.com/</string>
+
     <string-array name="chat_titles">
         <item>Chat 1</item>
         <item>Chat 2</item>
