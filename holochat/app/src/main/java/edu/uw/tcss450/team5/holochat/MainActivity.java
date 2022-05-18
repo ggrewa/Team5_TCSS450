@@ -5,26 +5,25 @@
  */
 package edu.uw.tcss450.team5.holochat;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
-import androidx.navigation.NavGraph;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toolbar;
 
 import com.auth0.android.jwt.JWT;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
+import edu.uw.tcss450.team5.holochat.ui.chats.MyAdapter;
 import edu.uw.tcss450.team5.holochat.utils.AppSharedPref;
 
 /*
@@ -37,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     AppSharedPref mPref;
+
+    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         // menu should be considered as top level destinations.
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_contacts, R.id.navigation_recents, R.id.navigation_weather)
+                R.id.navigation_contacts, R.id.navigation_home, R.id.navigation_weather)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
@@ -80,6 +81,9 @@ public class MainActivity extends AppCompatActivity {
         // start of theme implementation. Sets theme at start of app run based on settings.
         mPref = new AppSharedPref(this);
         mPref.initializeTheme(); //set theme based on preference in AppSharedPref class
+
+
+
     }
 
     @Override
@@ -118,6 +122,8 @@ public class MainActivity extends AppCompatActivity {
         NavController navController2 = Navigation.findNavController(this, R.id.nav_host_fragment);
         navController2.navigate(R.id.navigation_settings);
     }
+
+
 
     /**
      * Signs the user out
