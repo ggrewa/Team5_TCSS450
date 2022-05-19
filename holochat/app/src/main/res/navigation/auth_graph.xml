@@ -28,6 +28,9 @@
             android:name="Nickname"
             app:argType="string"
             android:defaultValue="default" />
+        <action
+            android:id="@+id/action_SignInFragment_to_forgotPasswordFragment"
+            app:destination="@id/forgotPasswordFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -67,6 +70,46 @@
             android:defaultValue="default" />
         <argument
             android:name="Nickname"
+            app:argType="string"
+            android:defaultValue="default" />
+    </fragment>
+    <fragment
+        android:id="@+id/forgotPasswordFragment"
+        android:name="edu.uw.tcss450.team5.holochat.ui.auth.forgotpass.ForgotPasswordFragment"
+        android:label="fragment_forgot_password"
+        tools:layout="@layout/fragment_forgot_password" >
+        <action
+            android:id="@+id/action_forgotPasswordFragment_to_changePasswordFragment"
+            app:destination="@id/changePasswordFragment" />
+        <action
+            android:id="@+id/action_forgotPasswordFragment_to_SignInFragment"
+            app:destination="@id/SignInFragment" />
+        <argument
+            android:name="jwt"
+            app:argType="string"
+            android:defaultValue="default" />
+        <argument
+            android:name="email"
+            app:argType="string"
+            android:defaultValue="default" />
+    </fragment>
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="edu.uw.tcss450.team5.holochat.ui.auth.changepass.ChangePasswordFragment"
+        android:label="fragment_change_password"
+        tools:layout="@layout/fragment_change_password" >
+        <action
+            android:id="@+id/action_changePasswordFragment_to_forgotPasswordFragment"
+            app:destination="@id/forgotPasswordFragment" />
+        <argument
+            android:name="jwt"
+            app:argType="string"
+            android:defaultValue="default" />
+        <action
+            android:id="@+id/action_changePasswordFragment_to_SignInFragment"
+            app:destination="@id/SignInFragment" />
+        <argument
+            android:name="email"
             app:argType="string"
             android:defaultValue="default" />
     </fragment>
