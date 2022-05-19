@@ -88,7 +88,7 @@ public class ChangePasswordFragment extends Fragment {
                 Navigation.findNavController(getView()).navigate(
                         ChangePasswordFragmentDirections.actionChangePasswordFragmentToForgotPasswordFragment()
                 ));*/
-        //binding.buttonSavePassword.setOnClickListener(this::attemptPasswordChange);
+        binding.buttonSavePassword.setOnClickListener(this::attemptPasswordChange);
         mChangePasswordModel.addResponseObserver(getViewLifecycleOwner(),
                 this::observeResponse);
     }
