@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_sign_in.xml" value="0.5" />
         <entry key="app/src/main/res/drawable/style_round_corners.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_auth.xml" value="0.30374908447265625" />
         <entry key="app/src/main/res/layout/activity_contact_tabbed.xml" value="0.1" />
