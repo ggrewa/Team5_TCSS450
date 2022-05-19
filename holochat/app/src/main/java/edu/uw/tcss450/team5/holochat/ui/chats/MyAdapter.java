@@ -13,11 +13,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentHomeBinding;
 import edu.uw.tcss450.team5.holochat.ui.HomeFragment;
+import edu.uw.tcss450.team5.holochat.ui.HomeFragmentDirections;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
@@ -53,12 +56,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AppCompatActivity activity = (AppCompatActivity) view.getContext();
-                Fragment myFragment = new ChatRoomFragment();
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.navigation_home,myFragment)
-                        .addToBackStack(null).commit();
+                navigateToChat(view);
+
             }
         });
+    }
+
+    private void navigateToChat(View view){
+        @NonNull NavDirections directions = HomeFragmentDirections.actionNavigationHomeToChatRoomFragment();
+        Navigation.findNavController(view).navigate(directions);
     }
 
     @Override
