@@ -7,21 +7,21 @@
     <string name="hint_email">EMAIL</string>
     <string name="hint_password">PASSWORD</string>
     <string name="hint_password_again">RETYPE PASSWORD</string>
+    <string name="hint_nickname">NICKNAME</string>
     <string name="hint_verification_code">VERIFICATION CODE</string>
 
     <string name="action_register_short">REGISTER</string>
     <string name="action_sign_in_short">SIGN IN</string>
     <string name="view_verify_email">Registration was successful.\n A verification link has been sent to your email.</string>
-    <string name="hint_nickname">NICKNAME</string>
-    <string name="weather_fragment_placeholder">Weather</string>
     <string name="Refresh_button">Refresh</string>
     <string name="action_back_to_signin">BACK TO SIGN IN</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_back_to_sigin"> BACK TO SIGN IN</string>
     <string name="action_link">Full Forecast</string>
     <string name="action_forgot_pass"><u>Forgot Password?</u></string>
     <string name="action_send">SEND</string>
     <string name="action_save_changes">SAVE</string>
 
-    <string name="view_tell_me">LET\'S GET STARTED.</string>
     <string name="view_password_requirements">PASSWORD REQUIREMENTS\n\n- Be at least 6 characters long.\n- Have one uppercase.\n- Have one lowercase.\n- Have one number.\n- Have one special character.</string>
     <string name="view_title_forgot_password">FORGOT PASSWORD</string>
     <string name="view_forgot_password">Please enter your email to receive a verification code.</string>
@@ -32,7 +32,8 @@
     <string name="title_recents">Recents</string>
     <string name="title_weather">Weather</string>
     <string name="title_contacts">Contacts</string>
-    <string name="action_settings">Settings</string>
+
+    <string name="weather_fragment_placeholder">Weather</string>
     <string name="add_user">Add User</string>
     <string name="where_add_user">This is where we will add users.</string>
     <string name="forecast_preview">Forecast Preview</string>
@@ -42,6 +43,8 @@
     <string name="contact_tab_text_2">Requests</string>
     <string name="contact_tab_text_3">Search</string>
     <string name="contact_search_user_msg">Search for a Holochat user:</string>
+    <string name="title_conact">Contacts</string>
+    <string name="title_contact">Contact</string>
 
     <string name="base_url_service">https://team5-tcss450-holochat.herokuapp.com/</string>
     <string name="title_home">Home</string>
