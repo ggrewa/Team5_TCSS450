@@ -44,6 +44,7 @@
     <string name="contact_search_user_msg">Search for a Holochat user:</string>
 
     <string name="base_url_service">https://team5-tcss450-holochat.herokuapp.com/</string>
+    <string name="title_home">Home</string>
 
     <string-array name="chat_titles">
         <item>Chat 1</item>
