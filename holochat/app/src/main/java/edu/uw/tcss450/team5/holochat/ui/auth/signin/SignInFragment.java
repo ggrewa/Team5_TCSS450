@@ -78,6 +78,10 @@ public class SignInFragment extends Fragment {
                 Navigation.findNavController(getView()).navigate(
                         SignInFragmentDirections.actionLoginFragmentToRegisterFragment()
                 ));
+        binding.buttonToForgotPass.setOnClickListener(button ->
+                Navigation.findNavController(getView()).navigate(
+                        SignInFragmentDirections.actionSignInFragmentToForgotPasswordFragment()
+                ));
 
         binding.buttonSignIn.setOnClickListener(this::attemptSignIn);
 

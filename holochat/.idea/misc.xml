@@ -13,17 +13,21 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.17027740478515627" />
         <entry key="app/src/main/res/layout/contact_list_fragment.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/fragment_add_user.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/fragment_change_password.xml" value="0.26601715087890626" />
         <entry key="app/src/main/res/layout/fragment_contact_request.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/fragment_contact_search.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/fragment_contact_tabbed.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/fragment_forgot_pass.xml" value="0.25915559280750367" />
+        <entry key="app/src/main/res/layout/fragment_forgot_password.xml" value="0.2826822916666667" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.28192901611328125" />
-        <entry key="app/src/main/res/layout/fragment_register.xml" value="0.30733511788504464" />
-        <entry key="app/src/main/res/layout/fragment_sign_in.xml" value="0.3052932739257813" />
-        <entry key="app/src/main/res/layout/fragment_verification.xml" value="0.28283538818359377" />
+        <entry key="app/src/main/res/layout/fragment_register.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_sign_in.xml" value="0.27326812744140627" />
+        <entry key="app/src/main/res/layout/fragment_verification.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_weather.xml" value="0.24444444444444444" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.2635416666666667" />
         <entry key="app/src/main/res/menu/toolbar.xml" value="0.2635416666666667" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
       </map>
     </option>
   </component>

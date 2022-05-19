@@ -45,7 +45,6 @@ public class VerificationFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //view model??
     }
 
     @Override

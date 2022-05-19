@@ -7,6 +7,7 @@
     <style name="Theme.Holochat.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+
     </style>
     <style name="Theme.Holochat.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="Theme.Holochat.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />

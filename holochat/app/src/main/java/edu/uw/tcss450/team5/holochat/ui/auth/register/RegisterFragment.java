@@ -43,12 +43,10 @@ public class RegisterFragment extends Fragment {
     private RegisterViewModel mRegisterModel;
 
     /** Validator for the name field. */
-    private PasswordValidator mNameValidator = checkPwdLength(3)
-            .and(checkPwdDoNotInclude("!@#$%^&*()_-+={}[]|:;<>,.?/~`"))
-            .and(checkPwdDoNotInclude("1234567890"));
+    private PasswordValidator mNameValidator = checkPwdLength(1);
 
     /** Validator for the Nickname field. */
-    private PasswordValidator mNicknameValidator = checkPwdLength(6);
+    private PasswordValidator mNicknameValidator = checkPwdLength(3);
 
     /** Validator for the email field. */
     private PasswordValidator mEmailValidator = checkPwdLength(2)
@@ -189,11 +187,6 @@ public class RegisterFragment extends Fragment {
         directions.setPassword(binding.editPassword1.getText().toString());
 
         Navigation.findNavController(getView()).navigate(directions);
-
-
-        /*Navigation.findNavController(getView()).navigate(
-                RegisterFragmentDirections.actionRegisterFragmentToVerificationFragment()
-        );*/
     }
 
     /**
