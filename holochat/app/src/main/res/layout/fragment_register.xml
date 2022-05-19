@@ -8,13 +8,6 @@
     android:background="@color/creme"
     tools:context=".ui.auth.register.RegisterFragment">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_fifty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
-
     <TextView
         android:id="@+id/view_tell_me"
         android:layout_width="302dp"
@@ -23,13 +16,14 @@
         android:fontFamily="sans-serif-condensed-medium"
         android:gravity="center"
         android:text="@string/view_tell_me"
-        android:textColor="@color/brown"
-        android:textSize="43sp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/edit_first"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.636" />
+        app:layout_constraintVertical_bias="0.676" />
 
     <EditText
         android:id="@+id/edit_last"
@@ -37,6 +31,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="32dp"
         android:autofillHints=""
         android:backgroundTint="@color/brown"
@@ -49,7 +44,7 @@
         android:textSize="16dp"
         app:layout_constraintBottom_toTopOf="@id/edit_nickname"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_first" />
 
@@ -59,7 +54,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="130dp"
         android:layout_marginEnd="32dp"
         android:autofillHints=""
         android:backgroundTint="@color/brown"
@@ -72,6 +67,7 @@
         android:textSize="16dp"
         app:layout_constraintBottom_toTopOf="@+id/edit_last"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -81,6 +77,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="32dp"
         android:autofillHints=""
         android:backgroundTint="@color/brown"
@@ -90,8 +87,9 @@
         android:textColor="@color/black"
         android:textColorHint="@color/hint_color"
         android:textSize="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline_fifty"
+        app:layout_constraintBottom_toTopOf="@id/edit_email"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_last" />
 
@@ -101,6 +99,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="32dp"
         android:autofillHints=""
         android:backgroundTint="@color/brown"
@@ -113,8 +112,9 @@
         android:textSize="16dp"
         app:layout_constraintBottom_toTopOf="@+id/edit_password_1"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guideline_fifty" />
+        app:layout_constraintTop_toBottomOf="@id/edit_nickname" />
 
     <EditText
         android:id="@+id/edit_password_1"
@@ -122,7 +122,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="32dp"
         android:autofillHints=""
         android:backgroundTint="@color/brown"
@@ -135,6 +135,7 @@
         android:textSize="16dp"
         app:layout_constraintBottom_toTopOf="@+id/edit_password_2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/edit_email" />
 
@@ -144,7 +145,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="32dp"
         android:autofillHints=""
         android:backgroundTint="@color/brown"
@@ -156,6 +157,7 @@
         android:textColorHint="@color/hint_color"
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_password_1" />
 
@@ -164,15 +166,35 @@
         style="@android:style/Widget.Material.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="32dp"
-        android:backgroundTint="@color/brown"
+        android:backgroundTint="@color/colorAccent"
         android:fontFamily="sans-serif-smallcaps"
         android:text="@string/action_register_short"
-        android:textColor="@color/white"
+        android:textColor="@color/brown"
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_password_2" />
+
+    <TextView
+        android:id="@+id/view_password_req"
+        style="@style/Widget.AppCompat.TextView"
+        android:layout_width="213dp"
+        android:layout_height="134dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="48dp"
+        android:background="#EFECE6"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:shadowColor="@color/brown"
+        android:shadowRadius="1"
+        android:text="@string/view_password_requirements"
+        android:textColor="@color/brown"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_password_2"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
