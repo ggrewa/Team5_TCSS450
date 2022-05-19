@@ -3,13 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
-    app:startDestination="@id/navigation_recents">
+    app:startDestination="@id/navigation_home">
 
     <fragment
-        android:id="@+id/navigation_recents"
+        android:id="@+id/navigation_home"
         android:name="edu.uw.tcss450.team5.holochat.ui.HomeFragment"
-        android:label="@string/title_recents"
-        tools:layout="@layout/fragment_home" />
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_chatRoomFragment"
+            app:destination="@id/chatRoomFragment" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_weather"
         android:name="edu.uw.tcss450.team5.holochat.ui.WeatherFragment"
@@ -24,4 +28,9 @@
         android:name="edu.uw.tcss450.team5.holochat.ui.SettingsFragment"
         android:label="Settings"
         tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/chatRoomFragment"
+        android:name="edu.uw.tcss450.team5.holochat.ui.chats.ChatRoomFragment"
+        android:label="fragment_chat_room"
+        tools:layout="@layout/fragment_chat_room" />
 </navigation>

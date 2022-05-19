@@ -22,7 +22,7 @@
     <string name="action_settings">Settings</string>
     <string name="add_user">Add User</string>
     <string name="where_add_user">This is where we will add users.</string>
-
+    <string name="forecast_preview">Forecast Preview</string>
     <string name="title_activity_contact_tabbed">ContactTabbedActivity</string>
     <string name="contact_header">Contacts</string>
     <string name="contact_tab_text_1">Contacts</string>
@@ -31,5 +31,19 @@
     <string name="contact_search_user_msg">Search for a Holochat user:</string>
     <string name="title_conact">Contacts</string>
     <string name="title_contact">Contact</string>
+    <string name="title_home">Home</string>
 
+    <string name="base_url_service">https://team5-tcss450-holochat.herokuapp.com/</string>
+
+    <string-array name="chat_titles">
+        <item>Chat 1</item>
+        <item>Chat 2</item>
+        <item>Chat 3</item>
+    </string-array>
+
+    <string-array name="chat_preview">
+        <item>Preview</item>
+        <item>Preview</item>
+        <item>Preview</item>
+    </string-array>
 </resources>
