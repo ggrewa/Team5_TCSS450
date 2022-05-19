@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="edu.uw.tcss450.team5.holochat.ui.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        android:label="Home"
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_navigation_home_to_chatRoomFragment"
             app:destination="@id/chatRoomFragment" />
