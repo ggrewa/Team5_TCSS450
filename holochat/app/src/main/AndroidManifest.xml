@@ -3,6 +3,7 @@
     package="edu.uw.tcss450.team5.holochat">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -11,11 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Holochat">
-        <activity
-            android:name=".ui.contacts.contact_tabs.ContactTabbedActivity"
-            android:exported="false"
-            android:label="@string/title_activity_contact_tabbed"
-            android:theme="@style/Theme.Holochat.NoActionBar" />
+        android:networkSecurityConfig="@XML/network_security_config"
         <activity
             android:name=".MainActivity"
             android:exported="true" />

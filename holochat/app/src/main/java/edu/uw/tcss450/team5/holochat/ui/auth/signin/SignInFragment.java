@@ -7,6 +7,7 @@ package edu.uw.tcss450.team5.holochat.ui.auth.signin;
 
 import static edu.uw.tcss450.team5.holochat.utils.PasswordValidator.*;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -23,7 +24,9 @@ import android.view.ViewGroup;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import edu.uw.tcss450.team5.holochat.MainActivity;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentSignInBinding;
+import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
 import edu.uw.tcss450.team5.holochat.utils.PasswordValidator;
 
 /*
@@ -48,6 +51,9 @@ public class SignInFragment extends Fragment {
     /** Validator for the password. */
     private PasswordValidator mPassWordValidator = checkPwdLength(1)
             .and(checkExcludeWhiteSpace());
+
+    /**Personal account info storage */
+    private UserInfoViewModel mUserViewModel;
 
     /**
      * Empty constructor.

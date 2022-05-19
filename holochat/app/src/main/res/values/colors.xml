@@ -5,13 +5,29 @@
     <color name="brown">#CC18130F</color>
     <color name="creme">#FDFDFB</color>
     <color name="hint_color">#3318130F</color>
+    <color name="dangerous_action_color">#a64452</color>
     <color name="matcha_green">#ADC178</color>
 
-    <color name="colorPrimary">#67c7ff</color>
-    <color name="colorPrimaryDark">#80d0ff</color>
-    <color name="colorAccent">#9adaff</color>
-    <color name="colorOffWhite">#b3e3ff</color>
-    <color name="cloudy_color">#cdecff</color>
-    <color name="colorPrimaryAlpha">#e6f6ff</color>
+    <color name="colorAccent">#B7F6AF</color>
+    <color name="colorOffWhite">#E9E9E9</color>
+    <color name="cloudy_color">#beeef7</color>
+    <color name="colorPrimaryAlpha">#226200EE</color>
 
-</resources>
+    <!-- light mode color pallete -->
+    <color name="colorBackground">#7CC2F6</color>
+    <color name="colorPrimary">#AF81E4</color>
+    <color name="colorPrimaryDark">#4b2e83</color>
+    <color name="colorSecondary">#80E8DD</color>
+    <color name="colorSecondaryDark">#7CC2F6</color>
+
+
+    <!-- dark mode color pallete -->
+    <color name="colorPrimary2">#048c98</color>
+    <color name="colorPrimaryDark2">#244c5c</color>
+    <color name="colorSecondary2">#77969c</color>
+    <color name="colorSecondaryDark2">#a8bad0</color>
+
+    <!-- uw colors -->
+    <color name="uwGold">#B7A57A</color>
+    <color name="uwPurple">#4B2E83</color>
+    <color name="uwMetallicGold">#85754D</color></resources>
