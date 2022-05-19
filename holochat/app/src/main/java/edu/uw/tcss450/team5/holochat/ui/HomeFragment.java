@@ -76,6 +76,13 @@ public class HomeFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
+        //welcome the user
+        ViewModelProvider provider = new ViewModelProvider(getActivity());
+        mUserModel = provider.get(UserInfoViewModel.class);
+        JWT jwt = new JWT( mUserModel.getJwt());
+        binding.textHomeWelcomeUser.setText("Welcome, " + jwt.getClaim("first").asString() + " " +
+                jwt.getClaim("last").asString() + "!");
+
 
     }
 
