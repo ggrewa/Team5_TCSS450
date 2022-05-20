@@ -35,12 +35,12 @@
         android:label="My Contacts List"
         tools:layout="@layout/fragment_contact_list">
         <action
-            android:id="@+id/action_navigation_contacts_to_contactInfo"
-            app:destination="@id/contactInfo" />
+            android:id="@+id/action_navigation_contacts_list_to_navigation_contact_info"
+            app:destination="@id/navigation_contact_info" />
     </fragment>
     <fragment
-        android:id="@+id/contactInfo"
-        android:name="edu.uw.tcss450.team5.holochat.ui.contacts.ContactInfo"
+        android:id="@+id/navigation_contact_info"
+        android:name="edu.uw.tcss450.team5.holochat.ui.contacts.ContactInfoFragment"
         android:label="fragment_contact_info"
         tools:layout="@layout/fragment_contact_info" >
         <argument

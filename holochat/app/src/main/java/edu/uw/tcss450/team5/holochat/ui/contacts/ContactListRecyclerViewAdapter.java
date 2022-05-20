@@ -61,11 +61,7 @@ public class ContactListRecyclerViewAdapter extends RecyclerView.Adapter<Contact
             final Resources res = mView.getContext().getResources();
             final CardView card = binding.contactListRoot;
 
-
-
             int standard = (int) res.getDimension(R.dimen.room_margin);
-
-
 
             String contactText = contact.getContact();
             if(contact.getContact().length() > 25) {
@@ -74,8 +70,8 @@ public class ContactListRecyclerViewAdapter extends RecyclerView.Adapter<Contact
             binding.contactListRoot.setOnClickListener(view -> {
                 Navigation.findNavController(mView).navigate(
 
-                        ContactListFragmentDirections
-                                .actionNavigationContactsToContactInfo(contact.getContact(), contact.getContactEmail(), contact.getContact())); //TODO: navigate to contact fragment
+                        ContactListFragmentDirections.actionNavigationContactsListToNavigationContactInfo(
+                                contact.getContact(), contact.getContactEmail(), "( ͡° ͜ʖ ͡°)"));
             });
             binding.contactName.setText(contactText);
             binding.contactName.setPadding(10,50,0,0);
