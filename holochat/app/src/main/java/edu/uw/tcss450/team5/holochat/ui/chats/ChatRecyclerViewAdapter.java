@@ -108,8 +108,8 @@ public class ChatRecyclerViewAdapter extends RecyclerView.Adapter<ChatRecyclerVi
                 //Set the right margin
                 layoutParams.setMargins(standard, standard, extended, standard);
                 // Set this View to the left (start) side
-                ((FrameLayout.LayoutParams) card.getLayoutParams()).gravity =
-                        Gravity.START;
+                //((FrameLayout.LayoutParams) card.getLayoutParams()).gravity =
+                        //Gravity.START;
 
                 card.setCardBackgroundColor(
                         ColorUtils.setAlphaComponent(
