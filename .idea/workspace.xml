@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9faf3d80-3c74-4f4f-bf6b-1ea10ca4d9e0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/holochat/app/src/main/java/edu/uw/tcss450/team5/holochat/ui/auth/changepass/ChangePasswordFragment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/holochat/app/src/main/java/edu/uw/tcss450/team5/holochat/ui/auth/changepass/ChangePasswordViewModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/holochat/app/src/main/java/edu/uw/tcss450/team5/holochat/ui/auth/forgotpass/ForgotPasswordFragment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/holochat/app/src/main/java/edu/uw/tcss450/team5/holochat/ui/auth/forgotpass/ForgotPasswordViewModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/holochat/app/src/main/res/drawable/holoimg_3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/holochat/app/src/main/res/layout/fragment_change_password.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/holochat/app/src/main/res/layout/fragment_forgot_password.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/holochat/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/holochat/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/holochat/app/src/main/java/edu/uw/tcss450/team5/holochat/ui/auth/register/RegisterFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/holochat/app/src/main/java/edu/uw/tcss450/team5/holochat/ui/auth/register/RegisterFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/holochat/app/src/main/java/edu/uw/tcss450/team5/holochat/ui/auth/signin/SignInFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/holochat/app/src/main/java/edu/uw/tcss450/team5/holochat/ui/auth/signin/SignInFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/holochat/app/src/main/java/edu/uw/tcss450/team5/holochat/ui/auth/verification/VerificationFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/holochat/app/src/main/java/edu/uw/tcss450/team5/holochat/ui/auth/verification/VerificationFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/holochat/app/src/main/java/edu/uw/tcss450/team5/holochat/ui/auth/verification/VerificationViewModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/holochat/app/src/main/res/layout/fragment_register.xml" beforeDir="false" afterPath="$PROJECT_DIR$/holochat/app/src/main/res/layout/fragment_register.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/holochat/app/src/main/res/layout/fragment_sign_in.xml" beforeDir="false" afterPath="$PROJECT_DIR$/holochat/app/src/main/res/layout/fragment_sign_in.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/holochat/app/src/main/res/layout/fragment_verification.xml" beforeDir="false" afterPath="$PROJECT_DIR$/holochat/app/src/main/res/layout/fragment_verification.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/holochat/app/src/main/res/layout/fragment_weather.xml" beforeDir="false" afterPath="$PROJECT_DIR$/holochat/app/src/main/res/layout/fragment_weather.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/holochat/app/src/main/res/navigation/auth_graph.xml" beforeDir="false" afterPath="$PROJECT_DIR$/holochat/app/src/main/res/navigation/auth_graph.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/holochat/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/holochat/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/holochat/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/holochat/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/holochat/app/src/main/res/values/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/holochat/app/src/main/res/values/themes.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="29EGTAI8lgvf1PC6aM2xqSSHyqi" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="cidr.known.project.marker" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9faf3d80-3c74-4f4f-bf6b-1ea10ca4d9e0" name="Default Changelist" comment="" />
+      <created>1652670837316</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1652670837316</updated>
+    </task>
+    <servers />
+  </component>
+</project>
