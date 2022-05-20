@@ -8,9 +8,11 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/text_total_requests_msg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Check friend requests"
-        android:textSize="30dp"
-        />
+        android:text="You currently do not have any friend requests."
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:textSize="30dp" />
 </LinearLayout>
