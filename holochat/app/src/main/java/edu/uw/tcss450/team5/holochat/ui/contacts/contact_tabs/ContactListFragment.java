@@ -7,12 +7,16 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import edu.uw.tcss450.team5.holochat.R;
+import edu.uw.tcss450.team5.holochat.databinding.FragmentContactListBinding;
+import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
+import edu.uw.tcss450.team5.holochat.ui.contacts.ContactListRecyclerViewAdapter;
 import edu.uw.tcss450.team5.holochat.ui.contacts.ContactListViewModel;
 
 /*
@@ -20,24 +24,75 @@ import edu.uw.tcss450.team5.holochat.ui.contacts.ContactListViewModel;
  */
 public class ContactListFragment extends Fragment {
 
-    private ContactListViewModel mViewModel;
 
-    /*Singleton contacts list*/
-    public static ContactListFragment newInstance() {
-        return new ContactListFragment();
+    //    //The chat ID for "global" chat
+//    private ChatSendViewModel mSendModel;
+    private ContactListViewModel mContactListModel;
+    private UserInfoViewModel mUserModel;
+
+    public ContactListFragment() {
+        // Required empty public constructor
     }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.contact_list_fragment, container, false);
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ViewModelProvider provider = new ViewModelProvider(getActivity());
+        mUserModel = provider.get(UserInfoViewModel.class);
+        mContactListModel = provider.get(ContactListViewModel.class);
+        mContactListModel.getContacts(mUserModel.getJwt());
+
+        // mSendModel = provider.get(ChatSendViewModel.class);
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(ContactListViewModel.class);
-        // TODO: Use the ViewModel
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_contact_list, container, false);
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        FragmentContactListBinding binding = FragmentContactListBinding.bind(getView());
+
+        //SetRefreshing shows the internal Swiper view progress bar. Show this until messages load
+        binding.swipeContainer.setRefreshing(true);
+
+
+        final RecyclerView rv = binding.recyclerContacts;
+        //Set the Adapter to hold a reference to the list FOR THIS chat ID that the ViewModel
+        //holds.
+        //Set the Adapter to hold a reference to the list FOR THIS chat ID that the ViewModel
+        //holds.
+        ContactListRecyclerViewAdapter adap = new ContactListRecyclerViewAdapter(
+                mContactListModel.getContactListByEmail(mUserModel.getEmail()));
+
+        rv.setAdapter(adap);
+
+
+//        //When the user scrolls to the top of the RV, the swiper list will "refresh"
+//        //The user is out of messages, go out to the service and get more
+//        binding.swipeContainer.setOnRefreshListener(() -> {
+//            mChatModel.getNextMessages(HARD_CODED_CHAT_ID, mUserModel.getmJwt());
+//        });
+
+
+        mContactListModel.addContactObserver(mUserModel.getEmail(), getViewLifecycleOwner(),
+                list -> {
+                    /*
+                     * This solution needs work on the scroll position. As a group,
+                     * you will need to come up with some solution to manage the
+                     * recyclerview scroll position. You also should consider a
+                     * solution for when the keyboard is on the screen.
+                     */
+                    //inform the RV that the underlying list has (possibly) changed
+                    rv.getAdapter().notifyDataSetChanged();
+                    binding.swipeContainer.setRefreshing(false);
+
+                });
+
+    }
 }
