@@ -18,20 +18,20 @@ import edu.uw.tcss450.team5.holochat.databinding.FragmentContactInfoBinding;
  * Fragment that shows given Contact's username and email, also can start a new chat with given
  * contact in this fragment
  */
-public class ContactInfo extends Fragment {
+public class ContactInfoFragment extends Fragment {
 
     private FragmentContactInfoBinding mBinding;
     private String mUserName;
     private String mContactEmail;
 
-    public ContactInfo() {
+    public ContactInfoFragment() {
         // Required empty public constructor
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ContactInfoArgs args = ContactInfoArgs.fromBundle(getArguments());
+        ContactInfoFragmentArgs args = ContactInfoFragmentArgs.fromBundle(getArguments());
         mContactEmail = args.getContactEmail();
         mUserName = args.getUsername();
     }
