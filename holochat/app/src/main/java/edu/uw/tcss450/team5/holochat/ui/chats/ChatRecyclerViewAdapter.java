@@ -73,15 +73,14 @@ public class ChatRecyclerViewAdapter extends RecyclerView.Adapter<ChatRecyclerVi
                 //Set the left margin
                 layoutParams.setMargins(extended, standard, standard, standard);
                 // Set this View to the right (end) side
-                ((FrameLayout.LayoutParams) card.getLayoutParams()).gravity =
-                        Gravity.END;
+                ((FrameLayout.LayoutParams) card.getLayoutParams()).gravity = Gravity.END;
 
                 card.setCardBackgroundColor(
                         ColorUtils.setAlphaComponent(
                                 res.getColor(R.color.white, null),
                                 16));
                 binding.textMessage.setTextColor(
-                        res.getColor(R.color.black, null));
+                        res.getColor(R.color.colorSecondaryDark, null));
 
                 card.setStrokeWidth(standard / 5);
                 card.setStrokeColor(ColorUtils.setAlphaComponent(
@@ -111,8 +110,7 @@ public class ChatRecyclerViewAdapter extends RecyclerView.Adapter<ChatRecyclerVi
                 layoutParams.setMargins(standard, standard, extended, standard);
 
                 // Set this View to the left (start) side
-                //((FrameLayout.LayoutParams) card.getLayoutParams()).gravity =
-                        //Gravity.START;
+                ((FrameLayout.LayoutParams) card.getLayoutParams()).gravity = Gravity.START;
 
                 card.setCardBackgroundColor(
                         ColorUtils.setAlphaComponent(
@@ -125,7 +123,7 @@ public class ChatRecyclerViewAdapter extends RecyclerView.Adapter<ChatRecyclerVi
                         200));
 
                 binding.textMessage.setTextColor(
-                        res.getColor(R.color.black, null));
+                        res.getColor(R.color.colorPrimary, null));
 
                 //Round the corners on the right side
                 card.setShapeAppearanceModel(

@@ -27,7 +27,7 @@
     <fragment
         android:id="@+id/chatRoomFragment"
         android:name="edu.uw.tcss450.team5.holochat.ui.chats.ChatRoomFragment"
-        android:label="fragment_chat_room"
+        android:label="Chat Room Demo"
         tools:layout="@layout/fragment_chat_room" />
     <fragment
         android:id="@+id/navigation_contacts_list"

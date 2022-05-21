@@ -22,7 +22,6 @@
     <string name="action_save_changes">SAVE</string>
 
     <string name="view_verify_email">Registration was successful.\n A verification link has been sent to your email.</string>
-    <string name="view_tell_me">LET\'S GET STARTED</string>
     <string name="view_password_requirements">PASSWORD REQUIREMENTS\n\n- Be at least 6 characters long.\n- Have one uppercase.\n- Have one lowercase.\n- Have one number.\n- Have one special character.</string>
     <string name="view_title_forgot_password">FORGOT PASSWORD</string>
     <string name="view_forgot_password">Please enter your email to receive a verification code.</string>

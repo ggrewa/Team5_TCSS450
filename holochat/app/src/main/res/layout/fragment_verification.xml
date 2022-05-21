@@ -28,7 +28,7 @@
         style="@android:style/Widget.Material.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#9adaff"
+        android:backgroundTint="@color/colorAccent"
         android:fontFamily="sans-serif-smallcaps"
         android:text="@string/action_back_to_signin"
         android:textColor="@color/brown"
