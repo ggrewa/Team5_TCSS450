@@ -179,12 +179,13 @@ public class SignInFragment extends Fragment {
                 }
             } else {
                 try {
+
                     mUserViewModel = new ViewModelProvider(getActivity(),
                             new UserInfoViewModel.UserInfoViewModelFactory(
                                     binding.editEmail.getText().toString(),
-                                    null,
-                                    null,
-                                    null,
+                                    "",
+                                    "",
+                                    "",
                                     getId(),
                                     response.getString("token")
                             )).get(UserInfoViewModel.class);
