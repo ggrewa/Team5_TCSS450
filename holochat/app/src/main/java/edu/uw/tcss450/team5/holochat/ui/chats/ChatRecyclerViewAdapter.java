@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.graphics.ColorUtils;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -34,7 +35,7 @@ public class ChatRecyclerViewAdapter extends RecyclerView.Adapter<ChatRecyclerVi
     public MessageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new MessageViewHolder(LayoutInflater
                 .from(parent.getContext())
-                .inflate(R.layout.fragment_landing_page, parent, false));
+                .inflate(R.layout.fragment_chat_message, parent, false));
     }
 
     @Override
@@ -72,15 +73,15 @@ public class ChatRecyclerViewAdapter extends RecyclerView.Adapter<ChatRecyclerVi
                 //Set the left margin
                 layoutParams.setMargins(extended, standard, standard, standard);
                 // Set this View to the right (end) side
-                //((FrameLayout.LayoutParams) card.getLayoutParams()).gravity =
-                        //Gravity.END;
+                ((FrameLayout.LayoutParams) card.getLayoutParams()).gravity =
+                        Gravity.END;
 
                 card.setCardBackgroundColor(
                         ColorUtils.setAlphaComponent(
                                 res.getColor(R.color.white, null),
                                 16));
                 binding.textMessage.setTextColor(
-                        res.getColor(R.color.cloudy_color, null));
+                        res.getColor(R.color.black, null));
 
                 card.setStrokeWidth(standard / 5);
                 card.setStrokeColor(ColorUtils.setAlphaComponent(
@@ -110,8 +111,8 @@ public class ChatRecyclerViewAdapter extends RecyclerView.Adapter<ChatRecyclerVi
                 layoutParams.setMargins(standard, standard, extended, standard);
 
                 // Set this View to the left (start) side
-                //((FrameLayout.LayoutParams) card.getLayoutParams()).gravity =
-                        //Gravity.START;
+                ((FrameLayout.LayoutParams) card.getLayoutParams()).gravity =
+                        Gravity.START;
 
                 card.setCardBackgroundColor(
                         ColorUtils.setAlphaComponent(
@@ -124,7 +125,7 @@ public class ChatRecyclerViewAdapter extends RecyclerView.Adapter<ChatRecyclerVi
                         200));
 
                 binding.textMessage.setTextColor(
-                        res.getColor(R.color.cloudy_color, null));
+                        res.getColor(R.color.black, null));
 
                 //Round the corners on the right side
                 card.setShapeAppearanceModel(
