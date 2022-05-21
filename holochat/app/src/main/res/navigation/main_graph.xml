@@ -27,7 +27,7 @@
     <fragment
         android:id="@+id/chatRoomFragment"
         android:name="edu.uw.tcss450.team5.holochat.ui.chats.ChatRoomFragment"
-        android:label="Chat Room Demo"
+        android:label="Chatroom"
         tools:layout="@layout/fragment_chat_room" />
     <fragment
         android:id="@+id/navigation_contacts_list"
@@ -45,15 +45,12 @@
         tools:layout="@layout/fragment_contact_info" >
         <argument
             android:name="username"
-            app:argType="string"
-            android:defaultValue="default" />
+            app:argType="string" />
         <argument android:name="contactEmail"
-            app:argType="string"
-            android:defaultValue="default" />
+            app:argType="string" />
         <argument
             android:name="label"
-            app:argType="string"
-            android:defaultValue="default" />
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/navigation_tabbed_contacts"

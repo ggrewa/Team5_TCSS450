@@ -73,19 +73,20 @@ public class ChatRecyclerViewAdapter extends RecyclerView.Adapter<ChatRecyclerVi
                 //Set the left margin
                 layoutParams.setMargins(extended, standard, standard, standard);
                 // Set this View to the right (end) side
-                ((FrameLayout.LayoutParams) card.getLayoutParams()).gravity = Gravity.END;
+                ((FrameLayout.LayoutParams) card.getLayoutParams()).gravity =
+                        Gravity.END;
 
                 card.setCardBackgroundColor(
                         ColorUtils.setAlphaComponent(
-                                res.getColor(R.color.white, null),
-                                16));
+                                res.getColor(R.color.colorAccent, null),
+                                60));
                 binding.textMessage.setTextColor(
-                        res.getColor(R.color.colorSecondaryDark, null));
+                        res.getColor(R.color.text_color, null));
 
                 card.setStrokeWidth(standard / 5);
                 card.setStrokeColor(ColorUtils.setAlphaComponent(
-                        res.getColor(R.color.white, null),
-                        200));
+                        res.getColor(R.color.colorPrimaryDark, null),
+                        80));
 
                 //Round the corners on the left side
                 card.setShapeAppearanceModel(
@@ -110,20 +111,21 @@ public class ChatRecyclerViewAdapter extends RecyclerView.Adapter<ChatRecyclerVi
                 layoutParams.setMargins(standard, standard, extended, standard);
 
                 // Set this View to the left (start) side
-                ((FrameLayout.LayoutParams) card.getLayoutParams()).gravity = Gravity.START;
+                ((FrameLayout.LayoutParams) card.getLayoutParams()).gravity =
+                        Gravity.START;
 
                 card.setCardBackgroundColor(
                         ColorUtils.setAlphaComponent(
-                                res.getColor(R.color.white, null),
-                                16));
+                                res.getColor(R.color.colorAccent2, null),
+                                60));
 
                 card.setStrokeWidth(standard / 5);
                 card.setStrokeColor(ColorUtils.setAlphaComponent(
-                        res.getColor(R.color.white, null),
-                        200));
+                        res.getColor(R.color.colorAccentBorder2, null),
+                        80));
 
                 binding.textMessage.setTextColor(
-                        res.getColor(R.color.colorPrimary, null));
+                        res.getColor(R.color.text_color, null));
 
                 //Round the corners on the right side
                 card.setShapeAppearanceModel(
