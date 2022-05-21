@@ -28,6 +28,7 @@
     <string name="view_forgot_password">Please enter your email to receive a verification code.</string>
     <string name="view_create_new_password">CREATE NEW PASSWORD</string>
     <string name="view_new_password">Enter the 4 digit verification code sent to your email and a new password.</string>
+    <string name="view_tell_me">LET’S GET STARTED.</string>
 
     <string name="title_profile">Profile</string>
     <string name="title_recents">Recents</string>
