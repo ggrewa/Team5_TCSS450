@@ -72,8 +72,8 @@ public class ChatRecyclerViewAdapter extends RecyclerView.Adapter<ChatRecyclerVi
                 //Set the left margin
                 layoutParams.setMargins(extended, standard, standard, standard);
                 // Set this View to the right (end) side
-                ((FrameLayout.LayoutParams) card.getLayoutParams()).gravity =
-                        Gravity.END;
+                //((FrameLayout.LayoutParams) card.getLayoutParams()).gravity =
+                        //Gravity.END;
 
                 card.setCardBackgroundColor(
                         ColorUtils.setAlphaComponent(
@@ -102,11 +102,13 @@ public class ChatRecyclerViewAdapter extends RecyclerView.Adapter<ChatRecyclerVi
                 //This message is from another user. Format it as such
                 binding.textMessage.setText(message.getSender() +
                         ": " + message.getMessage());
+
                 ViewGroup.MarginLayoutParams layoutParams =
                         (ViewGroup.MarginLayoutParams) card.getLayoutParams();
 
                 //Set the right margin
                 layoutParams.setMargins(standard, standard, extended, standard);
+
                 // Set this View to the left (start) side
                 //((FrameLayout.LayoutParams) card.getLayoutParams()).gravity =
                         //Gravity.START;
