@@ -7,7 +7,7 @@
     <color name="hint_color">#3318130F</color>
     <color name="dangerous_action_color">#a64452</color>
     <color name="matcha_green">#ADC178</color>
-    <color name="text_color">#000000</color>
+    <color name="text_color">#FFFFFF</color>
 
     <color name="colorAccent">#66ff66</color>
     <color name="colorAccentBorder">#1e8a0f</color>
