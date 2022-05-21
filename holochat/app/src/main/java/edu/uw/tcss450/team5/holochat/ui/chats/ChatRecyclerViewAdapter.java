@@ -78,15 +78,15 @@ public class ChatRecyclerViewAdapter extends RecyclerView.Adapter<ChatRecyclerVi
 
                 card.setCardBackgroundColor(
                         ColorUtils.setAlphaComponent(
-                                res.getColor(R.color.white, null),
-                                16));
+                                res.getColor(R.color.colorAccent, null),
+                                80));
                 binding.textMessage.setTextColor(
-                        res.getColor(R.color.black, null));
+                        res.getColor(R.color.text_color, null));
 
                 card.setStrokeWidth(standard / 5);
                 card.setStrokeColor(ColorUtils.setAlphaComponent(
-                        res.getColor(R.color.white, null),
-                        200));
+                        res.getColor(R.color.colorPrimaryDark, null),
+                        100));
 
                 //Round the corners on the left side
                 card.setShapeAppearanceModel(
@@ -116,16 +116,16 @@ public class ChatRecyclerViewAdapter extends RecyclerView.Adapter<ChatRecyclerVi
 
                 card.setCardBackgroundColor(
                         ColorUtils.setAlphaComponent(
-                                res.getColor(R.color.white, null),
-                                16));
+                                res.getColor(R.color.colorAccent2, null),
+                                80));
 
                 card.setStrokeWidth(standard / 5);
                 card.setStrokeColor(ColorUtils.setAlphaComponent(
-                        res.getColor(R.color.white, null),
-                        200));
+                        res.getColor(R.color.colorSecondaryDark, null),
+                        100));
 
                 binding.textMessage.setTextColor(
-                        res.getColor(R.color.black, null));
+                        res.getColor(R.color.text_color, null));
 
                 //Round the corners on the right side
                 card.setShapeAppearanceModel(
