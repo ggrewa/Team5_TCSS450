@@ -32,7 +32,6 @@ import edu.uw.tcss450.team5.holochat.utils.AppSharedPref;
  */
 public class SettingsFragment extends Fragment {
 
-
     private FragmentSettingsBinding binding;
     private UserInfoViewModel mUserModel;
 

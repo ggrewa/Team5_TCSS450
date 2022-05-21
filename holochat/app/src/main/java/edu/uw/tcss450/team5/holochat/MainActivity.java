@@ -43,10 +43,6 @@ public class MainActivity extends AppCompatActivity {
 
         MainActivityArgs args = MainActivityArgs.fromBundle(getIntent().getExtras());
 
-/*        new ViewModelProvider(this,
-                new UserInfoViewModel.UserInfoViewModelFactory(args.getEmail(), args.getJwt())
-        ).get(UserInfoViewModel.class);*/
-
         //JWT view model (Note: these labels are token stored in the web service JWT sign!)
         JWT jwt = new JWT(args.getJwt());
         int memberID = jwt.getClaim("memberid").asInt();
@@ -69,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         // menu should be considered as top level destinations.
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_contacts_list, R.id.navigation_home, R.id.navigation_weather)
+                R.id.navigation_home, R.id.navigation_contacts_list, R.id.navigation_weather)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
@@ -79,9 +75,6 @@ public class MainActivity extends AppCompatActivity {
         // start of theme implementation. Sets theme at start of app run based on settings.
         mPref = new AppSharedPref(this);
         mPref.initializeTheme(); //set theme based on preference in AppSharedPref class
-
-
-
     }
 
     @Override
@@ -104,13 +97,11 @@ public class MainActivity extends AppCompatActivity {
                 signOut();
                 return true;
             case android.R.id.home:
-                this.finish(); //back button hit pop off the stack
+                finish(); //back button hit pop off the stack
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
-
         }
-
     }
 
     /**
@@ -121,13 +112,10 @@ public class MainActivity extends AppCompatActivity {
         navController2.navigate(R.id.navigation_settings);
     }
 
-
-
     /**
      * Signs the user out
      */
     public void signOut() {
-
     }
 
 

@@ -68,11 +68,14 @@ public class ContactListRecyclerViewAdapter extends RecyclerView.Adapter<Contact
                 contactText = contactText.substring(0,25) + "...";
             }
             binding.contactListRoot.setOnClickListener(view -> {
-                Navigation.findNavController(mView).navigate(
-
-                        ContactListFragmentDirections.actionNavigationContactsListToNavigationContactInfo(
-                                contact.getContact(), contact.getContactEmail(), "( ͡° ͜ʖ ͡°)"));
+                ContactListFragmentDirections.ActionNavigationContactsListToNavigationContactInfo directions =
+                        ContactListFragmentDirections.actionNavigationContactsListToNavigationContactInfo();
+                directions.setContactEmail(contact.getContactEmail());
+                directions.setUsername(contact.getContact());
+                directions.setLabel("( ͡° ͜ʖ ͡°)");
+                Navigation.findNavController(mView).navigate(directions);
             });
+
             binding.contactName.setText(contactText);
             binding.contactName.setPadding(10,50,0,0);
             binding.contactName.setTextSize(25);

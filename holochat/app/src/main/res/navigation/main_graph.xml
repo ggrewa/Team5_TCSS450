@@ -45,12 +45,15 @@
         tools:layout="@layout/fragment_contact_info" >
         <argument
             android:name="username"
-            app:argType="string" />
+            app:argType="string"
+            android:defaultValue="default" />
         <argument android:name="contactEmail"
-            app:argType="string" />
+            app:argType="string"
+            android:defaultValue="default" />
         <argument
             android:name="label"
-            app:argType="string" />
+            app:argType="string"
+            android:defaultValue="default" />
     </fragment>
     <fragment
         android:id="@+id/navigation_tabbed_contacts"
