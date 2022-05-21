@@ -9,8 +9,10 @@
     <color name="matcha_green">#ADC178</color>
     <color name="text_color">#000000</color>
 
-    <color name="colorAccent">#B7F6AF</color>
-    <color name="colorAccent2">#F9C1A0</color>
+    <color name="colorAccent">#66ff66</color>
+    <color name="colorAccentBorder">#1e8a0f</color>
+    <color name="colorAccent2">#00ffff</color>
+    <color name="colorAccentBorder2">#00cccc</color>
     <color name="colorOffWhite">#E9E9E9</color>
     <color name="cloudy_color">#beeef7</color>
     <color name="colorPrimaryAlpha">#226200EE</color>
