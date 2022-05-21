@@ -20,10 +20,6 @@
         android:label="@string/weather_fragment_placeholder"
         tools:layout="@layout/fragment_weather" />
     <fragment
-        android:id="@+id/navigation_contacts"
-        android:name="edu.uw.tcss450.team5.holochat.ui.contacts.contact_tabs.ContactTabFragment"
-        android:label="@string/title_contacts" />
-    <fragment
         android:id="@+id/navigation_settings"
         android:name="edu.uw.tcss450.team5.holochat.ui.SettingsFragment"
         android:label="Settings"
@@ -33,4 +29,31 @@
         android:name="edu.uw.tcss450.team5.holochat.ui.chats.ChatRoomFragment"
         android:label="fragment_chat_room"
         tools:layout="@layout/fragment_chat_room" />
+    <fragment
+        android:id="@+id/navigation_contacts_list"
+        android:name="edu.uw.tcss450.team5.holochat.ui.contacts.contact_tabs.ContactListFragment"
+        android:label="My Contacts List"
+        tools:layout="@layout/fragment_contact_list">
+        <action
+            android:id="@+id/action_navigation_contacts_list_to_navigation_contact_info"
+            app:destination="@id/navigation_contact_info" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_contact_info"
+        android:name="edu.uw.tcss450.team5.holochat.ui.contacts.ContactInfoFragment"
+        android:label="fragment_contact_info"
+        tools:layout="@layout/fragment_contact_info" >
+        <argument
+            android:name="username"
+            app:argType="string" />
+        <argument android:name="contactEmail"
+            app:argType="string" />
+        <argument
+            android:name="label"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_tabbed_contacts"
+        android:name="edu.uw.tcss450.team5.holochat.ui.contacts.contact_tabs.ContactTabFragment"
+        android:label="Contacts" />
 </navigation>

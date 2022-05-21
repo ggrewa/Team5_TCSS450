@@ -27,6 +27,7 @@
     <string name="view_forgot_password">Please enter your email to receive a verification code.</string>
     <string name="view_create_new_password">CREATE NEW PASSWORD</string>
     <string name="view_new_password">Enter the 4 digit verification code sent to your email and a new password.</string>
+    <string name="view_tell_me">LET’S GET STARTED.</string>
 
     <string name="title_profile">Profile</string>
     <string name="title_recents">Recents</string>
@@ -46,7 +47,8 @@
     <string name="title_conact">Contacts</string>
     <string name="title_contact">Contact</string>
 
-    <string name="base_url_service">https://team5-tcss450-holochat.herokuapp.com/</string>
+    <string name="base_url_service">https://team5-tcss450-holochat.herokuapp.com/</string>-
+    <!--<string name="base_url_service">https://localhost:5000/</string>-->
     <string name="title_home">Home</string>
 
     <string-array name="chat_titles">

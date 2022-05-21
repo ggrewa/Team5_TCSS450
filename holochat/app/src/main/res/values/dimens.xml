@@ -7,4 +7,5 @@
     <dimen name="appbar_padding_top">8dp</dimen>
     <dimen name="chat_margin">5dp</dimen>
     <dimen name="chat_margin_sided">50dp</dimen>
+    <dimen name="room_margin">5dp</dimen>
 </resources>
