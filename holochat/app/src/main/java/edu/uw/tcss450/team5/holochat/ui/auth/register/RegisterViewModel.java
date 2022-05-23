@@ -93,13 +93,13 @@ public class RegisterViewModel extends AndroidViewModel {
      *
      * @param first the first name of the user
      * @param last the last name of the user
-     * @param nickname the nickname of the user
+     * @param username the username of the user
      * @param email the email of the user
      * @param password the password of the user
      */
     public void connect(final String first,
                         final String last,
-                        final String nickname,
+                        final String username,
                         final String email,
                         final String password) {
         //String url = "https://cfb3-tcss450-labs-2021sp.herokuapp.com/auth";
@@ -108,7 +108,7 @@ public class RegisterViewModel extends AndroidViewModel {
         try {
             body.put("first", first);
             body.put("last", last);
-            body.put("nickname", nickname);
+            body.put("username", username);
             body.put("email", email);
             body.put("password", password);
         } catch (JSONException e) {
