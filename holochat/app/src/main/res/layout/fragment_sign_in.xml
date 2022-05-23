@@ -135,7 +135,7 @@
         android:shadowDx="1.5"
         android:shadowDy="1.3"
         android:text="@string/action_forgot_pass"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/colorSecondary"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/button_sign_in"
         app:layout_constraintEnd_toEndOf="parent"
@@ -155,9 +155,9 @@
         android:checked="true"
         android:fontFamily="sans-serif-condensed"
         android:text="@string/switch_sign_in"
-        android:textColor="@color/colorPrimary"
-        android:thumbTint="@color/colorPrimaryDark"
-        android:trackTint="@color/colorPrimary"
+        android:textColor="@color/colorSecondary"
+        android:thumbTint="@color/colorSecondaryDark"
+        android:trackTint="@color/colorSecondary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_password" />
 

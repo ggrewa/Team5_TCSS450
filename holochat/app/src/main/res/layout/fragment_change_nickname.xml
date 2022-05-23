@@ -78,7 +78,7 @@
         android:fontFamily="sans-serif-medium"
         android:gravity="center"
         android:text="@string/view_change_nickname_instructions"
-        android:textColor="@color/brown"
+        android:textColor="@color/text_color"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

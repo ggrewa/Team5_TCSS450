@@ -5,7 +5,6 @@
     android:id="@+id/layout_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/creme"
     tools:context=".ui.auth.verification.VerificationFragment">
 
     <TextView
@@ -17,7 +16,7 @@
         android:fontFamily="sans-serif-condensed-medium"
         android:gravity="center"
         android:text="@string/view_verify_email"
-        android:textColor="@color/brown"
+        android:textColor="@color/text_color"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
