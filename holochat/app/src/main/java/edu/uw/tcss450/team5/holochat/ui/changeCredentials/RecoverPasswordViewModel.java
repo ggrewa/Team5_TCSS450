@@ -1,6 +1,7 @@
-package edu.uw.tcss450.team5.holochat.ui.auth.changepass;
+package edu.uw.tcss450.team5.holochat.ui.changeCredentials;
 
 import android.app.Application;
+import android.util.Base64;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -19,9 +20,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.nio.charset.Charset;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
-public class ChangePasswordViewModel extends AndroidViewModel {
+import edu.uw.tcss450.team5.holochat.io.RequestQueueSingleton;
+
+public class RecoverPasswordViewModel extends AndroidViewModel {
 
     /** JSON response from server when user tries changing password. */
     private MutableLiveData<JSONObject> mResponse;
@@ -31,7 +36,7 @@ public class ChangePasswordViewModel extends AndroidViewModel {
      *
      * @param application application tied to the view model
      */
-    public ChangePasswordViewModel(@NonNull Application application) {
+    public RecoverPasswordViewModel(@NonNull Application application) {
         super(application);
         mResponse = new MutableLiveData<>();
         mResponse.setValue(new JSONObject());
@@ -105,5 +110,39 @@ public class ChangePasswordViewModel extends AndroidViewModel {
         //Instantiate the RequestQueue and add the request to the queue
         Volley.newRequestQueue(getApplication().getApplicationContext())
                 .add(request);
+    }
+
+    /**
+     * Send a get request to the server to signin the user.
+     *
+     * @param email the email of the user
+     */
+    public void connectForCode(final String email) {
+        String url = "https://team5-tcss450-holochat.herokuapp.com/changePassword";
+        Request request = new JsonObjectRequest(
+                Request.Method.GET,
+                url,
+                null, //no body for this get request
+                mResponse::setValue,
+                this::handleError) {
+            @Override
+            public Map<String, String> getHeaders() {
+                Map<String, String> headers = new HashMap<>();
+                // add headers <key,value>
+                String credentials = email +":password";
+                String auth = "Basic "
+                        + Base64.encodeToString(credentials.getBytes(),
+                        Base64.NO_WRAP);
+                headers.put("Authorization", auth);
+                return headers;
+            }
+        };
+        request.setRetryPolicy(new DefaultRetryPolicy(
+                10_000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        //Instantiate the RequestQueue and add the request to the queue
+        RequestQueueSingleton.getInstance(getApplication().getApplicationContext())
+                .addToRequestQueue(request);
     }
 }

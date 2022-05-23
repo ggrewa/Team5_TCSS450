@@ -4,13 +4,15 @@
     <color name="white">#FFFFFFFF</color>
     <color name="brown">#CC18130F</color>
     <color name="creme">#FDFDFB</color>
-    <color name="hint_color">#3318130F</color>
+    <color name="light_grey">#D3D3D3</color>
+    <color name="hint_color">#ADD8E6</color>
     <color name="dangerous_action_color">#a64452</color>
     <color name="matcha_green">#ADC178</color>
     <color name="text_color">#FFFFFF</color>
+    <color name="text_box">#D3D3D3</color>
 
-    <color name="colorAccent">#66ff66</color>
-    <color name="colorAccentBorder">#1e8a0f</color>
+    <color name="colorAccent">#5C5CFF</color>
+    <color name="colorAccentBorder">#0000A3</color>
     <color name="colorAccent2">#00ffff</color>
     <color name="colorAccentBorder2">#00cccc</color>
     <color name="colorOffWhite">#E9E9E9</color>

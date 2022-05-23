@@ -23,7 +23,14 @@
         android:id="@+id/navigation_settings"
         android:name="edu.uw.tcss450.team5.holochat.ui.SettingsFragment"
         android:label="Settings"
-        tools:layout="@layout/fragment_settings" />
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_navigation_settings_to_recoverPasswordFragment"
+            app:destination="@id/recoverPasswordFragment" />
+        <action
+            android:id="@+id/action_navigation_settings_to_changeNicknameFragment"
+            app:destination="@id/changeNicknameFragment" />
+    </fragment>
     <fragment
         android:id="@+id/chatRoomFragment"
         android:name="edu.uw.tcss450.team5.holochat.ui.chats.ChatRoomFragment"
@@ -56,4 +63,22 @@
         android:id="@+id/navigation_tabbed_contacts"
         android:name="edu.uw.tcss450.team5.holochat.ui.contacts.contact_tabs.ContactTabFragment"
         android:label="Contacts" />
+    <fragment
+        android:id="@+id/recoverPasswordFragment"
+        android:name="edu.uw.tcss450.team5.holochat.ui.changeCredentials.RecoverPasswordFragment"
+        android:label="Recover Password"
+        tools:layout="@layout/fragment_recover_password">
+        <action
+            android:id="@+id/action_recoverPasswordFragment_to_navigation_settings"
+            app:destination="@id/navigation_settings" />
+    </fragment>
+    <fragment
+        android:id="@+id/changeNicknameFragment"
+        android:name="edu.uw.tcss450.team5.holochat.ui.changeCredentials.ChangeNicknameFragment"
+        android:label="Change Nickname"
+        tools:layout="@layout/fragment_change_nickname">
+        <action
+            android:id="@+id/action_changeNicknameFragment_to_navigation_settings"
+            app:destination="@id/navigation_settings" />
+    </fragment>
 </navigation>

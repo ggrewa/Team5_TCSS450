@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -89,6 +90,14 @@ public class SettingsFragment extends Fragment {
         binding.textRealName.setText(jwt.getClaim("first").asString() + " " +
                 jwt.getClaim("last").asString());
         binding.textNickname.setText(jwt.getClaim("username").asString());
+
+        //NAVIGATION TO CHANGE PASSWORD/NICKNAME
+        binding.buttonActionChangeNickname.setOnClickListener(button ->
+                Navigation.findNavController(getView()).navigate(
+                        SettingsFragmentDirections.actionNavigationSettingsToChangeNicknameFragment()));
+        binding.buttonActionRecoverPassword.setOnClickListener(button ->
+                Navigation.findNavController(getView()).navigate(
+                        SettingsFragmentDirections.actionNavigationSettingsToRecoverPasswordFragment()));
 
         //THEMES
         mThemeSwitch = view.findViewById(R.id.settings_switch_themes);

@@ -45,7 +45,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_nickname" />
 
-<!--    <Button
+    <!--    <Button
         android:id="@+id/change_password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -121,5 +121,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_email"></Switch>
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_action_recover_password"
+        android:layout_width="347dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@color/dangerous_action_color"
+        android:backgroundTint="@color/dangerous_action_color"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="RECOVER PASSWORD"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_action_change_nickname"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_action_change_nickname"
+        android:layout_width="347dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:background="@color/colorAccent"
+        android:backgroundTint="@color/colorAccent"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="CHANGE NICKNAME"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settings_degrees_switch" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

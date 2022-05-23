@@ -9,6 +9,7 @@
     <string name="hint_password_again">RETYPE PASSWORD</string>
     <string name="hint_nickname">NICKNAME</string>
     <string name="hint_verification_code">VERIFICATION CODE</string>
+    <string name="hint_nickname_again">RETYPE NICKNAME</string>
 
     <string name="action_register_short">REGISTER</string>
     <string name="action_sign_in_short">SIGN IN</string>
@@ -28,6 +29,8 @@
     <string name="view_create_new_password">CREATE NEW PASSWORD</string>
     <string name="view_new_password">Enter the 4 digit verification code sent to your email and a new password.</string>
     <string name="view_tell_me">LET’S GET STARTED.</string>
+    <string name="view_change_nickname">CHANGE NICKNAME</string>
+    <string name="view_change_nickname_instructions">Enter the 4 digit verification code sent to your email and a new nickname.</string>
 
     <string name="title_profile">Profile</string>
     <string name="title_recents">Recents</string>
@@ -46,6 +49,11 @@
     <string name="contact_search_user_msg">Search for a Holochat user:</string>
     <string name="title_conact">Contacts</string>
     <string name="title_contact">Contact</string>
+
+    <string name="switch_sign_in">STAY SIGNED IN</string>
+    <string name="keys_shared_prefs">My Auth App Shared Prefs</string>
+    <string name="keys_prefs_jwt">Sharded Prefs JWT</string>
+    <string name="action_sign_out">Sign Out</string>
 
     <string name="base_url_service">https://team5-tcss450-holochat.herokuapp.com/</string>-
     <!--<string name="base_url_service">https://localhost:5000/</string>-->
