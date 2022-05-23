@@ -95,7 +95,7 @@
     </fragment>
     <fragment
         android:id="@+id/changePasswordFragment"
-        android:name="edu.uw.tcss450.team5.holochat.ui.auth.changepass.ChangePasswordFragment"
+        android:name="edu.uw.tcss450.team5.holochat.ui.auth.forgotpass.ChangePasswordFragment"
         android:label="fragment_change_password"
         tools:layout="@layout/fragment_change_password" >
         <action

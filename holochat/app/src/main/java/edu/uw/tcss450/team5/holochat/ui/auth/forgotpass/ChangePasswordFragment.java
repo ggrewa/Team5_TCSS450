@@ -3,7 +3,7 @@
  * Mobile Application Programming
  * Spring 2022
  */
-package edu.uw.tcss450.team5.holochat.ui.auth.changepass;
+package edu.uw.tcss450.team5.holochat.ui.auth.forgotpass;
 
 import static edu.uw.tcss450.team5.holochat.utils.PasswordValidator.checkClientPredicate;
 import static edu.uw.tcss450.team5.holochat.utils.PasswordValidator.checkExcludeWhiteSpace;
@@ -30,7 +30,6 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentChangePasswordBinding;
 import edu.uw.tcss450.team5.holochat.utils.PasswordValidator;
 

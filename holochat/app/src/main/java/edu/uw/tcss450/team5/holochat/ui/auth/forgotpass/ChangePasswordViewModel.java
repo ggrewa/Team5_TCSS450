@@ -1,4 +1,4 @@
-package edu.uw.tcss450.team5.holochat.ui.auth.changepass;
+package edu.uw.tcss450.team5.holochat.ui.auth.forgotpass;
 
 import android.app.Application;
 import android.util.Log;
