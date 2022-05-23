@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.graphics.ColorUtils;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -65,7 +64,7 @@ public class ChatRecyclerViewAdapter extends RecyclerView.Adapter<ChatRecyclerVi
             int standard = (int) res.getDimension(R.dimen.chat_margin);
             int extended = (int) res.getDimension(R.dimen.chat_margin_sided);
 
-            if (mEmail.equals(message.getSender())) {
+            if(mEmail.equals(message.getSender())) {
                 //This message is from the user. Format it as such
                 binding.textMessage.setText(message.getMessage());
                 ViewGroup.MarginLayoutParams layoutParams =
@@ -73,8 +72,7 @@ public class ChatRecyclerViewAdapter extends RecyclerView.Adapter<ChatRecyclerVi
                 //Set the left margin
                 layoutParams.setMargins(extended, standard, standard, standard);
                 // Set this View to the right (end) side
-                ((FrameLayout.LayoutParams) card.getLayoutParams()).gravity =
-                        Gravity.END;
+                ((FrameLayout.LayoutParams) card.getLayoutParams()).gravity = Gravity.END;
 
                 card.setCardBackgroundColor(
                         ColorUtils.setAlphaComponent(
@@ -111,8 +109,7 @@ public class ChatRecyclerViewAdapter extends RecyclerView.Adapter<ChatRecyclerVi
                 layoutParams.setMargins(standard, standard, extended, standard);
 
                 // Set this View to the left (start) side
-                ((FrameLayout.LayoutParams) card.getLayoutParams()).gravity =
-                        Gravity.START;
+                ((FrameLayout.LayoutParams) card.getLayoutParams()).gravity = Gravity.START;
 
                 card.setCardBackgroundColor(
                         ColorUtils.setAlphaComponent(

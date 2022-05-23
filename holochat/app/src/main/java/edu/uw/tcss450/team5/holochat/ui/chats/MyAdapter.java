@@ -2,7 +2,6 @@ package edu.uw.tcss450.team5.holochat.ui.chats;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,16 +9,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.Fragment;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentHomeBinding;
-import edu.uw.tcss450.team5.holochat.ui.HomeFragment;
 import edu.uw.tcss450.team5.holochat.ui.HomeFragmentDirections;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {

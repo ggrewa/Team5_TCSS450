@@ -13,9 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentChatRoomBinding;
-import edu.uw.tcss450.team5.holochat.ui.chats.ChatSendViewModel;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
-import edu.uw.tcss450.team5.holochat.ui.chats.ChatViewModel;
 
 /**
  * A simple {@link Fragment} subclass.

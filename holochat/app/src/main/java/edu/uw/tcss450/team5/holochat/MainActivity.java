@@ -24,7 +24,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.auth0.android.jwt.JWT;
-import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import edu.uw.tcss450.team5.holochat.databinding.ActivityMainBinding;
@@ -33,7 +32,6 @@ import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
 import edu.uw.tcss450.team5.holochat.services.PushReceiver;
 import edu.uw.tcss450.team5.holochat.ui.chats.ChatMessage;
 import edu.uw.tcss450.team5.holochat.ui.chats.ChatViewModel;
-import edu.uw.tcss450.team5.holochat.ui.chats.MyAdapter;
 import edu.uw.tcss450.team5.holochat.utils.AppSharedPref;
 
 /*

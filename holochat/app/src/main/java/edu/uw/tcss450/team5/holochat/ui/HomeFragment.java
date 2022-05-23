@@ -11,13 +11,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -25,11 +22,7 @@ import com.auth0.android.jwt.JWT;
 
 import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentHomeBinding;
-import edu.uw.tcss450.team5.holochat.databinding.FragmentSettingsBinding;
-import edu.uw.tcss450.team5.holochat.databinding.FragmentSignInBinding;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
-import edu.uw.tcss450.team5.holochat.ui.auth.signin.SignInFragmentDirections;
-import edu.uw.tcss450.team5.holochat.ui.auth.signin.SignInViewModel;
 import edu.uw.tcss450.team5.holochat.ui.chats.MyAdapter;
 
 public class HomeFragment extends Fragment {

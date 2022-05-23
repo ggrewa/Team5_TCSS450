@@ -27,8 +27,9 @@ import java.util.Objects;
 
 import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.io.RequestQueueSingleton;
+import edu.uw.tcss450.team5.holochat.ui.chats.ChatMessage;
 
-    public class ChatViewModel extends AndroidViewModel {
+public class ChatViewModel extends AndroidViewModel {
 
         /**
          * A Map of Lists of Chat Messages.
