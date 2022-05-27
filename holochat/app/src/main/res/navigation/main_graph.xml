@@ -91,8 +91,8 @@
     <fragment
         android:id="@+id/newChatFragment"
         android:name="edu.uw.tcss450.team5.holochat.ui.chats.NewChatFragment"
-        android:label="fragment_new_chat"
-        tools:layout="@layout/fragment_new_chat" >
+        android:label="Make a Chatroom"
+        tools:layout="@layout/fragment_new_chat">
         <action
             android:id="@+id/action_newChatFragment_to_navigation_messages"
             app:destination="@id/navigation_messages" />

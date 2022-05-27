@@ -62,8 +62,6 @@
     <string name="text_delete">Delete?</string>
 
 
-
-
     <string name="base_url_service">https://team5-tcss450-holochat.herokuapp.com/</string>-
     <!--<string name="base_url_service">https://localhost:5000/</string>-->
     <string name="title_home">Home</string>

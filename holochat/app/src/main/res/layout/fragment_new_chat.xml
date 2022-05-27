@@ -5,7 +5,6 @@
     android:id="@+id/layout_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/backgroundColor"
     tools:context=".ui.chats.NewChatFragment" >
 
     <TextView
@@ -16,15 +15,15 @@
         android:layout_marginTop="24dp"
         android:paddingBottom="16dp"
         android:text="@string/text_chat_name"
-        android:textColor="?attr/textColor"
+        android:textColor="@color/text_color"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:background="?attr/backgroundColor"
+        android:background="@color/light_grey"
         android:id="@+id/listRoot"
-        android:name="edu.uw.team7project.ui.messages.NewChatFragment"
+        android:name="edu.uw.tcss450.team5.holochat.ui.chats.NewChatFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
@@ -35,10 +34,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textEnterName"
         app:layout_constraintVertical_bias="0.0"
-        tools:context="edu.uw.team7project.ui.messages.NewChatFragment"
+        tools:context="edu.uw.tcss450.team5.holochat.ui.chats.NewChatFragment"
         tools:listitem="@layout/add_contact_card" />
 
     <Button
+        android:backgroundTint="@color/dangerous_action_color"
         android:id="@+id/button_cancel"
         android:layout_width="wrap_content"
         style="@style/Widget.MaterialComponents.Button.TextButton"
@@ -46,7 +46,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:text="@string/text_cancel"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/text_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_create" />
 
@@ -57,6 +57,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:text="@string/text_create"
+        android:textColor="@color/text_color"
         android:backgroundTint="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -70,12 +71,14 @@
         android:layout_marginEnd="16dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:textColor="?attr/textColor"
+        android:textColor="@color/text_color"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/listRoot"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textEnterName"
         app:layout_constraintTop_toTopOf="parent" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
