@@ -16,15 +16,16 @@ import android.view.ViewGroup;
 import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentMessageListBinding;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
-import edu.uw.tcss450.team5.holochat.ui.HomeFragmentDirections;
 
 /**
- * A simple {@link Fragment} subclass.
+ * Fragment contains a list of chatrooms that the user is in
+ *
+ * @author Ken
  */
 public class MessageListFragment extends Fragment {
 
     private MessageListViewModel mModel;
-    private MessagesRecyclerViewAdapter mAdapter;
+    private MessageRecyclerViewAdapter mAdapter;
 
     public MessageListFragment() {
         // Required empty public constructor
@@ -33,6 +34,13 @@ public class MessageListFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mModel = new ViewModelProvider(getActivity()).get(MessageListViewModel.class);
+        UserInfoViewModel model = new ViewModelProvider(getActivity())
+                .get(UserInfoViewModel.class);
+
+        mModel.connectGet(model.getJwt());
+
 
     }
 
@@ -58,19 +66,16 @@ public class MessageListFragment extends Fragment {
         //used here.
         FragmentMessageListBinding binding = FragmentMessageListBinding.bind(getView());
 
-        //FAB naviagate to make a new chatroom
-        binding.buttonAddChat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                navigateToMakeChat(view);
-            }
+        //FAB navigate to make a new chatroom
+        binding.buttonAddChat.setOnClickListener(button -> Navigation.findNavController(getView())
+                .navigate(MessageListFragmentDirections.actionNavigationMessagesToNewChatFragment()));
+
+        //may need to change this to be similar to chat fragment on view created.
+        //add observer for getting messages
+        mModel.addMessageListObserver(getViewLifecycleOwner(), messageList -> {
+            mAdapter = new MessageRecyclerViewAdapter(messageList, getActivity().getSupportFragmentManager());
+            binding.listRoot.setAdapter(mAdapter);
         });
-
     }
 
-    private void navigateToMakeChat(View view){
-        //note this needs to be passed with user info
-        @NonNull NavDirections directions = MessageListFragmentDirections.actionNavigationMessagesToNewChatFragment();
-        Navigation.findNavController(view).navigate(directions);
-    }
 }

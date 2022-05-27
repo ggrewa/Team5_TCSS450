@@ -28,6 +28,8 @@ import edu.uw.tcss450.team5.holochat.ui.contacts.ContactListViewModel;
 
 /**
 * Fragment to create a new chatroom
+ *
+ * @author Ken
  */
 public class NewChatFragment extends Fragment {
 
@@ -51,7 +53,7 @@ public class NewChatFragment extends Fragment {
         mUserInfoModel = new ViewModelProvider(getActivity()).get(UserInfoViewModel.class);
         mContactModel.connectGet(mUserInfoModel.getJwt());
 
-        Log.i("NEWCHAT", "Made a new chatroom");
+        Log.i("MAKECHAT", "Prompted to try to make a new chatroom");
 
     }
 

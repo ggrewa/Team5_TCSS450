@@ -5,6 +5,7 @@ import java.io.Serializable;
 /**
  * Represents a single message post.
  *
+ * @author Ken
  */
 public class MessagePost implements Serializable {
 

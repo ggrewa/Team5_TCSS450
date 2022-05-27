@@ -18,14 +18,21 @@ import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentHomeBinding;
 import edu.uw.tcss450.team5.holochat.ui.HomeFragmentDirections;
 
-public class MessagesRecyclerViewAdapter extends RecyclerView.Adapter<MessagesRecyclerViewAdapter.MyViewHolder> {
+/**
+ * For the home fragment
+ * Shows all recent messages
+ *
+ * @author Aaron
+ * TODO
+ */
+public class MessageRecentRecyclerViewAdapter extends RecyclerView.Adapter<MessageRecentRecyclerViewAdapter.MyViewHolder> {
 
     public String s1[],s2[];
     public int images[];
     public Context ctx;
     private FragmentHomeBinding binding;
 
-    public MessagesRecyclerViewAdapter(Context ct, String s1[], String s2[], int[] images)
+    public MessageRecentRecyclerViewAdapter(Context ct, String s1[], String s2[], int[] images)
     {
         this.ctx=ct;
         this.images = images;

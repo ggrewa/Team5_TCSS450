@@ -23,7 +23,7 @@ import com.auth0.android.jwt.JWT;
 import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentHomeBinding;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
-import edu.uw.tcss450.team5.holochat.ui.chats.MessagesRecyclerViewAdapter;
+import edu.uw.tcss450.team5.holochat.ui.chats.MessageRecentRecyclerViewAdapter;
 
 public class HomeFragment extends Fragment {
 
@@ -65,7 +65,7 @@ public class HomeFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerView);
         s1=getResources().getStringArray(R.array.chat_titles);
         s2=getResources().getStringArray(R.array.chat_preview);
-        MessagesRecyclerViewAdapter adapter = new MessagesRecyclerViewAdapter(view.getContext(),s1,s2,icons);
+        MessageRecentRecyclerViewAdapter adapter = new MessageRecentRecyclerViewAdapter(view.getContext(),s1,s2,icons);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
 

@@ -18,6 +18,7 @@ import edu.uw.tcss450.team5.holochat.ui.contacts.Contact;
 /**
  * A Recycler View for the New chat view model.
  *
+ * @author Ken
  */
 public class NewChatRecyclerViewAdapter extends
         RecyclerView.Adapter<NewChatRecyclerViewAdapter.NewChatViewHolder>{
@@ -74,7 +75,7 @@ public class NewChatRecyclerViewAdapter extends
         public int memberID;
 
         /**
-         * Constructore for the contact view holder.
+         * Constructor for the contact view holder.
          *
          * @param view the view.
          */
@@ -83,7 +84,6 @@ public class NewChatRecyclerViewAdapter extends
             mView = view;
             binding = AddContactCardBinding.bind(view);
 
-            //may need to change
             view.setOnClickListener(v -> {
                 updateSelected();
             });

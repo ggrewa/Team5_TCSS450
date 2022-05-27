@@ -28,6 +28,8 @@ import edu.uw.tcss450.team5.holochat.io.RequestQueueSingleton;
 
 /**
  * A view model for a new chatroom
+ *
+ * @author Ken
  */
 public class NewChatViewModel extends AndroidViewModel {
 
