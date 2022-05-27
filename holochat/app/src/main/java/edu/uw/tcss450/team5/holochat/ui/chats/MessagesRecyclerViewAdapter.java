@@ -18,14 +18,14 @@ import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentHomeBinding;
 import edu.uw.tcss450.team5.holochat.ui.HomeFragmentDirections;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
+public class MessagesRecyclerViewAdapter extends RecyclerView.Adapter<MessagesRecyclerViewAdapter.MyViewHolder> {
 
     public String s1[],s2[];
     public int images[];
     public Context ctx;
     private FragmentHomeBinding binding;
 
-    public MyAdapter(Context ct, String s1[], String s2[], int[] images)
+    public MessagesRecyclerViewAdapter(Context ct, String s1[], String s2[], int[] images)
     {
         this.ctx=ct;
         this.images = images;
@@ -59,7 +59,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     }
 
     private void navigateToChat(View view){
-        @NonNull NavDirections directions = HomeFragmentDirections.actionNavigationHomeToChatRoomFragment();
+        //note this needs to be passed with user info
+        int chatID = 0;
+        String name = "Chatroom";
+        @NonNull NavDirections directions = HomeFragmentDirections.actionNavigationHomeToChatRoomFragment(chatID, name);
         Navigation.findNavController(view).navigate(directions);
     }
 

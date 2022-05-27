@@ -55,9 +55,19 @@
     <string name="keys_prefs_jwt">Sharded Prefs JWT</string>
     <string name="action_sign_out">Sign Out</string>
 
+    <!--chatroom strings-->
+    <string name="text_create">Create</string>
+    <string name="text_cancel">Cancel</string>
+    <string name="text_chat_name">Name of Chatroom:</string>
+    <string name="text_delete">Delete?</string>
+
+
+
+
     <string name="base_url_service">https://team5-tcss450-holochat.herokuapp.com/</string>-
     <!--<string name="base_url_service">https://localhost:5000/</string>-->
     <string name="title_home">Home</string>
+    <string name="title_messages">Messages</string>
 
     <string-array name="chat_titles">
         <item>Chat 1</item>

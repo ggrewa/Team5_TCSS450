@@ -35,7 +35,14 @@
         android:id="@+id/chatRoomFragment"
         android:name="edu.uw.tcss450.team5.holochat.ui.chats.ChatRoomFragment"
         android:label="Chatroom"
-        tools:layout="@layout/fragment_chat_room" />
+        tools:layout="@layout/fragment_chat_room" >
+        <argument
+            android:name="chatID"
+            app:argType="integer" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_contacts_list"
         android:name="edu.uw.tcss450.team5.holochat.ui.contacts.contact_tabs.ContactListFragment"
@@ -80,5 +87,25 @@
         <action
             android:id="@+id/action_changeNicknameFragment_to_navigation_settings"
             app:destination="@id/navigation_settings" />
+    </fragment>
+    <fragment
+        android:id="@+id/newChatFragment"
+        android:name="edu.uw.tcss450.team5.holochat.ui.chats.NewChatFragment"
+        android:label="fragment_new_chat"
+        tools:layout="@layout/fragment_new_chat" >
+        <action
+            android:id="@+id/action_newChatFragment_to_navigation_messages"
+            app:destination="@id/navigation_messages" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_messages"
+        android:name="edu.uw.tcss450.team5.holochat.ui.chats.MessageListFragment"
+        android:label="Messages">
+        <action
+            android:id="@+id/action_navigation_messages_to_chatRoomFragment"
+            app:destination="@id/chatRoomFragment" />
+        <action
+            android:id="@+id/action_navigation_messages_to_newChatFragment"
+            app:destination="@id/newChatFragment" />
     </fragment>
 </navigation>
