@@ -58,7 +58,7 @@ public class NewChatViewModel extends AndroidViewModel {
      * @param name the name of the chat room.
      */
     public void createChat(final String jwt, final String name) {
-        String url = R.string.base_url_service +"/chats";
+        String url = R.string.base_url_service +"chats";
 
         JSONObject body = new JSONObject();
         try {
@@ -100,7 +100,7 @@ public class NewChatViewModel extends AndroidViewModel {
      * @throws JSONException
      */
     public void putMembers(final String jwt, int[] memberIds, int chatID) throws JSONException {
-        String url = R.string.base_url_service + "/chats/" + chatID;
+        String url = R.string.base_url_service + "chats/" + chatID;
         System.out.println("Adding Members");
         JSONObject body = new JSONObject();
         JSONArray members = new JSONArray(memberIds);

@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
 import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentMessageListBinding;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
+import edu.uw.tcss450.team5.holochat.ui.HomeFragmentDirections;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -56,5 +58,19 @@ public class MessageListFragment extends Fragment {
         //used here.
         FragmentMessageListBinding binding = FragmentMessageListBinding.bind(getView());
 
+        //FAB naviagate to make a new chatroom
+        binding.buttonAddChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navigateToMakeChat(view);
+            }
+        });
+
+    }
+
+    private void navigateToMakeChat(View view){
+        //note this needs to be passed with user info
+        @NonNull NavDirections directions = MessageListFragmentDirections.actionNavigationMessagesToNewChatFragment();
+        Navigation.findNavController(view).navigate(directions);
     }
 }

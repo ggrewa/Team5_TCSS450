@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
 import android.util.Log;
@@ -22,6 +23,7 @@ import java.util.ArrayList;
 import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentNewChatBinding;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
+import edu.uw.tcss450.team5.holochat.ui.HomeFragmentDirections;
 import edu.uw.tcss450.team5.holochat.ui.contacts.ContactListViewModel;
 
 /**
@@ -47,8 +49,10 @@ public class NewChatFragment extends Fragment {
         mContactModel = new ViewModelProvider(getActivity()).get(ContactListViewModel.class);
         mChatModel = new ViewModelProvider(getActivity()).get(NewChatViewModel.class);
         mUserInfoModel = new ViewModelProvider(getActivity()).get(UserInfoViewModel.class);
-
         mContactModel.connectGet(mUserInfoModel.getJwt());
+
+        Log.i("NEWCHAT", "Made a new chatroom");
+
     }
 
     @Override
@@ -66,11 +70,8 @@ public class NewChatFragment extends Fragment {
         binding = FragmentNewChatBinding.bind(getView());
 
         mContactModel.addContactListObserver(getViewLifecycleOwner(), contactList -> {
-            //if (!contactList.isEmpty()) {
             mAdapter = new NewChatRecyclerViewAdapter(contactList);
             binding.listRoot.setAdapter(mAdapter);
-            //binding.layoutWait.setVisibility(View.GONE);
-            //}
         });
 
         mChatModel.addResponseObserver(getViewLifecycleOwner(),
