@@ -17,8 +17,8 @@ import edu.uw.tcss450.team5.holochat.R;
 /**
  * Puts messages from the view model in a tangible form for display
  */
-public class MessageRecyclerViewAdapter extends
-        RecyclerView.Adapter<MessageRecyclerViewAdapter.MessageViewHolder> {
+public class MessageListRecyclerViewAdapter extends
+        RecyclerView.Adapter<MessageListRecyclerViewAdapter.MessageViewHolder> {
 
     private final List<MessagePost> mMessages;
     private final FragmentManager mFragMan;
@@ -28,7 +28,7 @@ public class MessageRecyclerViewAdapter extends
      *
      * @param items a list of message posts.
      */
-    public MessageRecyclerViewAdapter(List<MessagePost> items, FragmentManager fm) {
+    public MessageListRecyclerViewAdapter(List<MessagePost> items, FragmentManager fm) {
         this.mMessages = items;
         mFragMan = fm;
     }

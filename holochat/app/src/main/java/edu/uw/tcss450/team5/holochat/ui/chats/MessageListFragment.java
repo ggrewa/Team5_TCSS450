@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
@@ -25,7 +24,7 @@ import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
 public class MessageListFragment extends Fragment {
 
     private MessageListViewModel mModel;
-    private MessageRecyclerViewAdapter mAdapter;
+    private MessageListRecyclerViewAdapter mAdapter;
 
     public MessageListFragment() {
         // Required empty public constructor
@@ -73,7 +72,7 @@ public class MessageListFragment extends Fragment {
         //may need to change this to be similar to chat fragment on view created.
         //add observer for getting messages
         mModel.addMessageListObserver(getViewLifecycleOwner(), messageList -> {
-            mAdapter = new MessageRecyclerViewAdapter(messageList, getActivity().getSupportFragmentManager());
+            mAdapter = new MessageListRecyclerViewAdapter(messageList, getActivity().getSupportFragmentManager());
             binding.listRoot.setAdapter(mAdapter);
         });
     }
