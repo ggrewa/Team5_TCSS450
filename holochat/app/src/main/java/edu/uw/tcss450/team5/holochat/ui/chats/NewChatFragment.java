@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,11 +20,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentNewChatBinding;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
 import edu.uw.tcss450.team5.holochat.ui.HomeFragmentDirections;
+import edu.uw.tcss450.team5.holochat.ui.contacts.ContactListRecyclerViewAdapter;
+import edu.uw.tcss450.team5.holochat.ui.contacts.ContactListSingle;
 import edu.uw.tcss450.team5.holochat.ui.contacts.ContactListViewModel;
 
 /**
@@ -33,7 +37,7 @@ import edu.uw.tcss450.team5.holochat.ui.contacts.ContactListViewModel;
  */
 public class NewChatFragment extends Fragment {
 
-    private ContactListViewModel mContactModel;
+    private ContactListViewModel mContactListModel;
     private NewChatRecyclerViewAdapter mAdapter;
     private NewChatViewModel mChatModel;
     private UserInfoViewModel mUserInfoModel;
@@ -48,10 +52,11 @@ public class NewChatFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mContactModel = new ViewModelProvider(getActivity()).get(ContactListViewModel.class);
-        mChatModel = new ViewModelProvider(getActivity()).get(NewChatViewModel.class);
-        mUserInfoModel = new ViewModelProvider(getActivity()).get(UserInfoViewModel.class);
-        mContactModel.connectGet(mUserInfoModel.getJwt());
+        ViewModelProvider provider = new ViewModelProvider(getActivity());
+        mChatModel = provider.get(NewChatViewModel.class);
+        mUserInfoModel = provider.get(UserInfoViewModel.class);
+        mContactListModel = provider.get(ContactListViewModel.class);
+        mContactListModel.getContacts(mUserInfoModel.getJwt());
 
         Log.i("MAKECHAT", "Prompted to try to make a new chatroom");
 
@@ -71,10 +76,26 @@ public class NewChatFragment extends Fragment {
         //used here.
         binding = FragmentNewChatBinding.bind(getView());
 
-        mContactModel.addContactListObserver(getViewLifecycleOwner(), contactList -> {
+        final RecyclerView rv = binding.recyclerMakeChatContacts;
+        //Set the Adapter to hold a reference to the list FOR THIS chat ID that the ViewModel
+        //holds.
+        //Set the Adapter to hold a reference to the list FOR THIS chat ID that the ViewModel
+        //holds.
+/*        ContactListRecyclerViewAdapter adap = new ContactListRecyclerViewAdapter(
+                mContactListModel.getContactListByEmail(mUserInfoModel.getEmail()));*/
+
+        List<ContactListSingle> listOfContacts = mContactListModel.getContactListByEmail(mUserInfoModel.getEmail());
+        if(listOfContacts.isEmpty()) { //put in the contacts if it was empty
+
+        }
+        NewChatRecyclerViewAdapter adap = new NewChatRecyclerViewAdapter(listOfContacts);
+        rv.setAdapter(adap);
+
+
+/*        mContactModel.addContactListObserver(getViewLifecycleOwner(), contactList -> {
             mAdapter = new NewChatRecyclerViewAdapter(contactList);
             binding.listRoot.setAdapter(mAdapter);
-        });
+        });*/
 
         mChatModel.addResponseObserver(getViewLifecycleOwner(),
                 this::observeResponse);

@@ -1,18 +1,20 @@
 package edu.uw.tcss450.team5.holochat.ui.chats;
 import edu.uw.tcss450.team5.holochat.R;
 
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import edu.uw.tcss450.team5.holochat.databinding.AddContactCardBinding;
-import edu.uw.tcss450.team5.holochat.ui.contacts.Contact;
+import edu.uw.tcss450.team5.holochat.ui.contacts.ContactListSingle;
 
 
 /**
@@ -23,7 +25,7 @@ import edu.uw.tcss450.team5.holochat.ui.contacts.Contact;
 public class NewChatRecyclerViewAdapter extends
         RecyclerView.Adapter<NewChatRecyclerViewAdapter.NewChatViewHolder>{
 
-    private final List<Contact> mContacts;
+    private final List<ContactListSingle> mContacts;
     private ArrayList<Integer> mMemberID;
 
     /**
@@ -31,7 +33,7 @@ public class NewChatRecyclerViewAdapter extends
      *
      * @param items a list of contacts.
      */
-    public NewChatRecyclerViewAdapter(List<Contact> items) {
+    public NewChatRecyclerViewAdapter(List<ContactListSingle> items) {
         this.mContacts = items;
         this.mMemberID = new ArrayList<>();
     }
@@ -108,9 +110,15 @@ public class NewChatRecyclerViewAdapter extends
          *
          * @param contact the contact
          */
-        void setContact(final Contact contact) {
+        void setContact(final ContactListSingle contact) {
+            final Resources res = mView.getContext().getResources();
+            final CardView card = binding.cardRoot;
+
             binding.textUsername.setText(contact.getContactUsername());
             memberID = contact.getContactMemberID();
+
+            card.requestLayout();
+
         }
 
     }

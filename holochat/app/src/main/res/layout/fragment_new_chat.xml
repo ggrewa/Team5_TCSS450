@@ -21,8 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:background="@color/light_grey"
-        android:id="@+id/listRoot"
+        android:id="@+id/recyclerMakeChatContacts"
         android:name="edu.uw.tcss450.team5.holochat.ui.chats.NewChatFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -73,7 +72,7 @@
         android:inputType="textPersonName"
         android:textColor="@color/text_color"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/listRoot"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerMakeChatContacts"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textEnterName"

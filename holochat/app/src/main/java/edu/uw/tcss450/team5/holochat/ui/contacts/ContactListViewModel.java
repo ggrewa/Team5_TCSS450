@@ -8,7 +8,6 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModel;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -150,14 +149,14 @@ public class ContactListViewModel extends AndroidViewModel {
                         contact.getString("username"),
                         contact.getString("email")
                 );
-                if (list.stream().noneMatch(id -> cContact.getContactId()==id.getContactId())) {
+                if (list.stream().noneMatch(id -> cContact.getContactMemberID()==id.getContactMemberID())) {
                     // don't add a duplicate
                     list.add(0, cContact);
                 } else {
                     // this shouldn't happen but could with the asynchronous
                     // nature of the application
                     Log.wtf("Chat room already received",
-                            "Or duplicate id:" + cContact.getContactId());
+                            "Or duplicate id:" + cContact.getContactMemberID());
                 }
 
             }
