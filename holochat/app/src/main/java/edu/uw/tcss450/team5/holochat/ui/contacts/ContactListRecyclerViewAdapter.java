@@ -19,6 +19,9 @@ import edu.uw.tcss450.team5.holochat.R;
 /**
  * Adapts a ContactListViewModel into a RecyclerView
  * so the data can be displayed on the app
+ *
+ *  @author Ken
+ *  @author Tarnveer
  */
 
 public class ContactListRecyclerViewAdapter extends RecyclerView.Adapter<ContactListRecyclerViewAdapter.ContactViewHolder> {

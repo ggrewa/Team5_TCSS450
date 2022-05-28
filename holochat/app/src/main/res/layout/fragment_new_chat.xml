@@ -20,6 +20,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="88dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerMakeChatContacts"
         android:name="edu.uw.tcss450.team5.holochat.ui.chats.NewChatFragment"
@@ -35,6 +45,7 @@
         app:layout_constraintVertical_bias="0.0"
         tools:context="edu.uw.tcss450.team5.holochat.ui.chats.NewChatFragment"
         tools:listitem="@layout/add_contact_card" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <Button
         android:backgroundTint="@color/dangerous_action_color"

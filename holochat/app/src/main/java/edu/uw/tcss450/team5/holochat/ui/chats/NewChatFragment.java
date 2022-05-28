@@ -76,31 +76,36 @@ public class NewChatFragment extends Fragment {
         //used here.
         binding = FragmentNewChatBinding.bind(getView());
 
+        //SetRefreshing shows the internal Swiper view progress bar. Show this until contactlist show
+        binding.swipeContainer.setRefreshing(true);
+
+        //initialize recycler view
         final RecyclerView rv = binding.recyclerMakeChatContacts;
-        //Set the Adapter to hold a reference to the list FOR THIS chat ID that the ViewModel
-        //holds.
-        //Set the Adapter to hold a reference to the list FOR THIS chat ID that the ViewModel
-        //holds.
-/*        ContactListRecyclerViewAdapter adap = new ContactListRecyclerViewAdapter(
-                mContactListModel.getContactListByEmail(mUserInfoModel.getEmail()));*/
-
         List<ContactListSingle> listOfContacts = mContactListModel.getContactListByEmail(mUserInfoModel.getEmail());
-        if(listOfContacts.isEmpty()) { //put in the contacts if it was empty
-
+        if(listOfContacts.isEmpty()) { //fill contacts list if it was empty
+            mContactListModel.getContacts(mUserInfoModel.getJwt());
+            listOfContacts = mContactListModel.getContactListByEmail(mUserInfoModel.getEmail());
         }
         NewChatRecyclerViewAdapter adap = new NewChatRecyclerViewAdapter(listOfContacts);
         rv.setAdapter(adap);
 
+        //observer that resets the recycler view if the dataset changed
+        mContactListModel.addContactObserver(mUserInfoModel.getEmail(), getViewLifecycleOwner(),
+                list -> {
+                    /*
+                     * This solution needs work on the scroll position. As a group,
+                     * you will need to come up with some solution to manage the
+                     * recyclerview scroll position. You also should consider a
+                     * solution for when the keyboard is on the screen.
+                     */
+                    //inform the RV that the underlying list has (possibly) changed
+                    rv.getAdapter().notifyDataSetChanged();
+                    binding.swipeContainer.setRefreshing(false);
 
-/*        mContactModel.addContactListObserver(getViewLifecycleOwner(), contactList -> {
-            mAdapter = new NewChatRecyclerViewAdapter(contactList);
-            binding.listRoot.setAdapter(mAdapter);
-        });*/
+                });
 
         mChatModel.addResponseObserver(getViewLifecycleOwner(),
                 this::observeResponse);
-        binding.editChatName.setTextColor(Color.BLACK);
-
 
         binding.buttonCancel.setOnClickListener(button -> Navigation.findNavController(getView()).
                 navigate(NewChatFragmentDirections.actionNewChatFragmentToNavigationMessages()));

@@ -31,6 +31,9 @@ import edu.uw.tcss450.team5.holochat.R;
 
 /**
  * utilizes a web service to retrieve all contacts of a user and stores into a view model
+ *
+ * @author Ken
+ * @author Tarnveer
  */
 public class ContactListViewModel extends AndroidViewModel {
 
