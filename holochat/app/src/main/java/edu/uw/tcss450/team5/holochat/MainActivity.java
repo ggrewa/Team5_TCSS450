@@ -143,14 +143,20 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("SIGNOUT", "Clicked");
                 signOut();
                 return true;
-            case android.R.id.home:
-                this.finish(); //back button hit pop off the stack
-                return true;
+//            case android.R.id.home:
+//                this.finish(); //back button hit pop off the stack
+//                return true;
             default:
                 return super.onOptionsItemSelected(item);
 
         }
+    }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
+                || super.onSupportNavigateUp();
     }
 
     /**
