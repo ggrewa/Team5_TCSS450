@@ -38,7 +38,7 @@ import edu.uw.tcss450.team5.holochat.ui.contacts.ContactListViewModel;
 public class NewChatFragment extends Fragment {
 
     private ContactListViewModel mContactListModel;
-    private NewChatRecyclerViewAdapter mAdapter;
+    private NewChatRecyclerViewAdapter mChatAdapter;
     private NewChatViewModel mChatModel;
     private UserInfoViewModel mUserInfoModel;
     private FragmentNewChatBinding binding;
@@ -86,8 +86,8 @@ public class NewChatFragment extends Fragment {
             mContactListModel.getContacts(mUserInfoModel.getJwt());
             listOfContacts = mContactListModel.getContactListByEmail(mUserInfoModel.getEmail());
         }
-        NewChatRecyclerViewAdapter adap = new NewChatRecyclerViewAdapter(listOfContacts);
-        rv.setAdapter(adap);
+        mChatAdapter = new NewChatRecyclerViewAdapter(listOfContacts);
+        rv.setAdapter(mChatAdapter);
 
         //observer that resets the recycler view if the dataset changed
         mContactListModel.addContactObserver(mUserInfoModel.getEmail(), getViewLifecycleOwner(),
@@ -130,7 +130,7 @@ public class NewChatFragment extends Fragment {
      * @throws JSONException
      */
     private void handleAddContacts() throws JSONException {
-        ArrayList<Integer> selectedContacts = mAdapter.getSelectedList();
+        ArrayList<Integer> selectedContacts = mChatAdapter.getSelectedList();
         selectedContacts.add(mUserInfoModel.getMemberID());
         int[] temp = new int[selectedContacts.size()];
 
@@ -139,7 +139,7 @@ public class NewChatFragment extends Fragment {
         }
 
         mChatModel.putMembers(mUserInfoModel.getJwt(), temp, mNewChatID);
-        mAdapter.notifyDataSetChanged();
+        mChatAdapter.notifyDataSetChanged();
         Navigation.findNavController(getView())
                 .navigate(NewChatFragmentDirections.actionNewChatFragmentToNavigationMessages());
     }
