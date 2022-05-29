@@ -190,7 +190,8 @@ public class ContactListViewModel extends AndroidViewModel {
      * @param jwt a valid jwt.
      */
     public void connectGet (String jwt){
-        String url = R.string.base_url_service + "/contacts";
+        String base_url = getApplication().getResources().getString(R.string.base_url_service);
+        String url = base_url + "/contacts";
         Request request = new JsonObjectRequest(
                 Request.Method.GET,
                 url,

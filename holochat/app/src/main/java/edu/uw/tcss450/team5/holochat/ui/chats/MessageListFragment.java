@@ -23,7 +23,8 @@ import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
  */
 public class MessageListFragment extends Fragment {
 
-    private MessageListViewModel mModel;
+    private MessageListViewModel mMessagesModel;
+    private UserInfoViewModel mUserInfoModel;
     private MessageListRecyclerViewAdapter mAdapter;
 
     public MessageListFragment() {
@@ -34,11 +35,11 @@ public class MessageListFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mModel = new ViewModelProvider(getActivity()).get(MessageListViewModel.class);
-        UserInfoViewModel model = new ViewModelProvider(getActivity())
-                .get(UserInfoViewModel.class);
+        ViewModelProvider provider = new ViewModelProvider(getActivity());
+        mMessagesModel = provider.get(MessageListViewModel.class);
+        mUserInfoModel = provider.get(UserInfoViewModel.class);
 
-        mModel.connectGet(model.getJwt());
+        mMessagesModel.connectGet(mUserInfoModel.getJwt());
 
 
     }
@@ -71,9 +72,10 @@ public class MessageListFragment extends Fragment {
 
         //may need to change this to be similar to chat fragment on view created.
         //add observer for getting messages
-        mModel.addMessageListObserver(getViewLifecycleOwner(), messageList -> {
+        mMessagesModel.addMessageListObserver(getViewLifecycleOwner(), messageList -> {
             mAdapter = new MessageListRecyclerViewAdapter(messageList, getActivity().getSupportFragmentManager());
             binding.listRoot.setAdapter(mAdapter);
+            binding.layoutWait.setVisibility(View.GONE);
         });
     }
 

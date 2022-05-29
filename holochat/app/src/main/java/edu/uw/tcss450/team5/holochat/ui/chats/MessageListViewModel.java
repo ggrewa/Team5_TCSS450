@@ -1,6 +1,7 @@
 package edu.uw.tcss450.team5.holochat.ui.chats;
 
 import android.app.Application;
+import android.content.res.Resources;
 import android.util.Log;
 import edu.uw.tcss450.team5.holochat.R;
 
@@ -84,7 +85,7 @@ public class MessageListViewModel extends AndroidViewModel {
                 temp.add(post);
             }
         } catch (JSONException e) {
-            Log.e("JSON PARSE ERROR", "Found in handle Success ChatViewModel");
+            Log.e("JSON PARSE ERROR", "Found in handle Success MessageListViewModel");
             Log.e("JSON PARSE ERROR", "Error: " + e.getMessage());
         }
         mMessageList.setValue(temp);
@@ -97,7 +98,8 @@ public class MessageListViewModel extends AndroidViewModel {
      */
     public void connectGet (String jwt){
         //need a endpoint
-        String url = R.string.base_url_service + "contacts/chatlist";
+        String base_url = getApplication().getResources().getString(R.string.base_url_service);
+        String url = base_url + "contacts/chatlist";
         Request request = new JsonObjectRequest(
                 Request.Method.GET,
                 url,
@@ -128,7 +130,8 @@ public class MessageListViewModel extends AndroidViewModel {
      * @param email
      */
     public void connectDelete(String jwt, int chatID, String email){
-        String url = R.string.base_url_service + "chats/" + chatID + "/" + email;
+        String base_url = getApplication().getResources().getString(R.string.base_url_service);
+        String url = base_url + "chats/" + chatID + "/" + email;
 
         Request request = new JsonObjectRequest(
                 Request.Method.DELETE,
