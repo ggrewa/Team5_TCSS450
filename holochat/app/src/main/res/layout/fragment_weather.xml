@@ -8,22 +8,6 @@
     tools:context=".ui.WeatherFragment">
 
 
-
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list_root"
-        android:name="edu.uw.tcss450.uiandnavigationlab.ui.blog.BlogFragment"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="322dp"
-        android:orientation="vertical"
-        app:layoutManager="LinearLayoutManager"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:context="edu.uw.tcss450.team5.holochat.ui.WeatherFragment"
-        tools:listitem="@layout/fragment_weather_card" />
-
     <Button
         android:id="@+id/btnget"
         android:layout_width="wrap_content"
@@ -53,12 +37,27 @@
         android:id="@+id/tvResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="132dp"
-        android:textSize="12sp"
+        android:layout_marginTop="232dp"
+        android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.193"
+        app:layout_constraintHorizontal_bias="0.178"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <HorizontalScrollView
+        android:layout_width="385dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="156dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical" />
+
+    </HorizontalScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

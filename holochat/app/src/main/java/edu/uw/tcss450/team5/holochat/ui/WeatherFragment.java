@@ -88,7 +88,7 @@ public class WeatherFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         etCity = view.findViewById(R.id.etCity);
-        etCity.setText("Tacoma");
+        //etCity.setText("Tacoma");
         btnget = view.findViewById(R.id.btnget);
         btnget.setOnClickListener(this::getWeatherDetails);
         tvResult = view.findViewById(R.id.tvResult);
@@ -108,7 +108,8 @@ public class WeatherFragment extends Fragment {
             tempUrl3 = url3 + appid;
         }
 
-
+        //request queue
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
 
         //first string request to get lon and lat
         StringRequest stringRequest = new StringRequest(Request.Method.POST, tempUrl3, new Response.Listener<String>() {
@@ -209,8 +210,7 @@ public class WeatherFragment extends Fragment {
 
 
 
-        //request queue
-        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+
 
         //add the first request to the first queue
         requestQueue.add(stringRequest);
