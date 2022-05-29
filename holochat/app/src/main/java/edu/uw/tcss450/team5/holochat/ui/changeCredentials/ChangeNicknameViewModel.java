@@ -29,6 +29,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.io.RequestQueueSingleton;
 
 public class ChangeNicknameViewModel extends AndroidViewModel {
@@ -93,7 +94,8 @@ public class ChangeNicknameViewModel extends AndroidViewModel {
      * @param verifCode the verification code typed in by user
      */
     public void connect(final String email, final String verifCode, final String username) {
-        String url = "https://team5-tcss450-holochat.herokuapp.com/service";
+        String base_url = getApplication().getResources().getString(R.string.base_url_service);
+        String url = base_url + "service";
         JSONObject body = new JSONObject();
         try {
             body.put("email", email);
@@ -123,7 +125,8 @@ public class ChangeNicknameViewModel extends AndroidViewModel {
      * @param email the email of the user
      */
     public void connectForCode(final String email) {
-        String url = "https://team5-tcss450-holochat.herokuapp.com/changePassword";
+        String base_url = getApplication().getResources().getString(R.string.base_url_service);
+        String url = base_url + "changePassword";
         Request request = new JsonObjectRequest(
                 Request.Method.GET,
                 url,
