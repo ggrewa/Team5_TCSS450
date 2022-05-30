@@ -59,7 +59,11 @@
     <string name="text_create">Create</string>
     <string name="text_cancel">Cancel</string>
     <string name="text_chat_name">Name of Chatroom:</string>
-    <string name="text_delete">Delete?</string>
+    <string name="text_delete">Delete</string>
+    <string name="text_chat_delete_dialog_prompt">Are you sure you want to delete this chat?</string>
+    <string name="text_chat_delete_dialog_title">Delete Chatroom:</string>
+
+
 
 
     <string name="base_url_service">https://team5-tcss450-holochat.herokuapp.com/</string>-
