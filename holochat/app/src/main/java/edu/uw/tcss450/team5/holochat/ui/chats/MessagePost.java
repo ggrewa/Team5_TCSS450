@@ -10,7 +10,6 @@ import java.io.Serializable;
 public class MessagePost implements Serializable {
 
     private final String mMessageName;
-
     private final int mChatID;
 
     /**
