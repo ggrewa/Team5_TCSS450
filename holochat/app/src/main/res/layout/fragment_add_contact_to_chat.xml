@@ -5,7 +5,7 @@
     android:id="@+id/layout_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.chats.NewChatFragment" >
+    tools:context=".ui.chats.AddContactToChatFragment" >
 
     <TextView
         android:id="@+id/textAddChatTitle"
@@ -14,7 +14,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:paddingBottom="16dp"
-        android:text="@string/text_chat_name"
+        android:text="@string/text_chat_add_title"
         android:textColor="@color/text_color"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,21 +30,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerMakeChatContacts"
-        android:name="edu.uw.tcss450.team5.holochat.ui.chats.NewChatFragment"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:orientation="vertical"
-        app:layoutManager="LinearLayoutManager"
-        app:layout_constraintBottom_toTopOf="@+id/button_cancel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textAddChatTitle"
-        app:layout_constraintVertical_bias="0.0"
-        tools:context="edu.uw.tcss450.team5.holochat.ui.chats.NewChatFragment"
-        tools:listitem="@layout/add_contact_card" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerAddChatContacts"
+            android:name="edu.uw.tcss450.team5.holochat.ui.chats.AddContactToChatFragment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            app:layoutManager="LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@+id/button_cancel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textAddChatTitle"
+            app:layout_constraintVertical_bias="0.0"
+            tools:context="edu.uw.tcss450.team5.holochat.ui.chats.AddContactToChatFragment"
+            tools:listitem="@layout/add_contact_card" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <Button
@@ -58,38 +58,22 @@
         android:text="@string/text_cancel"
         android:textColor="@color/text_color"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button_create" />
+        app:layout_constraintEnd_toStartOf="@+id/button_add" />
 
     <Button
-        android:id="@+id/button_create"
+        android:id="@+id/button_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:text="@string/text_create"
-        android:textColor="@color/text_color"
         android:backgroundTint="@color/colorAccent"
+        android:text="@string/text_add"
+        android:textColor="@color/text_color"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" /><![CDATA[
     app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/editChatName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="16dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:textColor="@color/text_color"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerMakeChatContacts"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textAddChatTitle"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="NotSibling" />
 
 
-
+]]>
 </androidx.constraintlayout.widget.ConstraintLayout>
