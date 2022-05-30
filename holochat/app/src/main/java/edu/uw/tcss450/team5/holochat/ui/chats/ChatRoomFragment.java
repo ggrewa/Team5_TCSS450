@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
+import edu.uw.tcss450.team5.holochat.MainActivity;
 import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentChatRoomBinding;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
@@ -35,6 +36,8 @@ public class ChatRoomFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mArgs = ChatRoomFragmentArgs.fromBundle(getArguments());
         chatID = mArgs.getChatID();
+        ((MainActivity)getActivity()).setTitle(mArgs.getName());
+
         ViewModelProvider provider = new ViewModelProvider(getActivity());
         mUserModel = provider.get(UserInfoViewModel.class);
         mChatModel = provider.get(ChatViewModel.class);

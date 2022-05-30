@@ -179,6 +179,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void setTitle(String title)
+    {
+        getSupportActionBar().setTitle(title);
+    }
+
+
     /**
      * Signs the user out
      */
