@@ -90,6 +90,7 @@ public class MessageListRecyclerViewAdapter extends
          * Passes in the argument from post: chatId and chatroomName
          */
         private void navigateToChat() {
+            System.out.println(mPost.getChatID());
             MessageListFragmentDirections.ActionNavigationMessagesToChatRoomFragment directions =
                     MessageListFragmentDirections.
                             actionNavigationMessagesToChatRoomFragment(mPost.getChatID(),
