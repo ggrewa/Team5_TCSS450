@@ -107,15 +107,23 @@ public class MessageListRecyclerViewAdapter extends
             binding.textMessageName.setText(message.getMessageName());
             mPost = message;
             binding.buttonDelete.setText("Delete");
-            binding.buttonDelete.setOnClickListener(button -> handleDelete());
+            binding.buttonDelete.setOnClickListener(button -> promptDelete());
         }
 
-        public void handleDelete() {
-            //TODO
+        /**
+         * Prompts the user with a dialog to delete the chatroom
+         */
+        public void promptDelete(){
+            DeleteChatDialog dialog = new DeleteChatDialog(mPost, mFragMan, this);
+            dialog.show(mFragMan, "pls delete the chat");
         }
 
-        public void deleteRequest() {
-            //TODO
+        /**
+         * Remove the chatroom and update the recycler view
+         */
+        public void deleteRequest(){
+            mMessages.remove(mPost);
+            notifyDataSetChanged();
         }
     }
 }

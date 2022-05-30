@@ -21,6 +21,8 @@
         <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_change_nickname.xml" value="0.3359375" />
         <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_chat_message.xml" value="0.31302083333333336" />
         <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_contact_list.xml" value="0.1" />
+        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_delete_chat.xml" value="0.39947916666666666" />
+        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_delete_chat_dialog.xml" value="0.39947916666666666" />
         <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_message_card.xml" value="0.4296875" />
         <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_message_list.xml" value="0.4296875" />
         <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_new_chat.xml" value="0.3359375" />
@@ -28,6 +30,7 @@
         <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_register.xml" value="0.3359375" />
         <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_settings.xml" value="0.3359375" />
         <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_sign_in.xml" value="0.5" />
+        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/layout_chatroom_row.xml" value="0.39947916666666666" />
         <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/menu/bottom_nav_menu.xml" value="0.3359375" />
         <entry key="app/src/main/res/drawable-v24/ic_contact_add_24dp.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_multiple_people_24dp.xml" value="0.1" />
