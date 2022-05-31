@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/chatRoomFragment"
-        android:name="edu.uw.tcss450.team5.holochat.ui.chats.ChatRoomFragment"
+        android:name="edu.uw.tcss450.team5.holochat.ui.chats.chatroom.ChatRoomFragment"
         android:label="Chatroom"
         tools:layout="@layout/fragment_chat_room" >
         <argument
@@ -96,7 +96,7 @@
     </fragment>
     <fragment
         android:id="@+id/newChatFragment"
-        android:name="edu.uw.tcss450.team5.holochat.ui.chats.NewChatFragment"
+        android:name="edu.uw.tcss450.team5.holochat.ui.chats.new_chatroom.NewChatFragment"
         android:label="Make a Chatroom"
         tools:layout="@layout/fragment_new_chat">
         <action
@@ -105,7 +105,7 @@
     </fragment>
     <fragment
         android:id="@+id/navigation_messages"
-        android:name="edu.uw.tcss450.team5.holochat.ui.chats.MessageListFragment"
+        android:name="edu.uw.tcss450.team5.holochat.ui.chats.chatroom_list.MessageListFragment"
         android:label="Messages">
         <action
             android:id="@+id/action_navigation_messages_to_chatRoomFragment"
@@ -116,7 +116,7 @@
     </fragment>
     <fragment
         android:id="@+id/addContactToChatFragment"
-        android:name="edu.uw.tcss450.team5.holochat.ui.chats.AddContactToChatFragment"
+        android:name="edu.uw.tcss450.team5.holochat.ui.chats.chatroom.AddContactToChatFragment"
         android:label="Add Contact to Chatroom"
         tools:layout="@layout/fragment_add_contact_to_chat">
         <action
@@ -131,7 +131,7 @@
     </fragment>
     <fragment
         android:id="@+id/viewChatMembersFragment"
-        android:name="edu.uw.tcss450.team5.holochat.ui.chats.ViewChatMembersFragment"
+        android:name="edu.uw.tcss450.team5.holochat.ui.chats.new_chatroom.ViewChatMembersFragment"
         android:label="View Chat Members"
         tools:layout="@layout/fragment_view_chat_members">
         <action

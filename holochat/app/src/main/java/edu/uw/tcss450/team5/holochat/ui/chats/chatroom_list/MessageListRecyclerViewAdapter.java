@@ -1,4 +1,4 @@
-package edu.uw.tcss450.team5.holochat.ui.chats;
+package edu.uw.tcss450.team5.holochat.ui.chats.chatroom_list;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +13,7 @@ import java.util.List;
 
 import edu.uw.tcss450.team5.holochat.databinding.FragmentMessageCardBinding;
 import edu.uw.tcss450.team5.holochat.R;
+import edu.uw.tcss450.team5.holochat.ui.chats.chatroom.DeleteChatDialog;
 
 /**
  * Puts messages from the view model in a tangible form for display

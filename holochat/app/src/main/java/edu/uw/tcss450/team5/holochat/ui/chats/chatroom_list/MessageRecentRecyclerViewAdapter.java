@@ -1,4 +1,4 @@
-package edu.uw.tcss450.team5.holochat.ui.chats;
+package edu.uw.tcss450.team5.holochat.ui.chats.chatroom_list;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

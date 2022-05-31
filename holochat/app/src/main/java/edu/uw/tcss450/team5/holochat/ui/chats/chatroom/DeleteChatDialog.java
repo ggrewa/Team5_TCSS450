@@ -1,28 +1,28 @@
-package edu.uw.tcss450.team5.holochat.ui.chats;
+package edu.uw.tcss450.team5.holochat.ui.chats.chatroom;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import org.json.JSONObject;
 
 import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentMessageListBinding;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
+import edu.uw.tcss450.team5.holochat.ui.chats.chatroom_list.MessageListRecyclerViewAdapter;
+import edu.uw.tcss450.team5.holochat.ui.chats.new_chatroom.MessageListViewModel;
+import edu.uw.tcss450.team5.holochat.ui.chats.chatroom_list.MessagePost;
 
 /**
  * Dialog prompt to delete a chat

@@ -23,7 +23,7 @@ import com.auth0.android.jwt.JWT;
 import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentHomeBinding;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
-import edu.uw.tcss450.team5.holochat.ui.chats.MessageRecentRecyclerViewAdapter;
+import edu.uw.tcss450.team5.holochat.ui.chats.chatroom_list.MessageRecentRecyclerViewAdapter;
 
 public class HomeFragment extends Fragment {
 

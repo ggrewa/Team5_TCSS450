@@ -1,4 +1,4 @@
-package edu.uw.tcss450.team5.holochat.ui.chats;
+package edu.uw.tcss450.team5.holochat.ui.chats.chatroom;
 
 import android.app.Application;
 import android.util.Log;
@@ -27,7 +27,7 @@ import java.util.Objects;
 
 import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.io.RequestQueueSingleton;
-import edu.uw.tcss450.team5.holochat.ui.chats.ChatMessage;
+import edu.uw.tcss450.team5.holochat.ui.chats.chatroom.ChatMessage;
 
 public class ChatViewModel extends AndroidViewModel {
 

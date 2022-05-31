@@ -1,13 +1,11 @@
-package edu.uw.tcss450.team5.holochat.ui.chats;
+package edu.uw.tcss450.team5.holochat.ui.chats.new_chatroom;
 
-import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,8 +23,6 @@ import java.util.List;
 import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentNewChatBinding;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
-import edu.uw.tcss450.team5.holochat.ui.HomeFragmentDirections;
-import edu.uw.tcss450.team5.holochat.ui.contacts.ContactListRecyclerViewAdapter;
 import edu.uw.tcss450.team5.holochat.ui.contacts.ContactListSingle;
 import edu.uw.tcss450.team5.holochat.ui.contacts.ContactListViewModel;
 

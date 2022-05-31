@@ -1,4 +1,4 @@
-package edu.uw.tcss450.team5.holochat.ui.chats;
+package edu.uw.tcss450.team5.holochat.ui.chats.new_chatroom;
 
 import android.app.Application;
 import android.util.Log;

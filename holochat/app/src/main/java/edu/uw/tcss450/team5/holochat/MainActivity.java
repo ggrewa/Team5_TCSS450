@@ -31,8 +31,8 @@ import edu.uw.tcss450.team5.holochat.databinding.ActivityMainBinding;
 import edu.uw.tcss450.team5.holochat.model.NewMessageCountViewModel;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
 import edu.uw.tcss450.team5.holochat.services.PushReceiver;
-import edu.uw.tcss450.team5.holochat.ui.chats.ChatMessage;
-import edu.uw.tcss450.team5.holochat.ui.chats.ChatViewModel;
+import edu.uw.tcss450.team5.holochat.ui.chats.chatroom.ChatMessage;
+import edu.uw.tcss450.team5.holochat.ui.chats.chatroom.ChatViewModel;
 import edu.uw.tcss450.team5.holochat.utils.AppSharedPref;
 
 /*

@@ -1,4 +1,4 @@
-package edu.uw.tcss450.team5.holochat.ui.chats;
+package edu.uw.tcss450.team5.holochat.ui.chats.chatroom;
 
 import android.os.Bundle;
 
@@ -23,8 +23,10 @@ import java.util.List;
 import edu.uw.tcss450.team5.holochat.MainActivity;
 import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentAddContactToChatBinding;
-import edu.uw.tcss450.team5.holochat.databinding.FragmentNewChatBinding;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
+import edu.uw.tcss450.team5.holochat.ui.chats.new_chatroom.NewChatFragmentDirections;
+import edu.uw.tcss450.team5.holochat.ui.chats.new_chatroom.NewChatRecyclerViewAdapter;
+import edu.uw.tcss450.team5.holochat.ui.chats.new_chatroom.NewChatViewModel;
 import edu.uw.tcss450.team5.holochat.ui.contacts.ContactListSingle;
 import edu.uw.tcss450.team5.holochat.ui.contacts.ContactListViewModel;
 

@@ -17,7 +17,7 @@ import org.json.JSONException;
 
 import edu.uw.tcss450.team5.holochat.AuthActivity;
 import edu.uw.tcss450.team5.holochat.R;
-import edu.uw.tcss450.team5.holochat.ui.chats.ChatMessage;
+import edu.uw.tcss450.team5.holochat.ui.chats.chatroom.ChatMessage;
 import me.pushy.sdk.Pushy;
 
 public class PushReceiver extends BroadcastReceiver {
