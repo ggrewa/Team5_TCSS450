@@ -13,7 +13,6 @@ import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,40 +31,39 @@ import edu.uw.tcss450.team5.holochat.ui.contacts.Contact;
 import edu.uw.tcss450.team5.holochat.ui.contacts.ContactListSingle;
 
 /**
- * utilizes a web service to retrieve all contacts of a user and stores into a view model
+ * Stores chat members that are in a specific chatroom
  *
  * @author Ken
- * @author Tarnveer
  */
 public class ChatMembersViewModel extends AndroidViewModel {
 
     /**
      * A Map of Lists of Chat Rooms.
-     * The Key represents the Email
-     * The value represents the List of (known) rooms for that Email.
+     * The Key represents the chatid
+     * The value represents the List of (known) members for that chatid
      */
-    private Map<String, MutableLiveData<List<ContactListSingle>>> mContact;
-    private MutableLiveData<List<Contact>> mContactList;
+    private Map<Integer, MutableLiveData<List<ContactListSingle>>> mMembers;
+    private MutableLiveData<List<Contact>> mMembersList;
     private final MutableLiveData<JSONObject> mResponse;
 
     public ChatMembersViewModel(@NonNull Application application) {
         super(application);
-        mContact = new HashMap<>();
-        mContactList = new MutableLiveData<>(new ArrayList<>());
+        mMembers = new HashMap<>();
+        mMembersList = new MutableLiveData<>(new ArrayList<>());
         mResponse = new MutableLiveData<>();
         mResponse.setValue(new JSONObject());
     }
 
     /**
      * Register as an observer to listen to a specific Emails list of chat rooms.
-     * @param email the email of the room to observer
+     * @param chatid the chatid of the room to observe
      * @param owner the fragments lifecycle owner
      * @param observer the observer
      */
-    public void addContactObserver(String email,
+    public void addContactObserver(Integer chatid,
                                    @NonNull LifecycleOwner owner,
                                    @NonNull Observer<? super List<ContactListSingle>> observer) {
-        getOrCreateMapEntry(email).observe(owner, observer);
+        getOrCreateMapEntry(chatid).observe(owner, observer);
     }
 
     /**
@@ -76,18 +74,18 @@ public class ChatMembersViewModel extends AndroidViewModel {
      * mutated externally in client code. Use public methods available in this class as
      * needed.
      *
-     * @param email the email of the room List to retrieve
+     * @param chatID the members linked to the id to retrieve
      * @return a reference to the list of messages
      */
-    public List<ContactListSingle> getContactListByEmail(final String email) {
-        return getOrCreateMapEntry(email).getValue();
+    public List<ContactListSingle> getContactListByChatID(final Integer chatID) {
+        return getOrCreateMapEntry(chatID).getValue();
     }
 
-    private MutableLiveData<List<ContactListSingle>> getOrCreateMapEntry(final String email) {
-        if(!mContact.containsKey(email)) {
-            mContact.put(email, new MutableLiveData<>(new ArrayList<>()));
+    private MutableLiveData<List<ContactListSingle>> getOrCreateMapEntry(final Integer chatID) {
+        if(!mMembers.containsKey(chatID)) {
+            mMembers.put(chatID, new MutableLiveData<>(new ArrayList<>()));
         }
-        return mContact.get(email);
+        return mMembers.get(chatID);
     }
 
     /**
@@ -97,7 +95,7 @@ public class ChatMembersViewModel extends AndroidViewModel {
      *
      * @param jwt the users signed JWT
      */
-    public void getContacts( final String jwt, final int theChatID) {
+    public void getChatMembers(final String jwt, final int theChatID) {
         String url = getApplication().getResources().getString(R.string.base_url_service) +
                 "chats/viewmembers/" + theChatID;
 
@@ -130,13 +128,13 @@ public class ChatMembersViewModel extends AndroidViewModel {
 
     /**
      * When a room is created from outside the view model. Add it with this method.
-     * @param email
+     * @param chatID
      * @param contact
      */
-    public void addContact(final String email, final ContactListSingle contact) {
-        List<ContactListSingle> list = getContactListByEmail(email);
+    public void addContact(final Integer chatID, final ContactListSingle contact) {
+        List<ContactListSingle> list = getContactListByChatID(chatID);
         list.add(contact);
-        getOrCreateMapEntry(email).setValue(list);
+        getOrCreateMapEntry(chatID).setValue(list);
     }
 
     private void handleSuccess(final JSONObject response) {
@@ -145,7 +143,8 @@ public class ChatMembersViewModel extends AndroidViewModel {
             throw new IllegalStateException("Unexpected response in ChatRoomViewModel: " + response);
         }
         try {
-            list = getContactListByEmail(response.getString("email"));
+            int chatID = Integer.parseInt(response.getString("chatID"));
+            list = getContactListByChatID(chatID);
             JSONArray contacts = response.getJSONArray("contacts");
             for(int i = 0; i < contacts.length(); i++) {
                 JSONObject contact = contacts.getJSONObject(i);
@@ -166,7 +165,7 @@ public class ChatMembersViewModel extends AndroidViewModel {
 
             }
             //inform observers of the change (setValue)
-            getOrCreateMapEntry(response.getString("email")).setValue(list);
+            getOrCreateMapEntry(chatID).setValue(list);
         }catch (JSONException e) {
             Log.e("JSON PARSE ERROR", "Found in handle Success ChatRoomViewModel");
             Log.e("JSON PARSE ERROR", "Error: " + e.getMessage());
@@ -187,37 +186,6 @@ public class ChatMembersViewModel extends AndroidViewModel {
     }
 
     /**
-     * Connects to webservice endpoint to retrieve a list of contacts.
-     *
-     * @param jwt a valid jwt.
-     */
-    public void connectGet (String jwt){
-        String base_url = getApplication().getResources().getString(R.string.base_url_service);
-        String url = base_url + "/contacts";
-        Request request = new JsonObjectRequest(
-                Request.Method.GET,
-                url,
-                null, //no body for this get request
-                this::handleSuccess,
-                this::handleError) {
-            @Override
-            public Map<String, String> getHeaders() {
-                Map<String, String> headers = new HashMap<>();
-                // add headers <key,value>
-                headers.put("Authorization", jwt);
-                return headers;
-            }
-        };
-        request.setRetryPolicy(new DefaultRetryPolicy(
-                10_000,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        //Instantiate the RequestQueue and add the request to the queue
-        Volley.newRequestQueue(getApplication().getApplicationContext())
-                .add(request);
-    }
-
-    /**
      * Add an observer to the contact list view model.
      *
      * @param owner the owner
@@ -225,6 +193,6 @@ public class ChatMembersViewModel extends AndroidViewModel {
      */
     public void addContactListObserver(@NonNull LifecycleOwner owner,
                                        @NonNull Observer<? super List<Contact>> observer){
-        mContactList.observe(owner, observer);
+        mMembersList.observe(owner, observer);
     }
 }

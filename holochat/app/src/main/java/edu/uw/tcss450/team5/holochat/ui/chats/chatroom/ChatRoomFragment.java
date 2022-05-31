@@ -43,7 +43,6 @@ public class ChatRoomFragment extends Fragment {
         mArgs = ChatRoomFragmentArgs.fromBundle(getArguments());
         mChatId = mArgs.getChatID();
         mName = mArgs.getName();
-        ((MainActivity)getActivity()).setTitle(mName);
 
         ViewModelProvider provider = new ViewModelProvider(getActivity());
         mUserModel = provider.get(UserInfoViewModel.class);
@@ -117,6 +116,9 @@ public class ChatRoomFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         FragmentChatRoomBinding binding = FragmentChatRoomBinding.bind(getView());
+
+        //set chatroom title in the actionbar
+        ((MainActivity)getActivity()).setTitle(mName);
 
         //SetRefreshing shows the internal Swiper view progress bar. Show this until messages load
         binding.swipeContainer.setRefreshing(true);
