@@ -10,9 +10,6 @@ import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
 
 public class ContactListSingle implements Serializable {
 
-    private final String mContact;
-    private final String mEmail;
-    private final int mContactId;
     private UserInfoViewModel mUserModel;
     private ContactViewModel mContactViewModel;
     private ArrayList<String> mContacts;
