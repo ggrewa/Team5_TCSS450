@@ -19,6 +19,9 @@ import edu.uw.tcss450.team5.holochat.R;
 /**
  * Adapts a ContactListViewModel into a RecyclerView
  * so the data can be displayed on the app
+ *
+ *  @author Ken
+ *  @author Tarnveer
  */
 
 public class ContactListRecyclerViewAdapter extends RecyclerView.Adapter<ContactListRecyclerViewAdapter.ContactViewHolder> {
@@ -63,15 +66,15 @@ public class ContactListRecyclerViewAdapter extends RecyclerView.Adapter<Contact
 
             int standard = (int) res.getDimension(R.dimen.room_margin);
 
-            String contactText = contact.getContact();
-            if(contact.getContact().length() > 25) {
+            String contactText = contact.getContactUsername();
+            if(contact.getContactUsername().length() > 25) {
                 contactText = contactText.substring(0,25) + "...";
             }
             binding.contactListRoot.setOnClickListener(view -> {
                 Navigation.findNavController(mView)
                         .navigate(ContactListFragmentDirections
                                 .actionNavigationContactsListToNavigationContactInfo(
-                                        contact.getContactEmail(), contact.getContact(),"( ͡° ͜ʖ ͡°)" ));
+                                        contact.getContactEmail(), contact.getContactUsername(),"( ͡° ͜ʖ ͡°)" ));
             });
 
             binding.contactName.setText(contactText);

@@ -31,8 +31,8 @@ import edu.uw.tcss450.team5.holochat.databinding.ActivityMainBinding;
 import edu.uw.tcss450.team5.holochat.model.NewMessageCountViewModel;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
 import edu.uw.tcss450.team5.holochat.services.PushReceiver;
-import edu.uw.tcss450.team5.holochat.ui.chats.ChatMessage;
-import edu.uw.tcss450.team5.holochat.ui.chats.ChatViewModel;
+import edu.uw.tcss450.team5.holochat.ui.chats.chatroom.ChatMessage;
+import edu.uw.tcss450.team5.holochat.ui.chats.chatroom.ChatViewModel;
 import edu.uw.tcss450.team5.holochat.utils.AppSharedPref;
 
 /*
@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.toolbar, menu);
+        getMenuInflater().inflate(R.menu.main_toolbar, menu);
         return true;
     }
 
@@ -142,12 +142,19 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("SIGNOUT", "Clicked");
                 signOut();
                 return true;
-            case android.R.id.home:
-                this.finish(); //back button hit pop off the stack
-                return true;
+//            case android.R.id.home:
+//                this.finish(); //back button hit pop off the stack
+//                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
+                || super.onSupportNavigateUp();
     }
 
     /**
@@ -175,6 +182,12 @@ public class MainActivity extends AppCompatActivity {
             unregisterReceiver(mPushMessageReceiver);
         }
     }
+
+    public void setTitle(String title)
+    {
+        getSupportActionBar().setTitle(title);
+    }
+
 
     /**
      * Signs the user out

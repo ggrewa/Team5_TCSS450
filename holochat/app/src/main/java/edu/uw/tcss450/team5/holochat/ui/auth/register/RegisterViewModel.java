@@ -26,6 +26,8 @@ import org.json.JSONObject;
 import java.nio.charset.Charset;
 import java.util.Objects;
 
+import edu.uw.tcss450.team5.holochat.R;
+
 /*
  * View model for the register view model.
  *
@@ -103,7 +105,8 @@ public class RegisterViewModel extends AndroidViewModel {
                         final String email,
                         final String password) {
         //String url = "https://cfb3-tcss450-labs-2021sp.herokuapp.com/auth";
-        String url = "https://team5-tcss450-holochat.herokuapp.com/auth";
+        String base_url = getApplication().getResources().getString(R.string.base_url_service);
+        String url = base_url + "auth";
         JSONObject body = new JSONObject();
         try {
             body.put("first", first);
