@@ -131,9 +131,9 @@
     </fragment>
     <fragment
         android:id="@+id/viewChatMembersFragment"
-        android:name="edu.uw.tcss450.team5.holochat.ui.chats.new_chatroom.ViewChatMembersFragment"
+        android:name="edu.uw.tcss450.team5.holochat.ui.chats.chatroom.ChatMembersFragment"
         android:label="View Chat Members"
-        tools:layout="@layout/fragment_view_chat_members">
+        tools:layout="@layout/fragment_chat_members">
         <action
             android:id="@+id/action_viewChatMembersFragment_to_chatRoomFragment"
             app:destination="@id/chatRoomFragment" />
