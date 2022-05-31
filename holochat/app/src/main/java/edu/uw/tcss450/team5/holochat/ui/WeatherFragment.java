@@ -8,17 +8,22 @@ import androidx.fragment.app.Fragment;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,6 +37,7 @@ import java.util.Date;
 import java.util.Objects;
 import java.util.TimeZone;
 
+import edu.uw.tcss450.team5.holochat.MainActivity;
 import edu.uw.tcss450.team5.holochat.R;
 
 /**
@@ -39,12 +45,38 @@ import edu.uw.tcss450.team5.holochat.R;
  */
 public class WeatherFragment extends Fragment {
 
+    //defining layout attributes to be linked to the existing xml attributes in fragment_weather.xml
+
+    /**
+     * defining layout attributes related to changing location
+     */
+    //button allow the user to select a search type
+    View dropDown;
     //textbox where the user can enter the city/zip
     EditText inputBox;
-    //button to refresh results
-    Button btnget;
-    //text result of the weather for testing purposes
-    TextView resultBox;
+    //button to allow the user to search the input they entered for city/zip
+    Button searchbtn;
+
+    /**
+     * defining layout attributes related to current weather
+     */
+    //displays the day of the week as well as the city if it is gettable by the current search method
+    //if not will display coordinates
+    TextView dayAndCityText;
+    //displays the weather current weather description to the user
+    TextView descriptionText;
+    //image view that shows the icon for the current weather conditions
+    ImageView curIcon;
+    //displays the current temperature
+    TextView tempText;
+    //displays the temp the current weather feels like
+    TextView feelsLikeText;
+    //displays the pressure of the current weather
+    TextView pressureText;
+    //displays the humidity of the current weather
+    TextView humidityText;
+    //displays the wind speed of the current weather
+    TextView windText;
 
 
     //api key linked to my account (masonh6) i assume this is already stored in the webservice
@@ -66,12 +98,56 @@ public class WeatherFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        //set up search for zipcodes
         inputBox = view.findViewById(R.id.inputBox);
+        inputBox.setVisibility(View.GONE);
+        searchbtn = view.findViewById(R.id.searchbtn);
+        searchbtn.setOnClickListener(this::getWeatherDetails);
+        searchbtn.setVisibility(View.GONE);
+
+        //testing geting images from internet into an imageview
+        curIcon = view.findViewById(R.id.curIcon);
+        String sampleIcon = "04d";
+        String sampleIconUrl = "https://openweathermap.org/img/w/" + sampleIcon + ".png";
+        String sample2 = "https://media.geeksforgeeks.org/wp-content/cdn-uploads/logo-new-2.svg";
+        Picasso.with(getContext()).load(sampleIconUrl).into(curIcon);
+
+
         //etCity.setText("Tacoma");
-        btnget = view.findViewById(R.id.btnget);
-        btnget.setOnClickListener(this::getWeatherDetails);
-        resultBox = view.findViewById(R.id.resultBox);
-        connect("seattle");
+        //btnget = view.findViewById(R.id.btnget);
+        //btnget.setOnClickListener(this::getWeatherDetails);
+        //resultBox = view.findViewById(R.id.resultBox);
+        //connect("seattle");
+
+        dropDown = view.findViewById(R.id.changeLocationButton);
+        dropDown.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popupMenu = new PopupMenu(getActivity(), dropDown);
+
+                popupMenu.getMenuInflater().inflate(R.menu.location_choice, popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+
+                        if(menuItem.getTitle().equals("City/Zipcode")){
+                            //display serach bar and search button to user
+                            inputBox.setVisibility(View.VISIBLE);
+                            searchbtn.setVisibility(View.VISIBLE);
+
+                        } else if (menuItem.getTitle().equals("Select On Map")){
+                            //think we need a new frag to show a map
+                        } else if (menuItem.getTitle().equals("Current Location")){
+                            //get current location and update weather no additional action required by user
+                        }
+
+
+                        return true;
+                    }
+                });
+                popupMenu.show();
+            }
+        });
     }
 
     /**
@@ -81,12 +157,16 @@ public class WeatherFragment extends Fragment {
     public void getWeatherDetails(View view){
 
         //get city from user input and construct first temp url
-        String city = inputBox.getText().toString().trim();
-        if(city.equals("")){
-            resultBox.setText("bro you forgot to enter the city");
+        String zip = inputBox.getText().toString().trim();
+        if(zip.equals("")){
+            //resultBox.setText("bro you forgot to enter the city");
+            Toast.makeText(getActivity(), "You Must Enter a Zipcode", Toast.LENGTH_SHORT).show();
         } else {
             //call connect method with user input
-            connect(city);
+            connect(zip);
+            inputBox.setVisibility(View.GONE);
+            searchbtn.setVisibility(View.GONE);
+            System.out.println("look its the enterd zip" + zip);//works!
         }
     }
 
@@ -95,7 +175,7 @@ public class WeatherFragment extends Fragment {
      * makes call to webservice, need to figure out how to put location/zip in body
      * @param zipOrCity
      */
-    public void connect(String zipOrCity) {
+    public void connect(String zip) {
         String webServiceUrl = "https://team5-tcss450-holochat.herokuapp.com/weather";
         Request request = new JsonObjectRequest(
                 Request.Method.GET,
@@ -113,6 +193,7 @@ public class WeatherFragment extends Fragment {
     }
 
     //get resulting json
+    //needs to be updated based on new json structure from gurleen
     public void handleResult(final JSONObject jsonResponse){
         String output = "";
         try {
@@ -191,7 +272,7 @@ public class WeatherFragment extends Fragment {
 
             }
             //print to textview
-            resultBox.setText(output);
+           // resultBox.setText(output);
 
         } catch (JSONException e) {
             e.printStackTrace();
