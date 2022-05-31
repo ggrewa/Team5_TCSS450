@@ -21,11 +21,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/etCity"
+        android:id="@+id/inputBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="11dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="36dp"
         android:ems="10"
         android:hint="Enter City Name"
         android:inputType="textPersonName"
@@ -34,7 +34,7 @@
         app:layout_constraintEnd_toStartOf="@+id/btnget" />
 
     <TextView
-        android:id="@+id/tvResult"
+        android:id="@+id/resultBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="232dp"

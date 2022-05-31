@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/TheTCSS450Project/Team5_TCSS450/holochat/app/src/main/res/drawable-v24/ic_theme_grey_24dp.xml" value="0.32" />
+        <entry key="..\:/TheTCSS450Project/Team5_TCSS450/holochat/app/src/main/res/drawable/ic_send_dark.xml" value="0.32" />
+        <entry key="..\:/TheTCSS450Project/Team5_TCSS450/holochat/app/src/main/res/drawable/ic_user_search_black_24dp.xml" value="0.32" />
+        <entry key="..\:/TheTCSS450Project/Team5_TCSS450/holochat/app/src/main/res/drawable/ic_wb_sunny_24dp.xml" value="0.32" />
+        <entry key="..\:/TheTCSS450Project/Team5_TCSS450/holochat/app/src/main/res/drawable/ic_weather_thermostat_black24dp.xml" value="0.32" />
         <entry key="..\:/TheTCSS450Project/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_weather.xml" value="0.21388888888888888" />
         <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_sign_in.xml" value="0.5" />
         <entry key="app/src/main/res/drawable/style_round_corners.xml" value="0.1" />
