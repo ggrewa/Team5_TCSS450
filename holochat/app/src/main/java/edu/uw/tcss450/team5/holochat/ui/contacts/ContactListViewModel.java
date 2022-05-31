@@ -28,6 +28,7 @@ import java.util.Objects;
 
 import edu.uw.tcss450.team5.holochat.io.RequestQueueSingleton;
 import edu.uw.tcss450.team5.holochat.R;
+import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
 
 /**
  * utilizes a web service to retrieve all contacts of a user and stores into a view model
@@ -41,9 +42,14 @@ public class ContactListViewModel extends AndroidViewModel {
      */
     private Map<String, MutableLiveData<List<ContactListSingle>>> mContact;
 
+    private MutableLiveData<List<Contact>> mContacts;
+    private UserInfoViewModel userInfoViewModel;
+
     public ContactListViewModel(@NonNull Application application) {
         super(application);
         mContact = new HashMap<>();
+        mContacts = new MutableLiveData<>();
+        mContacts.setValue(new ArrayList<>());
     }
 
     /**

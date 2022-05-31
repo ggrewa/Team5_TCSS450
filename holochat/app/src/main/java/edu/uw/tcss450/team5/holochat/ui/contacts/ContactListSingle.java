@@ -4,12 +4,18 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+
+import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
 
 public class ContactListSingle implements Serializable {
 
     private final String mContact;
     private final String mEmail;
     private final int mContactId;
+    private UserInfoViewModel mUserModel;
+    private ContactViewModel mContactViewModel;
+    private ArrayList<String> mContacts;
 
     public ContactListSingle(int contactId, String contact, String email) {
         this.mContact = contact;
