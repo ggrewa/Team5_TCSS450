@@ -27,7 +27,6 @@ import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
 import edu.uw.tcss450.team5.holochat.ui.chats.new_chatroom.NewChatRecyclerViewAdapter;
 import edu.uw.tcss450.team5.holochat.ui.chats.new_chatroom.NewChatViewModel;
 import edu.uw.tcss450.team5.holochat.ui.contacts.ContactListSingle;
-import edu.uw.tcss450.team5.holochat.ui.contacts.ContactListViewModel;
 
 /**
  * View all members in a chatroom
@@ -38,7 +37,7 @@ public class ChatMembersFragment extends Fragment {
 
 
     private ChatMembersViewModel mChatMembersModel;
-    private NewChatRecyclerViewAdapter mChatAdapter;
+    private NewChatRecyclerViewAdapter mMembersAdapter;
     private NewChatViewModel mChatModel;
     private UserInfoViewModel mUserInfoModel;
     private FragmentChatMembersBinding binding;
@@ -64,7 +63,7 @@ public class ChatMembersFragment extends Fragment {
         mChatModel = provider.get(NewChatViewModel.class);
         mUserInfoModel = provider.get(UserInfoViewModel.class);
         mChatMembersModel = provider.get(ChatMembersViewModel.class);
-        mChatMembersModel.getMembers(mUserInfoModel.getJwt(), mChatID);
+        mChatMembersModel.getContacts(mUserInfoModel.getJwt(), mChatID);
 
         Log.i("ADDCHAT", "Prompted to try to add members to chatroom");
 
@@ -89,16 +88,16 @@ public class ChatMembersFragment extends Fragment {
 
         //initialize recycler view
         final RecyclerView rv = binding.recyclerAddChatContacts;
-        List<ContactListSingle> listOfContacts = mChatMembersModel.getContactListByChatID(mChatID);
+        List<ContactListSingle> listOfContacts = mChatMembersModel.getContactListByEmail(mUserInfoModel.getEmail());
         if(listOfContacts.isEmpty()) { //fill contacts list if it was empty
-            mChatMembersModel.getMembers(mUserInfoModel.getJwt(), mChatID);
-            listOfContacts = mChatMembersModel.getContactListByChatID(mChatID);
+            mChatMembersModel.getContacts(mUserInfoModel.getJwt(), mChatID);
+            listOfContacts = mChatMembersModel.getContactListByEmail(mUserInfoModel.getEmail());
         }
-        mChatAdapter = new NewChatRecyclerViewAdapter(listOfContacts);
-        rv.setAdapter(mChatAdapter);
+        mMembersAdapter = new NewChatRecyclerViewAdapter(listOfContacts);
+        rv.setAdapter(mMembersAdapter);
 
         //observer that resets the recycler view if the dataset changed
-        mChatMembersModel.addMemberObserver(mChatID, getViewLifecycleOwner(),
+        mChatMembersModel.addContactObserver(mUserInfoModel.getEmail(), getViewLifecycleOwner(),
                 list -> {
                     /*
                      * This solution needs work on the scroll position. As a group,
@@ -121,7 +120,7 @@ public class ChatMembersFragment extends Fragment {
      * @throws JSONException
      */
     private void handleAddContacts() throws JSONException {
-        ArrayList<Integer> selectedContacts = mChatAdapter.getSelectedList();
+        ArrayList<Integer> selectedContacts = mMembersAdapter.getSelectedList();
         selectedContacts.add(mUserInfoModel.getMemberID());
         int[] temp = new int[selectedContacts.size()];
 
@@ -130,7 +129,7 @@ public class ChatMembersFragment extends Fragment {
         }
 
         mChatModel.putMembers(mUserInfoModel.getJwt(), temp, mChatID);
-        mChatAdapter.notifyDataSetChanged();
+        mMembersAdapter.notifyDataSetChanged();
         Navigation.findNavController(getView())
                 .navigate(AddContactToChatFragmentDirections.
                         actionAddContactToChatFragmentToChatRoomFragment(mChatID, mTitle));
