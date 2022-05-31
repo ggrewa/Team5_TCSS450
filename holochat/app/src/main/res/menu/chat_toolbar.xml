@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:anrdoid="http://schemas.android.com/tools">
+
+    <item
+        android:id="@+id/action_add_chat_contact"
+        android:title="@string/text_chat_add_person"
+        android:icon="@drawable/ic_chat_add_person_cyan24dp"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_view_chat_contacts"
+        android:title="@string/text_chat_view_persons"
+        android:icon="@drawable/ic_chat_multiple_people_cyan24dp"
+        app:showAsAction="always" />
+</menu>

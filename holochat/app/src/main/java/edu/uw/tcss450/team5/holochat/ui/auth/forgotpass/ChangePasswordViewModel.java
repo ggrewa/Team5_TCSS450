@@ -21,6 +21,8 @@ import org.json.JSONObject;
 import java.nio.charset.Charset;
 import java.util.Objects;
 
+import edu.uw.tcss450.team5.holochat.R;
+
 public class ChangePasswordViewModel extends AndroidViewModel {
 
     /** JSON response from server when user tries changing password. */
@@ -83,7 +85,8 @@ public class ChangePasswordViewModel extends AndroidViewModel {
      * @param verifCode the verification code typed in by user
      */
     public void connect(final String email, final String verifCode, final String password) {
-        String url = "https://team5-tcss450-holochat.herokuapp.com/changePassword";
+        String base_url = getApplication().getResources().getString(R.string.base_url_service);
+        String url = base_url + "changePassword";
         JSONObject body = new JSONObject();
         try {
             body.put("email", email);
