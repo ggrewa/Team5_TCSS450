@@ -36,7 +36,7 @@ public class ContactRequestListFragment extends Fragment {
         UserInfoViewModel model = new ViewModelProvider(getActivity())
                 .get(UserInfoViewModel.class);
 
-        Log.i("CONTACT", model.getJwt());
+        Log.i("CONTACT_REQUEST", model.getJwt());
         mModel.connectGet(model.getJwt());
     }
 

@@ -21,6 +21,9 @@ import java.util.ArrayList;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentContactSearchBinding;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
 import edu.uw.tcss450.team5.holochat.ui.contacts.info.ContactViewModel;
+import edu.uw.tcss450.team5.holochat.ui.contacts.list.ContactListViewModel;
+import edu.uw.tcss450.team5.holochat.ui.contacts.request.ContactRequestListViewModel;
+import edu.uw.tcss450.team5.holochat.ui.contacts.request.ContactRequestRecyclerViewAdapter;
 
 /**
  * Fragment that hold tools to search for a user of the app and send a friend request
@@ -31,6 +34,7 @@ public class ContactSearchFragment extends Fragment {
     private ContactViewModel mContactViewModel;
     private ArrayList<String> mContacts;
     private FragmentContactSearchBinding binding;
+    private ContactSearchListViewModel mModel;
     public ContactSearchFragment() {
         // Required empty public constructor
     }
@@ -43,6 +47,10 @@ public class ContactSearchFragment extends Fragment {
         ViewModelProvider provider= new ViewModelProvider(getActivity());
         mContactViewModel = provider.get(ContactViewModel.class);
         mUserModel = provider.get(UserInfoViewModel.class);
+
+        mModel = provider.get(ContactSearchListViewModel.class);
+        mModel.connectGet(mUserModel.getJwt(), mUserModel.getMemberID());
+        Log.i("CONTACT_SEARCH", "" + mUserModel.getMemberID());
 
     }
     @Override
@@ -58,15 +66,22 @@ public class ContactSearchFragment extends Fragment {
         mContactViewModel.connect(mUserModel.getEmail(), mUserModel.getJwt());
         mContactViewModel.addResponseObserver(getViewLifecycleOwner(),
                 this::observeContacts);
-        binding.buttonAddContact.setOnClickListener(this::attemptToAdd);
-        binding.buttonDeleteContact.setOnClickListener(this::attemptToDelete);
+        binding.buttonAddContact.setOnClickListener(this::attemptToAddBySearch);
+        binding.buttonDeleteContact.setOnClickListener(this::attemptToDeleteBySearch);
+
+        mModel.addContactRequestListObserver(getViewLifecycleOwner(), contactList -> {
+            //if (!contactList.isEmpty()) {
+            binding.listRoot.setAdapter(
+                    new ContactSearchRecyclerViewAdapter(contactList, getActivity().getSupportFragmentManager())
+            );
+        });
 
     }
 
-    private void attemptToAdd(View view) {
+    private void attemptToAddBySearch(View view) {
     }
 
-    private void attemptToDelete(View view) {
+    private void attemptToDeleteBySearch(View view) {
     }
 
 
