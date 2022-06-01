@@ -70,6 +70,9 @@
         <action
             android:id="@+id/action_navigation_contacts_list_to_navigation_contact_info"
             app:destination="@id/navigation_contact_info" />
+        <action
+            android:id="@+id/action_navigation_contacts_list_to_deleteContact"
+            app:destination="@id/deleteContact" />
     </fragment>
     <fragment
         android:id="@+id/navigation_contact_info"
@@ -106,6 +109,23 @@
         <action
             android:id="@+id/action_changeNicknameFragment_to_navigation_settings"
             app:destination="@id/navigation_settings" />
+    </fragment>
+    <fragment
+        android:id="@+id/deleteContact"
+        android:name="edu.uw.tcss450.team5.holochat.ui.contacts.DeleteContact"
+        android:label="fragment_delete_contact"
+        tools:layout="@layout/fragment_delete_contact" >
+        <argument
+            android:name="contactID"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_deleteContact_to_navigation_contacts_list"
+            app:destination="@id/navigation_contacts_list" />
+        <argument android:name="contactEmail"
+            app:argType="string" />
+        <argument
+            android:name="contactUsername"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/newChatFragment"

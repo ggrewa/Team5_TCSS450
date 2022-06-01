@@ -4,9 +4,15 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+
+import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
 
 public class ContactListSingle implements Serializable {
 
+    private UserInfoViewModel mUserModel;
+    private ContactViewModel mContactViewModel;
+    private ArrayList<String> mContacts;
     private final String mContactUsername;
     private final String mContactEmail;
     private final int mContactMemberID;

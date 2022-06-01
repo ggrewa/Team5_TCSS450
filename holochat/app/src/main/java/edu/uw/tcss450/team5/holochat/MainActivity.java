@@ -167,7 +167,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
         switch(item.getItemId()) {
             case R.id.action_settings:
                 Log.d("SETTINGS", "Clicked");
@@ -182,7 +181,6 @@ public class MainActivity extends AppCompatActivity {
 //                return true;
             default:
                 return super.onOptionsItemSelected(item);
-
         }
     }
 
