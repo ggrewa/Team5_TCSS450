@@ -69,6 +69,10 @@
     <string name="text_chat_add_person">Add contact to chatroom</string>
     <string name="text_chat_view_persons">View contacts in chatroom</string>
 
+    <!--weather-->
+    <string name="label_location">Current location:</string>
+    <string name="title_activity_maps">MapsActivity</string>
+
 
     <string name="base_url_service">https://team5-tcss450-holochat.herokuapp.com/</string>-
     <!--<string name="base_url_service">https://localhost:5000/</string>-->

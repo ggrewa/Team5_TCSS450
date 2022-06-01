@@ -18,7 +18,20 @@
         android:id="@+id/navigation_weather"
         android:name="edu.uw.tcss450.team5.holochat.ui.weather.WeatherFragment"
         android:label="@string/weather_fragment_placeholder"
-        tools:layout="@layout/fragment_weather" />
+        tools:layout="@layout/fragment_weather" >
+        <action
+            android:id="@+id/action_navigation_weather_to_navigation_location"
+            app:destination="@id/navigation_location" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_location"
+        android:name="edu.uw.tcss450.team5.holochat.ui.weather.LocationFragment"
+        android:label="@string/weather_fragment_placeholder"
+        tools:layout="@layout/fragment_location" >
+        <action
+            android:id="@+id/action_navigation_location_to_navigation_weather"
+            app:destination="@id/navigation_weather" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_settings"
         android:name="edu.uw.tcss450.team5.holochat.ui.home.SettingsFragment"
