@@ -1,4 +1,4 @@
-package edu.uw.tcss450.team5.holochat.ui.contacts.list;
+package edu.uw.tcss450.team5.holochat.ui.contacts.info;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -7,7 +7,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
-import edu.uw.tcss450.team5.holochat.ui.contacts.info.ContactViewModel;
 
 public class ContactListSingle implements Serializable {
 

@@ -66,8 +66,7 @@ public class ContactSearchFragment extends Fragment {
         mContactViewModel.connect(mUserModel.getEmail(), mUserModel.getJwt());
         mContactViewModel.addResponseObserver(getViewLifecycleOwner(),
                 this::observeContacts);
-        binding.buttonAddContact.setOnClickListener(this::attemptToAddBySearch);
-        binding.buttonDeleteContact.setOnClickListener(this::attemptToDeleteBySearch);
+        binding.buttonFindContact.setOnClickListener(this::attemptToFind);
 
         mModel.addContactRequestListObserver(getViewLifecycleOwner(), contactList -> {
             //if (!contactList.isEmpty()) {
@@ -78,10 +77,7 @@ public class ContactSearchFragment extends Fragment {
 
     }
 
-    private void attemptToAddBySearch(View view) {
-    }
-
-    private void attemptToDeleteBySearch(View view) {
+    private void attemptToFind(View view) {
     }
 
 
