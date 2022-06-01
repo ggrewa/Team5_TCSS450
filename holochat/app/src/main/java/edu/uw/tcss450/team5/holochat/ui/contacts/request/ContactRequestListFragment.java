@@ -19,6 +19,7 @@ import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
 /**
  * Fragment that holds all friend requests the user has recieved
  * @author Tarnveer
+ * @AUTHOR KEN
  */
 public class ContactRequestListFragment extends Fragment {
     private ContactRequestListViewModel mModel;
@@ -62,7 +63,7 @@ public class ContactRequestListFragment extends Fragment {
                 int size = contactList.size();
                 binding.textContactRequestLabel.setText("You have "+ size + " incoming request(s):");
             } else {
-                binding.textContactRequestLabel.setText("You have no incoming requests.");
+                binding.textContactRequestLabel.setText("You have no incoming requests ( ˃̣̣̥⌓˂̣̣̥)");
             }
             binding.listRoot.setAdapter(
                     new ContactRequestRecyclerViewAdapter(contactList, getActivity().getSupportFragmentManager())

@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import edu.uw.tcss450.team5.holochat.MainActivity;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentContactInfoBinding;
+import edu.uw.tcss450.team5.holochat.ui.contacts.request.DeleteContactDialog;
 
 /**
  * Fragment that shows given Contact's username and email, also can start a new chat with given
@@ -77,8 +78,8 @@ public class ContactInfoFragment extends Fragment {
      * navigates to a contacts profile.
      */
     private void openDialog() {
-//        DeleteContactDialog dialog = new DeleteContactDialog(mUserName,
-//                mContactID);
-//        dialog.show(mFragmMan, "maybe?");
+        DeleteContactDialog dialog = new DeleteContactDialog(mUserName,
+                mContactID);
+        dialog.show(mFragmMan, "maybe?");
     }
 }

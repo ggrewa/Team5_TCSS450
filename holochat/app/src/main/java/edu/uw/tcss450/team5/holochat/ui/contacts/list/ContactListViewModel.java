@@ -152,7 +152,7 @@ public class ContactListViewModel extends AndroidViewModel {
      * @param memberID to delete/unfriend
      */
     public void deleteContact (String jwt, int memberID){
-        String url = getApplication().getResources().getString(R.string.base_url_service)  + "contacts/contact/"+memberID;
+        String url = getApplication().getResources().getString(R.string.base_url_service)  + "contacts/" + memberID;
         Request request = new JsonObjectRequest(
                 Request.Method.DELETE,
                 url,
