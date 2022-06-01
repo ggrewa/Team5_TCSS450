@@ -8,7 +8,11 @@
         <entry key="..\:/TheTCSS450Project/Team5_TCSS450/holochat/app/src/main/res/drawable/ic_user_search_black_24dp.xml" value="0.32" />
         <entry key="..\:/TheTCSS450Project/Team5_TCSS450/holochat/app/src/main/res/drawable/ic_wb_sunny_24dp.xml" value="0.32" />
         <entry key="..\:/TheTCSS450Project/Team5_TCSS450/holochat/app/src/main/res/drawable/ic_weather_thermostat_black24dp.xml" value="0.32" />
+        <entry key="..\:/TheTCSS450Project/Team5_TCSS450/holochat/app/src/main/res/layout/daily_forecast_item.xml" value="0.17149122807017544" />
         <entry key="..\:/TheTCSS450Project/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_weather.xml" value="0.21388888888888888" />
+        <entry key="..\:/TheTCSS450Project/Team5_TCSS450/holochat/app/src/main/res/layout/hourly_forecast_item.xml" value="0.16885964912280702" />
+        <entry key="..\:/TheTCSS450Project/Team5_TCSS450/holochat/app/src/main/res/layout/hourly_item.xml" value="1.203125" />
+        <entry key="..\:/TheTCSS450Project/Team5_TCSS450/holochat/app/src/main/res/layout/recyclerview_item.xml" value="0.6629072681704261" />
         <entry key="..\:/TheTCSS450Project/Team5_TCSS450/holochat/app/src/main/res/menu/chat_toolbar.xml" value="0.24605263157894736" />
         <entry key="..\:/TheTCSS450Project/Team5_TCSS450/holochat/app/src/main/res/menu/location_choice.xml" value="0.24605263157894736" />
         <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_sign_in.xml" value="0.5" />

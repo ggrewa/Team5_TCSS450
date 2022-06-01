@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -107,8 +108,8 @@ public class WeatherFragment extends Fragment {
 
         //testing geting images from internet into an imageview
         curIcon = view.findViewById(R.id.curIcon);
-        String sampleIcon = "04d";
-        String sampleIconUrl = "https://openweathermap.org/img/w/" + sampleIcon + ".png";
+        String sampleIcon = "02d";
+        String sampleIconUrl = "https://openweathermap.org/img/wn/" + sampleIcon + ".png";
         String sample2 = "https://media.geeksforgeeks.org/wp-content/cdn-uploads/logo-new-2.svg";
         Picasso.with(getContext()).load(sampleIconUrl).into(curIcon);
 
@@ -148,6 +149,32 @@ public class WeatherFragment extends Fragment {
                 popupMenu.show();
             }
         });
+
+        LinearLayout linearLayout = view.findViewById(R.id.hourlyForecast);
+        LayoutInflater inflater = LayoutInflater.from(getContext());
+        for (int i = 0; i < 24; i++){
+            View view2 = inflater.inflate(R.layout.hourly_forecast_item, linearLayout, false);
+            TextView textView = view2.findViewById(R.id.tvHour);
+            textView.setText("time am/pm\ndescription");
+
+            ImageView imageView = view2.findViewById(R.id.ivHour);
+            Picasso.with(getContext()).load(sampleIconUrl).into(imageView);
+
+            linearLayout.addView(view2);
+        }
+
+        LinearLayout linearLayout2 = view.findViewById(R.id.dailyForecast);
+        LayoutInflater inflater2 = LayoutInflater.from(getContext());
+        for(int i = 0; i < 7; i++){
+            View view3 = inflater2.inflate(R.layout.daily_forecast_item, linearLayout2, false);
+            TextView textView = view3.findViewById(R.id.tvDaily);
+            textView.setText("Day, Description");
+
+            ImageView imageView = view3.findViewById(R.id.ivDaily);
+            Picasso.with(getContext()).load(sampleIconUrl).into(imageView);
+            linearLayout2.addView(view3);
+        }
+
     }
 
     /**
@@ -173,7 +200,7 @@ public class WeatherFragment extends Fragment {
 
     /**
      * makes call to webservice, need to figure out how to put location/zip in body
-     * @param zipOrCity
+     * @param zip
      */
     public void connect(String zip) {
         String webServiceUrl = "https://team5-tcss450-holochat.herokuapp.com/weather";
