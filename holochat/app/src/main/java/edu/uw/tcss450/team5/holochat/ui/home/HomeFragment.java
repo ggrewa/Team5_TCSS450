@@ -3,7 +3,7 @@
  * Mobile Application Programming
  * Spring 2022
  */
-package edu.uw.tcss450.team5.holochat.ui;
+package edu.uw.tcss450.team5.holochat.ui.home;
 
 import android.os.Bundle;
 

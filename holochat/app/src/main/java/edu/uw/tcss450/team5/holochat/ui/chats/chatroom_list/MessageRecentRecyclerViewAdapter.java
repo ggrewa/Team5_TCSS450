@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentHomeBinding;
-import edu.uw.tcss450.team5.holochat.ui.HomeFragmentDirections;
+import edu.uw.tcss450.team5.holochat.ui.home.HomeFragmentDirections;
 
 /**
  * For the home fragment
