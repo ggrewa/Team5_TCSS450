@@ -3,7 +3,7 @@
  * Mobile Application Programming
  * Spring 2022
  */
-package edu.uw.tcss450.team5.holochat.ui;
+package edu.uw.tcss450.team5.holochat.ui.home;
 
 import android.os.Bundle;
 
@@ -58,9 +58,6 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        UserInfoViewModel model = new ViewModelProvider(getActivity())
-                .get(UserInfoViewModel.class);
 
         recyclerView = view.findViewById(R.id.recyclerView);
         s1=getResources().getStringArray(R.array.chat_titles);

@@ -1,4 +1,4 @@
-package edu.uw.tcss450.team5.holochat.ui;
+package edu.uw.tcss450.team5.holochat.ui.weather;
 
 
 import java.io.Serializable;

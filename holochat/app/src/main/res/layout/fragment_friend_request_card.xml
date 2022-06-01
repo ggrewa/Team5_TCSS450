@@ -51,7 +51,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_add_person_green32dp" />
+            app:srcCompat="@drawable/ic_send_friend_request_green32dp" />
 
         <TextView
             android:id="@+id/textEmail"

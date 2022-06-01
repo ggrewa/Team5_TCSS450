@@ -1,4 +1,4 @@
-package edu.uw.tcss450.team5.holochat.ui.contacts.contact_tabs;
+package edu.uw.tcss450.team5.holochat.ui.contacts.search;
 
 import android.os.Bundle;
 
@@ -19,10 +19,12 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentContactSearchBinding;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
-import edu.uw.tcss450.team5.holochat.ui.contacts.ContactViewModel;
+import edu.uw.tcss450.team5.holochat.ui.chats.chatroom.ChatRoomFragmentDirections;
+import edu.uw.tcss450.team5.holochat.ui.contacts.contact_tabs.ContactTabFragmentDirections;
+import edu.uw.tcss450.team5.holochat.ui.contacts.info.Contact;
+import edu.uw.tcss450.team5.holochat.ui.contacts.info.ContactViewModel;
 
 /**
  * Fragment that hold tools to search for a user of the app and send a friend request
@@ -33,6 +35,8 @@ public class ContactSearchFragment extends Fragment {
     private ContactViewModel mContactViewModel;
     private ArrayList<String> mContacts;
     private FragmentContactSearchBinding binding;
+    private AllMemberListViewModel mModel;
+    private SearchViewModel mSearchModel;
     public ContactSearchFragment() {
         // Required empty public constructor
     }
@@ -42,10 +46,6 @@ public class ContactSearchFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContacts = new ArrayList<>();
-        ViewModelProvider provider= new ViewModelProvider(getActivity());
-        mContactViewModel = provider.get(ContactViewModel.class);
-        mUserModel = provider.get(UserInfoViewModel.class);
-
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -57,19 +57,72 @@ public class ContactSearchFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        ViewModelProvider provider= new ViewModelProvider(getActivity());
+        mContactViewModel = provider.get(ContactViewModel.class);
+        mUserModel = provider.get(UserInfoViewModel.class);
+
+        mModel = provider.get(AllMemberListViewModel.class);
+        mModel.connectGet(mUserModel.getJwt(), mUserModel.getMemberID());
+        mSearchModel = provider.get(SearchViewModel.class);
+        mSearchModel.addResponseObserver(
+                getViewLifecycleOwner(),
+                this::observeSearchResponse);
+        Log.i("CONTACT_SEARCH", "" + mUserModel.getMemberID());
+
         mContactViewModel.connect(mUserModel.getEmail(), mUserModel.getJwt());
         mContactViewModel.addResponseObserver(getViewLifecycleOwner(),
                 this::observeContacts);
-        binding.buttonAddContact.setOnClickListener(this::attemptToAdd);
-        binding.buttonDeleteContact.setOnClickListener(this::attemptToDelete);
+        binding.buttonFindContact.setOnClickListener(this::attemptToFind);
+
+        mModel.addContactRequestListObserver(getViewLifecycleOwner(), contactList -> {
+            //if (!contactList.isEmpty()) {
+            binding.listRoot.setAdapter(
+                    new AllMemberRecyclerViewAdapter(contactList, getActivity().getSupportFragmentManager())
+            );
+        });
 
     }
 
-    private void attemptToAdd(View view) {
+    private void attemptToFind(View view) {
+        String input = String.valueOf(binding.connectionsSearchEditText.getText());
+        Log.i("CONTACT_SEARCH_FRAG", "input:" + input);
+
+        navigateToUserFound("kenahren@gmail.com","Kenpai",26);
+
     }
 
-    private void attemptToDelete(View view) {
+    /**
+     * An observer on the HTTP Response from the web server. This observer should be
+     * attached to PushyTokenViewModel.
+     *
+     * @param response the Response from the server
+     */
+    private void observeSearchResponse(final JSONObject response) {
+        if (response.length() > 0) {
+            if (response.has("code")) {
+                //this error cannot be fixed by the user changing credentials...
+                binding.connectionsSearchEditText.setError(
+                        "Can't find this user.");
+            } else {
+                //TODO
+                navigateToUserFound("kenahren@gmail.com","Kenpai",26);
+            }
+        }
     }
+
+    /**
+     * Successfully searched now navigate to the user fragment
+     */
+    private void navigateToUserFound(String email, String username, int memberid) {
+        Navigation.findNavController(getView())
+                .navigate(ContactTabFragmentDirections.
+                        actionNavigationTabbedContactsToContactFoundFragment(
+                                email,username, memberid));
+    }
+
+
+
 
 
     private void observeContacts(JSONObject response) {

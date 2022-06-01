@@ -4,6 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+import edu.uw.tcss450.team5.holochat.ui.contacts.list.ContactListFragment;
+import edu.uw.tcss450.team5.holochat.ui.contacts.request.ContactRequestListFragment;
+import edu.uw.tcss450.team5.holochat.ui.contacts.search.ContactSearchFragment;
+
 
 /**
  * Fragment state adapter used for contacts

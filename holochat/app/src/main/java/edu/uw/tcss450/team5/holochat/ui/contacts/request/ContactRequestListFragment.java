@@ -1,4 +1,4 @@
-package edu.uw.tcss450.team5.holochat.ui.contacts.contact_tabs;
+package edu.uw.tcss450.team5.holochat.ui.contacts.request;
 
 import android.os.Bundle;
 
@@ -19,6 +19,7 @@ import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
 /**
  * Fragment that holds all friend requests the user has recieved
  * @author Tarnveer
+ * @AUTHOR KEN
  */
 public class ContactRequestListFragment extends Fragment {
     private ContactRequestListViewModel mModel;
@@ -36,7 +37,7 @@ public class ContactRequestListFragment extends Fragment {
         UserInfoViewModel model = new ViewModelProvider(getActivity())
                 .get(UserInfoViewModel.class);
 
-        Log.i("CONTACT", model.getJwt());
+        Log.i("CONTACT_REQUEST", model.getJwt());
         mModel.connectGet(model.getJwt());
     }
 
@@ -58,7 +59,12 @@ public class ContactRequestListFragment extends Fragment {
         FragmentContactRequestBinding binding = FragmentContactRequestBinding.bind(getView());
 
         mModel.addContactRequestListObserver(getViewLifecycleOwner(), contactList -> {
-            //if (!contactList.isEmpty()) {
+            if (!contactList.isEmpty()) {
+                int size = contactList.size();
+                binding.textContactRequestLabel.setText("You have "+ size + " incoming request(s):");
+            } else {
+                binding.textContactRequestLabel.setText("You have no incoming requests ( ˃̣̣̥⌓˂̣̣̥)");
+            }
             binding.listRoot.setAdapter(
                     new ContactRequestRecyclerViewAdapter(contactList, getActivity().getSupportFragmentManager())
             );

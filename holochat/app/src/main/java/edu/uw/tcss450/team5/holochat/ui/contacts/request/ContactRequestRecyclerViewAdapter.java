@@ -1,4 +1,4 @@
-package edu.uw.tcss450.team5.holochat.ui.contacts.contact_tabs;
+package edu.uw.tcss450.team5.holochat.ui.contacts.request;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,9 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentContactRequestCardBinding;
-import edu.uw.tcss450.team5.holochat.ui.contacts.Contact;
+import edu.uw.tcss450.team5.holochat.ui.contacts.info.Contact;
 
 /**
+ * Presents information on a contact request
+ * On click it should accept the friend request
+ *
  * @author Tarnveer
  */
 public class ContactRequestRecyclerViewAdapter  extends RecyclerView.Adapter<ContactRequestRecyclerViewAdapter.ContactRequestViewHolder> {
@@ -92,6 +95,7 @@ public class ContactRequestRecyclerViewAdapter  extends RecyclerView.Adapter<Con
          */
         void setContact(final Contact contact) {
             binding.textUsername.setText(contact.getContactUsername());
+            binding.textEmail.setText(contact.getContactEmail());
             mContact = contact;
             binding.buttonAccept.setOnClickListener(button -> openDialog());
         }
