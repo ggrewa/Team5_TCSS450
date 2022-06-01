@@ -6,6 +6,11 @@
         android:title="@string/title_contacts" />
 
     <item
+        android:id="@+id/navigation_messages"
+        android:icon="@drawable/ic_messages_black24dp"
+        android:title="@string/title_messages" />
+
+    <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_home_black_24dp"
         android:title="@string/title_home" />

@@ -19,9 +19,11 @@ import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
 import edu.uw.tcss450.team5.holochat.ui.contacts.ContactListRecyclerViewAdapter;
 import edu.uw.tcss450.team5.holochat.ui.contacts.ContactListViewModel;
 
-/*
-* Fragment that contains a list to view all friends user currently has added
- */
+/**
+ * Fragment that contains a list to view all friends user currently has added
+ * @author Ken
+ * @author Tarnveer
+ * */
 public class ContactListFragment extends Fragment {
 
 
@@ -65,8 +67,6 @@ public class ContactListFragment extends Fragment {
         final RecyclerView rv = binding.recyclerContacts;
         //Set the Adapter to hold a reference to the list FOR THIS chat ID that the ViewModel
         //holds.
-        //Set the Adapter to hold a reference to the list FOR THIS chat ID that the ViewModel
-        //holds.
         ContactListRecyclerViewAdapter adap = new ContactListRecyclerViewAdapter(
                 mContactListModel.getContactListByEmail(mUserModel.getEmail()));
 
@@ -75,11 +75,6 @@ public class ContactListFragment extends Fragment {
 
 //        //When the user scrolls to the top of the RV, the swiper list will "refresh"
 //        //The user is out of messages, go out to the service and get more
-//        binding.swipeContainer.setOnRefreshListener(() -> {
-//            mChatModel.getNextMessages(HARD_CODED_CHAT_ID, mUserModel.getmJwt());
-//        });
-
-
         mContactListModel.addContactObserver(mUserModel.getEmail(), getViewLifecycleOwner(),
                 list -> {
                     /*

@@ -14,11 +14,18 @@ import androidx.navigation.Navigation;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentDeleteContactBinding;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
 
+/**
+ * Delete the passed in contact from arguments
+ *
+ * @author Tarnveer
+ */
 public class DeleteContact extends Fragment {
 
 
     private DeleteContactViewModel mDeleteContractViewModel;
-    private Contact mContact;
+    private String mContactUsername;
+    private int mContactID;
+    private String mContactEmail;
     private UserInfoViewModel mModel;
     FragmentDeleteContactBinding binding;
     public DeleteContact() {
@@ -43,7 +50,9 @@ public class DeleteContact extends Fragment {
         ViewModelProvider provider= new ViewModelProvider(getActivity());
 
         mModel = provider.get(UserInfoViewModel.class);
-        mContact = args.getContact();
+        mContactEmail = args.getContactEmail();
+        mContactUsername = args.getContactUsername();
+        mContactID = args.getContactID();
         binding = FragmentDeleteContactBinding.inflate(inflater);
 
         return binding.getRoot();
@@ -62,7 +71,7 @@ public class DeleteContact extends Fragment {
      */
     private void processDelete() {
 
-        mDeleteContractViewModel.connectRemoveContact(mContact.getContactMemberID(), mModel.getJwt());
+        mDeleteContractViewModel.connectRemoveContact(mContactID, mModel.getJwt());
         Navigation.findNavController(getView()).navigate(DeleteContactDirections.actionDeleteContactToNavigationContactsList());
     }
 

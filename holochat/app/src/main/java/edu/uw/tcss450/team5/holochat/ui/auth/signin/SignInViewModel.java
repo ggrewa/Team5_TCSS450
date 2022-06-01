@@ -28,6 +28,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.io.RequestQueueSingleton;
 
 /*
@@ -98,7 +99,8 @@ public class SignInViewModel extends AndroidViewModel {
      * @param password the password of the user
      */
     public void connect(final String email, final String password) {
-        String url = "https://team5-tcss450-holochat.herokuapp.com/auth";
+        String base_url = getApplication().getResources().getString(R.string.base_url_service);
+        String url = base_url + "auth";
         Request request = new JsonObjectRequest(
                 Request.Method.GET,
                 url,

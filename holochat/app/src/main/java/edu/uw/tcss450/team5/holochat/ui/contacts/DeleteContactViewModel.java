@@ -24,6 +24,9 @@ import java.util.Objects;
 
 import edu.uw.tcss450.team5.holochat.io.RequestQueueSingleton;
 
+/**
+ * @author Tarnveer
+ */
 public class DeleteContactViewModel extends AndroidViewModel {
     private MutableLiveData<JSONObject> mContacts;
 

@@ -55,9 +55,25 @@
     <string name="keys_prefs_jwt">Sharded Prefs JWT</string>
     <string name="action_sign_out">Sign Out</string>
 
+    <!--chatroom strings-->
+    <string name="text_create">Create</string>
+    <string name="text_cancel">Cancel</string>
+    <string name="text_chat_name">Name of Chatroom:</string>
+    <string name="text_delete">Delete</string>
+    <string name="text_add">add</string>
+    <string name="text_chat_add_title">Add users to chatroom</string>
+    <string name="text_chat_delete_dialog_prompt">This action will only remove yourself from the chatroom
+                                                    and will not affect other users. Would you like to
+                                                    delete yourself from the chatroom?</string>
+    <string name="text_chat_delete_dialog_title">Delete Chatroom:</string>
+    <string name="text_chat_add_person">Add contact to chatroom</string>
+    <string name="text_chat_view_persons">View contacts in chatroom</string>
+
+
     <string name="base_url_service">https://team5-tcss450-holochat.herokuapp.com/</string>-
     <!--<string name="base_url_service">https://localhost:5000/</string>-->
     <string name="title_home">Home</string>
+    <string name="title_messages">Messages</string>
 
     <string-array name="chat_titles">
         <item>Chat 1</item>
