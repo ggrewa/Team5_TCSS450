@@ -118,6 +118,11 @@ public class SearchViewModel extends AndroidViewModel {
         mContactList.setValue(temp);
     }
 
+    public void addResponseObserver(@NonNull LifecycleOwner owner,
+                                    @NonNull Observer<? super JSONObject> observer) {
+        mResponse.observe(owner, observer);
+    }
+
 
     /**
      * HAndles Errors when connecting to contacts endpoints

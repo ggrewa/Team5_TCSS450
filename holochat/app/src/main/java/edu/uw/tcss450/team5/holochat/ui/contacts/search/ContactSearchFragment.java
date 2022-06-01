@@ -23,6 +23,7 @@ import edu.uw.tcss450.team5.holochat.databinding.FragmentContactSearchBinding;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
 import edu.uw.tcss450.team5.holochat.ui.chats.chatroom.ChatRoomFragmentDirections;
 import edu.uw.tcss450.team5.holochat.ui.contacts.contact_tabs.ContactTabFragmentDirections;
+import edu.uw.tcss450.team5.holochat.ui.contacts.info.Contact;
 import edu.uw.tcss450.team5.holochat.ui.contacts.info.ContactViewModel;
 
 /**
@@ -35,6 +36,7 @@ public class ContactSearchFragment extends Fragment {
     private ArrayList<String> mContacts;
     private FragmentContactSearchBinding binding;
     private AllMemberListViewModel mModel;
+    private SearchViewModel mSearchModel;
     public ContactSearchFragment() {
         // Required empty public constructor
     }
@@ -44,14 +46,6 @@ public class ContactSearchFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContacts = new ArrayList<>();
-        ViewModelProvider provider= new ViewModelProvider(getActivity());
-        mContactViewModel = provider.get(ContactViewModel.class);
-        mUserModel = provider.get(UserInfoViewModel.class);
-
-        mModel = provider.get(AllMemberListViewModel.class);
-        mModel.connectGet(mUserModel.getJwt(), mUserModel.getMemberID());
-        Log.i("CONTACT_SEARCH", "" + mUserModel.getMemberID());
-
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -63,6 +57,19 @@ public class ContactSearchFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        ViewModelProvider provider= new ViewModelProvider(getActivity());
+        mContactViewModel = provider.get(ContactViewModel.class);
+        mUserModel = provider.get(UserInfoViewModel.class);
+
+        mModel = provider.get(AllMemberListViewModel.class);
+        mModel.connectGet(mUserModel.getJwt(), mUserModel.getMemberID());
+        mSearchModel = provider.get(SearchViewModel.class);
+        mSearchModel.addResponseObserver(
+                getViewLifecycleOwner(),
+                this::observeSearchResponse);
+        Log.i("CONTACT_SEARCH", "" + mUserModel.getMemberID());
+
         mContactViewModel.connect(mUserModel.getEmail(), mUserModel.getJwt());
         mContactViewModel.addResponseObserver(getViewLifecycleOwner(),
                 this::observeContacts);
@@ -81,9 +88,35 @@ public class ContactSearchFragment extends Fragment {
         String input = String.valueOf(binding.connectionsSearchEditText.getText());
         Log.i("CONTACT_SEARCH_FRAG", "input:" + input);
 
-        Navigation.findNavController(view)
-                .navigate(ContactTabFragmentDirections.actionNavigationTabbedContactsToContactFoundFragment(input));
     }
+
+    /**
+     * An observer on the HTTP Response from the web server. This observer should be
+     * attached to PushyTokenViewModel.
+     *
+     * @param response the Response from the server
+     */
+    private void observeSearchResponse(final JSONObject response) {
+        if (response.length() > 0) {
+            if (response.has("code")) {
+                //this error cannot be fixed by the user changing credentials...
+                binding.connectionsSearchEditText.setError(
+                        "Can't find this user.");
+            } else {
+                //TODO
+                navigateToSuccess();
+            }
+        }
+    }
+
+    /**
+     * Successfully searched now navigate to the user fragment
+     */
+    private void navigateToSuccess() {
+        Navigation.findNavController(getView())
+                .navigate(ContactTabFragmentDirections.actionNavigationTabbedContactsToContactFoundFragment("","", 1));
+    }
+
 
 
 

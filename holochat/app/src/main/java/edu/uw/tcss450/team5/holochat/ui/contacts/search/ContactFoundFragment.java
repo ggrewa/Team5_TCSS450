@@ -30,11 +30,7 @@ public class ContactFoundFragment extends Fragment {
 
     private @NonNull FragmentContactFoundBinding mBinding;
 
-    private FragmentManager mFragmMan;
     private Contact mContact;
-    private UserInfoViewModel mUserModel;
-    private SearchViewModel mModel;
-    private String mInput;
 
     public ContactFoundFragment() {
         // Required empty public constructor

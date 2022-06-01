@@ -191,6 +191,13 @@
         android:id="@+id/contactFoundFragment"
         android:name="edu.uw.tcss450.team5.holochat.ui.contacts.search.ContactFoundFragment"
         android:label="ContactFoundFragment" >
-        <argument android:name="input_search" />
+        <argument android:name="email"
+            app:argType="string" />
+        <argument
+            android:name="username"
+            app:argType="string" />
+        <argument
+            android:name="memberid"
+            app:argType="integer" />
     </fragment>
 </navigation>
