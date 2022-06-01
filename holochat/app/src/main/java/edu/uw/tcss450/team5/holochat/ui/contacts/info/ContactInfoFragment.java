@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import edu.uw.tcss450.team5.holochat.MainActivity;
 import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentContactInfoBinding;
 
@@ -51,6 +52,9 @@ public class ContactInfoFragment extends Fragment {
         TextView emailView = (TextView)mBinding.contactEmail;
         nameView.setText(mUserName);
         emailView.setText(mContactEmail);
+
+        //set title to username
+        ((MainActivity)getActivity()).setTitle(mUserName);
 
     }
 

@@ -91,7 +91,11 @@
     <fragment
         android:id="@+id/navigation_tabbed_contacts"
         android:name="edu.uw.tcss450.team5.holochat.ui.contacts.contact_tabs.ContactTabFragment"
-        android:label="Contacts" />
+        android:label="Contacts" >
+        <action
+            android:id="@+id/action_navigation_tabbed_contacts_to_navigation_contact_info"
+            app:destination="@id/navigation_contact_info" />
+    </fragment>
     <fragment
         android:id="@+id/recoverPasswordFragment"
         android:name="edu.uw.tcss450.team5.holochat.ui.changeCredentials.RecoverPasswordFragment"
