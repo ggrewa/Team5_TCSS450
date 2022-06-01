@@ -59,9 +59,6 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        UserInfoViewModel model = new ViewModelProvider(getActivity())
-                .get(UserInfoViewModel.class);
-
         recyclerView = view.findViewById(R.id.recyclerView);
         s1=getResources().getStringArray(R.array.chat_titles);
         s2=getResources().getStringArray(R.array.chat_preview);
