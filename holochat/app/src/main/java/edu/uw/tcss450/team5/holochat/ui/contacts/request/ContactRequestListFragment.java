@@ -58,7 +58,12 @@ public class ContactRequestListFragment extends Fragment {
         FragmentContactRequestBinding binding = FragmentContactRequestBinding.bind(getView());
 
         mModel.addContactRequestListObserver(getViewLifecycleOwner(), contactList -> {
-            //if (!contactList.isEmpty()) {
+            if (!contactList.isEmpty()) {
+                int size = contactList.size();
+                binding.textContactRequestLabel.setText("You have "+ size + " incoming request(s):");
+            } else {
+                binding.textContactRequestLabel.setText("You have no incoming requests.");
+            }
             binding.listRoot.setAdapter(
                     new ContactRequestRecyclerViewAdapter(contactList, getActivity().getSupportFragmentManager())
             );

@@ -43,6 +43,7 @@
         android:layout_marginTop="60dp"
         android:layout_marginBottom="412dp"
         android:text="Avaliable Members"
+        android:textColor="@color/text_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

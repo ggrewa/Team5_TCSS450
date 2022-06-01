@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layoutManager="LinearLayoutManager"
-            tools:context="edu.uw.tcss450.group9.ui.contacts.ContactListFragment"
+            tools:context="edu.uw.tcss450.team5.ui.contacts.list.ContactListFragment"
             tools:listitem="@layout/fragment_contact_list_single" />
 
 
