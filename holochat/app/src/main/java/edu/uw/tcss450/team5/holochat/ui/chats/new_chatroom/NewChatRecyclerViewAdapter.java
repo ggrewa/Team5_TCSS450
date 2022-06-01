@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.uw.tcss450.team5.holochat.databinding.AddContactCardBinding;
-import edu.uw.tcss450.team5.holochat.ui.contacts.ContactListSingle;
+import edu.uw.tcss450.team5.holochat.ui.contacts.list.ContactListSingle;
 
 
 /**

@@ -1,4 +1,4 @@
-package edu.uw.tcss450.team5.holochat.ui.contacts;
+package edu.uw.tcss450.team5.holochat.ui.contacts.info;
 
 import android.os.Bundle;
 
@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import edu.uw.tcss450.team5.holochat.MainActivity;
 import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentContactInfoBinding;
 
@@ -46,20 +47,13 @@ public class ContactInfoFragment extends Fragment {
     public void onViewCreated (@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         //Use a Lamda expression to add the OnClickListener
-        mBinding.startChatButton.setOnClickListener(button -> startChat());
         TextView nameView = (TextView)mBinding.contactName;
         TextView emailView = (TextView)mBinding.contactEmail;
         nameView.setText(mUserName);
         emailView.setText(mContactEmail);
 
-    }
-
-    /**
-     * startChat called when wanting to start a new chat with current contact
-     *
-     * Empty for now - still need to work on it
-     */
-    public void startChat() {
+        //set title to username
+        ((MainActivity)getActivity()).setTitle(mUserName);
 
     }
 }

@@ -1,10 +1,11 @@
-package edu.uw.tcss450.team5.holochat.ui;
+package edu.uw.tcss450.team5.holochat.ui.weather;
 
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -40,9 +41,14 @@ import java.util.TimeZone;
 
 import edu.uw.tcss450.team5.holochat.MainActivity;
 import edu.uw.tcss450.team5.holochat.R;
+import edu.uw.tcss450.team5.holochat.ui.chats.chatroom.ChatRoomFragmentDirections;
 
 /**
- * A simple {@link Fragment} subclass.
+ * Fragment that stores information about the weather
+ *
+ * @author Mason
+ * @author Gurleen
+ * @author Ken
  */
 public class WeatherFragment extends Fragment {
 
@@ -137,7 +143,7 @@ public class WeatherFragment extends Fragment {
                             searchbtn.setVisibility(View.VISIBLE);
 
                         } else if (menuItem.getTitle().equals("Select On Map")){
-                            //think we need a new frag to show a map
+                            navigateToSelectLocation();
                         } else if (menuItem.getTitle().equals("Current Location")){
                             //get current location and update weather no additional action required by user
                         }
@@ -175,6 +181,14 @@ public class WeatherFragment extends Fragment {
             linearLayout2.addView(view3);
         }
 
+    }
+
+    /**
+     * Navigate to a google map
+     */
+    private void navigateToSelectLocation() {
+        Navigation.findNavController(getView())
+                .navigate(WeatherFragmentDirections.actionNavigationWeatherToNavigationLocation());
     }
 
     /**

@@ -49,6 +49,7 @@
     <string name="contact_search_user_msg">Search for a Holochat user:</string>
     <string name="title_conact">Contacts</string>
     <string name="title_contact">Contact</string>
+    <string name="title_contact_nonfriend_label">Non-Contact Members</string>
 
     <string name="switch_sign_in">STAY SIGNED IN</string>
     <string name="keys_shared_prefs">My Auth App Shared Prefs</string>
@@ -68,6 +69,10 @@
     <string name="text_chat_delete_dialog_title">Delete Chatroom:</string>
     <string name="text_chat_add_person">Add contact to chatroom</string>
     <string name="text_chat_view_persons">View contacts in chatroom</string>
+
+    <!--weather-->
+    <string name="label_location">Current location:</string>
+    <string name="title_activity_maps">MapsActivity</string>
 
 
     <string name="base_url_service">https://team5-tcss450-holochat.herokuapp.com/</string>-

@@ -1,4 +1,4 @@
-package edu.uw.tcss450.team5.holochat.ui.contacts;
+package edu.uw.tcss450.team5.holochat.ui.contacts.list;
 
 import android.content.res.Resources;
 import android.view.LayoutInflater;
@@ -13,7 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import edu.uw.tcss450.team5.holochat.databinding.FragmentContactListSingleBinding;
-import edu.uw.tcss450.team5.holochat.ui.contacts.contact_tabs.ContactListFragmentDirections;
+import edu.uw.tcss450.team5.holochat.ui.contacts.contact_tabs.ContactTabFragmentDirections;
+import edu.uw.tcss450.team5.holochat.ui.contacts.list.ContactListRecyclerViewAdapter;
 import edu.uw.tcss450.team5.holochat.R;
 
 /**
@@ -72,8 +73,7 @@ public class ContactListRecyclerViewAdapter extends RecyclerView.Adapter<Contact
             }
             binding.contactListRoot.setOnClickListener(view -> {
                 Navigation.findNavController(mView)
-                        .navigate(ContactListFragmentDirections
-                                .actionNavigationContactsListToNavigationContactInfo(
+                        .navigate(ContactTabFragmentDirections.actionNavigationTabbedContactsToNavigationContactInfo(
                                         contact.getContactEmail(), contact.getContactUsername(),"( ͡° ͜ʖ ͡°)" ));
             });
 
