@@ -37,7 +37,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_more_grey_24dp" />
+            app:srcCompat="@drawable/ic_view_more_gray24dp" />
 
         <TextView
             android:id="@+id/contact_name"

@@ -49,6 +49,7 @@
     <string name="contact_search_user_msg">Search for a Holochat user:</string>
     <string name="title_conact">Contacts</string>
     <string name="title_contact">Contact</string>
+    <string name="title_contact_nonfriend_label">Non-Contact Members</string>
 
     <string name="switch_sign_in">STAY SIGNED IN</string>
     <string name="keys_shared_prefs">My Auth App Shared Prefs</string>

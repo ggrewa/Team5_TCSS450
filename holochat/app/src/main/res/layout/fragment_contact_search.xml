@@ -40,16 +40,13 @@
         android:id="@+id/contact_names"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:layout_marginBottom="412dp"
-        android:text="Avaliable Members"
+        android:layout_marginTop="24dp"
+        android:text="@string/title_contact_nonfriend_label"
         android:textColor="@color/text_color"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_delete_contact"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/button_delete_contact" />
 
     <Button
         android:id="@+id/button_add_contact"
@@ -92,8 +89,9 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_root"
         android:name="edu.uw.tcss450.team5.holochat.ui.contacts.ContactRequestListFragment"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="378dp"
+        android:layout_height="564dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="4dp"
         android:orientation="vertical"
         app:layoutManager="LinearLayoutManager"
