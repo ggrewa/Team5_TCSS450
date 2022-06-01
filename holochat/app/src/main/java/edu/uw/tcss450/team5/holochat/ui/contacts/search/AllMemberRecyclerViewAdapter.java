@@ -13,8 +13,6 @@ import java.util.List;
 import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentContactRequestCardBinding;
 import edu.uw.tcss450.team5.holochat.ui.contacts.info.Contact;
-import edu.uw.tcss450.team5.holochat.ui.contacts.request.AcceptContactDialog;
-import edu.uw.tcss450.team5.holochat.ui.contacts.search.SendContactDialog;
 
 /**
  * Presents information on a contact request
@@ -22,7 +20,7 @@ import edu.uw.tcss450.team5.holochat.ui.contacts.search.SendContactDialog;
  *
  * @author Tarnveer
  */
-public class ContactSearchRecyclerViewAdapter extends RecyclerView.Adapter<ContactSearchRecyclerViewAdapter.ContactRequestViewHolder> {
+public class AllMemberRecyclerViewAdapter extends RecyclerView.Adapter<AllMemberRecyclerViewAdapter.ContactRequestViewHolder> {
 
     private final FragmentManager mFragmMan;
     private final List<Contact> mContactRequests;
@@ -32,7 +30,7 @@ public class ContactSearchRecyclerViewAdapter extends RecyclerView.Adapter<Conta
      *
      * @param items a list of contacts.
      */
-    public ContactSearchRecyclerViewAdapter(List<Contact> items, FragmentManager fm) {
+    public AllMemberRecyclerViewAdapter(List<Contact> items, FragmentManager fm) {
         this.mContactRequests = items;
         this.mFragmMan = fm;
     }

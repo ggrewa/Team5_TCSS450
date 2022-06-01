@@ -18,8 +18,6 @@ import org.json.JSONObject;
 
 import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
-import edu.uw.tcss450.team5.holochat.ui.contacts.request.ContactRequestListViewModel;
-import edu.uw.tcss450.team5.holochat.ui.contacts.request.ContactRequestRecyclerViewAdapter;
 
 /**
  * A Dialog for sending a friend request
@@ -31,8 +29,8 @@ public class SendContactDialog extends DialogFragment {
     private final String mContactName;
     private final int mMemberID;
     private UserInfoViewModel mUserModel;
-    private ContactSearchListViewModel mContactRequestModel;
-    private final ContactSearchRecyclerViewAdapter.ContactRequestViewHolder mUpdater;
+    private AllMemberListViewModel mContactRequestModel;
+    private final AllMemberRecyclerViewAdapter.ContactRequestViewHolder mUpdater;
 
     /**
      * Constructor for the accept dialog
@@ -41,7 +39,7 @@ public class SendContactDialog extends DialogFragment {
      * @param testing
      */
     public SendContactDialog(String name, int memberID,
-                             ContactSearchRecyclerViewAdapter.ContactRequestViewHolder testing){
+                             AllMemberRecyclerViewAdapter.ContactRequestViewHolder testing){
 
         this.mContactName = name;
         this.mMemberID = memberID;
@@ -55,7 +53,7 @@ public class SendContactDialog extends DialogFragment {
                 .get(UserInfoViewModel.class);
 
         mContactRequestModel = new ViewModelProvider(getActivity())
-                .get(ContactSearchListViewModel.class);
+                .get(AllMemberListViewModel.class);
     }
 
     /**

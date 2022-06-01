@@ -2,6 +2,7 @@ package edu.uw.tcss450.team5.holochat.ui.contacts.request;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,11 +14,15 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
 import org.json.JSONObject;
 
 import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
+import edu.uw.tcss450.team5.holochat.ui.contacts.list.ContactListRecyclerViewAdapter;
 import edu.uw.tcss450.team5.holochat.ui.contacts.list.ContactListViewModel;
 
 /**
@@ -31,7 +36,6 @@ public class DeleteContactDialog extends DialogFragment {
     private final int mMemberID;
     private UserInfoViewModel mUserModel;
     private ContactListViewModel mContactListModel;
-    //private final ContactRequestRecyclerViewAdapter.ContactRequestViewHolder mUpdater;
 
     /**
      * Constructor for the accept dialog
@@ -82,7 +86,8 @@ public class DeleteContactDialog extends DialogFragment {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         mContactListModel.deleteContact(mUserModel.getJwt(), mMemberID);
-                        //mUpdater.deleteRequest();
+                        //temp fix to refresh the contacts after a delete
+                        restartActivity();
                     }
                 })
                 .setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
@@ -92,6 +97,13 @@ public class DeleteContactDialog extends DialogFragment {
                 });
         return builder.create();
     }
+
+    private void restartActivity() {
+        Intent intent = getActivity().getIntent();
+        getActivity().finish();
+        startActivity(intent);
+    }
+
 
     /**
      * An observer on the HTTP Response from the web server. This observer should be

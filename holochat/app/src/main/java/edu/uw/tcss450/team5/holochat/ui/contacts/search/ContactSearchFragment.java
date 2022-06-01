@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,10 +21,9 @@ import java.util.ArrayList;
 
 import edu.uw.tcss450.team5.holochat.databinding.FragmentContactSearchBinding;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
+import edu.uw.tcss450.team5.holochat.ui.chats.chatroom.ChatRoomFragmentDirections;
+import edu.uw.tcss450.team5.holochat.ui.contacts.contact_tabs.ContactTabFragmentDirections;
 import edu.uw.tcss450.team5.holochat.ui.contacts.info.ContactViewModel;
-import edu.uw.tcss450.team5.holochat.ui.contacts.list.ContactListViewModel;
-import edu.uw.tcss450.team5.holochat.ui.contacts.request.ContactRequestListViewModel;
-import edu.uw.tcss450.team5.holochat.ui.contacts.request.ContactRequestRecyclerViewAdapter;
 
 /**
  * Fragment that hold tools to search for a user of the app and send a friend request
@@ -34,7 +34,7 @@ public class ContactSearchFragment extends Fragment {
     private ContactViewModel mContactViewModel;
     private ArrayList<String> mContacts;
     private FragmentContactSearchBinding binding;
-    private ContactSearchListViewModel mModel;
+    private AllMemberListViewModel mModel;
     public ContactSearchFragment() {
         // Required empty public constructor
     }
@@ -48,7 +48,7 @@ public class ContactSearchFragment extends Fragment {
         mContactViewModel = provider.get(ContactViewModel.class);
         mUserModel = provider.get(UserInfoViewModel.class);
 
-        mModel = provider.get(ContactSearchListViewModel.class);
+        mModel = provider.get(AllMemberListViewModel.class);
         mModel.connectGet(mUserModel.getJwt(), mUserModel.getMemberID());
         Log.i("CONTACT_SEARCH", "" + mUserModel.getMemberID());
 
@@ -71,14 +71,21 @@ public class ContactSearchFragment extends Fragment {
         mModel.addContactRequestListObserver(getViewLifecycleOwner(), contactList -> {
             //if (!contactList.isEmpty()) {
             binding.listRoot.setAdapter(
-                    new ContactSearchRecyclerViewAdapter(contactList, getActivity().getSupportFragmentManager())
+                    new AllMemberRecyclerViewAdapter(contactList, getActivity().getSupportFragmentManager())
             );
         });
 
     }
 
     private void attemptToFind(View view) {
+        String input = String.valueOf(binding.connectionsSearchEditText.getText());
+        Log.i("CONTACT_SEARCH_FRAG", "input:" + input);
+
+        Navigation.findNavController(view)
+                .navigate(ContactTabFragmentDirections.actionNavigationTabbedContactsToContactFoundFragment(input));
     }
+
+
 
 
     private void observeContacts(JSONObject response) {

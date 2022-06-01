@@ -35,11 +35,11 @@ import edu.uw.tcss450.team5.holochat.ui.contacts.info.Contact;
  * @author Ken
  */
 
-public class ContactSearchListViewModel extends AndroidViewModel {
+public class AllMemberListViewModel extends AndroidViewModel {
     private MutableLiveData<List<Contact>> mContactList;
     private final MutableLiveData<JSONObject> mResponse;
 
-    public ContactSearchListViewModel(@NonNull Application application) {
+    public AllMemberListViewModel(@NonNull Application application) {
         super(application);
         mContactList = new MutableLiveData<>(new ArrayList<>());
         mResponse = new MutableLiveData<>();

@@ -98,6 +98,9 @@
         <action
             android:id="@+id/action_navigation_tabbed_contacts_to_navigation_contact_info"
             app:destination="@id/navigation_contact_info" />
+        <action
+            android:id="@+id/action_navigation_tabbed_contacts_to_contactFoundFragment"
+            app:destination="@id/contactFoundFragment" />
     </fragment>
     <fragment
         android:id="@+id/recoverPasswordFragment"
@@ -183,5 +186,11 @@
         <argument
             android:name="name"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/contactFoundFragment"
+        android:name="edu.uw.tcss450.team5.holochat.ui.contacts.search.ContactFoundFragment"
+        android:label="ContactFoundFragment" >
+        <argument android:name="input_search" />
     </fragment>
 </navigation>
