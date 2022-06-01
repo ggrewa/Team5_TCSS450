@@ -156,6 +156,7 @@ public class WeatherFragment extends Fragment {
             }
         });
 
+        //set up hourly forecast scroll view
         LinearLayout linearLayout = view.findViewById(R.id.hourlyForecast);
         LayoutInflater inflater = LayoutInflater.from(getContext());
         for (int i = 0; i < 24; i++){
@@ -169,6 +170,7 @@ public class WeatherFragment extends Fragment {
             linearLayout.addView(view2);
         }
 
+        //set up daily forecast scroll view
         LinearLayout linearLayout2 = view.findViewById(R.id.dailyForecast);
         LayoutInflater inflater2 = LayoutInflater.from(getContext());
         for(int i = 0; i < 7; i++){
@@ -217,7 +219,8 @@ public class WeatherFragment extends Fragment {
      * @param zip
      */
     public void connect(String zip) {
-        String webServiceUrl = "https://team5-tcss450-holochat.herokuapp.com/weather";
+        String webServiceUrl = "https://team5-tcss450-holochat.herokuapp.com/weather/:location?";
+
         Request request = new JsonObjectRequest(
                 Request.Method.GET,
                 webServiceUrl,
