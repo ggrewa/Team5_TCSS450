@@ -145,6 +145,11 @@ public class ContactListViewModel extends AndroidViewModel {
         getOrCreateMapEntry(email).setValue(list);
     }
 
+    /**
+     * Handles a successful connection with webservice
+     * In this view model it puts all "verified" contacts and stores it into a list
+     * @param response
+     */
     private void handleSuccess(final JSONObject response) {
         List<ContactListSingle> list;
         if (!response.has("contacts")) {
@@ -156,11 +161,13 @@ public class ContactListViewModel extends AndroidViewModel {
             for(int i = 0; i < contacts.length(); i++) {
                 JSONObject contact = contacts.getJSONObject(i);
                 ContactListSingle cContact = new ContactListSingle(
-                        contact.getInt("memberid"),
-                        contact.getString("username"),
+                        contact.getInt("memberId"),
+                        contact.getString("userName"),
                         contact.getString("email")
                 );
-                if (list.stream().noneMatch(id -> cContact.getContactMemberID()==id.getContactMemberID())) {
+                //only get verified contacts to show on contactlist
+                int verified = contact.getInt("verified");
+                if (verified == 1 && list.stream().noneMatch(id -> cContact.getContactMemberID()==id.getContactMemberID())) {
                     // don't add a duplicate
                     list.add(0, cContact);
                 } else {
@@ -190,37 +197,6 @@ public class ContactListViewModel extends AndroidViewModel {
                             " " +
                             data);
         }
-    }
-
-    /**
-     * Connects to webservice endpoint to retrieve a list of contacts.
-     *
-     * @param jwt a valid jwt.
-     */
-    public void connectGet (String jwt){
-        String base_url = getApplication().getResources().getString(R.string.base_url_service);
-        String url = base_url + "/contacts";
-        Request request = new JsonObjectRequest(
-                Request.Method.GET,
-                url,
-                null, //no body for this get request
-                this::handleSuccess,
-                this::handleError) {
-            @Override
-            public Map<String, String> getHeaders() {
-                Map<String, String> headers = new HashMap<>();
-                // add headers <key,value>
-                headers.put("Authorization", jwt);
-                return headers;
-            }
-        };
-        request.setRetryPolicy(new DefaultRetryPolicy(
-                10_000,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        //Instantiate the RequestQueue and add the request to the queue
-        Volley.newRequestQueue(getApplication().getApplicationContext())
-                .add(request);
     }
 
     /**

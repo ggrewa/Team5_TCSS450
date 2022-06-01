@@ -14,6 +14,9 @@ import edu.uw.tcss450.team5.holochat.databinding.FragmentContactRequestCardBindi
 import edu.uw.tcss450.team5.holochat.ui.contacts.info.Contact;
 
 /**
+ * Presents information on a contact request
+ * On click it should accept the friend request
+ *
  * @author Tarnveer
  */
 public class ContactRequestRecyclerViewAdapter  extends RecyclerView.Adapter<ContactRequestRecyclerViewAdapter.ContactRequestViewHolder> {

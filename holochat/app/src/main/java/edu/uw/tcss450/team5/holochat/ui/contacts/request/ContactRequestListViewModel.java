@@ -24,11 +24,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.io.RequestQueueSingleton;
 import edu.uw.tcss450.team5.holochat.ui.contacts.info.Contact;
 
 /**
+ * Stores info on member who have requested to be friends with the user
+ * This is displayed on the contacts table as verified = 0
+ *
  * @author Tarnveer
+ * @author Ken
  */
 
 public class ContactRequestListViewModel extends AndroidViewModel {
@@ -62,7 +67,8 @@ public class ContactRequestListViewModel extends AndroidViewModel {
      * @param jwt a valid jwt.
      */
     public void connectGet (String jwt){
-        String url = "https://team5-tcss450-holochat.herokuapp.com/contacts";
+        String base_url = getApplication().getResources().getString(R.string.base_url_service);
+        String url = base_url + "contacts";
         Request request = new JsonObjectRequest(
                 Request.Method.GET,
                 url,
@@ -117,12 +123,14 @@ public class ContactRequestListViewModel extends AndroidViewModel {
 
     /**
      * Sends verification of accepted contact request.
+     * Sets the 0 to be a 1 in contacts table
      *
      * @param jwt A valid jwt
-     * @param memberID the memeber ID
+     * @param memberID the member ID
      */
     public void sendVerify(final String jwt, int memberID) {
-        String url = "";
+        String base_url = getApplication().getResources().getString(R.string.base_url_service);
+        String url = base_url + "contacts";
 
         JSONObject body = new JSONObject();
         try {
