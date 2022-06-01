@@ -129,11 +129,17 @@ public class ContactSearchListViewModel extends AndroidViewModel {
      */
     public void postFriendRequest(final String jwt, int memberID) {
         String base_url = getApplication().getResources().getString(R.string.base_url_service);
-        String url = base_url + "contacts/" + memberID;
+        String url = base_url + "contacts";
 
         Log.i("SEND_FRIEND", "/contacts/" + memberID);
 
         JSONObject body = new JSONObject();
+        try {
+            body.put("memberId", memberID);
+            body.put("verified", 0);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         Request request = new JsonObjectRequest(
                 Request.Method.POST,
