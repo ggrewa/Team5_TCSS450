@@ -30,7 +30,9 @@ public class ContactFoundFragment extends Fragment {
 
     private @NonNull FragmentContactFoundBinding mBinding;
 
-    private Contact mContact;
+    private String mContactEmail;
+    private String mContactUsername;
+    private int mMemberID;
 
     public ContactFoundFragment() {
         // Required empty public constructor
@@ -39,17 +41,10 @@ public class ContactFoundFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-//        mFragmMan = getActivity().getSupportFragmentManager();
-//        ViewModelProvider provider= new ViewModelProvider(getActivity());
-//        mUserModel = provider.get(UserInfoViewModel.class);
-//        mModel = provider.get(SearchViewModel.class);
-//
-//
-//        ContactFoundFragmentArgs args = ContactFoundFragmentArgs.fromBundle(getArguments());
-//        mInput = args.getInputSearch();
-//        mModel.connectGet(mUserModel.getJwt(), mInput);
-//
-//        mContact = mModel.getmContact();
+        ContactFoundFragmentArgs args = ContactFoundFragmentArgs.fromBundle(getArguments());
+        mMemberID = args.getMemberid();
+        mContactEmail = args.getEmail();
+        mContactUsername = args.getUsername();
 
     }
 
@@ -63,21 +58,21 @@ public class ContactFoundFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-//
-//        FragmentContactFoundBinding binding = FragmentContactFoundBinding.bind(getView());
-//
-//        //Use a Lamda expression to add the OnClickListener
-//        TextView nickNameView = (TextView) mBinding.contactNickname;
-//        TextView emailView = (TextView) mBinding.contactEmail;
-//        TextView realName = mBinding.contactRealName;
-//        realName.setText(mContact.getContactFirstName());
-//        nickNameView.setText(mContact.getContactUsername());
-//        emailView.setText(mContact.getContactEmail());
-//
-//        //set title to username
-//        ((MainActivity) getActivity()).setTitle("Found " + mContact.getContactEmail());
-//
-//        mBinding.buttonActionAddContact.setOnClickListener(button -> handleAddContact());
+
+        FragmentContactFoundBinding binding = FragmentContactFoundBinding.bind(getView());
+
+        //Use a Lamda expression to add the OnClickListener
+        TextView nickNameView = (TextView) mBinding.contactNickname;
+        TextView emailView = (TextView) mBinding.contactEmail;
+        TextView realName = mBinding.contactRealName;
+        realName.setText(mContactUsername);
+        nickNameView.setText(mContactUsername);
+        emailView.setText(mContactEmail);
+
+        //set title to username
+        ((MainActivity) getActivity()).setTitle("Found " + mContactEmail);
+
+        mBinding.buttonActionAddContact.setOnClickListener(button -> handleAddContact());
     }
 
     private void handleAddContact() {

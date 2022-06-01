@@ -88,6 +88,8 @@ public class ContactSearchFragment extends Fragment {
         String input = String.valueOf(binding.connectionsSearchEditText.getText());
         Log.i("CONTACT_SEARCH_FRAG", "input:" + input);
 
+        navigateToUserFound("kenahren@gmail.com","Kenpai",26);
+
     }
 
     /**
@@ -104,7 +106,7 @@ public class ContactSearchFragment extends Fragment {
                         "Can't find this user.");
             } else {
                 //TODO
-                navigateToSuccess();
+                navigateToUserFound("kenahren@gmail.com","Kenpai",26);
             }
         }
     }
@@ -112,9 +114,11 @@ public class ContactSearchFragment extends Fragment {
     /**
      * Successfully searched now navigate to the user fragment
      */
-    private void navigateToSuccess() {
+    private void navigateToUserFound(String email, String username, int memberid) {
         Navigation.findNavController(getView())
-                .navigate(ContactTabFragmentDirections.actionNavigationTabbedContactsToContactFoundFragment("","", 1));
+                .navigate(ContactTabFragmentDirections.
+                        actionNavigationTabbedContactsToContactFoundFragment(
+                                email,username, memberid));
     }
 
 
