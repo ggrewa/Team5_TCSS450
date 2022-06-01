@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="edu.uw.tcss450.team5.holochat.ui.HomeFragment"
+        android:name="edu.uw.tcss450.team5.holochat.ui.home.HomeFragment"
         android:label="Home"
         tools:layout="@layout/fragment_home">
         <action
@@ -16,12 +16,25 @@
     </fragment>
     <fragment
         android:id="@+id/navigation_weather"
-        android:name="edu.uw.tcss450.team5.holochat.ui.WeatherFragment"
+        android:name="edu.uw.tcss450.team5.holochat.ui.weather.WeatherFragment"
         android:label="@string/weather_fragment_placeholder"
-        tools:layout="@layout/fragment_weather" />
+        tools:layout="@layout/fragment_weather" >
+        <action
+            android:id="@+id/action_navigation_weather_to_navigation_location"
+            app:destination="@id/navigation_location" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_location"
+        android:name="edu.uw.tcss450.team5.holochat.ui.weather.LocationFragment"
+        android:label="@string/weather_fragment_placeholder"
+        tools:layout="@layout/fragment_location" >
+        <action
+            android:id="@+id/action_navigation_location_to_navigation_weather"
+            app:destination="@id/navigation_weather" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_settings"
-        android:name="edu.uw.tcss450.team5.holochat.ui.SettingsFragment"
+        android:name="edu.uw.tcss450.team5.holochat.ui.home.SettingsFragment"
         android:label="Settings"
         tools:layout="@layout/fragment_settings" >
         <action
@@ -33,7 +46,7 @@
     </fragment>
     <fragment
         android:id="@+id/chatRoomFragment"
-        android:name="edu.uw.tcss450.team5.holochat.ui.chats.ChatRoomFragment"
+        android:name="edu.uw.tcss450.team5.holochat.ui.chats.chatroom.ChatRoomFragment"
         android:label="Chatroom"
         tools:layout="@layout/fragment_chat_room" >
         <argument
@@ -42,19 +55,28 @@
         <argument
             android:name="name"
             app:argType="string" />
+        <action
+            android:id="@+id/action_chatRoomFragment_to_addContactToChatFragment"
+            app:destination="@id/addContactToChatFragment" />
+        <action
+            android:id="@+id/action_chatRoomFragment_to_viewChatMembersFragment"
+            app:destination="@id/viewChatMembersFragment" />
     </fragment>
     <fragment
         android:id="@+id/navigation_contacts_list"
-        android:name="edu.uw.tcss450.team5.holochat.ui.contacts.contact_tabs.ContactListFragment"
+        android:name="edu.uw.tcss450.team5.holochat.ui.contacts.list.ContactListFragment"
         android:label="My Contacts List"
         tools:layout="@layout/fragment_contact_list">
         <action
             android:id="@+id/action_navigation_contacts_list_to_navigation_contact_info"
             app:destination="@id/navigation_contact_info" />
+        <action
+            android:id="@+id/action_navigation_contacts_list_to_deleteContact"
+            app:destination="@id/deleteContact" />
     </fragment>
     <fragment
         android:id="@+id/navigation_contact_info"
-        android:name="edu.uw.tcss450.team5.holochat.ui.contacts.ContactInfoFragment"
+        android:name="edu.uw.tcss450.team5.holochat.ui.contacts.info.ContactInfoFragment"
         android:label="fragment_contact_info"
         tools:layout="@layout/fragment_contact_info" >
         <argument
@@ -69,7 +91,11 @@
     <fragment
         android:id="@+id/navigation_tabbed_contacts"
         android:name="edu.uw.tcss450.team5.holochat.ui.contacts.contact_tabs.ContactTabFragment"
-        android:label="Contacts" />
+        android:label="Contacts" >
+        <action
+            android:id="@+id/action_navigation_tabbed_contacts_to_navigation_contact_info"
+            app:destination="@id/navigation_contact_info" />
+    </fragment>
     <fragment
         android:id="@+id/recoverPasswordFragment"
         android:name="edu.uw.tcss450.team5.holochat.ui.changeCredentials.RecoverPasswordFragment"
@@ -89,8 +115,25 @@
             app:destination="@id/navigation_settings" />
     </fragment>
     <fragment
+        android:id="@+id/deleteContact"
+        android:name="edu.uw.tcss450.team5.holochat.ui.contacts.request.DeleteContact"
+        android:label="fragment_delete_contact"
+        tools:layout="@layout/fragment_delete_contact" >
+        <argument
+            android:name="contactID"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_deleteContact_to_navigation_contacts_list"
+            app:destination="@id/navigation_contacts_list" />
+        <argument android:name="contactEmail"
+            app:argType="string" />
+        <argument
+            android:name="contactUsername"
+            app:argType="string" />
+    </fragment>
+    <fragment
         android:id="@+id/newChatFragment"
-        android:name="edu.uw.tcss450.team5.holochat.ui.chats.NewChatFragment"
+        android:name="edu.uw.tcss450.team5.holochat.ui.chats.new_chatroom.NewChatFragment"
         android:label="Make a Chatroom"
         tools:layout="@layout/fragment_new_chat">
         <action
@@ -99,7 +142,7 @@
     </fragment>
     <fragment
         android:id="@+id/navigation_messages"
-        android:name="edu.uw.tcss450.team5.holochat.ui.chats.MessageListFragment"
+        android:name="edu.uw.tcss450.team5.holochat.ui.chats.chatroom_list.MessageListFragment"
         android:label="Messages">
         <action
             android:id="@+id/action_navigation_messages_to_chatRoomFragment"
@@ -107,5 +150,35 @@
         <action
             android:id="@+id/action_navigation_messages_to_newChatFragment"
             app:destination="@id/newChatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addContactToChatFragment"
+        android:name="edu.uw.tcss450.team5.holochat.ui.chats.chatroom.AddContactToChatFragment"
+        android:label="Add Contact to Chatroom"
+        tools:layout="@layout/fragment_add_contact_to_chat">
+        <action
+            android:id="@+id/action_addContactToChatFragment_to_chatRoomFragment"
+            app:destination="@id/chatRoomFragment" />
+        <argument
+            android:name="chatID"
+            app:argType="integer" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewChatMembersFragment"
+        android:name="edu.uw.tcss450.team5.holochat.ui.chats.chatroom.ChatMembersFragment"
+        android:label="View Chat Members"
+        tools:layout="@layout/fragment_chat_members">
+        <action
+            android:id="@+id/action_viewChatMembersFragment_to_chatRoomFragment"
+            app:destination="@id/chatRoomFragment" />
+        <argument
+            android:name="chatID"
+            app:argType="integer" />
+        <argument
+            android:name="name"
+            app:argType="string" />
     </fragment>
 </navigation>

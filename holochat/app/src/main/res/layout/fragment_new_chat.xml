@@ -5,10 +5,10 @@
     android:id="@+id/layout_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.chats.NewChatFragment" >
+    tools:context=".ui.chats.new_chatroom.NewChatFragment" >
 
     <TextView
-        android:id="@+id/textEnterName"
+        android:id="@+id/textAddChatTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -41,9 +41,9 @@
         app:layout_constraintBottom_toTopOf="@+id/button_cancel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textEnterName"
+        app:layout_constraintTop_toBottomOf="@+id/textAddChatTitle"
         app:layout_constraintVertical_bias="0.0"
-        tools:context="edu.uw.tcss450.team5.holochat.ui.chats.NewChatFragment"
+        tools:context="edu.uw.tcss450.team5.holochat.ui.chats.new_chatroom.NewChatFragment"
         tools:listitem="@layout/add_contact_card" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
@@ -86,8 +86,9 @@
         app:layout_constraintBottom_toTopOf="@+id/recyclerMakeChatContacts"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textEnterName"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/textAddChatTitle"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="NotSibling" />
 
 
 
