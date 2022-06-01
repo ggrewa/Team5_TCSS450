@@ -20,6 +20,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import edu.uw.tcss450.team5.holochat.MainActivity;
 import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentLocationBinding;
 import edu.uw.tcss450.team5.holochat.model.LocationViewModel;
@@ -36,6 +37,9 @@ public class LocationFragment extends Fragment implements OnMapReadyCallback, Go
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        //set title in the actionbar
+        ((MainActivity)getActivity()).setTitle("Choose a Location");
+
         FragmentLocationBinding binding = FragmentLocationBinding.bind(getView());
         mModel = new ViewModelProvider(getActivity())
                 .get(LocationViewModel.class);
@@ -72,7 +76,6 @@ public class LocationFragment extends Fragment implements OnMapReadyCallback, Go
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(c, 15.0f));
             }
         });
-
         mMap.setOnMapClickListener(this);
     }
 
