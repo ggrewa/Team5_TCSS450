@@ -76,6 +76,8 @@ public class HomeFragment extends Fragment {
         binding.textHomeWelcomeUser.setText("Welcome, " + jwt.getClaim("first").asString() + " " +
                 jwt.getClaim("last").asString() + "!");
 
+        binding.homeWeatherTemp.setText("its cold!");
+
 
     }
 

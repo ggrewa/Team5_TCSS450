@@ -42,8 +42,9 @@
         <entry key="app/src/main/res/layout/fragment_create_chat.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_delete_contact.xml" value="0.1398148148148148" />
         <entry key="app/src/main/res/layout/fragment_forgot_password.xml" value="0.2388888888888889" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.28192901611328125" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.375" />
         <entry key="app/src/main/res/layout/fragment_landing_page.xml" value="0.27794871794871795" />
+        <entry key="app/src/main/res/layout/fragment_recents.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/fragment_recover_password.xml" value="0.2560553633217993" />
         <entry key="app/src/main/res/layout/fragment_register.xml" value="0.30733511788504464" />
         <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.2388888888888889" />
@@ -51,6 +52,7 @@
         <entry key="app/src/main/res/layout/fragment_verification.xml" value="0.28283538818359377" />
         <entry key="app/src/main/res/layout/fragment_weather.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_weather_card.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/home_weather.xml" value="0.7008056640625" />
         <entry key="app/src/main/res/layout/layout_chatroom_row.xml" value="0.27794871794871795" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.2635416666666667" />
         <entry key="app/src/main/res/menu/toolbar.xml" value="0.2635416666666667" />
