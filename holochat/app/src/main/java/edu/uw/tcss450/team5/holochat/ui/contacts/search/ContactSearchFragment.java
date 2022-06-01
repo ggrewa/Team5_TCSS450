@@ -37,6 +37,7 @@ public class ContactSearchFragment extends Fragment {
     private FragmentContactSearchBinding binding;
     private AllMemberListViewModel mModel;
     private SearchViewModel mSearchModel;
+
     public ContactSearchFragment() {
         // Required empty public constructor
     }
@@ -120,10 +121,6 @@ public class ContactSearchFragment extends Fragment {
                         actionNavigationTabbedContactsToContactFoundFragment(
                                 email,username, memberid));
     }
-
-
-
-
 
     private void observeContacts(JSONObject response) {
         Log.i("user", response.toString());

@@ -20,6 +20,8 @@ import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
 import edu.uw.tcss450.team5.holochat.ui.contacts.info.Contact;
 import edu.uw.tcss450.team5.holochat.ui.contacts.info.ContactInfoFragmentArgs;
 import edu.uw.tcss450.team5.holochat.ui.contacts.info.ContactViewModel;
+import edu.uw.tcss450.team5.holochat.ui.contacts.request.AcceptContactDialog;
+import edu.uw.tcss450.team5.holochat.ui.contacts.request.ContactRequestListViewModel;
 import edu.uw.tcss450.team5.holochat.ui.contacts.request.DeleteContactDialog;
 
 /**
@@ -33,6 +35,8 @@ public class ContactFoundFragment extends Fragment {
     private String mContactEmail;
     private String mContactUsername;
     private int mMemberID;
+    private FragmentManager mFragmMan;
+
 
     public ContactFoundFragment() {
         // Required empty public constructor
@@ -45,6 +49,9 @@ public class ContactFoundFragment extends Fragment {
         mMemberID = args.getMemberid();
         mContactEmail = args.getEmail();
         mContactUsername = args.getUsername();
+        this.mFragmMan = getActivity().getSupportFragmentManager();
+
+        Log.i("FOUND_USER", mMemberID + "|" + mContactEmail + "|" + mContactUsername);
 
     }
 
@@ -75,15 +82,17 @@ public class ContactFoundFragment extends Fragment {
         mBinding.buttonActionAddContact.setOnClickListener(button -> handleAddContact());
     }
 
+    /**
+     * navigates to aa prompt to send a friend request
+     */
+    private void openDialog() {
+        SendContactDialog dialog = new SendContactDialog(mContactUsername,
+                mMemberID);
+        dialog.show(mFragmMan, "maybe?");
+    }
+
     private void handleAddContact() {
         Log.i("ADD_SEARCH", "ADDING A USER FROM A SEARCH");
         openDialog();
-    }
-
-    /**
-     * navigates to a contacts profile to add
-     */
-    private void openDialog() {
-
     }
 }

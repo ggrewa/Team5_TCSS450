@@ -48,6 +48,18 @@ public class AcceptContactDialog extends DialogFragment {
         mUpdater = testing;
     }
 
+    /**
+     * Constructor for the accept dialog
+     *
+     * @param name A String representing a contacts name
+     * @param memberID an integer representing the contact ID
+     */
+    public AcceptContactDialog(String name, int memberID) {
+        this.mContactName = name;
+        this.mMemberID = memberID;
+        this.mUpdater = null;
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,7 +94,7 @@ public class AcceptContactDialog extends DialogFragment {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         mContactRequestModel.sendVerify(mUserModel.getJwt(), mMemberID);
-                        mUpdater.deleteRequest();
+                        if(mUpdater != null) mUpdater.deleteRequest();
                     }
                 })
                 .setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
