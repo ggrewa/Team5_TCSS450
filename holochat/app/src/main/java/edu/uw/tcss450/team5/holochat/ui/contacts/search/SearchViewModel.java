@@ -1,4 +1,4 @@
-package edu.uw.tcss450.team5.holochat.ui.contacts.request;
+package edu.uw.tcss450.team5.holochat.ui.contacts.search;
 
 import android.app.Application;
 import android.util.Log;
@@ -32,43 +32,42 @@ import edu.uw.tcss450.team5.holochat.ui.contacts.info.Contact;
  * Stores info on member who have requested to be friends with the user
  * This is displayed on the contacts table as verified = 0
  *
- * @author Tarnveer
  * @author Ken
  */
 
-public class ContactRequestListViewModel extends AndroidViewModel {
+public class SearchViewModel extends AndroidViewModel {
     private MutableLiveData<List<Contact>> mContactList;
     private final MutableLiveData<JSONObject> mResponse;
-    public ContactRequestListViewModel(@NonNull Application application) {
+
+    private Contact mContact;
+
+    public SearchViewModel(@NonNull Application application) {
         super(application);
         mContactList = new MutableLiveData<>(new ArrayList<>());
         mResponse = new MutableLiveData<>();
         mResponse.setValue(new JSONObject());
-
-    }
-    /**
-     * Add an observer to the contact request list view model.
-     *
-     * @param owner the owner
-     * @param observer the observer
-     */
-    public void addContactRequestListObserver(@NonNull LifecycleOwner owner,
-                                              @NonNull Observer<? super List<Contact>> observer){
-        mContactList.observe(owner, observer);
     }
 
-    public void addResponseObserver(@NonNull LifecycleOwner owner,
-                                    @NonNull Observer<? super JSONObject> observer) {
-        mResponse.observe(owner, observer);
+    public Contact getmContact() {
+        return mContact;
     }
+
     /**
-     * Connects to webservice endpoint to retrieve a list of contacts.
+     * Connects to webservice endpoint to search for a user based on a string
      *
      * @param jwt a valid jwt.
      */
-    public void connectGet (String jwt){
+    public void connectGet(String jwt, String theInput) {
         String base_url = getApplication().getResources().getString(R.string.base_url_service);
-        String url = base_url + "contacts";
+        String url = base_url + "contacts/search";
+
+        JSONObject body = new JSONObject();
+        try {
+            body.put("search_string", theInput);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         Request request = new JsonObjectRequest(
                 Request.Method.GET,
                 url,
@@ -91,6 +90,7 @@ public class ContactRequestListViewModel extends AndroidViewModel {
         Volley.newRequestQueue(getApplication().getApplicationContext())
                 .add(request);
     }
+
     /**
      * Handles a successful connection with the webservice.
      *
@@ -102,71 +102,31 @@ public class ContactRequestListViewModel extends AndroidViewModel {
             JSONArray contacts = result.getJSONArray("contacts");
             for (int i = 0; i < contacts.length(); i++) {
                 JSONObject contact = contacts.getJSONObject(i);
-                int verified = contact.getInt("verified");
-                if(verified == 0){
-                    String email= contact.getString("email");
-                    String firstName= contact.getString("firstName");
-                    String lastName= contact.getString("lastName");
-                    String username= contact.getString("userName");
-                    int memberID = contact.getInt("memberId");
+                String email = contact.getString("email");
+                String fullName = contact.getString("first_last");
+                String username = contact.getString("userName");
+                int memberID = contact.getInt("memberId");
+                Contact entry = new Contact(email, fullName, "", username, memberID);
+                temp.add(entry);
 
-                    Contact entry = new Contact(email, firstName, lastName, username, memberID);
-                    temp.add(entry);
-                }
+                mContact = new Contact(email, fullName, "", username, memberID);
             }
         } catch (JSONException e) {
-            Log.e("JSON PARSE ERROR", "Found in handle Success ContactViewModel");
+            Log.e("JSON PARSE ERROR", "Found in handle Success SearchViewModel");
             Log.e("JSON PARSE ERROR", "Error: " + e.getMessage());
         }
         mContactList.setValue(temp);
     }
 
-    /**
-     * Sends verification of accepted contact request.
-     * Sets the 0 to be a 1 in contacts table
-     *
-     * @param jwt A valid jwt
-     * @param memberID the member ID
-     */
-    public void sendVerify(final String jwt, int memberID) {
-        String base_url = getApplication().getResources().getString(R.string.base_url_service);
-        String url = base_url + "contacts";
-
-        JSONObject body = new JSONObject();
-        try {
-            body.put("memberId", memberID);
-            body.put("verified", 1);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        Request request = new JsonObjectRequest(
-                Request.Method.POST,
-                url,
-                body, //push token found in the JSONObject body
-                mResponse::setValue, // we get a response but do nothing with it
-                this::handleError) {
-
-            @Override
-            public Map<String, String> getHeaders() {
-                Map<String, String> headers = new HashMap<>();
-                // add headers <key,value>
-                headers.put("Authorization", jwt);
-                return headers;
-            }
-        };
-
-        request.setRetryPolicy(new DefaultRetryPolicy(
-                10_000,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        //Instantiate the RequestQueue and add the request to the queue
-        RequestQueueSingleton.getInstance(getApplication().getApplicationContext())
-                .addToRequestQueue(request);
+    public void addResponseObserver(@NonNull LifecycleOwner owner,
+                                    @NonNull Observer<? super JSONObject> observer) {
+        mResponse.observe(owner, observer);
     }
+
 
     /**
      * HAndles Errors when connecting to contacts endpoints
+     *
      * @param error the error.
      */
     private void handleError(final VolleyError error) {

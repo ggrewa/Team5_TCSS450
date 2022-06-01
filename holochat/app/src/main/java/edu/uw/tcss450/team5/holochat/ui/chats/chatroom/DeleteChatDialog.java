@@ -71,7 +71,6 @@ public class DeleteChatDialog extends DialogFragment {
      */
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        super.onViewCreated(view, savedInstanceState);
         FragmentMessageListBinding binding = FragmentMessageListBinding.bind(getView());
 
         mMessageModel.addMessageListObserver(getViewLifecycleOwner(), messageList -> {

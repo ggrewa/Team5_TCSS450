@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,8 +13,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import edu.uw.tcss450.team5.holochat.MainActivity;
-import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentContactInfoBinding;
+import edu.uw.tcss450.team5.holochat.ui.contacts.request.DeleteContactDialog;
 
 /**
  * Fragment that shows given Contact's username and email, also can start a new chat with given
@@ -24,6 +25,9 @@ public class ContactInfoFragment extends Fragment {
     private FragmentContactInfoBinding mBinding;
     private String mUserName;
     private String mContactEmail;
+    private String mRealName;
+    private int mContactID;
+    private FragmentManager mFragmMan;
 
     public ContactInfoFragment() {
         // Required empty public constructor
@@ -34,7 +38,11 @@ public class ContactInfoFragment extends Fragment {
         super.onCreate(savedInstanceState);
         ContactInfoFragmentArgs args = ContactInfoFragmentArgs.fromBundle(getArguments());
         mContactEmail = args.getContactEmail();
-        mUserName = args.getUsername();
+        mUserName = args.getContactUsername();
+        mRealName = args.getContactRealName();
+        mContactID = args.getContactMemberID();
+        mFragmMan = getActivity().getSupportFragmentManager();
+
     }
 
     @Override
@@ -43,17 +51,35 @@ public class ContactInfoFragment extends Fragment {
         mBinding = FragmentContactInfoBinding.inflate(inflater, container, false);
         return mBinding.getRoot();
     }
+
     @Override
-    public void onViewCreated (@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         //Use a Lamda expression to add the OnClickListener
-        TextView nameView = (TextView)mBinding.contactName;
-        TextView emailView = (TextView)mBinding.contactEmail;
-        nameView.setText(mUserName);
+        TextView nickNameView = (TextView) mBinding.contactNickname;
+        TextView emailView = (TextView) mBinding.contactEmail;
+        TextView realName = mBinding.contactRealName;
+        realName.setText(mRealName);
+        nickNameView.setText(mUserName);
         emailView.setText(mContactEmail);
 
         //set title to username
-        ((MainActivity)getActivity()).setTitle(mUserName);
+        ((MainActivity) getActivity()).setTitle("Contact: " + mUserName);
 
+        mBinding.buttonActionDeleteContact.setOnClickListener(button -> handleDeleteContact());
+
+    }
+
+    private void handleDeleteContact() {
+        openDialog();
+    }
+
+    /**
+     * navigates to a contacts profile.
+     */
+    private void openDialog() {
+        DeleteContactDialog dialog = new DeleteContactDialog(mUserName,
+                mContactID);
+        dialog.show(mFragmMan, "maybe?");
     }
 }

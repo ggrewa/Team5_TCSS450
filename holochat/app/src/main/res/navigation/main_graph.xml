@@ -79,14 +79,17 @@
         android:name="edu.uw.tcss450.team5.holochat.ui.contacts.info.ContactInfoFragment"
         android:label="fragment_contact_info"
         tools:layout="@layout/fragment_contact_info" >
-        <argument
-            android:name="username"
-            app:argType="string" />
         <argument android:name="contactEmail"
             app:argType="string" />
         <argument
-            android:name="label"
+            android:name="contactUsername"
             app:argType="string" />
+        <argument
+            android:name="contactRealName"
+            app:argType="string" />
+        <argument
+            android:name="contactMemberID"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/navigation_tabbed_contacts"
@@ -95,6 +98,9 @@
         <action
             android:id="@+id/action_navigation_tabbed_contacts_to_navigation_contact_info"
             app:destination="@id/navigation_contact_info" />
+        <action
+            android:id="@+id/action_navigation_tabbed_contacts_to_contactFoundFragment"
+            app:destination="@id/contactFoundFragment" />
     </fragment>
     <fragment
         android:id="@+id/recoverPasswordFragment"
@@ -180,5 +186,18 @@
         <argument
             android:name="name"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/contactFoundFragment"
+        android:name="edu.uw.tcss450.team5.holochat.ui.contacts.search.ContactFoundFragment"
+        android:label="ContactFoundFragment" >
+        <argument android:name="email"
+            app:argType="string" />
+        <argument
+            android:name="username"
+            app:argType="string" />
+        <argument
+            android:name="memberid"
+            app:argType="integer" />
     </fragment>
 </navigation>

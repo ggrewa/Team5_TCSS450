@@ -28,7 +28,7 @@ import java.util.Objects;
 import edu.uw.tcss450.team5.holochat.io.RequestQueueSingleton;
 import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.ui.contacts.info.Contact;
-import edu.uw.tcss450.team5.holochat.ui.contacts.list.ContactListSingle;
+import edu.uw.tcss450.team5.holochat.ui.contacts.info.ContactListSingle;
 
 /**
  * Stores chat members that are in a specific chatroom

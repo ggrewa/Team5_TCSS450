@@ -13,6 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
+
 import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentContactListBinding;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
@@ -77,6 +79,13 @@ public class ContactListFragment extends Fragment {
 //        //The user is out of messages, go out to the service and get more
         mContactListModel.addContactObserver(mUserModel.getEmail(), getViewLifecycleOwner(),
                 list -> {
+
+                    if (!list.isEmpty()) {
+                        int size = list.size();
+                        binding.textContactListLabel.setText("You have "+ size + " contact(s):");
+                    } else {
+                        binding.textContactListLabel.setText("You have no contacts （◞‸◟）");
+                    }
                     /*
                      * This solution needs work on the scroll position. As a group,
                      * you will need to come up with some solution to manage the

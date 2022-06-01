@@ -1,8 +1,12 @@
-package edu.uw.tcss450.team5.holochat.ui.contacts.request;
+package edu.uw.tcss450.team5.holochat.ui.contacts.search;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -10,38 +14,32 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.TextView;
-
 import org.json.JSONObject;
 
 import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
 
 /**
- * A Dialog for accepting a request.
+ * A Dialog for sending a friend request
  *
- * @author Tarnveer
  * @author Ken
  */
-public class AcceptContactDialog extends DialogFragment {
+public class SendContactDialog extends DialogFragment {
 
     private final String mContactName;
     private final int mMemberID;
     private UserInfoViewModel mUserModel;
-    private ContactRequestListViewModel mContactRequestModel;
-    private final ContactRequestRecyclerViewAdapter.ContactRequestViewHolder mUpdater;
+    private AllMemberListViewModel mContactRequestModel;
+    private final AllMemberRecyclerViewAdapter.ContactRequestViewHolder mUpdater;
 
     /**
      * Constructor for the accept dialog
-     *
-     * @param name A String representing a contacts name
+     *  @param name A String representing a contacts name
      * @param memberID an integer representing the contact ID
+     * @param testing
      */
-    public AcceptContactDialog(String name, int memberID,
-                               ContactRequestRecyclerViewAdapter.ContactRequestViewHolder testing){
+    public SendContactDialog(String name, int memberID,
+                             AllMemberRecyclerViewAdapter.ContactRequestViewHolder testing){
 
         this.mContactName = name;
         this.mMemberID = memberID;
@@ -55,7 +53,7 @@ public class AcceptContactDialog extends DialogFragment {
                 .get(UserInfoViewModel.class);
 
         mContactRequestModel = new ViewModelProvider(getActivity())
-                .get(ContactRequestListViewModel.class);
+                .get(AllMemberListViewModel.class);
     }
 
     /**
@@ -74,14 +72,14 @@ public class AcceptContactDialog extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.fragment_accept_contact_dialog, null);
+        View view = inflater.inflate(R.layout.fragment_send_friend_request_dialog, null);
         TextView name = (TextView)view.findViewById(R.id.textContactName);
         name.setText(mContactName);
         builder.setView(view)
                 .setNegativeButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        mContactRequestModel.sendVerify(mUserModel.getJwt(), mMemberID);
+                        mContactRequestModel.postFriendRequest(mUserModel.getJwt(), mMemberID);
                         mUpdater.deleteRequest();
                     }
                 })
