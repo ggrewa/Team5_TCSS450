@@ -23,8 +23,8 @@ import java.util.List;
 import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentNewChatBinding;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
-import edu.uw.tcss450.team5.holochat.ui.contacts.ContactListSingle;
-import edu.uw.tcss450.team5.holochat.ui.contacts.ContactListViewModel;
+import edu.uw.tcss450.team5.holochat.ui.contacts.list.ContactListSingle;
+import edu.uw.tcss450.team5.holochat.ui.contacts.list.ContactListViewModel;
 
 /**
 * Fragment to create a new chatroom

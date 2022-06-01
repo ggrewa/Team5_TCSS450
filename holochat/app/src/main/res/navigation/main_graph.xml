@@ -64,7 +64,7 @@
     </fragment>
     <fragment
         android:id="@+id/navigation_contacts_list"
-        android:name="edu.uw.tcss450.team5.holochat.ui.contacts.contact_tabs.ContactListFragment"
+        android:name="edu.uw.tcss450.team5.holochat.ui.contacts.list.ContactListFragment"
         android:label="My Contacts List"
         tools:layout="@layout/fragment_contact_list">
         <action
@@ -76,7 +76,7 @@
     </fragment>
     <fragment
         android:id="@+id/navigation_contact_info"
-        android:name="edu.uw.tcss450.team5.holochat.ui.contacts.ContactInfoFragment"
+        android:name="edu.uw.tcss450.team5.holochat.ui.contacts.info.ContactInfoFragment"
         android:label="fragment_contact_info"
         tools:layout="@layout/fragment_contact_info" >
         <argument
@@ -112,7 +112,7 @@
     </fragment>
     <fragment
         android:id="@+id/deleteContact"
-        android:name="edu.uw.tcss450.team5.holochat.ui.contacts.DeleteContact"
+        android:name="edu.uw.tcss450.team5.holochat.ui.contacts.request.DeleteContact"
         android:label="fragment_delete_contact"
         tools:layout="@layout/fragment_delete_contact" >
         <argument

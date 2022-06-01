@@ -1,4 +1,4 @@
-package edu.uw.tcss450.team5.holochat.ui.contacts.contact_tabs;
+package edu.uw.tcss450.team5.holochat.ui.contacts.list;
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -16,8 +16,8 @@ import android.view.ViewGroup;
 import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentContactListBinding;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
-import edu.uw.tcss450.team5.holochat.ui.contacts.ContactListRecyclerViewAdapter;
-import edu.uw.tcss450.team5.holochat.ui.contacts.ContactListViewModel;
+import edu.uw.tcss450.team5.holochat.ui.contacts.list.ContactListRecyclerViewAdapter;
+import edu.uw.tcss450.team5.holochat.ui.contacts.list.ContactListViewModel;
 
 /**
  * Fragment that contains a list to view all friends user currently has added

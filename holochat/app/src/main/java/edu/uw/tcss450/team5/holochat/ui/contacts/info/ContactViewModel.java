@@ -1,4 +1,4 @@
-package edu.uw.tcss450.team5.holochat.ui.contacts;
+package edu.uw.tcss450.team5.holochat.ui.contacts.info;
 
 import android.app.Application;
 import android.util.Log;
@@ -27,16 +27,17 @@ import edu.uw.tcss450.team5.holochat.io.RequestQueueSingleton;
 /**
  * @author Tarnveer
  */
-public class DeleteContactViewModel extends AndroidViewModel {
+public class ContactViewModel extends AndroidViewModel {
     private MutableLiveData<JSONObject> mContacts;
 
-    public DeleteContactViewModel(@NonNull Application application) {
+    public ContactViewModel(@NonNull Application application) {
         super(application);
         mContacts = new MutableLiveData<>();
         mContacts.setValue(new JSONObject());
     }
+
     public void addResponseObserver(@NonNull LifecycleOwner owner,
-                                    @NonNull Observer<? super JSONObject> observer){
+                                    @NonNull Observer<? super JSONObject> observer) {
         mContacts.observe(owner, observer);
     }
 
@@ -49,8 +50,7 @@ public class DeleteContactViewModel extends AndroidViewModel {
             } catch (JSONException e) {
                 Log.e("JSON PARSE", "JSON Parse Error in handleError");
             }
-        }
-        else {
+        } else {
             String data = new String(error.networkResponse.data, Charset.defaultCharset())
                     .replace('\"', '\'');
             try {
@@ -64,16 +64,74 @@ public class DeleteContactViewModel extends AndroidViewModel {
         }
     }
 
-    /**
-     *
-     * call on the database to delete a user from the current user's contacts
-     * @param jwt the token.
-     */
+    public void connect(String email, final String jwt) {
+        String url = "https://team5-tcss450-holochat.herokuapp.com/contacts";
+        JSONObject body = new JSONObject();
+
+
+        Log.i("Made it:", body.toString());
+        Request request = new JsonObjectRequest(
+                Request.Method.GET,
+                url,
+                body,
+                mContacts::setValue,
+                this::handleError) {
+            @Override
+            public Map<String, String> getHeaders() {
+                Map<String, String> headers = new HashMap<>();
+                // add headers <key,value>
+                headers.put("Authorization", jwt);
+                return headers;
+            }
+        };
+
+        Log.i("Made it:", request.toString());
+        request.setRetryPolicy(new DefaultRetryPolicy(
+                10_000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        //Instantiate the RequestQueue and add the request to the queue
+        RequestQueueSingleton.getInstance(getApplication().getApplicationContext())
+                .addToRequestQueue(request);
+
+
+    }
+
+    public void connectAddContact(final int memId, final String jwt) {
+        String url = "https://team5-tcss450-holochat.herokuapp.com/contacts" + memId;
+        JSONObject body = new JSONObject();
+
+
+        Log.i("Made it:", body.toString());
+        Request request = new JsonObjectRequest(
+                Request.Method.PUT,
+                url,
+                body,
+                mContacts::setValue,
+                this::handleError) {
+            @Override
+            public Map<String, String> getHeaders() {
+                Map<String, String> headers = new HashMap<>();
+                // add headers <key,value>
+                headers.put("Authorization", jwt);
+                return headers;
+            }
+        };
+
+        Log.i("Made it:", request.toString());
+        request.setRetryPolicy(new DefaultRetryPolicy(
+                10_000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        //Instantiate the RequestQueue and add the request to the queue
+        RequestQueueSingleton.getInstance(getApplication().getApplicationContext())
+                .addToRequestQueue(request);
+
+
+    }
+
     public void connectRemoveContact(final int memId, final String jwt) {
-
-
-
-        String url = "https://team5-tcss450-holochat.herokuapp.com/contacts/"+ memId;
+        String url = "https://team5-tcss450-holochat.herokuapp.com/contacts" + memId;
         JSONObject body = new JSONObject();
 
 
@@ -102,4 +160,6 @@ public class DeleteContactViewModel extends AndroidViewModel {
         RequestQueueSingleton.getInstance(getApplication().getApplicationContext())
                 .addToRequestQueue(request);
 
-    }}
+
+    }
+}

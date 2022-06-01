@@ -1,4 +1,4 @@
-package edu.uw.tcss450.team5.holochat.ui.contacts;
+package edu.uw.tcss450.team5.holochat.ui.contacts.request;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

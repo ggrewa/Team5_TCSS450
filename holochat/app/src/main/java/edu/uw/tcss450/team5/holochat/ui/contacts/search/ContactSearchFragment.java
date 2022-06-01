@@ -1,4 +1,4 @@
-package edu.uw.tcss450.team5.holochat.ui.contacts.contact_tabs;
+package edu.uw.tcss450.team5.holochat.ui.contacts.search;
 
 import android.os.Bundle;
 
@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.Navigation;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,10 +18,9 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentContactSearchBinding;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
-import edu.uw.tcss450.team5.holochat.ui.contacts.ContactViewModel;
+import edu.uw.tcss450.team5.holochat.ui.contacts.info.ContactViewModel;
 
 /**
  * Fragment that hold tools to search for a user of the app and send a friend request

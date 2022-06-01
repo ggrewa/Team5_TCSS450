@@ -5,7 +5,7 @@
     android:id="@+id/fragment_contact_list"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.contacts.contact_tabs.ContactListFragment">
+    tools:context=".ui.contacts.list.ContactListFragment">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton4"

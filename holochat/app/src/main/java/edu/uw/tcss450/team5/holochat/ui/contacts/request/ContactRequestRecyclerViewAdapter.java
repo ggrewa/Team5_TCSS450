@@ -1,4 +1,4 @@
-package edu.uw.tcss450.team5.holochat.ui.contacts.contact_tabs;
+package edu.uw.tcss450.team5.holochat.ui.contacts.request;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentContactRequestCardBinding;
-import edu.uw.tcss450.team5.holochat.ui.contacts.Contact;
+import edu.uw.tcss450.team5.holochat.ui.contacts.info.Contact;
 
 /**
  * @author Tarnveer
