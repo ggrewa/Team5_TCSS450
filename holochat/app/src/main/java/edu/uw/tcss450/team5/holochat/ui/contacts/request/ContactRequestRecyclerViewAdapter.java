@@ -95,6 +95,7 @@ public class ContactRequestRecyclerViewAdapter  extends RecyclerView.Adapter<Con
          */
         void setContact(final Contact contact) {
             binding.textUsername.setText(contact.getContactUsername());
+            binding.textEmail.setText(contact.getContactEmail());
             mContact = contact;
             binding.buttonAccept.setOnClickListener(button -> openDialog());
         }

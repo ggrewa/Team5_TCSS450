@@ -33,7 +33,6 @@ public class AcceptContactDialog extends DialogFragment {
     private ContactRequestListViewModel mContactRequestModel;
     private final ContactRequestRecyclerViewAdapter.ContactRequestViewHolder mUpdater;
 
-
     /**
      * Constructor for the accept dialog
      *
