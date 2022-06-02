@@ -37,7 +37,7 @@ import edu.uw.tcss450.team5.holochat.ui.contacts.info.Contact;
 
 public class SearchViewModel extends AndroidViewModel {
     private MutableLiveData<List<Contact>> mContactList;
-    private final MutableLiveData<JSONObject> mResponse;
+    private MutableLiveData<JSONObject> mResponse;
 
     private Contact mContact;
 
@@ -60,6 +60,8 @@ public class SearchViewModel extends AndroidViewModel {
     public void connectGet(String jwt, String theInput) {
         String base_url = getApplication().getResources().getString(R.string.base_url_service);
         String url = base_url + "contacts/search";
+        Log.i("search_connectGet", theInput + "|" + jwt);
+        System.out.println("I am doing " + url);
 
         JSONObject body = new JSONObject();
         try {
@@ -71,7 +73,7 @@ public class SearchViewModel extends AndroidViewModel {
         Request request = new JsonObjectRequest(
                 Request.Method.GET,
                 url,
-                null, //no body for this get request
+                body,
                 this::handleSuccess,
                 this::handleError) {
             @Override
@@ -89,7 +91,9 @@ public class SearchViewModel extends AndroidViewModel {
         //Instantiate the RequestQueue and add the request to the queue
         Volley.newRequestQueue(getApplication().getApplicationContext())
                 .add(request);
+
     }
+
 
     /**
      * Handles a successful connection with the webservice.
@@ -98,6 +102,7 @@ public class SearchViewModel extends AndroidViewModel {
      */
     private void handleSuccess(final JSONObject result) {
         ArrayList<Contact> temp = new ArrayList<>();
+        System.out.println("search has been successful my dudes");
         try {
             JSONArray contacts = result.getJSONArray("contacts");
             for (int i = 0; i < contacts.length(); i++) {
@@ -108,8 +113,8 @@ public class SearchViewModel extends AndroidViewModel {
                 int memberID = contact.getInt("memberId");
                 Contact entry = new Contact(email, fullName, "", username, memberID);
                 temp.add(entry);
-
                 mContact = new Contact(email, fullName, "", username, memberID);
+                mResponse.setValue(contact);
             }
         } catch (JSONException e) {
             Log.e("JSON PARSE ERROR", "Found in handle Success SearchViewModel");

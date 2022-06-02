@@ -60,42 +60,53 @@ public class ContactSearchFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         ViewModelProvider provider= new ViewModelProvider(getActivity());
+        //contact view models
         mContactViewModel = provider.get(ContactViewModel.class);
         mUserModel = provider.get(UserInfoViewModel.class);
-
         mModel = provider.get(AllMemberListViewModel.class);
         mModel.connectGet(mUserModel.getJwt(), mUserModel.getMemberID());
-        mSearchModel = provider.get(SearchViewModel.class);
-        mSearchModel.addResponseObserver(
-                getViewLifecycleOwner(),
-                this::observeSearchResponse);
-        Log.i("CONTACT_SEARCH", "" + mUserModel.getMemberID());
 
+        //contact view model of people that you can add
         mContactViewModel.connect(mUserModel.getEmail(), mUserModel.getJwt());
         mContactViewModel.addResponseObserver(getViewLifecycleOwner(),
                 this::observeContacts);
-        binding.buttonFindContact.setOnClickListener(this::attemptToFind);
-
         mModel.addContactRequestListObserver(getViewLifecycleOwner(), contactList -> {
-            //if (!contactList.isEmpty()) {
             binding.listRoot.setAdapter(
                     new AllMemberRecyclerViewAdapter(contactList, getActivity().getSupportFragmentManager())
             );
         });
 
+        //search bar, searching view model
+        mSearchModel = provider.get(SearchViewModel.class);
+        mSearchModel.addResponseObserver(
+                getViewLifecycleOwner(),
+                this::observeSearchResponse);
+        binding.buttonFindContact.setOnClickListener(this::attemptToFind);
+
     }
 
+    /**
+     * Get the search bar input, parse it and send to webservice
+     * On callback have it navigate to the ContactFound fragment
+     *
+     * @param view
+     */
     private void attemptToFind(View view) {
-        String input = String.valueOf(binding.connectionsSearchEditText.getText());
+        //take the current input and parse it
+        String input = String.valueOf(binding.connectionsSearchEditText.getText()).replaceAll("\\s", "");;
         Log.i("CONTACT_SEARCH_FRAG", "input:" + input);
+        System.out.println("user tried to find: " + input);
 
-        navigateToUserFound("kenahren@gmail.com","Kenpai",26);
+        //attempt connection to webservice to find
+        mSearchModel.connectGet(mUserModel.getJwt(), input);
+        //TODO: don't use hardcoded information
+        //navigateToUserFound("kenahren@gmail.com","Kenpai",26);
 
     }
 
     /**
      * An observer on the HTTP Response from the web server. This observer should be
-     * attached to PushyTokenViewModel.
+     * attached to SearchViewModel
      *
      * @param response the Response from the server
      */
@@ -105,9 +116,30 @@ public class ContactSearchFragment extends Fragment {
                 //this error cannot be fixed by the user changing credentials...
                 binding.connectionsSearchEditText.setError(
                         "Can't find this user.");
-            } else {
-                //TODO
-                navigateToUserFound("kenahren@gmail.com","Kenpai",26);
+            } else { //something in the response now
+//                //some fake member id so I know it didnt work
+//                System.out.println("search has observed a response!");
+//                String email = "notarealemail@gmail.com";
+//                String fullName = "Goku";
+//                String username = "thelegend27";
+//                int memberID = 0;
+//                try {
+//                    email = response.getString("email");
+//                    fullName = response.getString("first_last");
+//                    username = response.getString("userName");
+//                    memberID = response.getInt("memberId");
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+
+                Contact cont = mSearchModel.getmContact();
+                String email = cont.getContactEmail();
+                String fullName = cont.getContactUsername();
+                String username = cont.getContactUsername();
+                int memberID = cont.getContactMemberID();
+                System.out.println("Connect search about to navigate"+email+username+memberID);
+                navigateToUserFound(email,username,memberID);
+                //navigateToUserFound("kenahren@gmail.com","Kenpai",26);
             }
         }
     }
