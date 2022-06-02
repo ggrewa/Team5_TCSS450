@@ -8,6 +8,7 @@ package edu.uw.tcss450.team5.holochat;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavArgument;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
@@ -39,6 +40,8 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationBarView;
 
+
+import java.util.Map;
 
 import edu.uw.tcss450.team5.holochat.databinding.ActivityMainBinding;
 import edu.uw.tcss450.team5.holochat.model.LocationViewModel;
@@ -123,6 +126,8 @@ public class MainActivity extends AppCompatActivity {
         mPref = new AppSharedPref(this);
         mPref.initializeTheme(); //set theme based on preference in AppSharedPref class
         mNewMessageModel = new ViewModelProvider(this).get(NewMessageCountViewModel.class);
+        mNewMessageModel.increment(1);
+        mNewMessageModel.reset(1);
 
 
 
@@ -132,11 +137,14 @@ public class MainActivity extends AppCompatActivity {
 
 
         navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
-                if (destination.getId() == R.id.navigation_messages) {
+                if (destination.getId() == R.id.chatRoomFragment) {
                     //When the user navigates to the chats page, reset the new message count.
                     //This will need some extra logic for your project as it should have
                     //multiple chat rooms.
-                    mNewMessageModel.reset();
+
+                    System.out.println("TESTID"+arguments.getInt("chatID"));
+                    //Integer chatID = arguments.get("chatID");
+                    mNewMessageModel.reset(arguments.getInt("chatID"));
                 }
             });
 
@@ -246,6 +254,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onReceive(Context context, Intent intent) {
+
             NavController nc =
                     Navigation.findNavController(
                             MainActivity.this, R.id.nav_host_fragment);
@@ -258,7 +267,8 @@ public class MainActivity extends AppCompatActivity {
                 //If the user is not on the chat screen, update the
                 // NewMessageCountView Model
                 if (nd.getId() != R.id.navigation_messages){
-                    mNewMessageModel.increment();
+                    //incrementing total counter and chat room map
+                    mNewMessageModel.increment(intent.getIntExtra("chatid", -1));
                 }
                 //Inform the view model holding chatroom messages of the new
                 //message.

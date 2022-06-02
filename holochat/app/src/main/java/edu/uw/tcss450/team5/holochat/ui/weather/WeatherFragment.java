@@ -1,10 +1,16 @@
 package edu.uw.tcss450.team5.holochat.ui.weather;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
+import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import android.util.Log;
@@ -25,6 +31,9 @@ import com.android.volley.Request;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -41,6 +50,7 @@ import java.util.TimeZone;
 
 import edu.uw.tcss450.team5.holochat.MainActivity;
 import edu.uw.tcss450.team5.holochat.R;
+import edu.uw.tcss450.team5.holochat.model.LocationViewModel;
 import edu.uw.tcss450.team5.holochat.ui.chats.chatroom.ChatRoomFragmentDirections;
 
 /**
@@ -54,6 +64,13 @@ public class WeatherFragment extends Fragment {
 
     //keep track of view
     View globalView;
+
+    //testing current location
+    public LocationViewModel mModel;
+
+    private FusedLocationProviderClient fusedLocationClient;
+
+    String currentLoc = "location has not been set";
 
     //denote whether the user has selected c/f as their preference
     boolean celsius = false;
@@ -149,15 +166,15 @@ public class WeatherFragment extends Fragment {
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem) {
 
-                        if(menuItem.getTitle().equals("Zipcode")){
+                        if (menuItem.getTitle().equals("Zipcode")) {
                             //display serach bar and search button to user
                             inputBox.setVisibility(View.VISIBLE);
                             searchbtn.setVisibility(View.VISIBLE);
 
-                        } else if (menuItem.getTitle().equals("Select On Map")){
+                        } else if (menuItem.getTitle().equals("Select On Map")) {
                             navigateToSelectLocation();
-                        } else if (menuItem.getTitle().equals("Current Location")){
-                            //get current location and update weather no additional action required by user
+                        } else if (menuItem.getTitle().equals("Current Location")) {
+                            getCurrentLocation(view);
                         }
 
 
@@ -168,9 +185,53 @@ public class WeatherFragment extends Fragment {
             }
         });
 
-        //auto populate with weather data for Tacoma
-        connect("27.6648:-122.4443");
+        //testing getting current location
+        /*
+        mModel = new ViewModelProvider(getActivity())
+                .get(LocationViewModel.class);
+        mModel.addLocationObserver(getViewLifecycleOwner(), location -> currentLoc = location.toString());
+        System.out.println("This is the current location of the device: "+currentLoc);
 
+         */
+        //auto populate with weather data for Tacoma
+        //connect("98405");
+
+
+        ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION}, PackageManager.PERMISSION_GRANTED);
+
+        getCurrentLocation(view);
+
+
+    }
+
+
+    public void getCurrentLocation(View view) {
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());
+        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        fusedLocationClient.getLastLocation().addOnSuccessListener(getActivity(), new OnSuccessListener<Location>() {
+            @Override
+            public void onSuccess(Location location) {
+                if(location!=null) {
+                    String lat = Double.toString(location.getLatitude());
+                    String lon = Double.toString(location.getLongitude());
+                    System.out.println("HEEEEYYYOO lat: "+ lat + ", lon: " + lon);
+                    String latAndLon = lat+ ":" +lon;
+                    connect(latAndLon);
+                } else {
+                    System.out.println("Location is NULL");
+                }
+            }
+        });
     }
 
     /**
