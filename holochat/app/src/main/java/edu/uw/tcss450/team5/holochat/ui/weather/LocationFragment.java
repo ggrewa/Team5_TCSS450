@@ -27,7 +27,9 @@ import edu.uw.tcss450.team5.holochat.model.LocationViewModel;
 
 
 public class LocationFragment extends Fragment implements OnMapReadyCallback, GoogleMap.OnMapClickListener {
+
     private LocationViewModel mModel;
+    
     private GoogleMap mMap;
 
 
