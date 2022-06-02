@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import android.util.Log;
@@ -25,6 +26,8 @@ import com.android.volley.Request;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -41,6 +44,7 @@ import java.util.TimeZone;
 
 import edu.uw.tcss450.team5.holochat.MainActivity;
 import edu.uw.tcss450.team5.holochat.R;
+import edu.uw.tcss450.team5.holochat.model.LocationViewModel;
 import edu.uw.tcss450.team5.holochat.ui.chats.chatroom.ChatRoomFragmentDirections;
 
 /**
@@ -54,6 +58,13 @@ public class WeatherFragment extends Fragment {
 
     //keep track of view
     View globalView;
+
+    //testing current location
+    public LocationViewModel mModel;
+
+    private FusedLocationProviderClient fusedLocationClient;
+
+    String currentLoc = "location has not been set";
 
     //denote whether the user has selected c/f as their preference
     boolean celsius = false;
@@ -168,8 +179,20 @@ public class WeatherFragment extends Fragment {
             }
         });
 
+        //testing getting current location
+        /*
+        mModel = new ViewModelProvider(getActivity())
+                .get(LocationViewModel.class);
+        mModel.addLocationObserver(getViewLifecycleOwner(), location -> currentLoc = location.toString());
+        System.out.println("This is the current location of the device: "+currentLoc);
+
+         */
         //auto populate with weather data for Tacoma
-        connect("27.6648:-122.4443");
+        connect("98405");
+
+
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());
 
     }
 
