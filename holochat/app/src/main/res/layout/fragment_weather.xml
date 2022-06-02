@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="Enter City or Zipcode"
+        android:hint="Enter a Zipcode"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,21 +32,6 @@
         app:layout_constraintHorizontal_bias="0.954"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <HorizontalScrollView
-        android:layout_width="385dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="280dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical" />
-
-    </HorizontalScrollView>
 
     <Button
         android:id="@+id/searchbtn"
@@ -85,14 +70,13 @@
 
     <ImageView
         android:id="@+id/curIcon"
-        android:layout_width="57dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="144dp"
+        android:layout_width="125dp"
+        android:layout_height="104dp"
+        android:layout_marginTop="56dp"
         android:src="@drawable/ic_weather_thermostat_black24dp"
-        app:layout_constraintEnd_toStartOf="@+id/tempText"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/descriptionText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toEndOf="@+id/dayAndCityText"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -145,6 +129,39 @@
         android:text="Wind Speed:"
         app:layout_constraintStart_toEndOf="@+id/humidityText"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <HorizontalScrollView
+
+        android:id="@+id/horizontalScrollView"
+        android:layout_width="390dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="276dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/hourlyForecast"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" />
+    </HorizontalScrollView>
+
+    <ScrollView
+        android:layout_width="391dp"
+        android:layout_height="421dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView">
+
+        <LinearLayout
+            android:id="@+id/dailyForecast"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
