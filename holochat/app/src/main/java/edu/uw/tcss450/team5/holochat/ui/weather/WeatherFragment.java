@@ -137,12 +137,7 @@ public class WeatherFragment extends Fragment {
         humidityText = view.findViewById(R.id.humidityText);
         windText = view.findViewById(R.id.windText);
 
-        //etCity.setText("Tacoma");
-        //btnget = view.findViewById(R.id.btnget);
-        //btnget.setOnClickListener(this::getWeatherDetails);
-        //resultBox = view.findViewById(R.id.resultBox);
-        //connect("seattle");
-
+        //set up drop down menu so the user can change locations and choose a serach type
         dropDown = view.findViewById(R.id.changeLocationButton);
         dropDown.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -172,40 +167,8 @@ public class WeatherFragment extends Fragment {
                 popupMenu.show();
             }
         });
-        /*
-        //set up hourly forecast scroll view
-        LinearLayout linearLayout = view.findViewById(R.id.hourlyForecast);
-        LayoutInflater inflater = LayoutInflater.from(getContext());
-        for (int i = 0; i < 24; i++){
-            View view2 = inflater.inflate(R.layout.hourly_forecast_item, linearLayout, false);
-            TextView textView = view2.findViewById(R.id.tvHour);
-            textView.setText("time am/pm\ndescription");
 
-            ImageView imageView = view2.findViewById(R.id.ivHour);
-            Picasso.with(getContext()).load(sampleIconUrl).into(imageView);
-
-            linearLayout.addView(view2);
-        }
-
-         */
-
-        /*
-        //set up daily forecast scroll view
-        LinearLayout linearLayout2 = view.findViewById(R.id.dailyForecast);
-        LayoutInflater inflater2 = LayoutInflater.from(getContext());
-        for(int i = 0; i < 5; i++){
-            View view3 = inflater2.inflate(R.layout.daily_forecast_item, linearLayout2, false);
-            TextView textView = view3.findViewById(R.id.tvDaily);
-            textView.setText("Day, Description");
-
-            ImageView imageView = view3.findViewById(R.id.ivDaily);
-            Picasso.with(getContext()).load(sampleIconUrl).into(imageView);
-            linearLayout2.addView(view3);
-        }
-
-         */
-
-        //auto populate with tacoma
+        //auto populate with weather data for Tacoma
         connect("98405");
 
     }
@@ -224,7 +187,7 @@ public class WeatherFragment extends Fragment {
      */
     public void getWeatherDetails(View view){
 
-        //get city from user input and construct first temp url
+        //get zipcode from user input and construct first temp url
         String zip = inputBox.getText().toString().trim();
         if(zip.equals("")){
             //resultBox.setText("bro you forgot to enter the city");
@@ -234,13 +197,13 @@ public class WeatherFragment extends Fragment {
             connect(zip);
             inputBox.setVisibility(View.GONE);
             searchbtn.setVisibility(View.GONE);
-            System.out.println("look its the enterd zip" + zip);//works!
+            //System.out.println("look its the enterd zip" + zip);//works!
         }
     }
 
 
     /**
-     * makes call to webservice, need to figure out how to put location/zip in body
+     * makes call to webservice with the zipcode or coordinates given
      * @param zip
      */
     public void connect(String zip) {
@@ -263,7 +226,6 @@ public class WeatherFragment extends Fragment {
     //get resulting json
     //needs to be updated based on new json structure from gurleen
     public void handleResult(final JSONObject jsonResponse){
-        String output = "";
         try {
             //parse current weather details
             //get city name
@@ -287,7 +249,7 @@ public class WeatherFragment extends Fragment {
              String des = desZero.getString("description");
              String icon = desZero.getString("icon");
 
-             //testing populating current weather ui
+             //populate the ui with the current weather
             dayAndCityText.setText(city);
             descriptionText.setText(des);
             String iconUrl = "https://openweathermap.org/img/wn/" + icon + ".png";
@@ -327,18 +289,14 @@ public class WeatherFragment extends Fragment {
                 }
                 String curHourWeatherIcon = curHourWeatherArrayIndex.getString("icon");
 
-                //System.out.println(formattedDate + ", " + df.format(curTempF) + "F" + ", " + curHourWeatherDescription + ", " + curHourWeatherIcon);
+                View view2 = inflater.inflate(R.layout.hourly_forecast_item, linearLayout, false);
+                TextView textView = view2.findViewById(R.id.tvHour);
+                textView.setText(formattedDate + " " + df.format(curTempF) + "°F" + "\n" + curHourWeatherDescription);
+                String hourlyIconUrl = "https://openweathermap.org/img/wn/" + curHourWeatherIcon + ".png";
+                ImageView imageView = view2.findViewById(R.id.ivHour);
+                Picasso.with(getContext()).load(hourlyIconUrl).into(imageView);
 
-
-
-                    View view2 = inflater.inflate(R.layout.hourly_forecast_item, linearLayout, false);
-                    TextView textView = view2.findViewById(R.id.tvHour);
-                    textView.setText(formattedDate + " " + df.format(curTempF) + "°F" + "\n" + curHourWeatherDescription);
-                    String hourlyIconUrl = "https://openweathermap.org/img/wn/" + curHourWeatherIcon + ".png";
-                    ImageView imageView = view2.findViewById(R.id.ivHour);
-                    Picasso.with(getContext()).load(hourlyIconUrl).into(imageView);
-
-                    linearLayout.addView(view2);
+                linearLayout.addView(view2);
             }
 
             //parse and set daily details
@@ -346,6 +304,7 @@ public class WeatherFragment extends Fragment {
             //set up daily forecast scroll view
             LinearLayout linearLayout2 = globalView.findViewById(R.id.dailyForecast);
             LayoutInflater inflater2 = LayoutInflater.from(getContext());
+            linearLayout2.removeAllViews();
             for(int i = 1; i <=5; i++) {
                 JSONObject curDayIndex = dailyArray.getJSONObject(i);
                 String curDayString = curDayIndex.getString("dt");
@@ -361,17 +320,13 @@ public class WeatherFragment extends Fragment {
                 String dayDescription = dailyWeatherArrayIndex.getString("description");
                 String dayIcon = dailyWeatherArrayIndex.getString("icon");
 
-                //System.out.println(formattedDay + ", " + df.format(dayTempF) + ", " + dayDescription + ", " + dayIcon);
-
-
-
-                    View view3 = inflater2.inflate(R.layout.daily_forecast_item, linearLayout2, false);
-                    TextView textView = view3.findViewById(R.id.tvDaily);
-                    textView.setText(formattedDay + ", " + dayDescription + ", " + df.format(dayTempF) + "°F");
-                    String dailyIconUrl = "https://openweathermap.org/img/wn/" + dayIcon + ".png";
-                    ImageView imageView = view3.findViewById(R.id.ivDaily);
-                    Picasso.with(getContext()).load(dailyIconUrl).into(imageView);
-                    linearLayout2.addView(view3);
+                View view3 = inflater2.inflate(R.layout.daily_forecast_item, linearLayout2, false);
+                TextView textView = view3.findViewById(R.id.tvDaily);
+                textView.setText(formattedDay + ", " + dayDescription + ", " + df.format(dayTempF) + "°F");
+                String dailyIconUrl = "https://openweathermap.org/img/wn/" + dayIcon + ".png";
+                ImageView imageView = view3.findViewById(R.id.ivDaily);
+                Picasso.with(getContext()).load(dailyIconUrl).into(imageView);
+                linearLayout2.addView(view3);
             }
 
         } catch (JSONException e) {
