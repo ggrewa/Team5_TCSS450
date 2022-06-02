@@ -185,23 +185,11 @@ public class WeatherFragment extends Fragment {
             }
         });
 
-        //testing getting current location
-        /*
-        mModel = new ViewModelProvider(getActivity())
-                .get(LocationViewModel.class);
-        mModel.addLocationObserver(getViewLifecycleOwner(), location -> currentLoc = location.toString());
-        System.out.println("This is the current location of the device: "+currentLoc);
-
-         */
-        //auto populate with weather data for Tacoma
-        //connect("98405");
-
-
         ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.ACCESS_COARSE_LOCATION}, PackageManager.PERMISSION_GRANTED);
 
+        //auto populate with weather data for Tacoma
         getCurrentLocation(view);
-
 
     }
 
