@@ -52,6 +52,12 @@ import edu.uw.tcss450.team5.holochat.ui.chats.chatroom.ChatRoomFragmentDirection
  */
 public class WeatherFragment extends Fragment {
 
+    //keep track of view
+    View globalView;
+
+    //denote whether the user has selected c/f as their preference
+    boolean celsius = false;
+
     //defining layout attributes to be linked to the existing xml attributes in fragment_weather.xml
 
     /**
@@ -105,6 +111,9 @@ public class WeatherFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+
+        globalView = view;
+
         //set up search for zipcodes
         inputBox = view.findViewById(R.id.inputBox);
         inputBox.setVisibility(View.GONE);
@@ -119,6 +128,14 @@ public class WeatherFragment extends Fragment {
         String sample2 = "https://media.geeksforgeeks.org/wp-content/cdn-uploads/logo-new-2.svg";
         Picasso.with(getContext()).load(sampleIconUrl).into(curIcon);
 
+        //setup current weather attributes
+        dayAndCityText = view.findViewById(R.id.dayAndCityText);
+        descriptionText = view.findViewById(R.id.descriptionText);
+        tempText = view.findViewById(R.id.tempText);
+        feelsLikeText = view.findViewById(R.id.feelsLikeText);
+        pressureText = view.findViewById(R.id.pressureText);
+        humidityText = view.findViewById(R.id.humidityText);
+        windText = view.findViewById(R.id.windText);
 
         //etCity.setText("Tacoma");
         //btnget = view.findViewById(R.id.btnget);
@@ -137,7 +154,7 @@ public class WeatherFragment extends Fragment {
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem) {
 
-                        if(menuItem.getTitle().equals("City/Zipcode")){
+                        if(menuItem.getTitle().equals("Zipcode")){
                             //display serach bar and search button to user
                             inputBox.setVisibility(View.VISIBLE);
                             searchbtn.setVisibility(View.VISIBLE);
@@ -155,7 +172,7 @@ public class WeatherFragment extends Fragment {
                 popupMenu.show();
             }
         });
-
+        /*
         //set up hourly forecast scroll view
         LinearLayout linearLayout = view.findViewById(R.id.hourlyForecast);
         LayoutInflater inflater = LayoutInflater.from(getContext());
@@ -170,10 +187,13 @@ public class WeatherFragment extends Fragment {
             linearLayout.addView(view2);
         }
 
+         */
+
+        /*
         //set up daily forecast scroll view
         LinearLayout linearLayout2 = view.findViewById(R.id.dailyForecast);
         LayoutInflater inflater2 = LayoutInflater.from(getContext());
-        for(int i = 0; i < 7; i++){
+        for(int i = 0; i < 5; i++){
             View view3 = inflater2.inflate(R.layout.daily_forecast_item, linearLayout2, false);
             TextView textView = view3.findViewById(R.id.tvDaily);
             textView.setText("Day, Description");
@@ -182,6 +202,11 @@ public class WeatherFragment extends Fragment {
             Picasso.with(getContext()).load(sampleIconUrl).into(imageView);
             linearLayout2.addView(view3);
         }
+
+         */
+
+        //auto populate with tacoma
+        connect("98405");
 
     }
 
@@ -219,12 +244,11 @@ public class WeatherFragment extends Fragment {
      * @param zip
      */
     public void connect(String zip) {
-        String webServiceUrl = "https://team5-tcss450-holochat.herokuapp.com/weather/:location?";
-
+        String webServiceUrl = "https://team5-tcss450-holochat.herokuapp.com/weather/" + zip;
         Request request = new JsonObjectRequest(
                 Request.Method.GET,
                 webServiceUrl,
-                null, //need to put info in body
+                null, //no body needed!
                 this::handleResult,
                 this::handleError);
         request.setRetryPolicy(new DefaultRetryPolicy(
@@ -241,64 +265,88 @@ public class WeatherFragment extends Fragment {
     public void handleResult(final JSONObject jsonResponse){
         String output = "";
         try {
+            //parse current weather details
+            //get city name
+            String city = jsonResponse.getString("city");
+            //get temp in c
+            double tempc = jsonResponse.getDouble("tempC");
+            //get temp in f
+            double tempf = jsonResponse.getDouble("tempF");
+            //get feels like
+            double feelsLike = jsonResponse.getDouble("feel");
+            //get the pressure
+            float pressure = jsonResponse.getInt("pressure");
+            //get humidity
+            int humidity = jsonResponse.getInt("humidity");
+            //get wind speed
+            int windSpeed = jsonResponse.getInt("windSpeed");
 
-            //JSONObject jsonResponse = new JSONObject(response);
+             //get the description and icon code of the current weather
+             JSONArray description = jsonResponse.getJSONArray("description");
+             JSONObject desZero = description.getJSONObject(0);
+             String des = desZero.getString("description");
+             String icon = desZero.getString("icon");
 
-            //grab current weather
-            JSONObject jsonObjectMain = jsonResponse.getJSONObject("current");
-            //use for °C
-            double temp = jsonObjectMain.getDouble("temp") - 273.15;
-            double feelsLike = jsonObjectMain.getDouble("feels_like") - 273.15;
-            //use for °F
-            double tempF = 1.8 * (jsonObjectMain.getDouble("temp") - 273.15) +32;
-            double feelsLikeF = 1.8 * (jsonObjectMain.getDouble("feels_like") - 273.15) +32;
-            float pressure = jsonObjectMain.getInt("pressure");
-            int humidity = jsonObjectMain.getInt("humidity");
-            int wind_speed = jsonObjectMain.getInt("wind_speed");
-            int clouds = jsonObjectMain.getInt("clouds");
+             //testing populating current weather ui
+            dayAndCityText.setText(city);
+            descriptionText.setText(des);
+            String iconUrl = "https://openweathermap.org/img/wn/" + icon + ".png";
+            Picasso.with(getContext()).load(iconUrl).into(curIcon);
+            if(celsius){
+                tempText.setText(df.format(tempc) + " °C");
+            } else {
+                tempText.setText(df.format(tempf) + " °F");
+                feelsLike = 1.8 * (feelsLike - 273.15) + 32;
+            }
+            feelsLikeText.setText("Feels like:\n" + df.format(feelsLike) + "°F");
+            pressureText.setText("Pressure:\n" + pressure + "hPa");
+            humidityText.setText("Humidity:\n" + humidity + "%");
+            windText.setText("Wind Speed:\n" + windSpeed + "m/s");
 
-            output += "Current weather of " + "Tacoma" + " (" + "WA, USA" + ") "
-                    + "\n Temp: " + df.format(tempF) + " °F"
-                    + "\n Feels Like: " + df.format(feelsLikeF) + " °F"
-                    + "\n Humidity: " + humidity + "%"
-                    //+ "\n Description: " + description
-                    + "\n Wind Speed: " + wind_speed + "m/s (meters per second)"
-                    + "\n Cloudiness: " + clouds + "%"
-                    + "\n Pressure: " + pressure + " hPa" + "\n\n";
-
-            //grab hourly forcast
-            output += "24 Hour Forcast: \n";
-
+            //parse and set hourly details
             JSONArray hourlyArray = jsonResponse.getJSONArray("hourly");
-
-            for (int i = 1; i <=24; i++){
+            //set up hourly forecast scroll view
+            LinearLayout linearLayout = globalView.findViewById(R.id.hourlyForecast);
+            LayoutInflater inflater = LayoutInflater.from(getContext());
+            linearLayout.removeAllViews();
+            for(int i = 1; i <= 24; i++) {
                 JSONObject curHourIndex = hourlyArray.getJSONObject(i);
-                //long curHour = (long) curHourIndex.getDouble("dt");
                 String curHourString = curHourIndex.getString("dt");
                 Date date = new Date(Long.parseLong(curHourString) * 1000);
                 DateFormat format = new SimpleDateFormat("ha");
                 format.setTimeZone(TimeZone.getTimeZone("America/Los_Angeles"));
                 String formattedDate = format.format(date);
-                //System.out.println(formattedDate);
-
 
                 double curTemp = curHourIndex.getDouble("temp");
-                double curTempF = 1.8 * (curHourIndex.getDouble("temp") - 273.15) +32;
+                double curTempF = 1.8 * (curHourIndex.getDouble("temp") - 273.15) + 32;
                 JSONArray curHourWeatherArray = curHourIndex.getJSONArray("weather");
                 JSONObject curHourWeatherArrayIndex = curHourWeatherArray.getJSONObject(0);
                 String curHourWeatherDescription = curHourWeatherArrayIndex.getString("description");
-                if (i % 2 == 0){
-                    output += formattedDate + " " + df.format(curTempF) + "°F, " + curHourWeatherDescription + "\n";
-                } else {
-                    output += formattedDate + " " + df.format(curTempF) + "°F, " + curHourWeatherDescription + " - ";
+                if (curHourWeatherDescription.equals("overcast clouds")){
+                    curHourWeatherDescription = "overcast  clouds";
                 }
+                String curHourWeatherIcon = curHourWeatherArrayIndex.getString("icon");
+
+                //System.out.println(formattedDate + ", " + df.format(curTempF) + "F" + ", " + curHourWeatherDescription + ", " + curHourWeatherIcon);
+
+
+
+                    View view2 = inflater.inflate(R.layout.hourly_forecast_item, linearLayout, false);
+                    TextView textView = view2.findViewById(R.id.tvHour);
+                    textView.setText(formattedDate + " " + df.format(curTempF) + "°F" + "\n" + curHourWeatherDescription);
+                    String hourlyIconUrl = "https://openweathermap.org/img/wn/" + curHourWeatherIcon + ".png";
+                    ImageView imageView = view2.findViewById(R.id.ivHour);
+                    Picasso.with(getContext()).load(hourlyIconUrl).into(imageView);
+
+                    linearLayout.addView(view2);
             }
 
-            //grab daily forecast
-            output += "\n5 Day Forecast\n";
-
+            //parse and set daily details
             JSONArray dailyArray = jsonResponse.getJSONArray("daily");
-            for(int i = 1; i <= 5; i++){
+            //set up daily forecast scroll view
+            LinearLayout linearLayout2 = globalView.findViewById(R.id.dailyForecast);
+            LayoutInflater inflater2 = LayoutInflater.from(getContext());
+            for(int i = 1; i <=5; i++) {
                 JSONObject curDayIndex = dailyArray.getJSONObject(i);
                 String curDayString = curDayIndex.getString("dt");
                 Date date = new Date(Long.parseLong(curDayString) * 1000);
@@ -306,17 +354,25 @@ public class WeatherFragment extends Fragment {
                 String formattedDay = format.format(date);
 
                 JSONObject tempOb = curDayIndex.getJSONObject("temp");
-                double dayTempF = 1.8 * (tempOb.getDouble("day") - 273.15) + 32;
+                double dayTempF = 1.8 * (tempOb.getDouble("day") - 273.15) +32;
 
                 JSONArray dailyWeatherArray = curDayIndex.getJSONArray("weather");
                 JSONObject dailyWeatherArrayIndex = dailyWeatherArray.getJSONObject(0);
                 String dayDescription = dailyWeatherArrayIndex.getString("description");
+                String dayIcon = dailyWeatherArrayIndex.getString("icon");
 
-                output += formattedDay + " " + df.format(dayTempF) + "°F, " + dayDescription + "\n";
+                //System.out.println(formattedDay + ", " + df.format(dayTempF) + ", " + dayDescription + ", " + dayIcon);
 
+
+
+                    View view3 = inflater2.inflate(R.layout.daily_forecast_item, linearLayout2, false);
+                    TextView textView = view3.findViewById(R.id.tvDaily);
+                    textView.setText(formattedDay + ", " + dayDescription + ", " + df.format(dayTempF) + "°F");
+                    String dailyIconUrl = "https://openweathermap.org/img/wn/" + dayIcon + ".png";
+                    ImageView imageView = view3.findViewById(R.id.ivDaily);
+                    Picasso.with(getContext()).load(dailyIconUrl).into(imageView);
+                    linearLayout2.addView(view3);
             }
-            //print to textview
-           // resultBox.setText(output);
 
         } catch (JSONException e) {
             e.printStackTrace();

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     tools:layout_editor_absoluteX="1dp"
     tools:layout_editor_absoluteY="1dp">
 
@@ -13,14 +13,14 @@
     <TextView
         android:id="@+id/tvDaily"
         android:layout_width="300dp"
-        android:layout_height="60dp"
+        android:layout_height="40dp"
         android:layout_weight="1"
         android:text="TextView" />
 
     <ImageView
         android:id="@+id/ivDaily"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
         android:layout_weight="1"
         app:srcCompat="@drawable/ic_weather_thermostat_black24dp" />
 </LinearLayout>
