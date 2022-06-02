@@ -30,6 +30,8 @@ public class LocationFragment extends Fragment implements OnMapReadyCallback, Go
     private LocationViewModel mModel;
     private GoogleMap mMap;
 
+
+
     public LocationFragment() {
         // Required empty public constructor
     }
