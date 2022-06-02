@@ -59,7 +59,10 @@ public class SearchViewModel extends AndroidViewModel {
      */
     public void connectGet(String jwt, String theInput) {
         String base_url = getApplication().getResources().getString(R.string.base_url_service);
-        String url = base_url + "contacts/search";
+        //String url = base_url + "contacts/search";
+        String url = base_url + "contacts/searchByEmail";
+
+        theInput = theInput.toLowerCase();
         Log.i("search_connectGet", theInput + "|" + jwt);
         System.out.println("I am doing " + url);
 
@@ -105,16 +108,19 @@ public class SearchViewModel extends AndroidViewModel {
         System.out.println("search has been successful my dudes");
         try {
             JSONArray contacts = result.getJSONArray("contacts");
+            System.out.println(contacts.toString());
             for (int i = 0; i < contacts.length(); i++) {
                 JSONObject contact = contacts.getJSONObject(i);
                 String email = contact.getString("email");
-                String fullName = contact.getString("first_last");
-                String username = contact.getString("userName");
-                int memberID = contact.getInt("memberId");
-                Contact entry = new Contact(email, fullName, "", username, memberID);
+                String firstname = contact.getString(("firstname"));
+                String lastname = contact.getString(("lastname"));
+                String username = contact.getString("username");
+                int memberID = contact.getInt("memberid");
+                Contact entry = new Contact(email, firstname, lastname, username, memberID);
                 temp.add(entry);
-                mContact = new Contact(email, fullName, "", username, memberID);
+                mContact = entry;
                 mResponse.setValue(contact);
+                System.out.println("success contact "+ email + firstname + lastname + username + memberID);
             }
         } catch (JSONException e) {
             Log.e("JSON PARSE ERROR", "Found in handle Success SearchViewModel");
@@ -135,7 +141,7 @@ public class SearchViewModel extends AndroidViewModel {
      * @param error the error.
      */
     private void handleError(final VolleyError error) {
-        Log.e("CONNECTION ERROR", "Oooops no contacts");
+        Log.e("CONNECTION ERROR", "No contacts found!");
         //throw new IllegalStateException(error.getMessage());
     }
 

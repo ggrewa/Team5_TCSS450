@@ -117,26 +117,20 @@ public class ContactSearchFragment extends Fragment {
                 binding.connectionsSearchEditText.setError(
                         "Can't find this user.");
             } else { //something in the response now
-//                //some fake member id so I know it didnt work
-//                System.out.println("search has observed a response!");
-//                String email = "notarealemail@gmail.com";
-//                String fullName = "Goku";
-//                String username = "thelegend27";
-//                int memberID = 0;
-//                try {
-//                    email = response.getString("email");
-//                    fullName = response.getString("first_last");
-//                    username = response.getString("userName");
-//                    memberID = response.getInt("memberId");
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-
-                Contact cont = mSearchModel.getmContact();
-                String email = cont.getContactEmail();
-                String fullName = cont.getContactUsername();
-                String username = cont.getContactUsername();
-                int memberID = cont.getContactMemberID();
+                //some fake member id so I know it didnt work
+                System.out.println("search has observed a response!");
+                String email = "notarealemail@gmail.com";
+                String fullName = "Goku";
+                String username = "thelegend27";
+                int memberID = 0;
+                try {
+                    email = response.getString("email");
+                    fullName = response.getString("first_last");
+                    username = response.getString("userName");
+                    memberID = response.getInt("memberId");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 System.out.println("Connect search about to navigate"+email+username+memberID);
                 navigateToUserFound(email,username,memberID);
                 //navigateToUserFound("kenahren@gmail.com","Kenpai",26);
