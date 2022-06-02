@@ -34,6 +34,7 @@ public class ContactFoundFragment extends Fragment {
 
     private String mContactEmail;
     private String mContactUsername;
+    private String mContactFullName;
     private int mMemberID;
     private FragmentManager mFragmMan;
 
@@ -49,6 +50,7 @@ public class ContactFoundFragment extends Fragment {
         mMemberID = args.getMemberid();
         mContactEmail = args.getEmail();
         mContactUsername = args.getUsername();
+        mContactFullName = args.getFullname();
         this.mFragmMan = getActivity().getSupportFragmentManager();
 
         Log.i("FOUND_USER", mMemberID + "|" + mContactEmail + "|" + mContactUsername);
@@ -72,7 +74,7 @@ public class ContactFoundFragment extends Fragment {
         TextView nickNameView = (TextView) mBinding.contactNickname;
         TextView emailView = (TextView) mBinding.contactEmail;
         TextView realName = mBinding.contactRealName;
-        realName.setText(mContactUsername);
+        realName.setText(mContactFullName);
         nickNameView.setText(mContactUsername);
         emailView.setText(mContactEmail);
 

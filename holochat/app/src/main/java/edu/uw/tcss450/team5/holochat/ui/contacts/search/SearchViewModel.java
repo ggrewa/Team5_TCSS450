@@ -60,23 +60,16 @@ public class SearchViewModel extends AndroidViewModel {
     public void connectGet(String jwt, String theInput) {
         String base_url = getApplication().getResources().getString(R.string.base_url_service);
         //String url = base_url + "contacts/search";
-        String url = base_url + "contacts/searchByEmail";
+        String url = base_url + "contacts/search/" + theInput;
 
         theInput = theInput.toLowerCase();
         Log.i("search_connectGet", theInput + "|" + jwt);
         System.out.println("I am doing " + url);
 
-        JSONObject body = new JSONObject();
-        try {
-            body.put("search_string", theInput);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
         Request request = new JsonObjectRequest(
                 Request.Method.GET,
                 url,
-                body,
+                null,
                 this::handleSuccess,
                 this::handleError) {
             @Override
@@ -105,19 +98,20 @@ public class SearchViewModel extends AndroidViewModel {
      */
     private void handleSuccess(final JSONObject result) {
         ArrayList<Contact> temp = new ArrayList<>();
-        System.out.println("search has been successful my dudes");
         try {
             JSONArray contacts = result.getJSONArray("contacts");
             System.out.println(contacts.toString());
             for (int i = 0; i < contacts.length(); i++) {
                 JSONObject contact = contacts.getJSONObject(i);
-                String email = contact.getString("email");
+                String email = contact.getString("searchemail");
                 String firstname = contact.getString(("firstname"));
                 String lastname = contact.getString(("lastname"));
                 String username = contact.getString("username");
                 int memberID = contact.getInt("memberid");
+
                 Contact entry = new Contact(email, firstname, lastname, username, memberID);
                 temp.add(entry);
+
                 mContact = entry;
                 mResponse.setValue(contact);
                 System.out.println("success contact "+ email + firstname + lastname + username + memberID);

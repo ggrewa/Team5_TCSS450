@@ -19,11 +19,10 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+
 import edu.uw.tcss450.team5.holochat.databinding.FragmentContactSearchBinding;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
-import edu.uw.tcss450.team5.holochat.ui.chats.chatroom.ChatRoomFragmentDirections;
 import edu.uw.tcss450.team5.holochat.ui.contacts.contact_tabs.ContactTabFragmentDirections;
-import edu.uw.tcss450.team5.holochat.ui.contacts.info.Contact;
 import edu.uw.tcss450.team5.holochat.ui.contacts.info.ContactViewModel;
 
 /**
@@ -96,11 +95,8 @@ public class ContactSearchFragment extends Fragment {
         String input = String.valueOf(binding.connectionsSearchEditText.getText()).replaceAll("\\s", "");;
         Log.i("CONTACT_SEARCH_FRAG", "input:" + input);
         System.out.println("user tried to find: " + input);
-
         //attempt connection to webservice to find
         mSearchModel.connectGet(mUserModel.getJwt(), input);
-        //TODO: don't use hardcoded information
-        //navigateToUserFound("kenahren@gmail.com","Kenpai",26);
 
     }
 
@@ -116,23 +112,17 @@ public class ContactSearchFragment extends Fragment {
                 //this error cannot be fixed by the user changing credentials...
                 binding.connectionsSearchEditText.setError(
                         "Can't find this user.");
-            } else { //something in the response now
-                //some fake member id so I know it didnt work
-                System.out.println("search has observed a response!");
-                String email = "notarealemail@gmail.com";
-                String fullName = "Goku";
-                String username = "thelegend27";
-                int memberID = 0;
+            } else { //something in the response no
                 try {
-                    email = response.getString("email");
-                    fullName = response.getString("first_last");
-                    username = response.getString("userName");
-                    memberID = response.getInt("memberId");
+                    String email = response.getString("searchemail");
+                    String fullName = response.getString("firstname") + " " + response.getString("lastname");;
+                    String username = response.getString("username");
+                    int memberID = response.getInt("memberid");
+                    navigateToUserFound(email,username,memberID,fullName);
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    System.out.println("something went wrong in the user search response");
                 }
-                System.out.println("Connect search about to navigate"+email+username+memberID);
-                navigateToUserFound(email,username,memberID);
                 //navigateToUserFound("kenahren@gmail.com","Kenpai",26);
             }
         }
@@ -141,11 +131,12 @@ public class ContactSearchFragment extends Fragment {
     /**
      * Successfully searched now navigate to the user fragment
      */
-    private void navigateToUserFound(String email, String username, int memberid) {
+    private void navigateToUserFound(String email, String username, int memberid, String fullName) {
+
         Navigation.findNavController(getView())
                 .navigate(ContactTabFragmentDirections.
                         actionNavigationTabbedContactsToContactFoundFragment(
-                                email,username, memberid));
+                                email,username, memberid, fullName));
     }
 
     private void observeContacts(JSONObject response) {
@@ -153,8 +144,6 @@ public class ContactSearchFragment extends Fragment {
         if (response.length() > 0) {
             if (response.has("code")) {
                 try {
-//                    binding.contactNames.setText(
-//                            mUserModel.getEmail());
                     binding.contactNames.setError(
                             "Error Authenticating: " +
                                     response.getJSONObject("data").getString("message"));
