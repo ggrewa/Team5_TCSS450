@@ -7,9 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
-
-    dp
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="407dp"
@@ -18,7 +15,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.828" />
+        app:layout_constraintVertical_bias="0.858" />
+
 
     <TextView
         android:id="@+id/text_forecast_preview"
@@ -45,18 +43,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.028" />
 
-    <ImageButton
-        android:id="@+id/button_weather"
-        android:layout_width="103dp"
-        android:layout_height="69dp"
-        android:src="@drawable/ic_wb_sunny_24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.469" />
-
     <TextView
         android:id="@+id/text_home_welcome_user"
         android:layout_width="wrap_content"
@@ -82,7 +68,69 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/home_weather_card"
+        android:layout_width="342dp"
+        android:layout_height="112dp"
+        android:layout_gravity="center"
+        app:cardBackgroundColor="@color/colorPrimary"
+        app:cardCornerRadius="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/text_home_recents_msgs"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_weather" />
+        app:layout_constraintTop_toBottomOf="@+id/text_forecast_preview">
+
+        <TextView
+            android:id="@+id/home_weather_temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="20dp"
+            android:text="60 °F"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/home_weather_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center|left"
+            android:layout_marginStart="25dp"
+            android:layout_marginBottom="55dp"
+            android:text="City"
+            android:textSize="15dp" />
+
+        <ImageView
+            android:id="@+id/home_weather_img"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="top|right"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="25dp"
+            android:src="@drawable/ic_weather_thermostat_black24dp" />
+
+        <ImageView
+            android:id="@+id/home_weather_icon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="top|center"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="25dp"
+            android:src="@drawable/ic_weather_thermostat_black24dp" />
+
+        <TextView
+            android:id="@+id/home_weather_desciption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="20dp"
+            android:text="description"
+            android:textSize="15dp" />
+
+    </androidx.cardview.widget.CardView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

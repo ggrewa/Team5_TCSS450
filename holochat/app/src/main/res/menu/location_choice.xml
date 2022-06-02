@@ -6,7 +6,7 @@
 
     <item
         android:id="@+id/bySting"
-        android:title="City/Zipcode" />
+        android:title="Zipcode" />
 
     <item
         android:id="@+id/byMap"
