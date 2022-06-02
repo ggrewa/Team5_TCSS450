@@ -169,7 +169,7 @@ public class WeatherFragment extends Fragment {
         });
 
         //auto populate with weather data for Tacoma
-        connect("98405");
+        connect("27.6648:-122.4443");
 
     }
 
@@ -228,8 +228,29 @@ public class WeatherFragment extends Fragment {
     public void handleResult(final JSONObject jsonResponse){
         try {
             //parse current weather details
-            //get city name
-            String city = jsonResponse.getString("city");
+            //get city name, if not seraching by zip no city name is availible so coordinates will be displayed
+            String city = "";
+            try{
+                city = jsonResponse.getString("city");
+            }catch (JSONException e) {
+                float lat = jsonResponse.getInt("latitude");
+                float lon = jsonResponse.getInt("longitude");
+                String latDir = "";
+                String lonDir = "";
+                if(lat > 0){
+                    latDir = lat + "°N";
+                } else {
+                    latDir = lat + "°S";
+                }
+                if(lon > 0){
+                    lonDir = lon + "°E";
+                } else {
+                    lonDir = lon + "°W";
+                }
+                city = latDir + ", " + lonDir;
+                System.out.println("city not availible getting coord: " + lat + ", " + lon);
+            }
+
             //get temp in c
             double tempc = jsonResponse.getDouble("tempC");
             //get temp in f
