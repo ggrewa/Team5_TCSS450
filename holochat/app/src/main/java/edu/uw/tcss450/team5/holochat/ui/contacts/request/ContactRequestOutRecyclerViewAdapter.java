@@ -13,6 +13,7 @@ import java.util.List;
 import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentContactOutgoingRequestCardBinding;
 import edu.uw.tcss450.team5.holochat.ui.contacts.info.Contact;
+import edu.uw.tcss450.team5.holochat.ui.dialog.CancelRequestContactDialog;
 
 /**
  * Presents information on a contact request

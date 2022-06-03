@@ -1,4 +1,4 @@
-package edu.uw.tcss450.team5.holochat.ui.contacts.request;
+package edu.uw.tcss450.team5.holochat.ui.dialog;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -18,29 +18,30 @@ import org.json.JSONObject;
 
 import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
+import edu.uw.tcss450.team5.holochat.ui.contacts.search.AllMemberListViewModel;
+import edu.uw.tcss450.team5.holochat.ui.contacts.search.AllMemberRecyclerViewAdapter;
 
 /**
- * A Dialog for accepting a request.
+ * A Dialog for sending a friend request
  *
- * @author Tarnveer
  * @author Ken
  */
-public class CancelRequestContactDialog extends DialogFragment {
+public class SendContactRequestDialog extends DialogFragment {
 
     private final String mContactName;
     private final int mMemberID;
     private UserInfoViewModel mUserModel;
-    private ContactRequestListViewModel mContactRequestModel;
-    private final ContactRequestOutRecyclerViewAdapter.ContactRequestViewHolder mUpdater;
+    private AllMemberListViewModel mContactRequestModel;
+    private final AllMemberRecyclerViewAdapter.ContactRequestViewHolder mUpdater;
 
     /**
      * Constructor for the accept dialog
-     *
-     * @param name A String representing a contacts name
+     *  @param name A String representing a contacts name
      * @param memberID an integer representing the contact ID
+     * @param testing
      */
-    public CancelRequestContactDialog(String name, int memberID,
-                                      ContactRequestOutRecyclerViewAdapter.ContactRequestViewHolder testing){
+    public SendContactRequestDialog(String name, int memberID,
+                                    AllMemberRecyclerViewAdapter.ContactRequestViewHolder testing){
 
         this.mContactName = name;
         this.mMemberID = memberID;
@@ -48,15 +49,15 @@ public class CancelRequestContactDialog extends DialogFragment {
     }
 
     /**
-     * Constructor for the accept dialog
-     *
-     * @param name A String representing a contacts name
+     * Constructor for the send dialog
+     *  @param name A String representing a contacts name
      * @param memberID an integer representing the contact ID
      */
-    public CancelRequestContactDialog(String name, int memberID) {
+    public SendContactRequestDialog(String name, int memberID) {
+
         this.mContactName = name;
         this.mMemberID = memberID;
-        this.mUpdater = null;
+        mUpdater = null;
     }
 
     @Override
@@ -66,11 +67,11 @@ public class CancelRequestContactDialog extends DialogFragment {
                 .get(UserInfoViewModel.class);
 
         mContactRequestModel = new ViewModelProvider(getActivity())
-                .get(ContactRequestListViewModel.class);
+                .get(AllMemberListViewModel.class);
     }
 
     /**
-     * The view created for  Accept dialog.
+     * The view created for send dialog
      *
      * @param view the view
      * @param savedInstanceState the saved instance state.
@@ -85,14 +86,14 @@ public class CancelRequestContactDialog extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.fragment_delete_contact_dialog, null);
+        View view = inflater.inflate(R.layout.fragment_send_friend_request_dialog, null);
         TextView name = (TextView)view.findViewById(R.id.textContactName);
-        name.setText(" Reject request from " + mContactName);
+        name.setText(mContactName);
         builder.setView(view)
                 .setNegativeButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        mContactRequestModel.deleteContact(mUserModel.getJwt(), mMemberID);
+                        mContactRequestModel.postFriendRequest(mUserModel.getJwt(), mMemberID);
                         if(mUpdater != null) mUpdater.deleteRequest();
                     }
                 })
@@ -113,7 +114,7 @@ public class CancelRequestContactDialog extends DialogFragment {
     private void observeResponse(final JSONObject response) {
         if (response.length() > 0) {
             if (response.has("code")) {
-                System.out.println("Failed to reject contact");
+                System.out.println("Failed to send contact");
             }
         } else {
             Log.d("JSON Response", "No Response");

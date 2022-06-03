@@ -6,7 +6,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -14,6 +13,7 @@ import java.util.List;
 import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentFriendRequestCardBinding;
 import edu.uw.tcss450.team5.holochat.ui.contacts.info.Contact;
+import edu.uw.tcss450.team5.holochat.ui.dialog.SendContactRequestDialog;
 
 /**
  * Presents information on a contact request
@@ -85,7 +85,7 @@ public class AllMemberRecyclerViewAdapter extends RecyclerView.Adapter<AllMember
          */
         private void openDialog() {
             String name = mContact.getContactFirstName() + " " + mContact.getContactLastName();
-            SendContactDialog dialog = new SendContactDialog(name,
+            SendContactRequestDialog dialog = new SendContactRequestDialog(name,
                     mContact.getContactMemberID(), this);
             dialog.show(mFragmMan, "maybe?");
         }

@@ -12,6 +12,8 @@ import java.util.List;
 import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentContactRequestCardBinding;
 import edu.uw.tcss450.team5.holochat.ui.contacts.info.Contact;
+import edu.uw.tcss450.team5.holochat.ui.dialog.AcceptContactRequestDialog;
+import edu.uw.tcss450.team5.holochat.ui.dialog.RejectContactRequestDialog;
 
 /**
  * Presents information on a contact request
@@ -83,7 +85,7 @@ public class ContactRequestRecyclerViewAdapter  extends RecyclerView.Adapter<Con
          */
         private void openAcceptDialog() {
             String name = mContact.getContactFirstName() + " " + mContact.getContactLastName();
-            AcceptContactDialog dialog = new AcceptContactDialog(name,
+            AcceptContactRequestDialog dialog = new AcceptContactRequestDialog(name,
                     mContact.getContactMemberID(), this);
             dialog.show(mFragmMan, "maybe?");
         }
@@ -93,7 +95,7 @@ public class ContactRequestRecyclerViewAdapter  extends RecyclerView.Adapter<Con
          */
         private void openRejectDialog() {
             String name = mContact.getContactFirstName() + " " + mContact.getContactLastName();
-            RejectContactDialog dialog = new RejectContactDialog(name,
+            RejectContactRequestDialog dialog = new RejectContactRequestDialog(name,
                     mContact.getContactMemberID(), this);
             dialog.show(mFragmMan, "maybe?");
         }

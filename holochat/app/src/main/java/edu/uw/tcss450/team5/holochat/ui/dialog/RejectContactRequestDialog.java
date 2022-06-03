@@ -1,8 +1,12 @@
-package edu.uw.tcss450.team5.holochat.ui.contacts.request;
+package edu.uw.tcss450.team5.holochat.ui.dialog;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -10,23 +14,20 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.TextView;
-
 import org.json.JSONObject;
 
 import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
+import edu.uw.tcss450.team5.holochat.ui.contacts.request.ContactRequestListViewModel;
+import edu.uw.tcss450.team5.holochat.ui.contacts.request.ContactRequestRecyclerViewAdapter;
 
 /**
- * A Dialog for accepting a request.
+ * A Dialog for rejecting a friend request
  *
  * @author Tarnveer
  * @author Ken
  */
-public class AcceptContactDialog extends DialogFragment {
+public class RejectContactRequestDialog extends DialogFragment {
 
     private final String mContactName;
     private final int mMemberID;
@@ -40,8 +41,8 @@ public class AcceptContactDialog extends DialogFragment {
      * @param name A String representing a contacts name
      * @param memberID an integer representing the contact ID
      */
-    public AcceptContactDialog(String name, int memberID,
-                               ContactRequestRecyclerViewAdapter.ContactRequestViewHolder testing){
+    public RejectContactRequestDialog(String name, int memberID,
+                                      ContactRequestRecyclerViewAdapter.ContactRequestViewHolder testing){
 
         this.mContactName = name;
         this.mMemberID = memberID;
@@ -54,7 +55,7 @@ public class AcceptContactDialog extends DialogFragment {
      * @param name A String representing a contacts name
      * @param memberID an integer representing the contact ID
      */
-    public AcceptContactDialog(String name, int memberID) {
+    public RejectContactRequestDialog(String name, int memberID) {
         this.mContactName = name;
         this.mMemberID = memberID;
         this.mUpdater = null;
@@ -86,14 +87,14 @@ public class AcceptContactDialog extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.fragment_accept_contact_dialog, null);
+        View view = inflater.inflate(R.layout.fragment_delete_contact_dialog, null);
         TextView name = (TextView)view.findViewById(R.id.textContactName);
-        name.setText(mContactName);
+        name.setText(" Reject request from " + mContactName);
         builder.setView(view)
                 .setNegativeButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        mContactRequestModel.sendVerify(mUserModel.getJwt(), mMemberID);
+                        mContactRequestModel.deleteContact(mUserModel.getJwt(), mMemberID);
                         if(mUpdater != null) mUpdater.deleteRequest();
                     }
                 })
@@ -114,7 +115,7 @@ public class AcceptContactDialog extends DialogFragment {
     private void observeResponse(final JSONObject response) {
         if (response.length() > 0) {
             if (response.has("code")) {
-                System.out.println("Failed to add contact");
+                System.out.println("Failed to reject contact");
             }
         } else {
             Log.d("JSON Response", "No Response");

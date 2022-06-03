@@ -11,18 +11,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.ViewModelProvider;
 
 import edu.uw.tcss450.team5.holochat.MainActivity;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentContactFoundBinding;
-import edu.uw.tcss450.team5.holochat.databinding.FragmentContactInfoBinding;
-import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
-import edu.uw.tcss450.team5.holochat.ui.contacts.info.Contact;
-import edu.uw.tcss450.team5.holochat.ui.contacts.info.ContactInfoFragmentArgs;
-import edu.uw.tcss450.team5.holochat.ui.contacts.info.ContactViewModel;
-import edu.uw.tcss450.team5.holochat.ui.contacts.request.AcceptContactDialog;
-import edu.uw.tcss450.team5.holochat.ui.contacts.request.ContactRequestListViewModel;
-import edu.uw.tcss450.team5.holochat.ui.contacts.request.DeleteContactDialog;
+import edu.uw.tcss450.team5.holochat.ui.dialog.SendContactRequestDialog;
 
 /**
  * DEPRECATED!! We don't use this anymore since we just use the recycler view
@@ -89,7 +81,7 @@ public class ContactFoundFragment extends Fragment {
      * navigates to aa prompt to send a friend request
      */
     private void openDialog() {
-        SendContactDialog dialog = new SendContactDialog(mContactUsername,
+        SendContactRequestDialog dialog = new SendContactRequestDialog(mContactUsername,
                 mMemberID);
         dialog.show(mFragmMan, "maybe?");
     }
