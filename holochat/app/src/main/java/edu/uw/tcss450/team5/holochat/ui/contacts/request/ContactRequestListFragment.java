@@ -65,7 +65,7 @@ public class ContactRequestListFragment extends Fragment {
             } else {
                 binding.textContactRequestLabel.setText("You have no incoming requests ( ˃̣̣̥⌓˂̣̣̥)");
             }
-            binding.listRoot.setAdapter(
+            binding.recyclerRequestInList.setAdapter(
                     new ContactRequestRecyclerViewAdapter(contactList, getActivity().getSupportFragmentManager())
             );
         });
