@@ -174,6 +174,10 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("SETTINGS", "Clicked");
                 openSettings();
                 return true;
+            case R.id.action_credits:
+                Log.d("CREDITS", "Clicked");
+                openCredits();
+                return true;
             case R.id.action_signout:
                 Log.d("SIGNOUT", "Clicked");
                 signOut();
@@ -201,6 +205,14 @@ public class MainActivity extends AppCompatActivity {
         navController2.navigate(R.id.navigation_settings);
     }
 
+    /**
+     * Navigates the activity to the settings fragment
+     */
+    public void openCredits() {
+        NavController navController2 = Navigation.findNavController(this, R.id.nav_host_fragment);
+        navController2.navigate(R.id.navigation_credits);
+    }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -219,6 +231,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Change the action title bar for the mainactivity
+     * @param title
+     */
     public void setTitle(String title)
     {
         getSupportActionBar().setTitle(title);
