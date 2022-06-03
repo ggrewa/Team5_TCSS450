@@ -12,8 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import edu.uw.tcss450.team5.holochat.R;
-import edu.uw.tcss450.team5.holochat.databinding.FragmentContactRequestCardBinding;
-import edu.uw.tcss450.team5.holochat.ui.contacts.contact_tabs.ContactTabFragmentDirections;
+import edu.uw.tcss450.team5.holochat.databinding.FragmentFriendRequestCardBinding;
 import edu.uw.tcss450.team5.holochat.ui.contacts.info.Contact;
 
 /**
@@ -67,7 +66,7 @@ public class AllMemberRecyclerViewAdapter extends RecyclerView.Adapter<AllMember
     public class ContactRequestViewHolder extends RecyclerView.ViewHolder {
 
         public final View mView;
-        public FragmentContactRequestCardBinding binding;
+        public FragmentFriendRequestCardBinding binding;
         public Contact mContact;
 
         /**
@@ -78,7 +77,7 @@ public class AllMemberRecyclerViewAdapter extends RecyclerView.Adapter<AllMember
         public ContactRequestViewHolder(View view) {
             super(view);
             mView = view;
-            binding = FragmentContactRequestCardBinding.bind(view);
+            binding = FragmentFriendRequestCardBinding.bind(view);
         }
 
         /**

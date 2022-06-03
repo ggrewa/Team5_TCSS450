@@ -3,45 +3,29 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450-app/holochat/app/src/main/res/layout/fragment_change_nickname.xml" value="0.2667572463768116" />
-        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450-app/holochat/app/src/main/res/layout/fragment_change_password.xml" value="0.2667572463768116" />
-        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450-app/holochat/app/src/main/res/layout/fragment_forgot_password.xml" value="0.2667572463768116" />
-        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450-app/holochat/app/src/main/res/layout/fragment_home.xml" value="0.2667572463768116" />
-        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450-app/holochat/app/src/main/res/layout/fragment_landing_page.xml" value="0.2667572463768116" />
-        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450-app/holochat/app/src/main/res/layout/fragment_recover_password.xml" value="0.2667572463768116" />
-        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450-app/holochat/app/src/main/res/layout/fragment_register.xml" value="0.2667572463768116" />
-        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450-app/holochat/app/src/main/res/layout/fragment_settings.xml" value="0.2667572463768116" />
-        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450-app/holochat/app/src/main/res/layout/fragment_sign_in.xml" value="0.2667572463768116" />
-        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/drawable-v24/ic_add_chat_24dp.xml" value="0.428" />
-        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/drawable-v24/ic_contact_add_24dp.xml" value="0.1" />
-        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/drawable-v24/ic_not_selected_24dp.xml" value="0.297" />
-        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/drawable-v24/ic_selected_24dp.xml" value="0.297" />
-        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/drawable/ic_baseline_chat_24.xml" value="0.338" />
-        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/drawable/ic_chat_add_person_cyan24dp.xml" value="0.1" />
-        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/add_contact_card.xml" value="0.18795289855072464" />
-        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_accept_contact_dialog.xml" value="0.26721014492753625" />
-        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_add_contact.xml" value="0.39947916666666666" />
-        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_add_contact_to_chat.xml" value="0.41983695652173914" />
-        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_blank.xml" value="0.31302083333333336" />
-        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_change_nickname.xml" value="0.3359375" />
-        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_chat_message.xml" value="0.31302083333333336" />
-        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_contact_found.xml" value="0.2" />
-        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_contact_info.xml" value="0.3195121951219512" />
-        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_contact_list.xml" value="0.1" />
-        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_contact_request.xml" value="0.36822916666666666" />
-        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_contact_request_card.xml" value="0.36822916666666666" />
-        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_contact_search.xml" value="0.36822916666666666" />
-        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_delete_chat.xml" value="0.39947916666666666" />
-        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_delete_chat_dialog.xml" value="0.39947916666666666" />
-        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_delete_contact.xml" value="0.36822916666666666" />
-        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_friend_request_card.xml" value="0.3432971014492754" />
-        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_message_card.xml" value="0.4296875" />
-        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_message_list.xml" value="0.4296875" />
-        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_new_chat.xml" value="0.3359375" />
-        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_recover_password.xml" value="0.3359375" />
-        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_register.xml" value="0.3359375" />
-        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_send_friend_request_dialog.xml" value="0.17907801418439717" />
-        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_settings.xml" value="0.3359375" />
+        <entry key="..\:/TheTCSS450Project/Team5_TCSS450/holochat/app/src/main/res/drawable-v24/ic_theme_grey_24dp.xml" value="0.32" />
+        <entry key="..\:/TheTCSS450Project/Team5_TCSS450/holochat/app/src/main/res/drawable/ic_send_dark.xml" value="0.32" />
+        <entry key="..\:/TheTCSS450Project/Team5_TCSS450/holochat/app/src/main/res/drawable/ic_user_search_black_24dp.xml" value="0.32" />
+        <entry key="..\:/TheTCSS450Project/Team5_TCSS450/holochat/app/src/main/res/drawable/ic_wb_sunny_24dp.xml" value="0.32" />
+        <entry key="..\:/TheTCSS450Project/Team5_TCSS450/holochat/app/src/main/res/drawable/ic_weather_thermostat_black24dp.xml" value="0.32" />
+        <entry key="..\:/TheTCSS450Project/Team5_TCSS450/holochat/app/src/main/res/layout/daily_forecast_item.xml" value="0.17149122807017544" />
+        <entry key="..\:/TheTCSS450Project/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_home.xml" value="0.20614035087719298" />
+        <entry key="..\:/TheTCSS450Project/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_location.xml" value="0.15263157894736842" />
+        <entry key="..\:/TheTCSS450Project/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_weather.xml" value="0.21388888888888888" />
+        <entry key="..\:/TheTCSS450Project/Team5_TCSS450/holochat/app/src/main/res/layout/hourly_forecast_item.xml" value="0.16885964912280702" />
+        <entry key="..\:/TheTCSS450Project/Team5_TCSS450/holochat/app/src/main/res/layout/hourly_item.xml" value="1.203125" />
+        <entry key="..\:/TheTCSS450Project/Team5_TCSS450/holochat/app/src/main/res/layout/recyclerview_item.xml" value="0.6629072681704261" />
+        <entry key="..\:/TheTCSS450Project/Team5_TCSS450/holochat/app/src/main/res/menu/chat_toolbar.xml" value="0.24605263157894736" />
+        <entry key="..\:/TheTCSS450Project/Team5_TCSS450/holochat/app/src/main/res/menu/location_choice.xml" value="0.24605263157894736" />
+        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_contact_found.xml" value="0.1" />
+        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_contact_list_single.xml" value="0.415625" />
+        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_contact_request.xml" value="0.415625" />
+        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_contact_request_card.xml" value="0.415625" />
+        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_contact_search.xml" value="0.28396739130434784" />
+        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_contact_search_card.xml" value="0.415625" />
+        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_contact_search_request_card.xml" value="0.415625" />
+        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_friend_request_card.xml" value="0.415625" />
+        <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_send_friend_request_dialog.xml" value="0.415625" />
         <entry key="..\:/Users/kenpa/Documents/GitHub/Team5_TCSS450/holochat/app/src/main/res/layout/fragment_sign_in.xml" value="0.5" />
         <entry key="app/src/main/res/drawable/style_round_corners.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_auth.xml" value="0.30374908447265625" />

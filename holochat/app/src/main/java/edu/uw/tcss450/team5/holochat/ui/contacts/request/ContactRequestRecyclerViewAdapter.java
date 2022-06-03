@@ -81,9 +81,19 @@ public class ContactRequestRecyclerViewAdapter  extends RecyclerView.Adapter<Con
         /**
          * navigates to a contacts profile.
          */
-        private void openDialog() {
+        private void openAcceptDialog() {
             String name = mContact.getContactFirstName() + " " + mContact.getContactLastName();
             AcceptContactDialog dialog = new AcceptContactDialog(name,
+                    mContact.getContactMemberID(), this);
+            dialog.show(mFragmMan, "maybe?");
+        }
+
+        /**
+         * navigates to a contacts profile.
+         */
+        private void openRejectDialog() {
+            String name = mContact.getContactFirstName() + " " + mContact.getContactLastName();
+            RejectContactDialog dialog = new RejectContactDialog(name,
                     mContact.getContactMemberID(), this);
             dialog.show(mFragmMan, "maybe?");
         }
@@ -97,7 +107,8 @@ public class ContactRequestRecyclerViewAdapter  extends RecyclerView.Adapter<Con
             binding.textUsername.setText(contact.getContactUsername());
             binding.textEmail.setText(contact.getContactEmail());
             mContact = contact;
-            binding.buttonAccept.setOnClickListener(button -> openDialog());
+            binding.buttonAccept.setOnClickListener(button -> openAcceptDialog());
+            binding.buttonReject.setOnClickListener(button -> openRejectDialog());
         }
 
         public void deleteRequest() {
