@@ -37,6 +37,8 @@ public class ContactSearchFragment extends Fragment {
     private AllMemberListViewModel mModel;
     private SearchViewModel mSearchModel;
 
+    private boolean searchCheck = false;
+
     public ContactSearchFragment() {
         // Required empty public constructor
     }
@@ -79,8 +81,10 @@ public class ContactSearchFragment extends Fragment {
         mSearchModel = provider.get(SearchViewModel.class);
         mSearchModel.addResponseObserver(
                 getViewLifecycleOwner(),
-                this::observeSearchResponse);
+                this::observeContacts);
         binding.buttonFindContact.setOnClickListener(this::attemptToFind);
+
+        System.out.println("on view created");
 
     }
 
@@ -95,6 +99,13 @@ public class ContactSearchFragment extends Fragment {
         String input = String.valueOf(binding.connectionsSearchEditText.getText()).replaceAll("\\s", "");;
         Log.i("CONTACT_SEARCH_FRAG", "input:" + input);
         System.out.println("user tried to find: " + input);
+
+        //set an observer and replace the adapter after user tries to search
+        mSearchModel.addContactSearchListObserver(getViewLifecycleOwner(), contactList -> {
+            binding.listRoot.setAdapter(
+                    new AllMemberRecyclerViewAdapter(contactList, getActivity().getSupportFragmentManager())
+            );
+        });
         //attempt connection to webservice to find
         mSearchModel.connectGet(mUserModel.getJwt(), input);
 
@@ -118,7 +129,7 @@ public class ContactSearchFragment extends Fragment {
                     String fullName = response.getString("firstname") + " " + response.getString("lastname");;
                     String username = response.getString("username");
                     int memberID = response.getInt("memberid");
-                    navigateToUserFound(email,username,memberID,fullName);
+                    //navigateToUserFound(email,username,memberID,fullName);
                 } catch (JSONException e) {
                     e.printStackTrace();
                     System.out.println("something went wrong in the user search response");
@@ -132,7 +143,6 @@ public class ContactSearchFragment extends Fragment {
      * Successfully searched now navigate to the user fragment
      */
     private void navigateToUserFound(String email, String username, int memberid, String fullName) {
-
         Navigation.findNavController(getView())
                 .navigate(ContactTabFragmentDirections.
                         actionNavigationTabbedContactsToContactFoundFragment(

@@ -93,6 +93,7 @@ public class SearchViewModel extends AndroidViewModel {
 
     /**
      * Handles a successful connection with the webservice.
+     * Places all found contacts into the list
      *
      * @param result result from webservice.
      */
@@ -111,9 +112,7 @@ public class SearchViewModel extends AndroidViewModel {
 
                 Contact entry = new Contact(email, firstname, lastname, username, memberID);
                 temp.add(entry);
-
-                mContact = entry;
-                mResponse.setValue(contact);
+                //mResponse.setValue(contact);
                 System.out.println("success contact "+ email + firstname + lastname + username + memberID);
             }
         } catch (JSONException e) {
@@ -126,6 +125,17 @@ public class SearchViewModel extends AndroidViewModel {
     public void addResponseObserver(@NonNull LifecycleOwner owner,
                                     @NonNull Observer<? super JSONObject> observer) {
         mResponse.observe(owner, observer);
+    }
+
+    /**
+     * Add an observer to the contact request list view model.
+     *
+     * @param owner the owner
+     * @param observer the observer
+     */
+    public void addContactSearchListObserver(@NonNull LifecycleOwner owner,
+                                              @NonNull Observer<? super List<Contact>> observer){
+        mContactList.observe(owner, observer);
     }
 
 

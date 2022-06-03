@@ -25,6 +25,8 @@ import edu.uw.tcss450.team5.holochat.ui.contacts.request.ContactRequestListViewM
 import edu.uw.tcss450.team5.holochat.ui.contacts.request.DeleteContactDialog;
 
 /**
+ * DEPRECATED!! We don't use this anymore since we just use the recycler view
+ *
  * Fragment that shows given Contact's username and email, also can start a new chat with given
  * contact in this fragment
  */
@@ -52,7 +54,6 @@ public class ContactFoundFragment extends Fragment {
         mContactUsername = args.getUsername();
         mContactFullName = args.getFullname();
         this.mFragmMan = getActivity().getSupportFragmentManager();
-
         Log.i("FOUND_USER", mMemberID + "|" + mContactEmail + "|" + mContactUsername);
 
     }
