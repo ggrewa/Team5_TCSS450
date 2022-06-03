@@ -3,7 +3,12 @@
 
 This app is a messaging chat service where you can add friends and create chatrooms with them to message in. It also can be used to check the weather.
 
-# Team-7-TCSS-450
+![login](https://cdn.discordapp.com/attachments/765640374647521370/982168112763904020/unknown.png)
+![home](https://cdn.discordapp.com/attachments/765640374647521370/982168218850430976/unknown.png)
+![message](https://cdn.discordapp.com/attachments/765640374647521370/982168318150598706/unknown.png)
+![contacts](https://cdn.discordapp.com/attachments/765640374647521370/982169337328713768/unknown.png)
+
+# Team-5-TCSS-450
 Android Studio client code base.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
@@ -26,10 +31,9 @@ Link to Unimplemented Features: TBD
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-GUEST ACCOUNT INFORMATION BELOW:
+GUEST ACCOUNT INFORMATION BELOW: (to try app without registering)
 
 Guest account 1: 
-  email=testuser1@gmail.com
-  pass=Test123!
+ email=testuser1@gmail.com, pass=Test123!
                     
 ----------------------------------------------------------------------------------------------------------------------------------------
