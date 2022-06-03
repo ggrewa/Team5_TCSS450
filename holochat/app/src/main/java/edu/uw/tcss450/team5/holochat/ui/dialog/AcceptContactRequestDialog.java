@@ -1,4 +1,4 @@
-package edu.uw.tcss450.team5.holochat.ui.contacts.request;
+package edu.uw.tcss450.team5.holochat.ui.dialog;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -19,14 +19,16 @@ import org.json.JSONObject;
 
 import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
+import edu.uw.tcss450.team5.holochat.ui.contacts.request.ContactRequestListViewModel;
+import edu.uw.tcss450.team5.holochat.ui.contacts.request.ContactRequestRecyclerViewAdapter;
 
 /**
- * A Dialog for accepting a request.
+ * A Dialog for accepting a friend request.
  *
  * @author Tarnveer
  * @author Ken
  */
-public class AcceptContactDialog extends DialogFragment {
+public class AcceptContactRequestDialog extends DialogFragment {
 
     private final String mContactName;
     private final int mMemberID;
@@ -40,12 +42,24 @@ public class AcceptContactDialog extends DialogFragment {
      * @param name A String representing a contacts name
      * @param memberID an integer representing the contact ID
      */
-    public AcceptContactDialog(String name, int memberID,
-                               ContactRequestRecyclerViewAdapter.ContactRequestViewHolder testing){
+    public AcceptContactRequestDialog(String name, int memberID,
+                                      ContactRequestRecyclerViewAdapter.ContactRequestViewHolder testing){
 
         this.mContactName = name;
         this.mMemberID = memberID;
         mUpdater = testing;
+    }
+
+    /**
+     * Constructor for the accept dialog
+     *
+     * @param name A String representing a contacts name
+     * @param memberID an integer representing the contact ID
+     */
+    public AcceptContactRequestDialog(String name, int memberID) {
+        this.mContactName = name;
+        this.mMemberID = memberID;
+        this.mUpdater = null;
     }
 
     @Override
@@ -82,7 +96,7 @@ public class AcceptContactDialog extends DialogFragment {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         mContactRequestModel.sendVerify(mUserModel.getJwt(), mMemberID);
-                        mUpdater.deleteRequest();
+                        if(mUpdater != null) mUpdater.deleteRequest();
                     }
                 })
                 .setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
@@ -102,7 +116,7 @@ public class AcceptContactDialog extends DialogFragment {
     private void observeResponse(final JSONObject response) {
         if (response.length() > 0) {
             if (response.has("code")) {
-                System.out.println("Failed to add contact");
+                System.out.println("Failed to accept contact");
             }
         } else {
             Log.d("JSON Response", "No Response");

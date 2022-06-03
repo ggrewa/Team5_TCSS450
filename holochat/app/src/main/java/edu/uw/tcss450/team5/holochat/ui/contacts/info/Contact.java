@@ -56,6 +56,13 @@ public class Contact {
     public String getContactUsername(){ return mUserName; }
 
     /**
+     * Get the contacts username.
+     *
+     * @return the contacts username.
+     */
+    public String getContactFullname(){ return mFirstName + " " + mLastName; }
+
+    /**
      * Get the contact memberID.
      *
      * @return the contact memeberID.

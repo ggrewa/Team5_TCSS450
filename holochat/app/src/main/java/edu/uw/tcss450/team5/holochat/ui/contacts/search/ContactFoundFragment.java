@@ -11,18 +11,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.ViewModelProvider;
 
 import edu.uw.tcss450.team5.holochat.MainActivity;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentContactFoundBinding;
-import edu.uw.tcss450.team5.holochat.databinding.FragmentContactInfoBinding;
-import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
-import edu.uw.tcss450.team5.holochat.ui.contacts.info.Contact;
-import edu.uw.tcss450.team5.holochat.ui.contacts.info.ContactInfoFragmentArgs;
-import edu.uw.tcss450.team5.holochat.ui.contacts.info.ContactViewModel;
-import edu.uw.tcss450.team5.holochat.ui.contacts.request.DeleteContactDialog;
+import edu.uw.tcss450.team5.holochat.ui.dialog.SendContactRequestDialog;
 
 /**
+ * DEPRECATED!! We don't use this anymore since we just use the recycler view
+ *
  * Fragment that shows given Contact's username and email, also can start a new chat with given
  * contact in this fragment
  */
@@ -32,7 +28,10 @@ public class ContactFoundFragment extends Fragment {
 
     private String mContactEmail;
     private String mContactUsername;
+    private String mContactFullName;
     private int mMemberID;
+    private FragmentManager mFragmMan;
+
 
     public ContactFoundFragment() {
         // Required empty public constructor
@@ -45,6 +44,9 @@ public class ContactFoundFragment extends Fragment {
         mMemberID = args.getMemberid();
         mContactEmail = args.getEmail();
         mContactUsername = args.getUsername();
+        mContactFullName = args.getFullname();
+        this.mFragmMan = getActivity().getSupportFragmentManager();
+        Log.i("FOUND_USER", mMemberID + "|" + mContactEmail + "|" + mContactUsername);
 
     }
 
@@ -65,7 +67,7 @@ public class ContactFoundFragment extends Fragment {
         TextView nickNameView = (TextView) mBinding.contactNickname;
         TextView emailView = (TextView) mBinding.contactEmail;
         TextView realName = mBinding.contactRealName;
-        realName.setText(mContactUsername);
+        realName.setText(mContactFullName);
         nickNameView.setText(mContactUsername);
         emailView.setText(mContactEmail);
 
@@ -75,15 +77,17 @@ public class ContactFoundFragment extends Fragment {
         mBinding.buttonActionAddContact.setOnClickListener(button -> handleAddContact());
     }
 
+    /**
+     * navigates to aa prompt to send a friend request
+     */
+    private void openDialog() {
+        SendContactRequestDialog dialog = new SendContactRequestDialog(mContactUsername,
+                mMemberID);
+        dialog.show(mFragmMan, "maybe?");
+    }
+
     private void handleAddContact() {
         Log.i("ADD_SEARCH", "ADDING A USER FROM A SEARCH");
         openDialog();
-    }
-
-    /**
-     * navigates to a contacts profile to add
-     */
-    private void openDialog() {
-
     }
 }

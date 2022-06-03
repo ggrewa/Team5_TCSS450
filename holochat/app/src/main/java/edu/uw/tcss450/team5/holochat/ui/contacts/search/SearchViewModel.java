@@ -37,7 +37,7 @@ import edu.uw.tcss450.team5.holochat.ui.contacts.info.Contact;
 
 public class SearchViewModel extends AndroidViewModel {
     private MutableLiveData<List<Contact>> mContactList;
-    private final MutableLiveData<JSONObject> mResponse;
+    private MutableLiveData<JSONObject> mResponse;
 
     private Contact mContact;
 
@@ -59,19 +59,17 @@ public class SearchViewModel extends AndroidViewModel {
      */
     public void connectGet(String jwt, String theInput) {
         String base_url = getApplication().getResources().getString(R.string.base_url_service);
-        String url = base_url + "contacts/search";
+        //String url = base_url + "contacts/search";
+        String url = base_url + "contacts/search/" + theInput;
 
-        JSONObject body = new JSONObject();
-        try {
-            body.put("search_string", theInput);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        theInput = theInput.toLowerCase();
+        Log.i("search_connectGet", theInput + "|" + jwt);
+        System.out.println("I am doing " + url);
 
         Request request = new JsonObjectRequest(
                 Request.Method.GET,
                 url,
-                null, //no body for this get request
+                null,
                 this::handleSuccess,
                 this::handleError) {
             @Override
@@ -89,10 +87,13 @@ public class SearchViewModel extends AndroidViewModel {
         //Instantiate the RequestQueue and add the request to the queue
         Volley.newRequestQueue(getApplication().getApplicationContext())
                 .add(request);
+
     }
+
 
     /**
      * Handles a successful connection with the webservice.
+     * Places all found contacts into the list
      *
      * @param result result from webservice.
      */
@@ -100,16 +101,19 @@ public class SearchViewModel extends AndroidViewModel {
         ArrayList<Contact> temp = new ArrayList<>();
         try {
             JSONArray contacts = result.getJSONArray("contacts");
+            System.out.println(contacts.toString());
             for (int i = 0; i < contacts.length(); i++) {
                 JSONObject contact = contacts.getJSONObject(i);
-                String email = contact.getString("email");
-                String fullName = contact.getString("first_last");
-                String username = contact.getString("userName");
-                int memberID = contact.getInt("memberId");
-                Contact entry = new Contact(email, fullName, "", username, memberID);
-                temp.add(entry);
+                String email = contact.getString("searchemail");
+                String firstname = contact.getString(("firstname"));
+                String lastname = contact.getString(("lastname"));
+                String username = contact.getString("username");
+                int memberID = contact.getInt("memberid");
 
-                mContact = new Contact(email, fullName, "", username, memberID);
+                Contact entry = new Contact(email, firstname, lastname, username, memberID);
+                temp.add(entry);
+                //mResponse.setValue(contact);
+                System.out.println("success contact "+ email + firstname + lastname + username + memberID);
             }
         } catch (JSONException e) {
             Log.e("JSON PARSE ERROR", "Found in handle Success SearchViewModel");
@@ -123,6 +127,17 @@ public class SearchViewModel extends AndroidViewModel {
         mResponse.observe(owner, observer);
     }
 
+    /**
+     * Add an observer to the contact request list view model.
+     *
+     * @param owner the owner
+     * @param observer the observer
+     */
+    public void addContactSearchListObserver(@NonNull LifecycleOwner owner,
+                                              @NonNull Observer<? super List<Contact>> observer){
+        mContactList.observe(owner, observer);
+    }
+
 
     /**
      * HAndles Errors when connecting to contacts endpoints
@@ -130,7 +145,7 @@ public class SearchViewModel extends AndroidViewModel {
      * @param error the error.
      */
     private void handleError(final VolleyError error) {
-        Log.e("CONNECTION ERROR", "Oooops no contacts");
+        Log.e("CONNECTION ERROR", "No contacts found!");
         //throw new IllegalStateException(error.getMessage());
     }
 

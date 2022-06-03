@@ -36,10 +36,10 @@ import edu.uw.tcss450.team5.holochat.ui.contacts.info.Contact;
  * @author Ken
  */
 
-public class ContactRequestListViewModel extends AndroidViewModel {
+public class ContactRequestOutListViewModel extends AndroidViewModel {
     private MutableLiveData<List<Contact>> mContactList;
     private final MutableLiveData<JSONObject> mResponse;
-    public ContactRequestListViewModel(@NonNull Application application) {
+    public ContactRequestOutListViewModel(@NonNull Application application) {
         super(application);
         mContactList = new MutableLiveData<>(new ArrayList<>());
         mResponse = new MutableLiveData<>();
@@ -68,7 +68,10 @@ public class ContactRequestListViewModel extends AndroidViewModel {
      */
     public void connectGet (String jwt){
         String base_url = getApplication().getResources().getString(R.string.base_url_service);
-        String url = base_url + "contacts";
+        String url = base_url + "contacts/outgoing";
+
+        Log.i("RequestOut", jwt);
+        System.out.println("getting outgoing requests");
         Request request = new JsonObjectRequest(
                 Request.Method.GET,
                 url,
@@ -109,6 +112,7 @@ public class ContactRequestListViewModel extends AndroidViewModel {
                     String lastName= contact.getString("lastName");
                     String username= contact.getString("userName");
                     int memberID = contact.getInt("memberId");
+                    System.out.println("outgoing contact" +email+firstName+lastName+username+memberID);
 
                     Contact entry = new Contact(email, firstName, lastName, username, memberID);
                     temp.add(entry);

@@ -2,11 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/relativeLayout"
+    android:id="@+id/layout_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:navGraph="@navigation/main_graph"
     tools:context=".ui.contacts.search.ContactSearchFragment">
-
 
     <EditText
         android:id="@+id/connectionsSearchEditText"
@@ -14,7 +14,7 @@
         android:layout_height="39dp"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="Search for a user  (NOT DONE)"
+        android:hint="Search for a user"
         android:inputType="textPersonName"
         android:textAlignment="textStart"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,7 +38,7 @@
         android:id="@+id/contact_names"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/title_contact_nonfriend_label"
+        android:text="@string/title_members"
         android:textColor="@color/text_color"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,20 +53,6 @@
         android:layout_marginTop="56dp"
         android:text="@string/title_find_contact"
         app:icon="@drawable/ic_user_search_black_24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="118dp"
-        android:layout_marginEnd="411dp"
-        android:layout_marginBottom="613dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintGuide_begin="118dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

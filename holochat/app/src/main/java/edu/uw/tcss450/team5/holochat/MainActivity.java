@@ -8,7 +8,6 @@ package edu.uw.tcss450.team5.holochat;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavArgument;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
@@ -27,7 +26,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -38,10 +36,7 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.navigation.NavigationBarView;
 
-
-import java.util.Map;
 
 import edu.uw.tcss450.team5.holochat.databinding.ActivityMainBinding;
 import edu.uw.tcss450.team5.holochat.model.LocationViewModel;
@@ -137,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
-                if (destination.getId() == R.id.chatRoomFragment) {
+                if (destination.getId() == R.id.navigation_chatroom) {
                     //When the user navigates to the chats page, reset the new message count.
                     //This will need some extra logic for your project as it should have
                     //multiple chat rooms.

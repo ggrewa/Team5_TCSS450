@@ -1,4 +1,4 @@
-package edu.uw.tcss450.team5.holochat.ui.contacts.search;
+package edu.uw.tcss450.team5.holochat.ui.contacts.request;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,9 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import edu.uw.tcss450.team5.holochat.R;
-import edu.uw.tcss450.team5.holochat.databinding.FragmentFriendRequestCardBinding;
+import edu.uw.tcss450.team5.holochat.databinding.FragmentContactOutgoingRequestCardBinding;
 import edu.uw.tcss450.team5.holochat.ui.contacts.info.Contact;
-import edu.uw.tcss450.team5.holochat.ui.dialog.SendContactRequestDialog;
+import edu.uw.tcss450.team5.holochat.ui.dialog.CancelRequestContactDialog;
 
 /**
  * Presents information on a contact request
@@ -21,7 +21,7 @@ import edu.uw.tcss450.team5.holochat.ui.dialog.SendContactRequestDialog;
  *
  * @author Tarnveer
  */
-public class AllMemberRecyclerViewAdapter extends RecyclerView.Adapter<AllMemberRecyclerViewAdapter.ContactRequestViewHolder> {
+public class ContactRequestOutRecyclerViewAdapter extends RecyclerView.Adapter<ContactRequestOutRecyclerViewAdapter.ContactRequestViewHolder> {
 
     private final FragmentManager mFragmMan;
     private final List<Contact> mContactRequests;
@@ -31,7 +31,7 @@ public class AllMemberRecyclerViewAdapter extends RecyclerView.Adapter<AllMember
      *
      * @param items a list of contacts.
      */
-    public AllMemberRecyclerViewAdapter(List<Contact> items, FragmentManager fm) {
+    public ContactRequestOutRecyclerViewAdapter(List<Contact> items, FragmentManager fm) {
         this.mContactRequests = items;
         this.mFragmMan = fm;
     }
@@ -46,7 +46,7 @@ public class AllMemberRecyclerViewAdapter extends RecyclerView.Adapter<AllMember
     public ContactRequestViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new ContactRequestViewHolder(LayoutInflater
                 .from(parent.getContext())
-                .inflate(R.layout.fragment_friend_request_card, parent, false));
+                .inflate(R.layout.fragment_contact_outgoing_request_card, parent, false));
     }
 
     @Override
@@ -66,29 +66,30 @@ public class AllMemberRecyclerViewAdapter extends RecyclerView.Adapter<AllMember
     public class ContactRequestViewHolder extends RecyclerView.ViewHolder {
 
         public final View mView;
-        public FragmentFriendRequestCardBinding binding;
+        public @NonNull FragmentContactOutgoingRequestCardBinding binding;
         public Contact mContact;
 
         /**
-         * Constructor for the contact view holder.
+         * Constructore for teh contact view holder.
          *
          * @param view the view.
          */
         public ContactRequestViewHolder(View view) {
             super(view);
             mView = view;
-            binding = FragmentFriendRequestCardBinding.bind(view);
+            binding = FragmentContactOutgoingRequestCardBinding.bind(view);
         }
 
         /**
          * navigates to a contacts profile.
          */
-        private void openDialog() {
+        private void openRejectDialog() {
             String name = mContact.getContactFirstName() + " " + mContact.getContactLastName();
-            SendContactRequestDialog dialog = new SendContactRequestDialog(name,
+            CancelRequestContactDialog dialog = new CancelRequestContactDialog(name,
                     mContact.getContactMemberID(), this);
             dialog.show(mFragmMan, "maybe?");
         }
+
 
         /**
          * Sets the contact.
@@ -99,7 +100,10 @@ public class AllMemberRecyclerViewAdapter extends RecyclerView.Adapter<AllMember
             binding.textUsername.setText(contact.getContactUsername());
             binding.textEmail.setText(contact.getContactEmail());
             mContact = contact;
-            binding.buttonAccept.setOnClickListener(button -> openDialog());
+
+            binding.buttonCancel.setOnClickListener(button -> {
+                openRejectDialog();
+            });
         }
 
         public void deleteRequest() {

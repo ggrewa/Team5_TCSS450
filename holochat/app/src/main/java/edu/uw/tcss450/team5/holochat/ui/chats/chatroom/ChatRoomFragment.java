@@ -22,11 +22,13 @@ import edu.uw.tcss450.team5.holochat.databinding.FragmentChatRoomBinding;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
 
 /**
- * A simple {@link Fragment} subclass.
+ * Chatroom fragment
+ *
+ * @author Aaron
+ * @author Ken
  */
 public class ChatRoomFragment extends Fragment {
     private ChatSendViewModel mSendModel;
-    //The chat ID for "global" chat
     private ChatRoomFragmentArgs mArgs;
     private int mChatId;
     private String mName;
