@@ -34,7 +34,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.522"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_outgoing_request_msg">
+        app:layout_constraintTop_toBottomOf="@+id/text_contact_request_out_label">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerRequestOutList"
@@ -47,7 +47,7 @@
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <TextView
-        android:id="@+id/text_contact_request_label"
+        android:id="@+id/text_contact_request_in_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Incoming Friend Requests:"
@@ -60,7 +60,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/text_outgoing_request_msg"
+        android:id="@+id/text_contact_request_out_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
