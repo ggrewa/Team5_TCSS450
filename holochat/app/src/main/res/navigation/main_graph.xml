@@ -207,4 +207,9 @@
             android:id="@+id/action_navigation_searched_to_navigation_tabbed_contacts"
             app:destination="@id/navigation_tabbed_contacts" />
     </fragment>
+    <fragment
+        android:id="@+id/navigation_credits"
+        android:name="edu.uw.tcss450.team5.holochat.ui.home.CreditsFragment"
+        android:label="Credits"
+        tools:layout="@layout/fragment_credits" />
 </navigation>

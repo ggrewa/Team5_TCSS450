@@ -56,6 +56,7 @@
     <string name="keys_shared_prefs">My Auth App Shared Prefs</string>
     <string name="keys_prefs_jwt">Sharded Prefs JWT</string>
     <string name="action_sign_out">Sign Out</string>
+    <string name="action_credits">Credits</string>
 
     <!--chatroom strings-->
     <string name="text_create">Create</string>
