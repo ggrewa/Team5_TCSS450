@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/navigation_tabbed_contacts"
-        android:icon="@drawable/ic_multiple_people_24dp"
-        android:title="@string/title_contacts" />
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/title_home" />
 
     <item
         android:id="@+id/navigation_messages"
@@ -11,9 +11,9 @@
         android:title="@string/title_messages" />
 
     <item
-        android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/title_home" />
+        android:id="@+id/navigation_tabbed_contacts"
+        android:icon="@drawable/ic_multiple_people_24dp"
+        android:title="@string/title_contacts" />
 
     <item
         android:id="@+id/navigation_weather"

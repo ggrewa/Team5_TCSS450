@@ -188,7 +188,7 @@
                 android:layout_width="377dp"
                 android:layout_height="37dp"
                 android:fontFamily="casual"
-                android:text="lived in the weather fragment and never got out"
+                android:text="started in the weather fragment and never got out"
                 android:textColor="@color/text_color"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
