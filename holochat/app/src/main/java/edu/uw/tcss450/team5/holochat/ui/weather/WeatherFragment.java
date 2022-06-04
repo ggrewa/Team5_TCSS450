@@ -217,6 +217,7 @@ public class WeatherFragment extends Fragment {
                     connect(latAndLon);
                 } else {
                     System.out.println("Location is NULL");
+                    connect("98405");
                 }
             }
         });

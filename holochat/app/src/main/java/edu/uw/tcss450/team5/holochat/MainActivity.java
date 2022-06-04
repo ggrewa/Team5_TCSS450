@@ -13,7 +13,6 @@ import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
 import android.content.BroadcastReceiver;
@@ -28,6 +27,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.android.material.badge.BadgeDrawable;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.auth0.android.jwt.JWT;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
@@ -35,7 +36,7 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 
 import edu.uw.tcss450.team5.holochat.databinding.ActivityMainBinding;
 import edu.uw.tcss450.team5.holochat.model.LocationViewModel;
@@ -57,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     AppSharedPref mPref;
     private ActivityMainBinding binding;
-    RecyclerView recyclerView;
     private MainPushMessageReceiver mPushMessageReceiver;
     private NewMessageCountViewModel mNewMessageModel;
 
@@ -85,13 +85,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //binding = ActivityMainBinding.inflate(getLayoutInflater());
-
         MainActivityArgs args = MainActivityArgs.fromBundle(getIntent().getExtras());
-
-/*        new ViewModelProvider(this,
-                new UserInfoViewModel.UserInfoViewModelFactory(args.getEmail(), args.getJwt())
-        ).get(UserInfoViewModel.class);*/
 
         //JWT view model (Note: these labels are token stored in the web service JWT sign!)
         JWT jwt = new JWT(args.getJwt());
@@ -106,8 +100,9 @@ public class MainActivity extends AppCompatActivity {
                 new UserInfoViewModel.UserInfoViewModelFactory(args.getEmail(), firstName,
                         lastName, username, memberID, args.getJwt())
         ).get(UserInfoViewModel.class);
-
-        setContentView(R.layout.activity_main);
+        if(binding == null)
+            binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         //BOTTOM NAVIGATION
         BottomNavigationView navView = findViewById(R.id.nav_view);
@@ -126,36 +121,43 @@ public class MainActivity extends AppCompatActivity {
         mPref = new AppSharedPref(this);
         mPref.initializeTheme(); //set theme based on preference in AppSharedPref class
         mNewMessageModel = new ViewModelProvider(this).get(NewMessageCountViewModel.class);
+        mNewMessageModel.increment(1);
+        mNewMessageModel.reset(1);
 
-        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
-            if (destination.getId() == R.id.action_navigation_home_to_chatRoomFragment) {
-                //When the user navigates to the chats page, reset the new message count.
-                //This will need some extra logic for your project as it should have
-                //multiple chat rooms.
-                mNewMessageModel.reset();
-            }
-        });
+
 
         //weather
         requestLocationPermission();
         handleLocationUpdate();
 
 
-//       notifications
-//        mNewMessageModel.addMessageCountObserver(this, count -> {
-//            BadgeDrawable badge = binding.navView.getOrCreateBadge(R.id.action_navigation_home_to_chatRoomFragment);
-//            badge.setMaxCharacterCount(2);
-//            if (count > 0) {
-//                //new messages! update and show the notification badge.
-//                badge.setNumber(count);
-//                badge.setVisible(true);
-//            } else {
-//                //user did some action to clear the new messages, remove the badge
-//                badge.clearNumber();
-//                badge.setVisible(false);
-//            }
-//        });
-    }
+        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
+                if (destination.getId() == R.id.navigation_chatroom) {
+                    //When the user navigates to the chats page, reset the new message count.
+                    //This will need some extra logic for your project as it should have
+                    //multiple chat rooms.
+
+                    System.out.println("TESTID"+arguments.getInt("chatID"));
+                    //Integer chatID = arguments.get("chatID");
+                    mNewMessageModel.reset(arguments.getInt("chatID"));
+                }
+            });
+
+        mNewMessageModel.addMessageCountObserver(this, count -> {
+                BadgeDrawable badge = binding.navView.getOrCreateBadge(R.id.navigation_messages);
+                badge.setMaxCharacterCount(2);
+                if (count > 0) {
+                    //new messages! update and show the notification badge.
+                    badge.setNumber(count);
+                    badge.setVisible(true);
+                } else {
+                    //user did some action to clear the new messages, remove the badge
+                    badge.clearNumber();
+                    badge.setVisible(false);
+                }
+            });
+        }
+
 
 
     @Override
@@ -171,6 +173,10 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_settings:
                 Log.d("SETTINGS", "Clicked");
                 openSettings();
+                return true;
+            case R.id.action_credits:
+                Log.d("CREDITS", "Clicked");
+                openCredits();
                 return true;
             case R.id.action_signout:
                 Log.d("SIGNOUT", "Clicked");
@@ -199,6 +205,14 @@ public class MainActivity extends AppCompatActivity {
         navController2.navigate(R.id.navigation_settings);
     }
 
+    /**
+     * Navigates the activity to the settings fragment
+     */
+    public void openCredits() {
+        NavController navController2 = Navigation.findNavController(this, R.id.nav_host_fragment);
+        navController2.navigate(R.id.navigation_credits);
+    }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -207,8 +221,6 @@ public class MainActivity extends AppCompatActivity {
         }
         IntentFilter iFilter = new IntentFilter(PushReceiver.RECEIVED_NEW_MESSAGE);
         registerReceiver(mPushMessageReceiver, iFilter);
-
-        startLocationUpdates();
     }
 
     @Override
@@ -217,10 +229,12 @@ public class MainActivity extends AppCompatActivity {
         if (mPushMessageReceiver != null){
             unregisterReceiver(mPushMessageReceiver);
         }
-
-        stopLocationUpdates();
     }
 
+    /**
+     * Change the action title bar for the mainactivity
+     * @param title
+     */
     public void setTitle(String title)
     {
         getSupportActionBar().setTitle(title);
@@ -251,6 +265,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onReceive(Context context, Intent intent) {
+
             NavController nc =
                     Navigation.findNavController(
                             MainActivity.this, R.id.nav_host_fragment);
@@ -262,9 +277,10 @@ public class MainActivity extends AppCompatActivity {
 
                 //If the user is not on the chat screen, update the
                 // NewMessageCountView Model
-                if (nd.getId() != R.id.action_navigation_home_to_chatRoomFragment) {
-                    mNewMessageModel.increment();
-                 }
+                if (nd.getId() != R.id.navigation_messages){
+                    //incrementing total counter and chat room map
+                    mNewMessageModel.increment(intent.getIntExtra("chatid", -1));
+                }
                 //Inform the view model holding chatroom messages of the new
                 //message.
                 mModel.addMessage(intent.getIntExtra("chatid", -1), cm);

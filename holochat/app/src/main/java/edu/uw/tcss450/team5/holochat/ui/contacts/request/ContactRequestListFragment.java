@@ -19,9 +19,11 @@ import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
 /**
  * Fragment that holds all friend requests the user has recieved
  * @author Tarnveer
+ * @AUTHOR KEN
  */
 public class ContactRequestListFragment extends Fragment {
-    private ContactRequestListViewModel mModel;
+    private ContactRequestListViewModel mRequestInModel;
+    private ContactRequestOutListViewModel mRequestOutModel;
     FragmentContactRequestBinding binding;
 
     public ContactRequestListFragment() {
@@ -31,13 +33,15 @@ public class ContactRequestListFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mModel = new ViewModelProvider(getActivity()).get(ContactRequestListViewModel.class);
+        mRequestInModel = new ViewModelProvider(getActivity()).get(ContactRequestListViewModel.class);
+        mRequestOutModel = new ViewModelProvider(getActivity()).get(ContactRequestOutListViewModel.class);
 
         UserInfoViewModel model = new ViewModelProvider(getActivity())
                 .get(UserInfoViewModel.class);
 
         Log.i("CONTACT_REQUEST", model.getJwt());
-        mModel.connectGet(model.getJwt());
+        mRequestInModel.connectGet(model.getJwt());
+        mRequestOutModel.connectGet(model.getJwt());
     }
 
     @Override
@@ -57,15 +61,27 @@ public class ContactRequestListFragment extends Fragment {
         //used here.
         FragmentContactRequestBinding binding = FragmentContactRequestBinding.bind(getView());
 
-        mModel.addContactRequestListObserver(getViewLifecycleOwner(), contactList -> {
+        mRequestInModel.addContactRequestListObserver(getViewLifecycleOwner(), contactList -> {
             if (!contactList.isEmpty()) {
                 int size = contactList.size();
-                binding.textContactRequestLabel.setText("You have "+ size + " incoming request(s):");
+                binding.textContactRequestInLabel.setText("You have " + size + " incoming request(s) [̲̅$̲̅(̲̅ ͡° ͜ʖ ͡°̲̅)̲̅$̲̅]");
             } else {
-                binding.textContactRequestLabel.setText("You have no incoming requests.");
+                binding.textContactRequestInLabel.setText("You have no incoming requests ( ˃̣̣̥⌓˂̣̣̥)");
             }
-            binding.listRoot.setAdapter(
+            binding.recyclerRequestInList.setAdapter(
                     new ContactRequestRecyclerViewAdapter(contactList, getActivity().getSupportFragmentManager())
+            );
+        });
+
+        mRequestOutModel.addContactRequestListObserver(getViewLifecycleOwner(), contactList -> {
+            if (!contactList.isEmpty()) {
+                int size = contactList.size();
+                binding.textContactRequestOutLabel.setText("You have " + size + " outgoing request(s)! (｢•-•)｢ ʷʱʸ?");
+            } else {
+                binding.textContactRequestOutLabel.setText("You have no outgoing requests ¯\\_(ツ)_/¯");
+            }
+            binding.recyclerRequestOutList.setAdapter(
+                    new ContactRequestOutRecyclerViewAdapter(contactList, getActivity().getSupportFragmentManager())
             );
         });
     }

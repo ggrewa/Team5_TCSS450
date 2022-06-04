@@ -67,7 +67,6 @@ public class ChatSendViewModel extends AndroidViewModel {
                 return headers;
             }
         };
-
         request.setRetryPolicy(new DefaultRetryPolicy(
                 10_000,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,

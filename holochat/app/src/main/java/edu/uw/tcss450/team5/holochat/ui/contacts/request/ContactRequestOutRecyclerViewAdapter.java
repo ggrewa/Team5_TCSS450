@@ -9,11 +9,11 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+
 import edu.uw.tcss450.team5.holochat.R;
-import edu.uw.tcss450.team5.holochat.databinding.FragmentContactRequestCardBinding;
+import edu.uw.tcss450.team5.holochat.databinding.FragmentContactOutgoingRequestCardBinding;
 import edu.uw.tcss450.team5.holochat.ui.contacts.info.Contact;
-import edu.uw.tcss450.team5.holochat.ui.dialog.AcceptContactRequestDialog;
-import edu.uw.tcss450.team5.holochat.ui.dialog.RejectContactRequestDialog;
+import edu.uw.tcss450.team5.holochat.ui.dialog.CancelRequestContactDialog;
 
 /**
  * Presents information on a contact request
@@ -21,7 +21,7 @@ import edu.uw.tcss450.team5.holochat.ui.dialog.RejectContactRequestDialog;
  *
  * @author Tarnveer
  */
-public class ContactRequestRecyclerViewAdapter  extends RecyclerView.Adapter<ContactRequestRecyclerViewAdapter.ContactRequestViewHolder> {
+public class ContactRequestOutRecyclerViewAdapter extends RecyclerView.Adapter<ContactRequestOutRecyclerViewAdapter.ContactRequestViewHolder> {
 
     private final FragmentManager mFragmMan;
     private final List<Contact> mContactRequests;
@@ -31,7 +31,7 @@ public class ContactRequestRecyclerViewAdapter  extends RecyclerView.Adapter<Con
      *
      * @param items a list of contacts.
      */
-    public ContactRequestRecyclerViewAdapter(List<Contact> items, FragmentManager fm) {
+    public ContactRequestOutRecyclerViewAdapter(List<Contact> items, FragmentManager fm) {
         this.mContactRequests = items;
         this.mFragmMan = fm;
     }
@@ -46,7 +46,7 @@ public class ContactRequestRecyclerViewAdapter  extends RecyclerView.Adapter<Con
     public ContactRequestViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new ContactRequestViewHolder(LayoutInflater
                 .from(parent.getContext())
-                .inflate(R.layout.fragment_contact_request_card, parent, false));
+                .inflate(R.layout.fragment_contact_outgoing_request_card, parent, false));
     }
 
     @Override
@@ -66,7 +66,7 @@ public class ContactRequestRecyclerViewAdapter  extends RecyclerView.Adapter<Con
     public class ContactRequestViewHolder extends RecyclerView.ViewHolder {
 
         public final View mView;
-        public FragmentContactRequestCardBinding binding;
+        public @NonNull FragmentContactOutgoingRequestCardBinding binding;
         public Contact mContact;
 
         /**
@@ -77,17 +77,7 @@ public class ContactRequestRecyclerViewAdapter  extends RecyclerView.Adapter<Con
         public ContactRequestViewHolder(View view) {
             super(view);
             mView = view;
-            binding = FragmentContactRequestCardBinding.bind(view);
-        }
-
-        /**
-         * navigates to a contacts profile.
-         */
-        private void openAcceptDialog() {
-            String name = mContact.getContactFirstName() + " " + mContact.getContactLastName();
-            AcceptContactRequestDialog dialog = new AcceptContactRequestDialog(name,
-                    mContact.getContactMemberID(), this);
-            dialog.show(mFragmMan, "maybe?");
+            binding = FragmentContactOutgoingRequestCardBinding.bind(view);
         }
 
         /**
@@ -95,10 +85,11 @@ public class ContactRequestRecyclerViewAdapter  extends RecyclerView.Adapter<Con
          */
         private void openRejectDialog() {
             String name = mContact.getContactFirstName() + " " + mContact.getContactLastName();
-            RejectContactRequestDialog dialog = new RejectContactRequestDialog(name,
+            CancelRequestContactDialog dialog = new CancelRequestContactDialog(name,
                     mContact.getContactMemberID(), this);
             dialog.show(mFragmMan, "maybe?");
         }
+
 
         /**
          * Sets the contact.
@@ -109,8 +100,10 @@ public class ContactRequestRecyclerViewAdapter  extends RecyclerView.Adapter<Con
             binding.textUsername.setText(contact.getContactUsername());
             binding.textEmail.setText(contact.getContactEmail());
             mContact = contact;
-            binding.buttonAccept.setOnClickListener(button -> openAcceptDialog());
-            binding.buttonReject.setOnClickListener(button -> openRejectDialog());
+
+            binding.buttonCancel.setOnClickListener(button -> {
+                openRejectDialog();
+            });
         }
 
         public void deleteRequest() {

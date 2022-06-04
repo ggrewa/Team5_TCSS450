@@ -1,4 +1,4 @@
-package edu.uw.tcss450.team5.holochat.ui.chats.chatroom;
+package edu.uw.tcss450.team5.holochat.ui.dialog;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -26,6 +26,7 @@ import edu.uw.tcss450.team5.holochat.ui.chats.chatroom_list.MessagePost;
 
 /**
  * Dialog prompt to delete a chat
+ * This actually only removes the user link from the chatroom
  *
  * @author Ken
  */

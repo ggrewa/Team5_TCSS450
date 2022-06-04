@@ -84,7 +84,7 @@ public class ContactListFragment extends Fragment {
                         int size = list.size();
                         binding.textContactListLabel.setText("You have "+ size + " contact(s):");
                     } else {
-                        binding.textContactListLabel.setText("You have no contacts. Go touch grass!");
+                        binding.textContactListLabel.setText("You have no contacts （◞‸◟）");
                     }
                     /*
                      * This solution needs work on the scroll position. As a group,

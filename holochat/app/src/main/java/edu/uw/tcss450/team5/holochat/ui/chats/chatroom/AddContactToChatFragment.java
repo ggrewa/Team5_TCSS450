@@ -27,7 +27,7 @@ import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
 import edu.uw.tcss450.team5.holochat.ui.chats.new_chatroom.NewChatFragmentDirections;
 import edu.uw.tcss450.team5.holochat.ui.chats.new_chatroom.NewChatRecyclerViewAdapter;
 import edu.uw.tcss450.team5.holochat.ui.chats.new_chatroom.NewChatViewModel;
-import edu.uw.tcss450.team5.holochat.ui.contacts.list.ContactListSingle;
+import edu.uw.tcss450.team5.holochat.ui.contacts.info.ContactListSingle;
 import edu.uw.tcss450.team5.holochat.ui.contacts.list.ContactListViewModel;
 
 /**

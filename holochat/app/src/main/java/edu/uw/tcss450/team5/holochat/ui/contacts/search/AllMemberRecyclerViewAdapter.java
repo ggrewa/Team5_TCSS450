@@ -11,10 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import edu.uw.tcss450.team5.holochat.R;
-import edu.uw.tcss450.team5.holochat.databinding.FragmentContactRequestCardBinding;
+import edu.uw.tcss450.team5.holochat.databinding.FragmentFriendRequestCardBinding;
 import edu.uw.tcss450.team5.holochat.ui.contacts.info.Contact;
-import edu.uw.tcss450.team5.holochat.ui.contacts.request.AcceptContactDialog;
-import edu.uw.tcss450.team5.holochat.ui.contacts.search.SendContactDialog;
+import edu.uw.tcss450.team5.holochat.ui.dialog.SendContactRequestDialog;
 
 /**
  * Presents information on a contact request
@@ -22,7 +21,7 @@ import edu.uw.tcss450.team5.holochat.ui.contacts.search.SendContactDialog;
  *
  * @author Tarnveer
  */
-public class ContactSearchRecyclerViewAdapter extends RecyclerView.Adapter<ContactSearchRecyclerViewAdapter.ContactRequestViewHolder> {
+public class AllMemberRecyclerViewAdapter extends RecyclerView.Adapter<AllMemberRecyclerViewAdapter.ContactRequestViewHolder> {
 
     private final FragmentManager mFragmMan;
     private final List<Contact> mContactRequests;
@@ -32,7 +31,7 @@ public class ContactSearchRecyclerViewAdapter extends RecyclerView.Adapter<Conta
      *
      * @param items a list of contacts.
      */
-    public ContactSearchRecyclerViewAdapter(List<Contact> items, FragmentManager fm) {
+    public AllMemberRecyclerViewAdapter(List<Contact> items, FragmentManager fm) {
         this.mContactRequests = items;
         this.mFragmMan = fm;
     }
@@ -67,7 +66,7 @@ public class ContactSearchRecyclerViewAdapter extends RecyclerView.Adapter<Conta
     public class ContactRequestViewHolder extends RecyclerView.ViewHolder {
 
         public final View mView;
-        public FragmentContactRequestCardBinding binding;
+        public FragmentFriendRequestCardBinding binding;
         public Contact mContact;
 
         /**
@@ -78,7 +77,7 @@ public class ContactSearchRecyclerViewAdapter extends RecyclerView.Adapter<Conta
         public ContactRequestViewHolder(View view) {
             super(view);
             mView = view;
-            binding = FragmentContactRequestCardBinding.bind(view);
+            binding = FragmentFriendRequestCardBinding.bind(view);
         }
 
         /**
@@ -86,7 +85,7 @@ public class ContactSearchRecyclerViewAdapter extends RecyclerView.Adapter<Conta
          */
         private void openDialog() {
             String name = mContact.getContactFirstName() + " " + mContact.getContactLastName();
-            SendContactDialog dialog = new SendContactDialog(name,
+            SendContactRequestDialog dialog = new SendContactRequestDialog(name,
                     mContact.getContactMemberID(), this);
             dialog.show(mFragmMan, "maybe?");
         }
