@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -71,12 +72,30 @@ public class MessageListFragment extends Fragment {
         binding.buttonAddChat.setOnClickListener(button -> Navigation.findNavController(getView())
                 .navigate(MessageListFragmentDirections.actionNavigationMessagesToNewChatFragment()));
 
+        updateMessagesModel();
+
+        //refresh the list with a swipe down
+        binding.swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                updateMessagesModel();
+            }
+        });
+    }
+
+    private void updateMessagesModel() {
+        FragmentMessageListBinding binding = FragmentMessageListBinding.bind(getView());
+        //SetRefreshing shows the internal Swiper view progress bar. Show this until messages load
+        binding.swipeContainer.setRefreshing(true);
         //may need to change this to be similar to chat fragment on view created.
         //add observer for getting messages
         mMessagesModel.addMessageListObserver(getViewLifecycleOwner(), messageList -> {
             mAdapter = new MessageListRecyclerViewAdapter(messageList, getActivity().getSupportFragmentManager());
             binding.listRoot.setAdapter(mAdapter);
-            binding.layoutWait.setVisibility(View.GONE);
+            if(messageList.isEmpty()) binding.textMessageListLabel.setText("┏(-_-)┛ Error 404: No chatrooms found ");
+            else binding.textMessageListLabel.setText("You are in " + messageList.size() + " chatrooms (͠≖ ͜ʖ͠≖)");
+
+            binding.swipeContainer.setRefreshing(false);
         });
     }
 

@@ -78,7 +78,6 @@ public class DeleteChatDialog extends DialogFragment {
             binding.listRoot.setAdapter(
                     new MessageListRecyclerViewAdapter(messageList, mFragMan)
             );
-            binding.layoutWait.setVisibility(View.GONE);
         });
     }
 
