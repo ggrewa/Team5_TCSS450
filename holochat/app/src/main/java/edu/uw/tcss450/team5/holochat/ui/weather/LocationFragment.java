@@ -32,7 +32,11 @@ public class LocationFragment extends Fragment implements OnMapReadyCallback, Go
     
     private GoogleMap mMap;
 
+    Marker marker;
 
+    public double lat;
+
+    public double lon;
 
     public LocationFragment() {
         // Required empty public constructor
@@ -87,7 +91,20 @@ public class LocationFragment extends Fragment implements OnMapReadyCallback, Go
     public void onMapClick(@NonNull LatLng latLng) {
         Log.d("LAT/LONG", latLng.toString());
 
-        Marker marker = mMap.addMarker(new MarkerOptions()
+
+        //extracting coordinates
+        lat = latLng.latitude;
+        lon = latLng.longitude;
+
+        System.out.println(lat);
+        System.out.println(lon);
+
+        //remove previous marker if it exists
+        if (marker != null){
+            marker.remove();
+        }
+
+        marker = mMap.addMarker(new MarkerOptions()
                 .position(latLng)
                 .title("New Marker"));
 
