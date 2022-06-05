@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -60,6 +61,8 @@ public class ContactRequestListFragment extends Fragment {
         //Local access to the ViewBinding object. No need to create as Instance Var as it is only
         //used here.
         FragmentContactRequestBinding binding = FragmentContactRequestBinding.bind(getView());
+        binding.swipeContainerIn.setRefreshing(true);
+        final RecyclerView rv = binding.recyclerRequestInList;
 
         mRequestInModel.addContactRequestListObserver(getViewLifecycleOwner(), contactList -> {
             if (!contactList.isEmpty()) {

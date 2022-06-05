@@ -217,7 +217,6 @@
                 android:id="@+id/text_credit_aar"
                 android:layout_width="365dp"
                 android:layout_height="26dp"
-                android:layout_marginTop="4dp"
                 android:fontFamily="casual"
                 android:text="★Aaron Eldridge"
                 android:textColor="@color/colorPrimary"
@@ -275,7 +274,7 @@
                 android:id="@+id/text_credit_tarn"
                 android:layout_width="365dp"
                 android:layout_height="26dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="16dp"
                 android:fontFamily="casual"
                 android:text="★Tarnveer Mangat"
                 android:textColor="@color/colorPrimary"
@@ -324,10 +323,10 @@
         android:textColor="@color/text_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tarnCard"
-        app:layout_constraintVertical_bias="0.059" />
+        app:layout_constraintVertical_bias="0.152" />
 
     <TextView
         android:id="@+id/textView"
