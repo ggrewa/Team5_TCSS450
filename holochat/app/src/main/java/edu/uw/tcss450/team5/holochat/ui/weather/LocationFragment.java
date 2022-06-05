@@ -97,9 +97,6 @@ public class LocationFragment extends Fragment implements OnMapReadyCallback, Go
         mMap.setOnMapClickListener(this);
     }
 
-    public void onSearchClick() {
-
-    }
 
     @Override
     public void onMapClick(@NonNull LatLng latLng) {
