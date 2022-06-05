@@ -16,7 +16,6 @@ import android.view.ViewGroup;
 import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentMessageListBinding;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
-import edu.uw.tcss450.team5.holochat.ui.chats.new_chatroom.MessageListViewModel;
 
 /**
  * Fragment contains a list of chatrooms that the user is in
