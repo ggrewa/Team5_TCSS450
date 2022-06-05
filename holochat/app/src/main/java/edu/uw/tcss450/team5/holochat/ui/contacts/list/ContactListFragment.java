@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,6 +34,7 @@ public class ContactListFragment extends Fragment {
 //    private ChatSendViewModel mSendModel;
     private ContactListViewModel mContactListModel;
     private UserInfoViewModel mUserModel;
+    private ContactListRecyclerViewAdapter mAdapter;
 
     public ContactListFragment() {
         // Required empty public constructor
@@ -64,22 +66,13 @@ public class ContactListFragment extends Fragment {
 
         //SetRefreshing shows the internal Swiper view progress bar. Show this until messages load
         binding.swipeContainer.setRefreshing(true);
-
-
-        final RecyclerView rv = binding.recyclerContacts;
-        //Set the Adapter to hold a reference to the list FOR THIS chat ID that the ViewModel
-        //holds.
-        ContactListRecyclerViewAdapter adap = new ContactListRecyclerViewAdapter(
+        mAdapter = new ContactListRecyclerViewAdapter(
                 mContactListModel.getContactListByEmail(mUserModel.getEmail()));
+        binding.recyclerContacts.setAdapter(mAdapter);
 
-        rv.setAdapter(adap);
-
-
-//        //When the user scrolls to the top of the RV, the swiper list will "refresh"
-//        //The user is out of messages, go out to the service and get more
+        //model and message refresh
         mContactListModel.addContactObserver(mUserModel.getEmail(), getViewLifecycleOwner(),
                 list -> {
-
                     if (!list.isEmpty()) {
                         int size = list.size();
                         binding.textContactListLabel.setText("You have "+ size + " contact(s):");
@@ -93,10 +86,21 @@ public class ContactListFragment extends Fragment {
                      * solution for when the keyboard is on the screen.
                      */
                     //inform the RV that the underlying list has (possibly) changed
-                    rv.getAdapter().notifyDataSetChanged();
+                    binding.recyclerContacts.getAdapter().notifyDataSetChanged();
                     binding.swipeContainer.setRefreshing(false);
-
                 });
+
+        //refresh the list with a swipe down
+        binding.swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                binding.swipeContainer.setRefreshing(true);
+                mContactListModel.getContacts(mUserModel.getJwt());
+                mAdapter = new ContactListRecyclerViewAdapter(
+                        mContactListModel.getContactListByEmail(mUserModel.getEmail()));
+                binding.recyclerContacts.getAdapter().notifyDataSetChanged();
+            }
+        });
 
     }
 }
