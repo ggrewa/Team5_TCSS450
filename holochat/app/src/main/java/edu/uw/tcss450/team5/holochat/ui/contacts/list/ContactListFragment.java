@@ -75,7 +75,7 @@ public class ContactListFragment extends Fragment {
                 list -> {
                     if (!list.isEmpty()) {
                         int size = list.size();
-                        binding.textContactListLabel.setText("You have "+ size + " contact(s):");
+                        binding.textContactListLabel.setText("(☞ ͡° ͜ʖ ͡°)☞ You have "+ size + " contact(s):");
                     } else {
                         binding.textContactListLabel.setText("You have no contacts （◞‸◟）");
                     }

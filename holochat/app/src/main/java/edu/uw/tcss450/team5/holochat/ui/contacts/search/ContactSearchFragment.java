@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,7 +28,7 @@ import edu.uw.tcss450.team5.holochat.ui.contacts.info.ContactViewModel;
 
 /**
  * Fragment that hold tools to search for a user of the app and send a friend request
- * @author Tarnveer
+ * @author Ken
  */
 public class ContactSearchFragment extends Fragment {
     private UserInfoViewModel mUserModel;
@@ -64,18 +65,15 @@ public class ContactSearchFragment extends Fragment {
         //contact view models
         mContactViewModel = provider.get(ContactViewModel.class);
         mUserModel = provider.get(UserInfoViewModel.class);
-        mModel = provider.get(AllMemberListViewModel.class);
-        mModel.connectGet(mUserModel.getJwt(), mUserModel.getMemberID());
 
         //contact view model of people that you can add
+        binding.swipeContainer.setRefreshing(true);
         mContactViewModel.connect(mUserModel.getEmail(), mUserModel.getJwt());
         mContactViewModel.addResponseObserver(getViewLifecycleOwner(),
                 this::observeContacts);
-        mModel.addContactRequestListObserver(getViewLifecycleOwner(), contactList -> {
-            binding.listRoot.setAdapter(
-                    new AllMemberRecyclerViewAdapter(contactList, getActivity().getSupportFragmentManager())
-            );
-        });
+
+        //model of members
+        setViewAllMembers();
 
         //search bar, searching view model
         mSearchModel = provider.get(SearchViewModel.class);
@@ -84,8 +82,37 @@ public class ContactSearchFragment extends Fragment {
                 this::observeContacts);
         binding.buttonFindContact.setOnClickListener(this::attemptToFind);
 
-        System.out.println("on view created");
+        //refresh, brings search back to default state
+        binding.swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                resetSearch();
+            }
+        });
+        binding.buttonRefreshSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                resetSearch();
+            }
+        });
 
+    }
+
+    /**
+     * Initializes member model and recycler adapter
+     */
+    private void setViewAllMembers() {
+        //model of members
+        ViewModelProvider provider= new ViewModelProvider(getActivity());
+        mModel = provider.get(AllMemberListViewModel.class);
+        mModel.connectGet(mUserModel.getJwt(), mUserModel.getMemberID());
+        mModel.addContactRequestListObserver(getViewLifecycleOwner(), contactList -> {
+            binding.recyclerSearchList.setAdapter(
+                    new AllMemberRecyclerViewAdapter(contactList, getActivity().getSupportFragmentManager())
+            );
+            binding.contactNames.setText("All Members: x" + contactList.size() + " ( ͡° ᴥ ͡°)");
+            binding.swipeContainer.setRefreshing(false);
+        });
     }
 
     /**
@@ -104,11 +131,25 @@ public class ContactSearchFragment extends Fragment {
         mSearchModel.connectGet(mUserModel.getJwt(), input);
         //set an observer and replace the adapter after user tries to search
         mSearchModel.addContactSearchListObserver(getViewLifecycleOwner(), contactList -> {
-            binding.listRoot.setAdapter(
+            binding.recyclerSearchList.setAdapter(
                     new AllMemberRecyclerViewAdapter(contactList, getActivity().getSupportFragmentManager())
             );
+
+            if(contactList.isEmpty()) binding.contactNames.setText("No results... ¯\\_(ツ)_/¯");
+            else binding.contactNames.setText("Results found: x" + contactList.size() + " ᕙ(▀̿ĺ̯▀̿ ̿)ᕗ");
+            binding.swipeContainer.setRefreshing(false);
         });
 
+    }
+
+    /**
+     * Reinitialzies the viewmodel and adapter. Returns fragment to default state.
+     */
+    private void resetSearch() {
+        binding.connectionsSearchEditText.clearFocus();
+        binding.connectionsSearchEditText.getText().clear();
+        binding.swipeContainer.setRefreshing(true);
+        setViewAllMembers();
     }
 
     /**
