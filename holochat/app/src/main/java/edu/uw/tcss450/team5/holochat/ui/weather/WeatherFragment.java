@@ -270,7 +270,7 @@ public class WeatherFragment extends Fragment {
      * @param zip
      */
     public void connect(String zip) {
-        String webServiceUrl = "https://team5-tcss450-holochat.herokuapp.com/weather/" + zip;
+        String webServiceUrl = getResources().getString(R.string.base_url_service)  + "weather/" + zip;
         Request request = new JsonObjectRequest(
                 Request.Method.GET,
                 webServiceUrl,
