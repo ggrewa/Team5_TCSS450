@@ -96,9 +96,9 @@ public class ContactListFragment extends Fragment {
             public void onRefresh() {
                 binding.swipeContainer.setRefreshing(true);
                 mContactListModel.getContacts(mUserModel.getJwt());
-                mAdapter = new ContactListRecyclerViewAdapter(
-                        mContactListModel.getContactListByEmail(mUserModel.getEmail()));
-                binding.recyclerContacts.getAdapter().notifyDataSetChanged();
+//                mAdapter = new ContactListRecyclerViewAdapter(
+//                        mContactListModel.getContactListByEmail(mUserModel.getEmail()));
+//                binding.recyclerContacts.getAdapter().notifyDataSetChanged();
             }
         });
 

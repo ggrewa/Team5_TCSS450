@@ -100,14 +100,14 @@ public class ContactSearchFragment extends Fragment {
         Log.i("CONTACT_SEARCH_FRAG", "input:" + input);
         System.out.println("user tried to find: " + input);
 
+        //attempt connection to webservice to find
+        mSearchModel.connectGet(mUserModel.getJwt(), input);
         //set an observer and replace the adapter after user tries to search
         mSearchModel.addContactSearchListObserver(getViewLifecycleOwner(), contactList -> {
             binding.listRoot.setAdapter(
                     new AllMemberRecyclerViewAdapter(contactList, getActivity().getSupportFragmentManager())
             );
         });
-        //attempt connection to webservice to find
-        mSearchModel.connectGet(mUserModel.getJwt(), input);
 
     }
 

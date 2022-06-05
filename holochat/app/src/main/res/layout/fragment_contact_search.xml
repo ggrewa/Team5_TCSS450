@@ -38,6 +38,7 @@
         android:id="@+id/contact_names"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="@string/title_members"
         android:textColor="@color/text_color"
         android:textStyle="bold"
@@ -60,15 +61,25 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_root"
         android:name="edu.uw.tcss450.team5.holochat.ui.contacts.ContactRequestListFragment"
-        android:layout_width="375dp"
-        android:layout_height="418dp"
+        android:layout_width="381dp"
+        android:layout_height="463dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="16dp"
         android:orientation="vertical"
         app:layoutManager="LinearLayoutManager"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contact_names"
+        app:layout_constraintTop_toBottomOf="@+id/button_refresh_search"
         tools:context="edu.uw.tcss450.team5.holochat.ui.contacts.ContactRequestListFragment"
         tools:listitem="@layout/fragment_contact_request_card" />
+
+    <Button
+        android:id="@+id/button_refresh_search"
+        android:layout_width="42dp"
+        android:layout_height="38dp"
+        android:text="Button"
+        app:icon="@drawable/ic_refresh_button_blue_24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contact_names" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
