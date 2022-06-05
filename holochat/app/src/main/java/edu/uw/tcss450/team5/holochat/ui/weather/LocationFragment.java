@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -32,7 +33,13 @@ public class LocationFragment extends Fragment implements OnMapReadyCallback, Go
     
     private GoogleMap mMap;
 
+    Marker marker;
 
+    public static double lat;
+
+    public static double lon;
+
+    Button search_button;
 
     public LocationFragment() {
         // Required empty public constructor
@@ -55,8 +62,15 @@ public class LocationFragment extends Fragment implements OnMapReadyCallback, Go
                 (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         //add this fragment as the OnMapReadyCallback -> See onMapReady()
         mapFragment.getMapAsync(this);
-    }
 
+        search_button = view.findViewById(R.id.search_button);
+        search_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().onBackPressed();
+            }
+        });
+    }
 
 
     @Override
@@ -83,11 +97,28 @@ public class LocationFragment extends Fragment implements OnMapReadyCallback, Go
         mMap.setOnMapClickListener(this);
     }
 
+    public void onSearchClick() {
+
+    }
+
     @Override
     public void onMapClick(@NonNull LatLng latLng) {
         Log.d("LAT/LONG", latLng.toString());
 
-        Marker marker = mMap.addMarker(new MarkerOptions()
+
+        //extracting coordinates
+        lat = latLng.latitude;
+        lon = latLng.longitude;
+
+        System.out.println(lat);
+        System.out.println(lon);
+
+        //remove previous marker if it exists
+        if (marker != null){
+            marker.remove();
+        }
+
+        marker = mMap.addMarker(new MarkerOptions()
                 .position(latLng)
                 .title("New Marker"));
 

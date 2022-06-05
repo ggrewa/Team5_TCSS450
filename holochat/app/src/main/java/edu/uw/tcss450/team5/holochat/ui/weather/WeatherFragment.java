@@ -154,7 +154,7 @@ public class WeatherFragment extends Fragment {
         humidityText = view.findViewById(R.id.humidityText);
         windText = view.findViewById(R.id.windText);
 
-        //set up drop down menu so the user can change locations and choose a serach type
+        //set up drop down menu so the user can change locations and choose a search type
         dropDown = view.findViewById(R.id.changeLocationButton);
         dropDown.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -185,27 +185,27 @@ public class WeatherFragment extends Fragment {
             }
         });
 
-        //testing getting current location
-        /*
-        mModel = new ViewModelProvider(getActivity())
-                .get(LocationViewModel.class);
-        mModel.addLocationObserver(getViewLifecycleOwner(), location -> currentLoc = location.toString());
-        System.out.println("This is the current location of the device: "+currentLoc);
-
-         */
-        //auto populate with weather data for Tacoma
-        //connect("98405");
-
-
         ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.ACCESS_COARSE_LOCATION}, PackageManager.PERMISSION_GRANTED);
 
-        getCurrentLocation(view);
+        double mapLat = LocationFragment.lat;
+        double mapLon = LocationFragment.lon;
+        System.out.println("from wf: " + mapLat + ", and: " + mapLon);
 
+        if (mapLat != 0 && mapLon != 0){
+            String mapLocation = mapLat + ":" + mapLon;
+            connect(mapLocation);
+        } else {
+            //auto populate with weather data for current location, if unavailable populate for Tacoma
+            getCurrentLocation(view);
+        }
 
     }
 
-
+    /**
+     * Gets the current location of the device and populates the weather fragment with the data
+     * @param view
+     */
     public void getCurrentLocation(View view) {
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());
         if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -245,6 +245,7 @@ public class WeatherFragment extends Fragment {
 
     /**
      * Checks for valid user input and sends input to connect method
+     * Used when searching by zipcode
      * @param view
      */
     public void getWeatherDetails(View view){
@@ -285,8 +286,10 @@ public class WeatherFragment extends Fragment {
                 .add(request);
     }
 
-    //get resulting json
-    //needs to be updated based on new json structure from gurleen
+    /**
+     * Gets Json returned from the web service and populates the fragment with all data
+     * @param jsonResponse
+     */
     public void handleResult(final JSONObject jsonResponse){
         try {
             //parse current weather details
