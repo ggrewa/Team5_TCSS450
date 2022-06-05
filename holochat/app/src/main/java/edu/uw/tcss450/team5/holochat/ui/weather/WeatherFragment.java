@@ -188,8 +188,17 @@ public class WeatherFragment extends Fragment {
         ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.ACCESS_COARSE_LOCATION}, PackageManager.PERMISSION_GRANTED);
 
-        //auto populate with weather data for current location, if unavailable populate for Tacoma
-        getCurrentLocation(view);
+        double mapLat = LocationFragment.lat;
+        double mapLon = LocationFragment.lon;
+        System.out.println("from wf: " + mapLat + ", and: " + mapLon);
+
+        if (mapLat != 0 && mapLon != 0){
+            String mapLocation = mapLat + ":" + mapLon;
+            connect(mapLocation);
+        } else {
+            //auto populate with weather data for current location, if unavailable populate for Tacoma
+            getCurrentLocation(view);
+        }
 
     }
 
