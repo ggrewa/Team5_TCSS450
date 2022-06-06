@@ -40,6 +40,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 
 import edu.uw.tcss450.team5.holochat.databinding.ActivityMainBinding;
 import edu.uw.tcss450.team5.holochat.model.LocationViewModel;
+import edu.uw.tcss450.team5.holochat.model.NewIncomingCountViewModel;
 import edu.uw.tcss450.team5.holochat.model.NewMessageCountViewModel;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
 import edu.uw.tcss450.team5.holochat.services.PushReceiver;
@@ -80,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
     private LocationCallback mLocationCallback;
     //The ViewModel that will store the current location
     private LocationViewModel mLocationModel;
+    private NewIncomingCountViewModel mNewIncomModel;
 
 
     @Override
@@ -156,6 +158,7 @@ public class MainActivity extends AppCompatActivity {
                     badge.setVisible(false);
                 }
             });
+
         }
 
 
