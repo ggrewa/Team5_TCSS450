@@ -21,7 +21,7 @@ import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentMessageListBinding;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
 import edu.uw.tcss450.team5.holochat.ui.chats.chatroom_list.MessageListRecyclerViewAdapter;
-import edu.uw.tcss450.team5.holochat.ui.chats.new_chatroom.MessageListViewModel;
+import edu.uw.tcss450.team5.holochat.ui.chats.chatroom_list.MessageListViewModel;
 import edu.uw.tcss450.team5.holochat.ui.chats.chatroom_list.MessagePost;
 
 /**
@@ -78,7 +78,6 @@ public class DeleteChatDialog extends DialogFragment {
             binding.listRoot.setAdapter(
                     new MessageListRecyclerViewAdapter(messageList, mFragMan)
             );
-            binding.layoutWait.setVisibility(View.GONE);
         });
     }
 

@@ -7,24 +7,24 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 
 public class NewIncomingCountViewModel extends ViewModel {
-    private MutableLiveData<Integer> mNewContactCount;
+    private MutableLiveData<Integer> mContactCount;
 
 
     public NewIncomingCountViewModel() {
-        mNewContactCount = new MutableLiveData<>();
-        mNewContactCount.setValue(0);
+        mContactCount = new MutableLiveData<>();
+        mContactCount.setValue(0);
     }
 
     public void addMessageCountObserver(@NonNull LifecycleOwner owner,
                                         @NonNull Observer<? super Integer> observer) {
-        mNewContactCount.observe(owner, observer);
+        mContactCount.observe(owner, observer);
     }
 
     public void increment() {
-        mNewContactCount.setValue(mNewContactCount.getValue() + 1);
+        mContactCount.setValue(mContactCount.getValue() + 1);
     }
 
     public void reset() {
-        mNewContactCount.setValue(0);
+        mContactCount.setValue(0);
     }
 }

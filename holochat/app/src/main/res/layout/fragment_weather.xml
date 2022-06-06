@@ -12,13 +12,13 @@
         android:id="@+id/inputBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="Enter a Zipcode"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.137"
+        app:layout_constraintHorizontal_bias="0.079"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,10 +26,10 @@
         android:id="@+id/changeLocationButton"
         android:layout_width="39dp"
         android:layout_height="40dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/locationicon"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintHorizontal_bias="0.956"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,10 +37,10 @@
         android:id="@+id/searchbtn"
         android:layout_width="99dp"
         android:layout_height="41dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:text="search"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.104"
         app:layout_constraintStart_toEndOf="@+id/inputBox"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,11 +48,14 @@
         android:id="@+id/dayAndCityText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="84dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="80dp"
         android:text="Day, City"
-        android:textSize="20sp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.119"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -60,11 +63,13 @@
         android:id="@+id/descriptionText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="144dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="132dp"
         android:text="Description"
-        android:textSize="24sp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.091"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -72,10 +77,10 @@
         android:id="@+id/curIcon"
         android:layout_width="125dp"
         android:layout_height="104dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="80dp"
         android:src="@drawable/ic_weather_thermostat_black24dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintHorizontal_bias="0.797"
         app:layout_constraintStart_toEndOf="@+id/dayAndCityText"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -83,20 +88,24 @@
         android:id="@+id/tempText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="144dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="172dp"
+        android:textColor="@color/colorPrimary"
         android:text="Temp F"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/feelsLikeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="224dp"
         android:text="Feels Like:"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -107,6 +116,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="224dp"
         android:text="Pressure:"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintStart_toEndOf="@+id/feelsLikeText"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -117,6 +127,7 @@
         android:layout_marginStart="28dp"
         android:layout_marginTop="224dp"
         android:text="Humidity:"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintStart_toEndOf="@+id/pressureText"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -124,22 +135,26 @@
         android:id="@+id/windText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="36dp"
         android:layout_marginTop="224dp"
         android:text="Wind Speed:"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintStart_toEndOf="@+id/humidityText"
         app:layout_constraintTop_toTopOf="parent" />
 
     <HorizontalScrollView
 
         android:id="@+id/horizontalScrollView"
-        android:layout_width="390dp"
+        android:layout_width="375dp"
         android:layout_height="130dp"
         android:layout_marginTop="276dp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:cardCornerRadius="4dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/cloudy_color">
 
         <LinearLayout
             android:id="@+id/hourlyForecast"
@@ -149,12 +164,14 @@
     </HorizontalScrollView>
 
     <ScrollView
-        android:layout_width="391dp"
+        android:layout_width="375dp"
         android:layout_height="421dp"
         android:layout_marginTop="28dp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView">
+        android:layout_marginStart="10dp"
+        app:cardCornerRadius="4dp"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView"
+        android:background="@color/cloudy_color">
 
         <LinearLayout
             android:id="@+id/dailyForecast"
