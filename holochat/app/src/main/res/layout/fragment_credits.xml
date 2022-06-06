@@ -185,8 +185,8 @@
 
             <TextView
                 android:id="@+id/text_credit_desc_mas"
-                android:layout_width="377dp"
-                android:layout_height="37dp"
+                android:layout_width="379dp"
+                android:layout_height="54dp"
                 android:fontFamily="casual"
                 android:text="started in the weather fragment and never got out"
                 android:textColor="@color/text_color"
