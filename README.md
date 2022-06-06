@@ -1,5 +1,5 @@
-# Team5_TCSS450_Mobile_Apps
-#"Holochat" - Messaging App for android
+# Team5_TCSS450_Mobile_Apps_Spring_2022
+"Holochat" - Messaging App for android
 
 This app is a messaging chat service where you can add friends and create chatrooms with them to message in. It also can be used to check the weather.
 
@@ -15,19 +15,19 @@ Android Studio client code base.
 
 ALL PROJECT LINKS BELOW:
 
-Link to Android Github repository: https://github.com/ggrewa/Team5_TCSS450/
+[Link to Android Github repository](https://github.com/ggrewa/Team5_TCSS450/)
 
-Link to Server side Github repository: https://github.com/ggrewa/team5-tcss450-holochat
+[Link to Server side Github repository](https://github.com/ggrewa/team5-tcss450-holochat)
 
-Link to Heroku Base URL: http://team5-tcss450-holochat.herokuapp.com/
+[Link to Heroku Base URL](http://team5-tcss450-holochat.herokuapp.com/)
 
-Link to Heroku Endpoint Documentation URL: http://team5-tcss450-holochat.herokuapp.com//doc/
+[Link to Heroku Endpoint Documentation URL](http://team5-tcss450-holochat.herokuapp.com/doc/)
 
-Link to Github StoryBoard: https://github.com/ggrewa/Team5_TCSS450/projects/1
+[Link to Github StoryBoard](https://github.com/ggrewa/Team5_TCSS450/projects/1)
 
-Link to Sprint Notes (2 weeks x 3) https://drive.google.com/drive/folders/1zyfdVfG9LHRNLHiqpcJOxE_eiglNNOCz
+[Link to Sprint Notes (2 weeks x 3)](https://drive.google.com/drive/folders/1zyfdVfG9LHRNLHiqpcJOxE_eiglNNOCz)
 
-Link to Unimplemented Features: TBD
+[Link to Unimplemented Features](https://docs.google.com/document/d/1exkKEGi_briTuepEOEa6Kgmy7F-a8og1XwCWjGsM51w/edit)
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -35,5 +35,8 @@ GUEST ACCOUNT INFORMATION BELOW: (to try app without registering)
 
 Guest account 1: 
  email=testuser1@gmail.com, pass=Test123!
+
+Guest account 2: 
+ email=testuser2@gmail.com, pass=Test123!
                     
 ----------------------------------------------------------------------------------------------------------------------------------------
