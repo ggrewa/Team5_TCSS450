@@ -8,15 +8,26 @@
     tools:context=".ui.home.HomeFragment">
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="407dp"
-        android:layout_height="172dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_container"
+        android:layout_width="366dp"
+        android:layout_height="291dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.924" />
+        app:layout_constraintTop_toBottomOf="@+id/text_home_recents_msgs">
+
+        <androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/recycler_messages"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:orientation="vertical"
+            app:layoutManager="LinearLayoutManager"
+            tools:listitem="@layout/fragment_message_card" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <ImageView
         android:id="@+id/imageView"
@@ -47,27 +58,26 @@
         android:id="@+id/text_home_recents_msgs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Your Recent Conversations (NOT DONE)"
+        android:layout_marginTop="12dp"
+        android:text="Your Recent Conversations"
         android:textColor="@color/colorPrimary2"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/home_weather_card" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/home_weather_card"
         android:layout_width="319dp"
         android:layout_height="116dp"
         android:layout_gravity="center"
-        android:layout_marginTop="70dp"
-        android:layout_marginBottom="84dp"
+        android:layout_marginTop="12dp"
         app:cardBackgroundColor="@color/colorPrimary"
         app:cardCornerRadius="4dp"
-        app:layout_constraintBottom_toTopOf="@+id/text_home_recents_msgs"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_home_welcome_user"
-        app:layout_constraintVertical_bias="0.206">
+        app:layout_constraintTop_toBottomOf="@+id/text_home_welcome_user">
 
         <TextView
             android:id="@+id/home_weather_temp"

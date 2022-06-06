@@ -11,8 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,17 +36,16 @@ import java.text.DecimalFormat;
 import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentHomeBinding;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
-import edu.uw.tcss450.team5.holochat.ui.chats.chatroom_list.MessageRecentRecyclerViewAdapter;
+import edu.uw.tcss450.team5.holochat.ui.chats.chatroom.HomeRecentMessagesRecyclerViewAdapter;
+import edu.uw.tcss450.team5.holochat.ui.chats.chatroom_list.MessageListViewModel;
 
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
     private UserInfoViewModel mUserModel;
-    //title, description
-    String s1[], s2[];
-    //picture for chatroom, can implement later if desired.
-    int icons[] = {R.drawable.ic_chat_black_24dp,R.drawable.ic_chat_black_24dp,R.drawable.ic_chat_black_24dp};
-    RecyclerView recyclerView;
+
+    private MessageListViewModel mMessagesModel;
+    private HomeRecentMessagesRecyclerViewAdapter mAdapter;
 
     //weather attributes
     TextView home_weather_city;
@@ -64,6 +62,11 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ViewModelProvider provider = new ViewModelProvider(getActivity());
+        mMessagesModel = provider.get(MessageListViewModel.class);
+        mUserModel = provider.get(UserInfoViewModel.class);
+
+        mMessagesModel.connectGet(mUserModel.getJwt());
 
 
     }
@@ -81,13 +84,6 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        recyclerView = view.findViewById(R.id.recyclerView);
-        s1=getResources().getStringArray(R.array.chat_titles);
-        s2=getResources().getStringArray(R.array.chat_preview);
-        MessageRecentRecyclerViewAdapter adapter = new MessageRecentRecyclerViewAdapter(view.getContext(),s1,s2,icons);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-
         //welcome the user
         ViewModelProvider provider = new ViewModelProvider(getActivity());
         mUserModel = provider.get(UserInfoViewModel.class);
@@ -104,6 +100,30 @@ public class HomeFragment extends Fragment {
         //populate weather with tacoma data
         connect("98405");
 
+        //Local access to the ViewBinding object. No need to create as Instance Var as it is only
+        //used here.
+        FragmentHomeBinding binding = FragmentHomeBinding.bind(getView());
+        updateMessagesModel();
+        //refresh the list with a swipe down
+        binding.swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                updateMessagesModel();
+            }
+        });
+
+    }
+
+    private void updateMessagesModel() {
+        //SetRefreshing shows the internal Swiper view progress bar. Show this until messages load
+        binding.swipeContainer.setRefreshing(true);
+        //may need to change this to be similar to chat fragment on view created.
+        //add observer for getting messages
+        mMessagesModel.addMessageListObserver(getViewLifecycleOwner(), messageList -> {
+            mAdapter = new HomeRecentMessagesRecyclerViewAdapter(messageList, getActivity().getSupportFragmentManager());
+            binding.recyclerMessages.setAdapter(mAdapter);
+            binding.swipeContainer.setRefreshing(false);
+        });
     }
 
 
