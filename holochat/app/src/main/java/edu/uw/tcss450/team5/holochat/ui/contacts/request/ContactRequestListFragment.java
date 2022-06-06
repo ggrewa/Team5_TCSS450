@@ -6,6 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +17,8 @@ import android.view.ViewGroup;
 import edu.uw.tcss450.team5.holochat.R;
 import edu.uw.tcss450.team5.holochat.databinding.FragmentContactRequestBinding;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
+import edu.uw.tcss450.team5.holochat.ui.contacts.list.ContactListRecyclerViewAdapter;
+import edu.uw.tcss450.team5.holochat.ui.contacts.search.AllMemberRecyclerViewAdapter;
 
 /**
  * Fragment that holds all friend requests the user has recieved
@@ -24,6 +28,7 @@ import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
 public class ContactRequestListFragment extends Fragment {
     private ContactRequestListViewModel mRequestInModel;
     private ContactRequestOutListViewModel mRequestOutModel;
+    private UserInfoViewModel mUserModel;
     FragmentContactRequestBinding binding;
 
     public ContactRequestListFragment() {
@@ -36,12 +41,12 @@ public class ContactRequestListFragment extends Fragment {
         mRequestInModel = new ViewModelProvider(getActivity()).get(ContactRequestListViewModel.class);
         mRequestOutModel = new ViewModelProvider(getActivity()).get(ContactRequestOutListViewModel.class);
 
-        UserInfoViewModel model = new ViewModelProvider(getActivity())
+        mUserModel = new ViewModelProvider(getActivity())
                 .get(UserInfoViewModel.class);
 
-        Log.i("CONTACT_REQUEST", model.getJwt());
-        mRequestInModel.connectGet(model.getJwt());
-        mRequestOutModel.connectGet(model.getJwt());
+        Log.i("CONTACT_REQUEST", mUserModel.getJwt());
+        mRequestInModel.connectGet(mUserModel.getJwt());
+        mRequestOutModel.connectGet(mUserModel.getJwt());
     }
 
     @Override
@@ -60,6 +65,9 @@ public class ContactRequestListFragment extends Fragment {
         //Local access to the ViewBinding object. No need to create as Instance Var as it is only
         //used here.
         FragmentContactRequestBinding binding = FragmentContactRequestBinding.bind(getView());
+        binding.swipeContainerIn.setRefreshing(true);
+        binding.swipeContainerOut.setRefreshing(true);
+        final RecyclerView rv = binding.recyclerRequestInList;
 
         mRequestInModel.addContactRequestListObserver(getViewLifecycleOwner(), contactList -> {
             if (!contactList.isEmpty()) {
@@ -71,6 +79,8 @@ public class ContactRequestListFragment extends Fragment {
             binding.recyclerRequestInList.setAdapter(
                     new ContactRequestRecyclerViewAdapter(contactList, getActivity().getSupportFragmentManager())
             );
+
+            binding.swipeContainerIn.setRefreshing(false);
         });
 
         mRequestOutModel.addContactRequestListObserver(getViewLifecycleOwner(), contactList -> {
@@ -83,6 +93,26 @@ public class ContactRequestListFragment extends Fragment {
             binding.recyclerRequestOutList.setAdapter(
                     new ContactRequestOutRecyclerViewAdapter(contactList, getActivity().getSupportFragmentManager())
             );
+
+            binding.swipeContainerOut.setRefreshing(false);
+        });
+
+        //refresh the request in list with a swipe down
+        binding.swipeContainerIn.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                binding.swipeContainerIn.setRefreshing(true);
+                mRequestInModel.connectGet(mUserModel.getJwt());
+            }
+        });
+
+        //refresh the request out list with a swipe down
+        binding.swipeContainerOut.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                binding.swipeContainerOut.setRefreshing(true);
+                mRequestOutModel.connectGet(mUserModel.getJwt());
+            }
         });
     }
 }
