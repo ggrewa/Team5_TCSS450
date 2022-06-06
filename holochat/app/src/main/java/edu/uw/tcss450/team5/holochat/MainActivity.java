@@ -40,6 +40,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 
 import edu.uw.tcss450.team5.holochat.databinding.ActivityMainBinding;
 import edu.uw.tcss450.team5.holochat.model.LocationViewModel;
+import edu.uw.tcss450.team5.holochat.model.NewIncomingCountViewModel;
 import edu.uw.tcss450.team5.holochat.model.NewMessageCountViewModel;
 import edu.uw.tcss450.team5.holochat.model.UserInfoViewModel;
 import edu.uw.tcss450.team5.holochat.services.PushReceiver;
@@ -80,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
     private LocationCallback mLocationCallback;
     //The ViewModel that will store the current location
     private LocationViewModel mLocationModel;
+    private NewIncomingCountViewModel mNewIncomModel;
 
 
     @Override
@@ -132,31 +134,32 @@ public class MainActivity extends AppCompatActivity {
 
 
         navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
-                if (destination.getId() == R.id.navigation_chatroom) {
-                    //When the user navigates to the chats page, reset the new message count.
-                    //This will need some extra logic for your project as it should have
-                    //multiple chat rooms.
+            if (destination.getId() == R.id.navigation_chatroom) {
+                //When the user navigates to the chats page, reset the new message count.
+                //This will need some extra logic for your project as it should have
+                //multiple chat rooms.
 
-                    System.out.println("TESTID"+arguments.getInt("chatID"));
-                    //Integer chatID = arguments.get("chatID");
-                    mNewMessageModel.reset(arguments.getInt("chatID"));
-                }
-            });
+                System.out.println("TESTID"+arguments.getInt("chatID"));
+                //Integer chatID = arguments.get("chatID");
+                mNewMessageModel.reset(arguments.getInt("chatID"));
+            }
+        });
 
         mNewMessageModel.addMessageCountObserver(this, count -> {
-                BadgeDrawable badge = binding.navView.getOrCreateBadge(R.id.navigation_messages);
-                badge.setMaxCharacterCount(2);
-                if (count > 0) {
-                    //new messages! update and show the notification badge.
-                    badge.setNumber(count);
-                    badge.setVisible(true);
-                } else {
-                    //user did some action to clear the new messages, remove the badge
-                    badge.clearNumber();
-                    badge.setVisible(false);
-                }
-            });
-        }
+            BadgeDrawable badge = binding.navView.getOrCreateBadge(R.id.navigation_messages);
+            badge.setMaxCharacterCount(2);
+            if (count > 0) {
+                //new messages! update and show the notification badge.
+                badge.setNumber(count);
+                badge.setVisible(true);
+            } else {
+                //user did some action to clear the new messages, remove the badge
+                badge.clearNumber();
+                badge.setVisible(false);
+            }
+        });
+
+    }
 
 
 
