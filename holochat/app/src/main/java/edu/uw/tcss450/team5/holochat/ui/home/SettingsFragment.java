@@ -135,6 +135,7 @@ public class SettingsFragment extends Fragment {
 
         //Weather switch
         mDegreesSwitch = view.findViewById(R.id.settings_degrees_switch);
+        mDegreesSwitch.setVisibility(View.GONE);
     }
 
     /**
