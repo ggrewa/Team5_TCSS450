@@ -125,9 +125,6 @@ public class PushReceiver extends BroadcastReceiver {
                 receiveUpdate(context, intent);
                 break;
         }
-
-
-
     }
 
     private void receiveUpdate(Context context, Intent intent) {

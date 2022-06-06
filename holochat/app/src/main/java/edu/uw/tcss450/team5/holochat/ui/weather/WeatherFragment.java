@@ -9,6 +9,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
@@ -371,12 +372,13 @@ public class WeatherFragment extends Fragment {
                 JSONObject curHourWeatherArrayIndex = curHourWeatherArray.getJSONObject(0);
                 String curHourWeatherDescription = curHourWeatherArrayIndex.getString("description");
                 if (curHourWeatherDescription.equals("overcast clouds")){
-                    curHourWeatherDescription = "overcast  clouds";
+                    curHourWeatherDescription = "Overcast  clouds";
                 }
                 String curHourWeatherIcon = curHourWeatherArrayIndex.getString("icon");
 
                 View view2 = inflater.inflate(R.layout.hourly_forecast_item, linearLayout, false);
                 TextView textView = view2.findViewById(R.id.tvHour);
+                textView.setTextColor(ContextCompat.getColor(getContext(), R.color.weather_blue_text));
                 textView.setText(formattedDate + " " + df.format(curTempF) + "°F" + "\n" + curHourWeatherDescription);
                 String hourlyIconUrl = "https://openweathermap.org/img/wn/" + curHourWeatherIcon + ".png";
                 ImageView imageView = view2.findViewById(R.id.ivHour);
@@ -408,6 +410,7 @@ public class WeatherFragment extends Fragment {
 
                 View view3 = inflater2.inflate(R.layout.daily_forecast_item, linearLayout2, false);
                 TextView textView = view3.findViewById(R.id.tvDaily);
+                textView.setTextColor(ContextCompat.getColor(getContext(), R.color.weather_blue_text));
                 textView.setText(formattedDay + ", " + dayDescription + ", " + df.format(dayTempF) + "°F");
                 String dailyIconUrl = "https://openweathermap.org/img/wn/" + dayIcon + ".png";
                 ImageView imageView = view3.findViewById(R.id.ivDaily);

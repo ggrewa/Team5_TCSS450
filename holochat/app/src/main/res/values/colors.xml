@@ -10,6 +10,7 @@
     <color name="matcha_green">#ADC178</color>
     <color name="text_color">#000000</color>
     <color name="text_box">#D3D3D3</color>
+    <color name ="weather_blue_text">#1FA8FF</color>
 
     <color name="colorAccent">#66ff66</color>
     <color name="colorAccentBorder">#1e8a0f</color>
@@ -26,7 +27,6 @@
     <color name="colorPrimaryLight">#80E8DD</color>
     <color name="colorSecondary">#80E8DD</color>
     <color name="colorSecondaryDark">#7CC2F6</color>
-
 
     <!-- dark mode color pallete -->
     <color name="colorPrimary2">#048c98</color>
