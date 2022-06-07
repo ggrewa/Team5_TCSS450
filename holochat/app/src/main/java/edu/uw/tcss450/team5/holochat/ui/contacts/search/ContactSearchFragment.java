@@ -110,7 +110,7 @@ public class ContactSearchFragment extends Fragment {
             binding.recyclerSearchList.setAdapter(
                     new AllMemberRecyclerViewAdapter(contactList, getActivity().getSupportFragmentManager())
             );
-            binding.contactNames.setText("All Members: x" + contactList.size() + " ( ͡° ᴥ ͡°)");
+            binding.contactNames.setText("All Non-Contact-Members: x" + contactList.size() + " ( ͡° ᴥ ͡°)");
             binding.swipeContainer.setRefreshing(false);
         });
     }
